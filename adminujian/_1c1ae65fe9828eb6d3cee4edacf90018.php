@@ -1,0 +1,51 @@
+<?php if(!defined('myweb')){ exit(); }?>
+<?php
+$_eb6af5b4e510c3c874d7d1f51d72393a=mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"select * from user where id_user='".$_SESSION['LOGIN_ID']."'");
+$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($_eb6af5b4e510c3c874d7d1f51d72393a);
+$_510c1613a4f826b5612ae2ac9bdeb894=$_60169cd1c47b7a7a85ab44f884635e41['nama'];
+
+?>
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="./">ADMINISTRATOR UJIAN ONLINE</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <li><span style="color:#fff;">Selamat datang, <strong><?php echo $_510c1613a4f826b5612ae2ac9bdeb894;?></strong> </span></li>
+                <!-- /.dropdown -->
+                
+                <!-- /.dropdown -->
+                
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <?php if($_2d2649677c494e9597d976bbb9df65e0['type']=='admin'){?>
+						<li><a href="?hal=ubah_password"><i class="fa fa-lock fa-fw"></i> Ubah Password</a></li>
+                        <?php } ?>
+						<li><a href="_2838024f07efa3669059a49ef2f79fe5.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+
+<?php
+/*
+---------------------------------------------
+haxan100
+*/
+?>
+

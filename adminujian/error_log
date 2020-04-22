@@ -1,0 +1,11 @@
+[23-Apr-2015 22:37:08 Asia/Jakarta] PHP Warning:  mysqli_connect() [<a href='function.mysqli-connect'>function.mysqli-connect</a>]: (HY000/2005): Unknown MySQL server host 'smangomo' (25) in /home/smangomo/public_html/ujian/config.php on line 11
+[23-Apr-2015 22:38:32 Asia/Jakarta] PHP Warning:  mysqli_connect() [<a href='function.mysqli-connect'>function.mysqli-connect</a>]: (HY000/2005): Unknown MySQL server host 'Server.localhost' (25) in /home/smangomo/public_html/ujian/config.php on line 11
+[23-Apr-2015 22:40:58 Asia/Jakarta] PHP Warning:  mysqli_connect() [<a href='function.mysqli-connect'>function.mysqli-connect</a>]: (HY000/2005): Unknown MySQL server host 'Server.localhost' (25) in /home/smangomo/public_html/ujian/config.php on line 11
+[23-Apr-2015 22:42:10 Asia/Jakarta] PHP Warning:  mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Unknown MySQL server host 'Server.localhost' (25) in /home/smangomo/public_html/ujian/config.php on line 11
+[24-Apr-2015 17:26:00 Asia/Jakarta] PHP Warning:  mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Unknown MySQL server host 'Server.localhost' (25) in /home/smangomo/public_html/ujian/config.php on line 11
+[15-Oct-2015 19:52:09] PHP Warning:  mysqli_select_db() expects exactly 2 parameters, 1 given in /home/smangomo/public_html/ujian/config.php on line 12
+[15-Oct-2015 19:55:52] PHP Warning:  mysqli_select_db() expects exactly 2 parameters, 1 given in /home/smangomo/public_html/ujian/config.php on line 12
+[15-Oct-2015 19:55:53] PHP Warning:  mysqli_select_db() expects exactly 2 parameters, 1 given in /home/smangomo/public_html/ujian/config.php on line 12
+[15-Oct-2015 20:36:15] PHP Warning:  mysqli_select_db() expects exactly 2 parameters, 1 given in /home/smangomo/public_html/ujian/config.php on line 12
+[15-Oct-2015 20:37:00] PHP Warning:  mysqli_select_db() expects exactly 2 parameters, 1 given in /home/smangomo/public_html/ujian/config.php on line 12
+[20-Jan-2016 00:02:59] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/smangomo/public_html/ujian/config.php on line 3

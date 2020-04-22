@@ -1,0 +1,500 @@
+body{font-family:Arial, Helvetica, sans-serif;background:url(../images/bg.jpg) fixed;}
+ .header {
+ min-height: 100px;
+ background: #fff;
+ border-bottom: #7af97a solid 2px;
+}
+.header .container {
+padding: 20px 10px;
+}
+.logo-left {
+
+ }
+ .logo-left img {
+ float:left;
+ }
+.logo-center {
+ text-align: center;
+}
+.logo-center h1 {
+font-size: 25px;
+margin: 5px 0 5px;
+}
+.logo-center h3 {
+font-size: 15px;
+margin: 5px 0 5px;
+color: #cccccc;
+}
+.logo-right {
+
+}
+ .logo-right img {
+ float:right;
+ }
+ .main {
+padding: 10px 10px 10px;
+background: #fff;
+margin-top:10px;
+margin-bottom:10px;
+border-top:4px solid #0099FF;
+box-shadow: 0px 5px 10px -6px rgba(0,0,0,0.70);-moz-box-shadow: 3px 5px 8px rgba(0,0,0,0.70);-webkit-box-shadow: 3px 5px 8px rgba(0,0,0,0.70);
+ }
+.topcontainer{
+min-height:100px;
+}
+.widget {
+border: 1px solid #ddd;
+margin-bottom: 10px;
+ }
+ .widget p {
+ font-size: 12px;
+ }
+ .date {
+ color: #de0a0f;
+ font-size: 12px;
+ }
+ .widget-title {
+ background: #e7e7e7;
+ padding: 0 10px;
+ }
+ .widget-content {
+ padding: 10px;
+ overflow: hidden;
+ }
+  .widget-content img{
+ margin: auto;
+ max-width: 100%;
+ display: block;
+ border: solid 3px #e5e4e4;
+ margin-bottom: 10px;
+ }
+ .widget_login form {
+ margin-bottom: 10px;
+ }
+ .widget_login a {
+ display: block;
+ }
+ .widget-title h4 {
+ color: #666666;
+ }
+ .readmore {
+ color: #0f07c0;
+ }
+ .widget a:hover {
+text-decoration: none;
+ }
+ .iklan-depan {
+ text-align: center;
+ }
+ .iklan-depan img {
+ max-width: 100%;
+ }
+  .lowongan {
+  margin-bottom: 10px;
+  }
+ .lowongan-news {
+ border-bottom: dashed 1px #666;
+ margin-bottom: 10px;
+ }
+ .lowongan-news .title {
+ margin-top: 5px;
+ }
+ .lowongan-news .title a{
+ color: #de0a0f;
+ font-size: 15px;
+ text-decoration: none;
+ }
+ .lowongan-news p {
+ line-height: 1;
+ margin-bottom: 5px;
+ }
+ .carousel-control {
+  padding-top:10%;
+  width:5%;
+}
+.well1 {
+margin-bottom: 10px;
+padding: 10px 3px;
+border: 1px solid #ddd;
+}
+.well1 .carousel-inner {
+padding: 0 30px;
+}
+.left1 {
+background: #fff;
+}
+.right1 {
+background: #fff;
+}
+.footer {
+border-radius: 14px;
+background: #0073b7 !important;
+padding: 10px 10px;
+}
+.copyright {
+text-align: center;
+}
+.footer h1,
+.footer h2,
+.footer h3,
+.footer h4,
+.footer h5 {
+margin: 5px 0;
+}
+.footer span{
+color: #666;
+font-size: 12px;
+}
+.iklan-bawah {
+background: #ededec;
+padding: 5px 10px;
+border: solid 2px #dbdbdb;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+}
+.iklan-bawah span {
+color: #d433b8;
+font-weight: bold;
+}
+.hitcounter ul li {
+background:#d433b8;
+display: inline-block;
+color: #fff;
+padding: 0 3px;
+}
+.newsticker {
+padding:0;
+margin-bottom: 10px;
+background: #534b4b;
+}
+.newsupdate {
+background: #f64d11;
+padding: 10px;
+float:left;
+width: 12%;
+text-align: center;
+}
+.newsupdate span {
+color: #fff;
+}
+.update {
+padding: 10px 0 0;
+float:left;
+width: 88%;
+}
+.update a {
+padding-left: 10px;
+font-size: 12px;
+background: url('image/ticker.png');
+background-repeat: repeat-y;
+color: #fff;
+margin-right: 10px;
+}
+.update a:hover {
+text-decoration: none;
+}
+@media (max-width: 768px) {
+.logo-left {
+ text-align: center;
+ }
+ .logo-left img {
+ float:none;
+ }
+ .logo-right {
+  text-align: center;
+}
+ .logo-right img {
+ float:none;
+ }
+ .footer {
+ text-align: center;
+ }
+}
+@media (max-width:480px){
+ .topcontainer{
+min-height:200px;
+}
+}
+.required{color:#CC3300;font-weight:bold;}
+
+/***
+General backgrounds
+***/
+.bg-blue {
+  background-image: none !important;
+  background-color: #4b8df8 !important;
+}
+
+.bg-red {
+  background-image: none !important;
+  background-color: #e02222 !important;
+}
+
+.bg-yellow {
+  background-image: none !important;
+  background-color: #ffb848 !important;
+}
+
+.bg-green {
+  background-image: none !important;
+  background-color: #35aa47 !important;
+}
+
+.bg-purple {
+  background-image: none !important;
+  background-color: #852b99 !important;
+}
+
+.bg-grey {
+  background-image: none !important;
+  background-color: #555555 !important;
+}
+
+/***
+Tiles(new in v1.1.1)
+***/
+.tiles {
+  margin-right: -10px;
+}
+
+.tile {
+  display: block;
+  letter-spacing: 0.02em;
+  float: left;
+  height: 130px;
+  width: 130px !important;
+  cursor: pointer;
+  text-decoration: none;
+  color: #ffffff;
+  position: relative;
+  font-weight: 300;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  line-height: 20px;
+  font-smooth: always;
+  overflow: hidden;
+  border: 4px solid transparent;
+  margin: 0 10px 10px 0;
+  box-shadow: 0px 5px 10px -6px rgba(0,0,0,0.70);-moz-box-shadow: 3px 5px 8px rgba(0,0,0,0.70);-webkit-box-shadow: 3px 5px 8px rgba(0,0,0,0.70);
+  border-radius: 5px 5px 5px 5px;
+-moz-border-radius: 5px 5px 5px 5px;
+-webkit-border-radius: 5px 5px 5px 5px;
+}
+
+.tile:after,
+.tile:before {
+  content: "";
+  float: left; 
+}
+
+.tile.double {
+  width: 278px !important;
+}
+
+.tile.double-down {
+  height: 278px !important;
+}
+
+.tile:active, .tile.selected {
+  border-color: #ccc;
+}
+
+.tile:hover {
+  border-color: #fff;
+}
+
+.tile.selected .corner:after {  
+  content: "";
+  display: inline-block;
+  border-left: 40px solid transparent;
+  border-bottom: 40px solid transparent;
+  border-right: 40px solid #ccc;
+  position: absolute;
+  top: -3px;
+  right: -3px;
+}
+
+.tile.selected .check:after {  
+  content: "";
+  font-family: FontAwesome;
+  font-size: 13px;
+  content: "\f00c";
+  display: inline-block;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}
+
+.tile * {
+  color: #ffffff;
+}
+
+.tile .tile-body {
+  height: 100%;
+  vertical-align: top;
+  padding: 10px 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  font-weight: 400;
+  font-size: 12px;
+  font-smooth: always;
+  color: #000000;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.tile .tile-body img {
+  float: left;
+  margin-right: 10px;
+}
+
+.tile .tile-body img.pull-right {
+  float: right !important;
+  margin-left: 10px;
+  margin-right: 0px;
+}
+
+.tile .tile-body .content {
+  display: inline-block;
+}
+
+.tile .tile-body > i {
+  margin-top: 17px;
+  display: block;
+  font-size: 56px;
+  text-align: right;
+}
+
+.tile.double-down i {
+  margin-top: 95px;
+}
+
+.tile .tile-body h1,
+.tile .tile-body h2,
+.tile .tile-body h3,
+.tile .tile-body h4,
+.tile .tile-body h5,
+.tile .tile-body h6,
+.tile .tile-body p {
+  padding: 0;
+  margin: 0;
+  line-height: 14px;
+}
+
+.tile .tile-body h3,
+.tile .tile-body h4 {
+  margin-bottom: 5px;
+}
+
+.tile .tile-body h1:hover,
+.tile .tile-body h2:hover,
+.tile .tile-body h3:hover,
+.tile .tile-body h4:hover,
+.tile .tile-body h5:hover,
+.tile .tile-body h6:hover,
+.tile .tile-body p:hover {
+  color: #ffffff;
+}
+
+.tile .tile-body p {
+  font-weight: 400;
+  font-size: 13px;
+  font-smooth: always;
+  color: #000000;
+  color: #ffffff;
+  line-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tile .tile-body p:hover {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.tile .tile-body p:active {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.tile .tile-body p:hover {
+  color: #ffffff;
+}
+
+.tile.icon > .tile-body {
+  padding: 0;
+}
+
+.tile .tile-object {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  min-height: 30px;
+  background-color: transparent;
+  *zoom: 1;
+}
+
+.tile .tile-object:before,
+.tile .tile-object:after {
+  display: table;
+  content: "";
+}
+
+.tile .tile-object:after {
+  clear: both;
+}
+
+.tile .tile-object > .name {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 15px;
+  font-weight: 400;
+  font-size: 13px;
+  font-smooth: always;
+  color: #ffffff;
+}
+
+.tile .tile-object > .name i {
+  display: block;
+  font-size: 24px;
+}
+
+.tile .tile-object > .number {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 0;
+  color: #ffffff;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  line-height: 14px;
+  font-smooth: always;
+  margin-bottom: 8px;
+  margin-right: 10px;
+}
+
+.tile.image {  
+  border-color1: transparent !important;
+}
+
+.tile.image > .tile-body {
+  padding: 0 !important;
+}
+
+.tile.image > .tile-body > img{
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  max-width: 100%;
+}
+
+.tile.image .tile-body h3 {
+  display: inline-block;
+}
+

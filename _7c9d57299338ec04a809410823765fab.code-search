@@ -1,0 +1,78 @@
+# Query: _7c9d57299338ec04a809410823765fab
+
+64 results - 18 files
+
+_1c1ae65fe9828eb6d3cee4edacf90018.php:
+  23:         <li <?php if($sesi==''){echo 'class="active"';}?>><a href="./">Home</a></li>
+  25: 		<li <?php if($sesi=='pengumuman'){echo 'class="active"';}?>><a href="?hal=pengumuman">Daftar Hasil Ujian</a></li>
+
+_7feb09b1cc77316e82afe633b4476000.php:
+  58: <a href="./" class="list-group-item <?php if($sesi==''){echo 'active';}?>">Dashboard</a>
+  59: <!--<a href="?hal=tes" class="list-group-item <?php if($sesi=='tes'){echo 'active';}?>"><?php if($_8f128c86231aedb3ad839316104082b1=='Y'){echo 'Hasil Ujian';}else{echo 'Ujian';}?></a>-->
+  60: <a href="?hal=paket_ujian" class="list-group-item <?php if($sesi=='paket_ujian' or $sesi=='paket_ujian'){echo 'active';}?>">Paket Ujian</a>
+  61: <a href="?hal=profil" class="list-group-item <?php if($sesi=='profil'){echo 'active';}?>">Profil Siswa</a>
+  62: <a href="?hal=ubah_password" class="list-group-item <?php if($sesi=='ubah_password'){echo 'active';}?>">Ubah Password</a>
+
+_f0b08a817cc558048a5f4f571365edaa.php:
+  7: $sesi=$_71a6fd054f6ebc38e69167ab39449848;
+
+adminujian\_7feb09b1cc77316e82afe633b4476000.php:
+   8: 			<li><a <?php if($sesi==''){echo 'class="active"';}?> href="./"><i class="fa fa-home fa-fw"></i> Dashboard</a></li>
+   9: 			<li <?php if($sesi=='kelas' or $sesi=='update_kelas' or $sesi=='pelajaran' or $sesi=='update_pelajaran' or $sesi=='siswa' or $sesi=='update_siswa' or $sesi=='import_siswa' or $sesi=='soal' or $sesi=='update_soal' or $sesi=='import_soal'){echo 'class="active"';}?>><a href="#"><i class="fa fa-cogs fa-fw"></i> Master<span class="fa arrow"></span></a>
+  11: 					<li><a <?php if($sesi=='kelas' or $sesi=='update_kelas'){echo 'class="active"';}?> href="?hal=kelas">Kelas</a></li>
+  12: 					<li><a <?php if($sesi=='pelajaran' or $sesi=='update_pelajaran'){echo 'class="active"';}?> href="?hal=pelajaran">Pelajaran</a></li>
+  13: 					<li><a <?php if($sesi=='siswa' or $sesi=='update_siswa' or $sesi=='import_siswa'){echo 'class="active"';}?> href="?hal=siswa">Siswa</a></li>
+  14: 					<li><a <?php if($sesi=='soal' or $sesi=='update_soal' or $sesi=='import_soal'){echo 'class="active"';}?> href="?hal=soal">Bank Soal</a></li>
+  15: 					<!--<li><a <?php if($sesi=='periode' or $sesi=='update_periode'){echo 'class="active"';}?> href="?hal=periode">Periode</a></li>
+  16: 					<li><a <?php if($sesi=='soal_tes' or $sesi=='update_soal_tes'){echo 'class="active"';}?> href="?hal=soal_tes">Daftar Soal Tes</a></li>-->
+  19: 			<li <?php if($sesi=='paket' or $sesi=='update_paket' or $sesi=='peserta' or $sesi=='soal_ujian' or $sesi=='hasil_ujian'){echo 'class="active"';}?>><a href="#"><i class="fa fa-check-square-o fa-fw"></i> Ujian<span class="fa arrow"></span></a>
+  21: 					<li><a <?php if($sesi=='paket' or $sesi=='update_paket'){echo 'class="active"';}?> href="?hal=paket">Paket Soal</a></li>
+  22: 					<li><a <?php if($sesi=='soal_ujian'){echo 'class="active"';}?> href="?hal=soal_ujian">Soal Ujian</a></li>
+  23: 					<li><a <?php if($sesi=='peserta'){echo 'class="active"';}?> href="?hal=peserta">Peserta Ujian</a></li>
+  24: 					<li><a <?php if($sesi=='hasil_ujian'){echo 'class="active"';}?> href="?hal=hasil_ujian">Hasil Ujian</a></li>
+  28: 			<li <?php if($sesi=='gambar' or $sesi=='home' or $sesi=='informasi'){echo 'class="active"';}?>><a href="#"><i class="fa fa-briefcase fa-fw"></i> Lain-lain<span class="fa arrow"></span></a>
+  30: 					<li><a <?php if($sesi=='home'){echo 'class="active"';}?> href="?hal=home">Halaman Depan</a></li>
+  31: 					<li><a <?php if($sesi=='informasi'){echo 'class="active"';}?> href="?hal=informasi">Informasi </a></li>
+  32: 					<li><a <?php if($sesi=='gambar'){echo 'class="active"';}?> href="?hal=gambar">Upload Gambar</a></li>
+
+adminujian\_f0b08a817cc558048a5f4f571365edaa.php:
+  7: $sesi=$_71a6fd054f6ebc38e69167ab39449848;
+
+adminujian\includes\_3a5de2a9e70d6913d66eb587b03fcfb2.php:
+  19: if($_4e4149dcf4b3b60bf0aaf69dd2348c4d<1){$_4e4149dcf4b3b60bf0aaf69dd2348c4d=1;}$sesi=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;$_4e4149dcf4b3b60bf0aaf69dd2348c4d--;$_f52ba22baf75438bb1b02f476954c023=($_12ef5f8660c2350214ce228aad66392d -($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466)) / $_111f1b5b84b5c819ea9ae35968fce466;if($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466 > 0){$_f52ba22baf75438bb1b02f476954c023++;}
+
+adminujian\includes\_6bed254adb9fc255bcf7d4d3f436c647.php:
+  46: if($_4e4149dcf4b3b60bf0aaf69dd2348c4d<1){$_4e4149dcf4b3b60bf0aaf69dd2348c4d=1;}$sesi=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;$_4e4149dcf4b3b60bf0aaf69dd2348c4d--;$_f52ba22baf75438bb1b02f476954c023=($_12ef5f8660c2350214ce228aad66392d -($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466)) / $_111f1b5b84b5c819ea9ae35968fce466;if($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466 > 0){$_f52ba22baf75438bb1b02f476954c023++;}
+
+adminujian\includes\_8e25fa621639a6485557be5efa3c28fe.php:
+  23: if($_4e4149dcf4b3b60bf0aaf69dd2348c4d<1){$_4e4149dcf4b3b60bf0aaf69dd2348c4d=1;}$sesi=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;$_4e4149dcf4b3b60bf0aaf69dd2348c4d--;$_f52ba22baf75438bb1b02f476954c023=($_12ef5f8660c2350214ce228aad66392d -($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466)) / $_111f1b5b84b5c819ea9ae35968fce466;if($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466 > 0){$_f52ba22baf75438bb1b02f476954c023++;}
+
+adminujian\includes\_18ffeaa6651517cd8e3ef75de59bc1db.php:
+  38: if($_4e4149dcf4b3b60bf0aaf69dd2348c4d<1){$_4e4149dcf4b3b60bf0aaf69dd2348c4d=1;}$sesi=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;$_4e4149dcf4b3b60bf0aaf69dd2348c4d--;$_f52ba22baf75438bb1b02f476954c023=($_12ef5f8660c2350214ce228aad66392d -($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466)) / $_111f1b5b84b5c819ea9ae35968fce466;if($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466 > 0){$_f52ba22baf75438bb1b02f476954c023++;}
+
+adminujian\includes\_58f3f993ae9bd6efcf77ebec16120d51.php:
+  19: if($_4e4149dcf4b3b60bf0aaf69dd2348c4d<1){$_4e4149dcf4b3b60bf0aaf69dd2348c4d=1;}$sesi=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;$_4e4149dcf4b3b60bf0aaf69dd2348c4d--;$_f52ba22baf75438bb1b02f476954c023=($_12ef5f8660c2350214ce228aad66392d -($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466)) / $_111f1b5b84b5c819ea9ae35968fce466;if($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466 > 0){$_f52ba22baf75438bb1b02f476954c023++;}
+
+adminujian\includes\_22405af04d8c1a67bde9a97868effb1d.php:
+  19: if($_4e4149dcf4b3b60bf0aaf69dd2348c4d<1){$_4e4149dcf4b3b60bf0aaf69dd2348c4d=1;}$sesi=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;$_4e4149dcf4b3b60bf0aaf69dd2348c4d--;$_f52ba22baf75438bb1b02f476954c023=($_12ef5f8660c2350214ce228aad66392d -($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466)) / $_111f1b5b84b5c819ea9ae35968fce466;if($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466 > 0){$_f52ba22baf75438bb1b02f476954c023++;}
+
+adminujian\includes\_8895054205baab8c2ac135599eb11207.php:
+  39: if($_4e4149dcf4b3b60bf0aaf69dd2348c4d<1){$_4e4149dcf4b3b60bf0aaf69dd2348c4d=1;}$sesi=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;$_4e4149dcf4b3b60bf0aaf69dd2348c4d--;$_f52ba22baf75438bb1b02f476954c023=($_12ef5f8660c2350214ce228aad66392d -($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466)) / $_111f1b5b84b5c819ea9ae35968fce466;if($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466 > 0){$_f52ba22baf75438bb1b02f476954c023++;}
+
+adminujian\includes\_c6e95fee7b0eddf18d9f899575d75c1f.php:
+  28: $sesi=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;
+
+adminujian\includes\_c2774403c6ad1db9a29e5532b928792e.php:
+  28: $sesi=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;
+
+adminujian\includes\_cf8bc7afc7e2ab37c9035c13eab1de05.php:
+  35: if($_4e4149dcf4b3b60bf0aaf69dd2348c4d<1){$_4e4149dcf4b3b60bf0aaf69dd2348c4d=1;}$sesi=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;$_4e4149dcf4b3b60bf0aaf69dd2348c4d--;$_f52ba22baf75438bb1b02f476954c023=($_12ef5f8660c2350214ce228aad66392d -($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466)) / $_111f1b5b84b5c819ea9ae35968fce466;if($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466 > 0){$_f52ba22baf75438bb1b02f476954c023++;}
+
+adminujian\includes\_e385cac1eeba8ce168c883dc007fadcc.php:
+  28: if($_4e4149dcf4b3b60bf0aaf69dd2348c4d<1){$_4e4149dcf4b3b60bf0aaf69dd2348c4d=1;}$sesi=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;$_4e4149dcf4b3b60bf0aaf69dd2348c4d--;$_f52ba22baf75438bb1b02f476954c023=($_12ef5f8660c2350214ce228aad66392d -($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466)) / $_111f1b5b84b5c819ea9ae35968fce466;if($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466 > 0){$_f52ba22baf75438bb1b02f476954c023++;}
+
+adminujian\includes\_f749c95c34082c3f121fdbc702ba16c3.php:
+  28: if($_4e4149dcf4b3b60bf0aaf69dd2348c4d<1){$_4e4149dcf4b3b60bf0aaf69dd2348c4d=1;}$sesi=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;$_4e4149dcf4b3b60bf0aaf69dd2348c4d--;$_f52ba22baf75438bb1b02f476954c023=($_12ef5f8660c2350214ce228aad66392d -($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466)) / $_111f1b5b84b5c819ea9ae35968fce466;if($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466 > 0){$_f52ba22baf75438bb1b02f476954c023++;}
+
+adminujian\includes\_fe63579a5fa6c178ed6caa0a4f93ec3f.php:
+  43: if($_4e4149dcf4b3b60bf0aaf69dd2348c4d<1){$_4e4149dcf4b3b60bf0aaf69dd2348c4d=1;}$sesi=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;$_4e4149dcf4b3b60bf0aaf69dd2348c4d--;$_f52ba22baf75438bb1b02f476954c023=($_12ef5f8660c2350214ce228aad66392d -($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466)) / $_111f1b5b84b5c819ea9ae35968fce466;if($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466 > 0){$_f52ba22baf75438bb1b02f476954c023++;}
