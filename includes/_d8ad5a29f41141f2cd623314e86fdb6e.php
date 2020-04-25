@@ -6,10 +6,10 @@ $_4bf2fdb3ab37a41b537e7360f7e4b007='?hal=ujian';
 
 $_52f720bdaf922c68904e386cbf0cd227=0;
 $_d4cb19f81c23886f544f26709bd4f799='';
-$_eb6af5b4e510c3c874d7d1f51d72393a="select * from paket where aktif='Y' and id_paket not in (select id_paket from ujian where id_siswa='".$_SESSION['LOGIN_ID']."') order by id_paket desc";
-$_eb6af5b4e510c3c874d7d1f51d72393a=mysqli_query($_000b935637cea64cc7810fb0077f5ff1,$_eb6af5b4e510c3c874d7d1f51d72393a);
-if(mysqli_num_rows($_eb6af5b4e510c3c874d7d1f51d72393a) > 0){
-	while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($_eb6af5b4e510c3c874d7d1f51d72393a)){
+$conn="select * from paket where aktif='Y' and id_paket not in (select id_paket from ujian where id_siswa='".$_SESSION['LOGIN_ID']."') order by id_paket desc";
+$conn=mysqli_query($conns,$conn);
+if(mysqli_num_rows($conn) > 0){
+	while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn)){
 		$_52f720bdaf922c68904e386cbf0cd227++;
 		$_3584859062ea9ecfb39b93bfcef8e869=$_60169cd1c47b7a7a85ab44f884635e41['id_paket'];
 		if($_60169cd1c47b7a7a85ab44f884635e41['aktif']=='Y'){
@@ -30,12 +30,12 @@ if(mysqli_num_rows($_eb6af5b4e510c3c874d7d1f51d72393a) > 0){
 }
 $_52f720bdaf922c68904e386cbf0cd227=0;
 $_346cdacfcfcb66a12c88d6345a2f0d81='';
-$_eb6af5b4e510c3c874d7d1f51d72393a="select * from paket inner join ujian on paket.id_paket=ujian.id_paket where ujian.id_siswa='".$_SESSION['LOGIN_ID']."' and selesai='Y' order by ujian.id_ujian desc";
-$_eb6af5b4e510c3c874d7d1f51d72393a=mysqli_query($_000b935637cea64cc7810fb0077f5ff1,$_eb6af5b4e510c3c874d7d1f51d72393a);
-if(mysqli_num_rows($_eb6af5b4e510c3c874d7d1f51d72393a) > 0){
-	while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($_eb6af5b4e510c3c874d7d1f51d72393a)){
+$conn="select * from paket inner join ujian on paket.id_paket=ujian.id_paket where ujian.id_siswa='".$_SESSION['LOGIN_ID']."' and selesai='Y' order by ujian.id_ujian desc";
+$conn=mysqli_query($conns,$conn);
+if(mysqli_num_rows($conn) > 0){
+	while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn)){
 		$_52f720bdaf922c68904e386cbf0cd227++;
-		$_7da43659dfebcaab2ad4bbd2f2a98f30=mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"select count(*) as jml from soal_paket where id_paket='".$_60169cd1c47b7a7a85ab44f884635e41['id_paket']."'");
+		$_7da43659dfebcaab2ad4bbd2f2a98f30=mysqli_query($conns,"select count(*) as jml from soal_paket where id_paket='".$_60169cd1c47b7a7a85ab44f884635e41['id_paket']."'");
 		$_84ebecebe3a7c3b32dff74f8dce19fce=mysqli_fetch_array($_7da43659dfebcaab2ad4bbd2f2a98f30);
 		$_b9e53b5867b7fd393a3d5ddf2ceefdf6=$_84ebecebe3a7c3b32dff74f8dce19fce['jml'];
 		

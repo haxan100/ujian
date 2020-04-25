@@ -27,8 +27,8 @@ if(isset($_GET['page'])){$_4e4149dcf4b3b60bf0aaf69dd2348c4d=$_GET['page'];}
 if($_4e4149dcf4b3b60bf0aaf69dd2348c4d<1){$_4e4149dcf4b3b60bf0aaf69dd2348c4d=1;}
 $result=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;
 $_4e4149dcf4b3b60bf0aaf69dd2348c4d--;
-$_eb6af5b4e510c3c874d7d1f51d72393a=mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"select count(*) as jml from soal where id_pelajaran='".$_5bbbff8933f7b8be381684bd463e6d16."' and detail like '%".$_36923cf62618d1b9981740738971e651."%'");
-$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($_eb6af5b4e510c3c874d7d1f51d72393a);
+$conn=mysqli_query($conns,"select count(*) as jml from soal where id_pelajaran='".$_5bbbff8933f7b8be381684bd463e6d16."' and detail like '%".$_36923cf62618d1b9981740738971e651."%'");
+$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
 $_12ef5f8660c2350214ce228aad66392d=$_60169cd1c47b7a7a85ab44f884635e41['jml'];
 $_f52ba22baf75438bb1b02f476954c023=($_12ef5f8660c2350214ce228aad66392d -($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466)) / $_111f1b5b84b5c819ea9ae35968fce466;
 
@@ -52,13 +52,13 @@ $_52f720bdaf922c68904e386cbf0cd227=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;
 $_8e976f2b17f9b4d8660549c18b67af83=$_52f720bdaf922c68904e386cbf0cd227+1;
 
 $_d4cb19f81c23886f544f26709bd4f799='';
-$_eb6af5b4e510c3c874d7d1f51d72393a="select * from soal where id_pelajaran='".$_5bbbff8933f7b8be381684bd463e6d16."' and detail like '%".$_36923cf62618d1b9981740738971e651."%' order by id_soal limit ".$_4e4149dcf4b3b60bf0aaf69dd2348c4d.",".$_111f1b5b84b5c819ea9ae35968fce466;
-$_eb6af5b4e510c3c874d7d1f51d72393a=mysqli_query($_000b935637cea64cc7810fb0077f5ff1,$_eb6af5b4e510c3c874d7d1f51d72393a);
-if(mysqli_num_rows($_eb6af5b4e510c3c874d7d1f51d72393a) > 0){
-	while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($_eb6af5b4e510c3c874d7d1f51d72393a)){
+$conn="select * from soal where id_pelajaran='".$_5bbbff8933f7b8be381684bd463e6d16."' and detail like '%".$_36923cf62618d1b9981740738971e651."%' order by id_soal limit ".$_4e4149dcf4b3b60bf0aaf69dd2348c4d.",".$_111f1b5b84b5c819ea9ae35968fce466;
+$conn=mysqli_query($conns,$conn);
+if(mysqli_num_rows($conn) > 0){
+	while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn)){
 		$_52f720bdaf922c68904e386cbf0cd227++;
 		$_3584859062ea9ecfb39b93bfcef8e869=$_60169cd1c47b7a7a85ab44f884635e41['id_soal'];
-		if(mysqli_num_rows(mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"select id_soal_paket from soal_paket where id_paket='".$_b78f9e7c4587e8583ab713f126277f88."' and id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."'")) > 0){
+		if(mysqli_num_rows(mysqli_query($conns,"select id_soal_paket from soal_paket where id_paket='".$_b78f9e7c4587e8583ab713f126277f88."' and id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."'")) > 0){
 			$_d4cb19f81c23886f544f26709bd4f799.='
 			  <tr>
 				<td style="text-align:center;">'.$_52f720bdaf922c68904e386cbf0cd227.'</td>
@@ -79,8 +79,8 @@ if(mysqli_num_rows($_eb6af5b4e510c3c874d7d1f51d72393a) > 0){
 	}
 }
 $_3718d16a4c63e6e0d669e38e63f8c5c0='<option value="">Pilih Pelajaran</option>';
-$_eb6af5b4e510c3c874d7d1f51d72393a=mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"select * from pelajaran order by nama");
-while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($_eb6af5b4e510c3c874d7d1f51d72393a)){
+$conn=mysqli_query($conns,"select * from pelajaran order by nama");
+while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn)){
 	if($_5bbbff8933f7b8be381684bd463e6d16==$_60169cd1c47b7a7a85ab44f884635e41['id_pelajaran']){$_3cb9cdaed257453cfa56b9ef81b44c57='selected';}else{$_3cb9cdaed257453cfa56b9ef81b44c57='';}
 	$_3718d16a4c63e6e0d669e38e63f8c5c0.='<option value="'.$_60169cd1c47b7a7a85ab44f884635e41['id_pelajaran'].'" '.$_3cb9cdaed257453cfa56b9ef81b44c57.'>'.$_60169cd1c47b7a7a85ab44f884635e41['nama'].'</option>';
 }

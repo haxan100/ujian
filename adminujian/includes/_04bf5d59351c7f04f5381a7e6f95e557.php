@@ -17,7 +17,7 @@ if(isset($_GET['action'])){
 			$_5cf085bf5081a50e78311063db83f771=$_GET['id'];
 		}
 		if($_b78f9e7c4587e8583ab713f126277f88!='' and $_5cf085bf5081a50e78311063db83f771!=''){
-			mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"insert into soal_paket(id_paket,id_soal) values('".$_b78f9e7c4587e8583ab713f126277f88."','".$_5cf085bf5081a50e78311063db83f771."')");
+			mysqli_query($conns,"insert into soal_paket(id_paket,id_soal) values('".$_b78f9e7c4587e8583ab713f126277f88."','".$_5cf085bf5081a50e78311063db83f771."')");
 		}
 		
 	}

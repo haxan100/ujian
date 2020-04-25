@@ -2,9 +2,9 @@
 <?php
 $_8f128c86231aedb3ad839316104082b1='N';
 if(isset($_SESSION['LOGIN_ID'])){
-	$_eb6af5b4e510c3c874d7d1f51d72393a=mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"select selesai from ujian where id_siswa='".$_SESSION['LOGIN_ID']."'");
-	if(mysqli_num_rows($_eb6af5b4e510c3c874d7d1f51d72393a)>0){
-		$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($_eb6af5b4e510c3c874d7d1f51d72393a);
+	$conn=mysqli_query($conns,"select selesai from ujian where id_siswa='".$_SESSION['LOGIN_ID']."'");
+	if(mysqli_num_rows($conn)>0){
+		$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
 		$_8f128c86231aedb3ad839316104082b1=$_60169cd1c47b7a7a85ab44f884635e41['selesai'];
 	}
 }

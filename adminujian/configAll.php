@@ -9,11 +9,11 @@ function format_tanggal($_865eb2faae713e018683439d0d7400b1){
 	}
 }
 function escape($_63bede6b19266d4efead07a4d91e29eb){
-	global $_000b935637cea64cc7810fb0077f5ff1;
+	global $conns;
 	if (get_magic_quotes_gpc()) {
 		$_63bede6b19266d4efead07a4d91e29eb = stripslashes($_63bede6b19266d4efead07a4d91e29eb);
 	}
-	$_63bede6b19266d4efead07a4d91e29eb = mysqli_real_escape_string($_000b935637cea64cc7810fb0077f5ff1,$_63bede6b19266d4efead07a4d91e29eb);
+	$_63bede6b19266d4efead07a4d91e29eb = mysqli_real_escape_string($conns,$_63bede6b19266d4efead07a4d91e29eb);
 	return $_63bede6b19266d4efead07a4d91e29eb;
 }
 function urlstring($_63bede6b19266d4efead07a4d91e29eb) {

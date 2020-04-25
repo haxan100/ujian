@@ -1,7 +1,7 @@
 <?php if(!defined('myweb')){ exit(); }?>
 <?php
-$_eb6af5b4e510c3c874d7d1f51d72393a=mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"select * from user where id_user='".$_SESSION['LOGIN_ID']."'");
-$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($_eb6af5b4e510c3c874d7d1f51d72393a);
+$conn=mysqli_query($conns,"select * from user where id_user='".$_SESSION['LOGIN_ID']."'");
+$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
 $_510c1613a4f826b5612ae2ac9bdeb894=$_60169cd1c47b7a7a85ab44f884635e41['nama'];
 
 ?>

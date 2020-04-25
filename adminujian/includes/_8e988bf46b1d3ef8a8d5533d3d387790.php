@@ -17,7 +17,7 @@ if(isset($_GET['action'])){
 			$_98ed36b746f207577a55ef6bc82776b0=$_GET['id'];
 		}
 		if($_b78f9e7c4587e8583ab713f126277f88!='' and $_98ed36b746f207577a55ef6bc82776b0!=''){
-			mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"insert into peserta(id_paket,id_siswa) values('".$_b78f9e7c4587e8583ab713f126277f88."','".$_98ed36b746f207577a55ef6bc82776b0."')");
+			mysqli_query($conns,"insert into peserta(id_paket,id_siswa) values('".$_b78f9e7c4587e8583ab713f126277f88."','".$_98ed36b746f207577a55ef6bc82776b0."')");
 		}
 		
 	}

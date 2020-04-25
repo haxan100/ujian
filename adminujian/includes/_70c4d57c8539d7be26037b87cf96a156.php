@@ -19,22 +19,22 @@ if(isset($_POST['save'])){
 		$_b5adde8d7d7412251f47419fe9bf51a7='<strong>Error !</strong> Lengkapi form di bawah ini.';
 	}else{
 		if($_d35a39212fd75e833aea38f90831b2cb=='add'){
-			$_eb6af5b4e510c3c874d7d1f51d72393a="insert into soal(detail,kunci,id_pelajaran) values('".trim($_1b66aa9bfba43381db0e3cc139369d48)."','".$_b65003120790c3e628f304c85a36a615."','".$_5bbbff8933f7b8be381684bd463e6d16."')";
-			mysqli_query($_000b935637cea64cc7810fb0077f5ff1,$_eb6af5b4e510c3c874d7d1f51d72393a);
-			$_5cf085bf5081a50e78311063db83f771=mysqli_insert_id($_000b935637cea64cc7810fb0077f5ff1);
+			$conn="insert into soal(detail,kunci,id_pelajaran) values('".trim($_1b66aa9bfba43381db0e3cc139369d48)."','".$_b65003120790c3e628f304c85a36a615."','".$_5bbbff8933f7b8be381684bd463e6d16."')";
+			mysqli_query($conns,$conn);
+			$_5cf085bf5081a50e78311063db83f771=mysqli_insert_id($conns);
 			$_f77c5a659797b862f0fc544aa9a0c023=array('A','B','C','D','E');
 			for($_a16d2280393ce6a2a5428a4a8d09e354=0;$_a16d2280393ce6a2a5428a4a8d09e354<count($_a2162101cd2c071e2931c2254b25ca5e);$_a16d2280393ce6a2a5428a4a8d09e354++){
-				mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"insert into soal_jawaban(id_soal,kode,jawaban) values('".$_5cf085bf5081a50e78311063db83f771."','".$_f77c5a659797b862f0fc544aa9a0c023[$_a16d2280393ce6a2a5428a4a8d09e354]."','".trim($_a2162101cd2c071e2931c2254b25ca5e[$_a16d2280393ce6a2a5428a4a8d09e354])."')");
+				mysqli_query($conns,"insert into soal_jawaban(id_soal,kode,jawaban) values('".$_5cf085bf5081a50e78311063db83f771."','".$_f77c5a659797b862f0fc544aa9a0c023[$_a16d2280393ce6a2a5428a4a8d09e354]."','".trim($_a2162101cd2c071e2931c2254b25ca5e[$_a16d2280393ce6a2a5428a4a8d09e354])."')");
 			}
 			exit("<script>location.href='".$pengumuman1."&pelajaran=".$_5bbbff8933f7b8be381684bd463e6d16."';</script>");
 		}
 		if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
-			$_eb6af5b4e510c3c874d7d1f51d72393a="update soal set detail='".trim($_1b66aa9bfba43381db0e3cc139369d48)."',kunci='".$_b65003120790c3e628f304c85a36a615."',id_pelajaran='".$_5bbbff8933f7b8be381684bd463e6d16."' where id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."'";
-			mysqli_query($_000b935637cea64cc7810fb0077f5ff1,$_eb6af5b4e510c3c874d7d1f51d72393a);
-			mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"delete from soal_jawaban where id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."'");
+			$conn="update soal set detail='".trim($_1b66aa9bfba43381db0e3cc139369d48)."',kunci='".$_b65003120790c3e628f304c85a36a615."',id_pelajaran='".$_5bbbff8933f7b8be381684bd463e6d16."' where id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."'";
+			mysqli_query($conns,$conn);
+			mysqli_query($conns,"delete from soal_jawaban where id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."'");
 			$_f77c5a659797b862f0fc544aa9a0c023=array('A','B','C','D','E');
 			for($_a16d2280393ce6a2a5428a4a8d09e354=0;$_a16d2280393ce6a2a5428a4a8d09e354<count($_a2162101cd2c071e2931c2254b25ca5e);$_a16d2280393ce6a2a5428a4a8d09e354++){
-				mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"insert into soal_jawaban(id_soal,kode,jawaban) values('".$_3584859062ea9ecfb39b93bfcef8e869."','".$_f77c5a659797b862f0fc544aa9a0c023[$_a16d2280393ce6a2a5428a4a8d09e354]."','".trim($_a2162101cd2c071e2931c2254b25ca5e[$_a16d2280393ce6a2a5428a4a8d09e354])."')");
+				mysqli_query($conns,"insert into soal_jawaban(id_soal,kode,jawaban) values('".$_3584859062ea9ecfb39b93bfcef8e869."','".$_f77c5a659797b862f0fc544aa9a0c023[$_a16d2280393ce6a2a5428a4a8d09e354]."','".trim($_a2162101cd2c071e2931c2254b25ca5e[$_a16d2280393ce6a2a5428a4a8d09e354])."')");
 			}
 			exit("<script>location.href='".$pengumuman1."&pelajaran=".$_5bbbff8933f7b8be381684bd463e6d16."';</script>");
 		}
@@ -45,27 +45,27 @@ if(isset($_POST['save'])){
 	if(empty($_GET['action'])){$_d35a39212fd75e833aea38f90831b2cb='add';}else{$_d35a39212fd75e833aea38f90831b2cb=$_GET['action'];}
 	if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
 		$_3584859062ea9ecfb39b93bfcef8e869=$_GET['id'];
-		$_eb6af5b4e510c3c874d7d1f51d72393a=mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"select * from soal where id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."'");
-		$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($_eb6af5b4e510c3c874d7d1f51d72393a);
+		$conn=mysqli_query($conns,"select * from soal where id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."'");
+		$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
 		$_5bbbff8933f7b8be381684bd463e6d16=$_60169cd1c47b7a7a85ab44f884635e41['id_pelajaran'];
 		$_1b66aa9bfba43381db0e3cc139369d48=$_60169cd1c47b7a7a85ab44f884635e41['detail'];
 		$_b65003120790c3e628f304c85a36a615=$_60169cd1c47b7a7a85ab44f884635e41['kunci'];
 		$_52f720bdaf922c68904e386cbf0cd227=0;
-		$_eb6af5b4e510c3c874d7d1f51d72393a=mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"select * from soal_jawaban where id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."' order by id_soal_jawaban");
-		while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($_eb6af5b4e510c3c874d7d1f51d72393a)){
+		$conn=mysqli_query($conns,"select * from soal_jawaban where id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."' order by id_soal_jawaban");
+		while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn)){
 			$_a2162101cd2c071e2931c2254b25ca5e[$_52f720bdaf922c68904e386cbf0cd227]=$_60169cd1c47b7a7a85ab44f884635e41['jawaban'];
 			$_52f720bdaf922c68904e386cbf0cd227++;
 		}
 	}
 	if($_d35a39212fd75e833aea38f90831b2cb=='delete'){
 		$_3584859062ea9ecfb39b93bfcef8e869=$_GET['id'];
-		mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"delete from soal where id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."'");
+		mysqli_query($conns,"delete from soal where id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."'");
 		exit("<script>location.href='".$pengumuman1."';</script>");
 	}
 }
 $_3718d16a4c63e6e0d669e38e63f8c5c0='<option value=""></option>';
-$_eb6af5b4e510c3c874d7d1f51d72393a=mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"select * from pelajaran order by nama");
-while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($_eb6af5b4e510c3c874d7d1f51d72393a)){
+$conn=mysqli_query($conns,"select * from pelajaran order by nama");
+while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn)){
 	if($_60169cd1c47b7a7a85ab44f884635e41['id_pelajaran']==$_5bbbff8933f7b8be381684bd463e6d16){$_3cb9cdaed257453cfa56b9ef81b44c57='selected';}else{$_3cb9cdaed257453cfa56b9ef81b44c57='';}
 	$_3718d16a4c63e6e0d669e38e63f8c5c0.='<option value="'.$_60169cd1c47b7a7a85ab44f884635e41['id_pelajaran'].'" '.$_3cb9cdaed257453cfa56b9ef81b44c57.'>'.$_60169cd1c47b7a7a85ab44f884635e41['nama'].'</option>';
 }

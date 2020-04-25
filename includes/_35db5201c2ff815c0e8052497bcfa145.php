@@ -8,8 +8,8 @@ if(isset($_POST['save'])){
 		if($_POST['password']!=$_POST['password1']){
 			$_b5adde8d7d7412251f47419fe9bf51a7='<strong>Error !</strong> Password baru tidak sama.';
 		}else{
-			if(mysqli_num_rows(mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"select * from siswa where id_siswa='".$_SESSION['LOGIN_ID']."' and password='".md5($_POST['passwordlama'])."'"))>0){
-				mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"update siswa set password='".md5($_POST['password'])."' where id_siswa='".$_SESSION['LOGIN_ID']."'");
+			if(mysqli_num_rows(mysqli_query($conns,"select * from siswa where id_siswa='".$_SESSION['LOGIN_ID']."' and password='".md5($_POST['passwordlama'])."'"))>0){
+				mysqli_query($conns,"update siswa set password='".md5($_POST['password'])."' where id_siswa='".$_SESSION['LOGIN_ID']."'");
 				$_b8d8980f155aa1475a25a57a6b2df92e='<strong>Sukses !</strong> Password baru berhasil disimpan.';
 			}else{
 				$_b5adde8d7d7412251f47419fe9bf51a7='<strong>Error !</strong> Password Anda tidak sesuai.';

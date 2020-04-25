@@ -21,14 +21,14 @@ if(isset($_POST['save'])){
 		$_b5adde8d7d7412251f47419fe9bf51a7='<strong>Error !</strong> Lengkapi form di bawah ini.';
 	}else{
 		if($_d35a39212fd75e833aea38f90831b2cb=='add'){
-			if(mysqli_num_rows(mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"select * from siswa where nisn='".$_5ab9622c6027ac8a26ecfedc9e0c5f27."'"))>0){
+			if(mysqli_num_rows(mysqli_query($conns,"select * from siswa where nisn='".$_5ab9622c6027ac8a26ecfedc9e0c5f27."'"))>0){
 				$_b5adde8d7d7412251f47419fe9bf51a7='Username sudah terdaftar. Silahkan daftarkan Username yang lain atau lakukan edit profil siswa.';
 				$_243e61e9410a9f577d2d662c67025ee9='';
 			}else{
 			
-				$_eb6af5b4e510c3c874d7d1f51d72393a="insert into siswa(id_kelas,nisn, password, nama, gender) 
+				$conn="insert into siswa(id_kelas,nisn, password, nama, gender) 
 				values('".$_72e838785b161ce1f713d6b1a452e270."', '".$_5ab9622c6027ac8a26ecfedc9e0c5f27."', '".md5($_243e61e9410a9f577d2d662c67025ee9)."', '".$_31985b26056f955fec6db8f46f87653f."', '".$_f0619632751681b5561b70caf2920a71."')";
-				mysqli_query($_000b935637cea64cc7810fb0077f5ff1,$_eb6af5b4e510c3c874d7d1f51d72393a);
+				mysqli_query($conns,$conn);
 				
 				if(!file_exists($_714ca9eb87223ad2d6815f90173fde78.'/uploads/')){
 					mkdir($_714ca9eb87223ad2d6815f90173fde78.'/uploads/');
@@ -52,19 +52,19 @@ if(isset($_POST['save'])){
 			}
 		}
 		if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
-			$_eb6af5b4e510c3c874d7d1f51d72393a=mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"select * from siswa where id_siswa='".$_3584859062ea9ecfb39b93bfcef8e869."'");
-			$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($_eb6af5b4e510c3c874d7d1f51d72393a);
+			$conn=mysqli_query($conns,"select * from siswa where id_siswa='".$_3584859062ea9ecfb39b93bfcef8e869."'");
+			$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
 			$_84cbb4ee450782b7e500304a62e91ac0=$_60169cd1c47b7a7a85ab44f884635e41['nisn'];
 			$_5ff579d3c1dff8240c09ee80edb46288=$_60169cd1c47b7a7a85ab44f884635e41['password'];
-			if(mysqli_num_rows(mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"select * from siswa where nisn='".$_5ab9622c6027ac8a26ecfedc9e0c5f27."' and nisn<>'".$_84cbb4ee450782b7e500304a62e91ac0."'"))>0){
+			if(mysqli_num_rows(mysqli_query($conns,"select * from siswa where nisn='".$_5ab9622c6027ac8a26ecfedc9e0c5f27."' and nisn<>'".$_84cbb4ee450782b7e500304a62e91ac0."'"))>0){
 				$_b5adde8d7d7412251f47419fe9bf51a7='Username sudah terdaftar. Silahkan daftarkan Username yang lain atau lakukan edit profil siswa.';
 			}else{
 				$_45b37027578ddbc5040cf6b3961c7916='';
 				if($_5ff579d3c1dff8240c09ee80edb46288==''){
 					$_45b37027578ddbc5040cf6b3961c7916=", password='".md5($_243e61e9410a9f577d2d662c67025ee9)."' ";
 				}
-				$_eb6af5b4e510c3c874d7d1f51d72393a="update siswa set id_kelas='".$_72e838785b161ce1f713d6b1a452e270."', nisn='".$_5ab9622c6027ac8a26ecfedc9e0c5f27."', nama='".$_31985b26056f955fec6db8f46f87653f."', gender='".$_f0619632751681b5561b70caf2920a71."' ".$_45b37027578ddbc5040cf6b3961c7916." where id_siswa='".$_3584859062ea9ecfb39b93bfcef8e869."'";
-				mysqli_query($_000b935637cea64cc7810fb0077f5ff1,$_eb6af5b4e510c3c874d7d1f51d72393a);
+				$conn="update siswa set id_kelas='".$_72e838785b161ce1f713d6b1a452e270."', nisn='".$_5ab9622c6027ac8a26ecfedc9e0c5f27."', nama='".$_31985b26056f955fec6db8f46f87653f."', gender='".$_f0619632751681b5561b70caf2920a71."' ".$_45b37027578ddbc5040cf6b3961c7916." where id_siswa='".$_3584859062ea9ecfb39b93bfcef8e869."'";
+				mysqli_query($conns,$conn);
 				if(!file_exists($_714ca9eb87223ad2d6815f90173fde78.'/uploads/')){
 					mkdir($_714ca9eb87223ad2d6815f90173fde78.'/uploads/');
 				}
@@ -89,12 +89,12 @@ if(isset($_POST['save'])){
 	}
 }elseif(isset($_POST['reset'])){
 	$_3584859062ea9ecfb39b93bfcef8e869=$_POST['id'];
-	mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"update siswa set password='' where id_siswa='".$_3584859062ea9ecfb39b93bfcef8e869."'");
+	mysqli_query($conns,"update siswa set password='' where id_siswa='".$_3584859062ea9ecfb39b93bfcef8e869."'");
 	exit("<script>location.href='".$_4bf2fdb3ab37a41b537e7360f7e4b007."&id=".$_3584859062ea9ecfb39b93bfcef8e869."&action=edit';</script>");
 }elseif(isset($_POST['deletefoto'])){
 	$_3584859062ea9ecfb39b93bfcef8e869=$_POST['id'];
-	$_eb6af5b4e510c3c874d7d1f51d72393a=mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"select nisn from siswa where id_siswa='".$_3584859062ea9ecfb39b93bfcef8e869."'");
-	$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($_eb6af5b4e510c3c874d7d1f51d72393a);
+	$conn=mysqli_query($conns,"select nisn from siswa where id_siswa='".$_3584859062ea9ecfb39b93bfcef8e869."'");
+	$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
 	$_5ab9622c6027ac8a26ecfedc9e0c5f27=$_60169cd1c47b7a7a85ab44f884635e41['nisn'];
 	if(file_exists($_714ca9eb87223ad2d6815f90173fde78.'/uploads/foto/'.$_5ab9622c6027ac8a26ecfedc9e0c5f27.'.jpg')){unlink($_714ca9eb87223ad2d6815f90173fde78.'/uploads/foto/'.$_5ab9622c6027ac8a26ecfedc9e0c5f27.'.jpg');}
 	exit("<script>location.href='".$_4bf2fdb3ab37a41b537e7360f7e4b007."&id=".$_3584859062ea9ecfb39b93bfcef8e869."&action=edit';</script>");
@@ -104,8 +104,8 @@ if(isset($_POST['save'])){
 	if(empty($_GET['action'])){$_d35a39212fd75e833aea38f90831b2cb='add';}else{$_d35a39212fd75e833aea38f90831b2cb=$_GET['action'];}
 	if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
 		$_3584859062ea9ecfb39b93bfcef8e869=$_GET['id'];
-		$_eb6af5b4e510c3c874d7d1f51d72393a=mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"select * from siswa where id_siswa='".$_3584859062ea9ecfb39b93bfcef8e869."'");
-		$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($_eb6af5b4e510c3c874d7d1f51d72393a);
+		$conn=mysqli_query($conns,"select * from siswa where id_siswa='".$_3584859062ea9ecfb39b93bfcef8e869."'");
+		$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
 		$_5ab9622c6027ac8a26ecfedc9e0c5f27=$_60169cd1c47b7a7a85ab44f884635e41['nisn'];
 		$_31985b26056f955fec6db8f46f87653f=$_60169cd1c47b7a7a85ab44f884635e41['nama'];
 		$_f0619632751681b5561b70caf2920a71=$_60169cd1c47b7a7a85ab44f884635e41['gender'];
@@ -115,7 +115,7 @@ if(isset($_POST['save'])){
 	}
 	if($_d35a39212fd75e833aea38f90831b2cb=='delete'){
 		$_3584859062ea9ecfb39b93bfcef8e869=$_GET['id'];
-		mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"delete from siswa where id_siswa='".$_3584859062ea9ecfb39b93bfcef8e869."'");
+		mysqli_query($conns,"delete from siswa where id_siswa='".$_3584859062ea9ecfb39b93bfcef8e869."'");
 		exit("<script>location.href='".$pengumuman1."';</script>");
 	}
 }
@@ -133,8 +133,8 @@ for($_a16d2280393ce6a2a5428a4a8d09e354=0;$_a16d2280393ce6a2a5428a4a8d09e354<coun
 	$_3f921bc4290e25e3e064046a5f91a781.='<option value="'.$_f8eb8624de17a1bcbd564bdda7e7e4ec[$_a16d2280393ce6a2a5428a4a8d09e354][0].'" '.$_3cb9cdaed257453cfa56b9ef81b44c57.'>'.$_f8eb8624de17a1bcbd564bdda7e7e4ec[$_a16d2280393ce6a2a5428a4a8d09e354][1].'</option>';
 }
 $_a6abb7c18ac54429027c2440b5329b86='<option value=""></option>';
-$_eb6af5b4e510c3c874d7d1f51d72393a=mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"select * from kelas order by nama");
-while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($_eb6af5b4e510c3c874d7d1f51d72393a)){
+$conn=mysqli_query($conns,"select * from kelas order by nama");
+while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn)){
 	if($_60169cd1c47b7a7a85ab44f884635e41['id_kelas']==$_72e838785b161ce1f713d6b1a452e270){$_3cb9cdaed257453cfa56b9ef81b44c57='selected';}else{$_3cb9cdaed257453cfa56b9ef81b44c57='';}
 	$_a6abb7c18ac54429027c2440b5329b86.='<option value="'.$_60169cd1c47b7a7a85ab44f884635e41['id_kelas'].'" '.$_3cb9cdaed257453cfa56b9ef81b44c57.'>'.$_60169cd1c47b7a7a85ab44f884635e41['nama'].'</option>';
 }

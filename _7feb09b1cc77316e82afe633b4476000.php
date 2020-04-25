@@ -4,8 +4,8 @@
 if(isset($_SESSION['LOGIN_ID'])){
 	$_201fdaffa51943216266fe6c62da167c=$_e343e503cb9623b59b7d7c30484aa086.'images/no-thumb.jpg';
 
-	$_eb6af5b4e510c3c874d7d1f51d72393a=mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"select * from siswa where id_siswa='".$_SESSION['LOGIN_ID']."'");
-	$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($_eb6af5b4e510c3c874d7d1f51d72393a);
+	$conn=mysqli_query($conns,"select * from siswa where id_siswa='".$_SESSION['LOGIN_ID']."'");
+	$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
 	$_5ab9622c6027ac8a26ecfedc9e0c5f27=$_60169cd1c47b7a7a85ab44f884635e41['nisn'];
 	$_1c52cc9c9ab07c5f9e034d3d9fca55dc=$_60169cd1c47b7a7a85ab44f884635e41['nama'];
 	if(file_exists($_714ca9eb87223ad2d6815f90173fde78.'/uploads/foto/'.$_5ab9622c6027ac8a26ecfedc9e0c5f27.'.jpg')){
@@ -13,9 +13,9 @@ if(isset($_SESSION['LOGIN_ID'])){
 	}
 	
 	$_8f128c86231aedb3ad839316104082b1='N';
-	$_eb6af5b4e510c3c874d7d1f51d72393a=mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"select selesai from ujian where id_siswa='".$_SESSION['LOGIN_ID']."'");
-	if(mysqli_num_rows($_eb6af5b4e510c3c874d7d1f51d72393a)>0){
-		$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($_eb6af5b4e510c3c874d7d1f51d72393a);
+	$conn=mysqli_query($conns,"select selesai from ujian where id_siswa='".$_SESSION['LOGIN_ID']."'");
+	if(mysqli_num_rows($conn)>0){
+		$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
 		$_8f128c86231aedb3ad839316104082b1=$_60169cd1c47b7a7a85ab44f884635e41['selesai'];
 	}
 	

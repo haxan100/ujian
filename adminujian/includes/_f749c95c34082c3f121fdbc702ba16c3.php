@@ -5,10 +5,10 @@ $pengumuman1='?hal=paket';
 $_4bf2fdb3ab37a41b537e7360f7e4b007='?hal=update_paket';
 if(isset($_GET['action'])){
 	if($_GET['action']=='enabled'){
-		mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"update paket set aktif='Y' where id_paket='".$_GET['id']."'");
+		mysqli_query($conns,"update paket set aktif='Y' where id_paket='".$_GET['id']."'");
 	}
 	if($_GET['action']=='disabled'){
-		mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"update paket set aktif='N' where id_paket='".$_GET['id']."'");
+		mysqli_query($conns,"update paket set aktif='N' where id_paket='".$_GET['id']."'");
 	}
 	exit("<script>location.href='".$pengumuman1."';</script>");
 }
@@ -18,8 +18,8 @@ if(isset($_GET['q'])){
 	$_36923cf62618d1b9981740738971e651=$_GET['q'];
 }
 
-$_eb6af5b4e510c3c874d7d1f51d72393a=mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"select count(*) as jml from paket where nama like '%".$_36923cf62618d1b9981740738971e651."%'");
-$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($_eb6af5b4e510c3c874d7d1f51d72393a);
+$conn=mysqli_query($conns,"select count(*) as jml from paket where nama like '%".$_36923cf62618d1b9981740738971e651."%'");
+$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
 $_12ef5f8660c2350214ce228aad66392d=$_60169cd1c47b7a7a85ab44f884635e41['jml'];
 
 $_bd374a8757e4ad5e55de663a02a9adde=$pengumuman1.'&q='.$_36923cf62618d1b9981740738971e651;
@@ -33,14 +33,14 @@ $_addbb9f4792a53c78e32e91e1c94f075='<ul class="pagination">'.$_addbb9f4792a53c78
 
 $_971d98e0ad23e0905a3d3f4b08d46579=array('Y'=>'<span class="label label-success">Aktif</span>','N'=>'<span class="label label-default">Tidak Aktif</span>');
 $_d4cb19f81c23886f544f26709bd4f799='';
-$_eb6af5b4e510c3c874d7d1f51d72393a="select * from paket where nama like '%".$_36923cf62618d1b9981740738971e651."%' order by id_paket limit ".$_4e4149dcf4b3b60bf0aaf69dd2348c4d.",".$_111f1b5b84b5c819ea9ae35968fce466;
-$_eb6af5b4e510c3c874d7d1f51d72393a=mysqli_query($_000b935637cea64cc7810fb0077f5ff1,$_eb6af5b4e510c3c874d7d1f51d72393a);
-if(mysqli_num_rows($_eb6af5b4e510c3c874d7d1f51d72393a) > 0){
-	while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($_eb6af5b4e510c3c874d7d1f51d72393a)){
+$conn="select * from paket where nama like '%".$_36923cf62618d1b9981740738971e651."%' order by id_paket limit ".$_4e4149dcf4b3b60bf0aaf69dd2348c4d.",".$_111f1b5b84b5c819ea9ae35968fce466;
+$conn=mysqli_query($conns,$conn);
+if(mysqli_num_rows($conn) > 0){
+	while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn)){
 		$_52f720bdaf922c68904e386cbf0cd227++;
 		$_3584859062ea9ecfb39b93bfcef8e869=$_60169cd1c47b7a7a85ab44f884635e41['id_paket'];
 		$_25407a67a7a597297818c35a0d0ed51d=false;
-		//if(mysqli_num_rows(mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"select * from program where id_paket='".$_3584859062ea9ecfb39b93bfcef8e869."' limit 0,1"))>0){$_25407a67a7a597297818c35a0d0ed51d=true;}
+		//if(mysqli_num_rows(mysqli_query($conns,"select * from program where id_paket='".$_3584859062ea9ecfb39b93bfcef8e869."' limit 0,1"))>0){$_25407a67a7a597297818c35a0d0ed51d=true;}
 		if($_25407a67a7a597297818c35a0d0ed51d==true){$_849d693c62dfe15394a642123c1599c8='disabled';$_f22a1fc2263e04ec8ae7a008a249229e='return(false);';}else{$_849d693c62dfe15394a642123c1599c8='';$_f22a1fc2263e04ec8ae7a008a249229e='';}
 		if($_60169cd1c47b7a7a85ab44f884635e41['aktif']=='Y'){
 			$_75de32ef2738499ab53bba79a1a5a51d='<li><a href="?hal=paket&amp;id='.$_3584859062ea9ecfb39b93bfcef8e869.'&amp;action=disabled">Status : Tidak Aktif</a></li>';

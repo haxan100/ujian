@@ -7,8 +7,8 @@ require_once '../config.php';
 if(!isset($_SESSION['SIMULASI_ID'])){
 	echo 'off';die;
 }
-$_eb6af5b4e510c3c874d7d1f51d72393a=mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"select * from paket where id_paket='".$_SESSION['SIMULASI_ID']."'");
-$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($_eb6af5b4e510c3c874d7d1f51d72393a);
+$conn=mysqli_query($conns,"select * from paket where id_paket='".$_SESSION['SIMULASI_ID']."'");
+$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
 $_b78f9e7c4587e8583ab713f126277f88=$_60169cd1c47b7a7a85ab44f884635e41['id_paket'];
 $_36fd7f7111215a7056422e47518363d7=$_60169cd1c47b7a7a85ab44f884635e41['waktu_pengerjaan']*60;
 
@@ -30,7 +30,7 @@ if(($_36fd7f7111215a7056422e47518363d7-$_02202b271eddd150fb9b3a5c12a8639d)>(5*60
 
 
 
-mysqli_close($_000b935637cea64cc7810fb0077f5ff1);
+mysqli_close($conns);
 
 ?>
 

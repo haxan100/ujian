@@ -9,9 +9,9 @@ if(isset($_POST["login"])){
 	if(empty($_2d76471e6f56a63e6f0105dd92db4254) or empty($_243e61e9410a9f577d2d662c67025ee9)){
 		$_b5adde8d7d7412251f47419fe9bf51a7='<strong>Error !</strong> Masukan username dan password.';
 	}else{
-			$_eb6af5b4e510c3c874d7d1f51d72393a=mysqli_query($_000b935637cea64cc7810fb0077f5ff1,"SELECT * FROM user WHERE username='".escape($_2d76471e6f56a63e6f0105dd92db4254)."' AND password='".md5($_243e61e9410a9f577d2d662c67025ee9)."'");
-			if(mysqli_num_rows($_eb6af5b4e510c3c874d7d1f51d72393a)>0){
-				$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($_eb6af5b4e510c3c874d7d1f51d72393a);
+			$conn=mysqli_query($conns,"SELECT * FROM user WHERE username='".escape($_2d76471e6f56a63e6f0105dd92db4254)."' AND password='".md5($_243e61e9410a9f577d2d662c67025ee9)."'");
+			if(mysqli_num_rows($conn)>0){
+				$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
 				$_78e1548d7ed1e38321b4ce5cddb2c8a7=$_60169cd1c47b7a7a85ab44f884635e41['id_user'];
 				$_65dfacb39960c22313740a131148fb81='admin';
 				$_SESSION['LOGIN_ID']=$_78e1548d7ed1e38321b4ce5cddb2c8a7;
