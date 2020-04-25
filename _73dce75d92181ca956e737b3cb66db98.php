@@ -21,9 +21,9 @@ if(isset($_POST["login"])){
 	
 	$_SESSION['LOGIN_ID']=$_98ed36b746f207577a55ef6bc82776b0;
 	$_SESSION['LOGIN_TYPE']=$_65dfacb39960c22313740a131148fb81;
-	exit("<script>window.location='".$_e343e503cb9623b59b7d7c30484aa086."';</script>");
+	exit("<script>window.location='".$look."';</script>");
 }
-exit("<script>window.location='".$_e343e503cb9623b59b7d7c30484aa086."';</script>");
+exit("<script>window.location='".$look."';</script>");
 ?>
 
 <?php

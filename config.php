@@ -4,7 +4,7 @@ $_43ea23fc53c527d7ec2c5826a584b6d4 = 'root'; # username
 $_2bc48b257d5d15a0a235f444fbec995f = ''; # password
 $_bddc31963757f5f11835091cbdecb7ee = 'ujian_sekolah'; # nama database
 
-$_e343e503cb9623b59b7d7c30484aa086 = 'http://localhost/project/ujian/'; # alamat web
+$look = 'http://localhost/project/ujian/'; # alamat web
 $_28cd827e9a3b578c3cfbcd7f0fd18d96 = 'http://localhost/project/ujian/adminujian/'; # alamat web admin
 $_714ca9eb87223ad2d6815f90173fde78 = 'http://localhost/project/ujian/'; # alamat path web
 

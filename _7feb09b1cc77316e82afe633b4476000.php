@@ -2,14 +2,14 @@
 <?php
 
 if(isset($_SESSION['LOGIN_ID'])){
-	$_201fdaffa51943216266fe6c62da167c=$_e343e503cb9623b59b7d7c30484aa086.'images/no-thumb.jpg';
+	$_201fdaffa51943216266fe6c62da167c=$look.'images/no-thumb.jpg';
 
 	$conn=mysqli_query($conns,"select * from siswa where id_siswa='".$_SESSION['LOGIN_ID']."'");
 	$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
 	$_5ab9622c6027ac8a26ecfedc9e0c5f27=$_60169cd1c47b7a7a85ab44f884635e41['nisn'];
 	$_1c52cc9c9ab07c5f9e034d3d9fca55dc=$_60169cd1c47b7a7a85ab44f884635e41['nama'];
 	if(file_exists($_714ca9eb87223ad2d6815f90173fde78.'/uploads/foto/'.$_5ab9622c6027ac8a26ecfedc9e0c5f27.'.jpg')){
-		$_201fdaffa51943216266fe6c62da167c=$_e343e503cb9623b59b7d7c30484aa086.'/uploads/foto/'.$_5ab9622c6027ac8a26ecfedc9e0c5f27.'.jpg';
+		$_201fdaffa51943216266fe6c62da167c=$look.'/uploads/foto/'.$_5ab9622c6027ac8a26ecfedc9e0c5f27.'.jpg';
 	}
 	
 	$_8f128c86231aedb3ad839316104082b1='N';
@@ -29,7 +29,7 @@ if(isset($_SESSION['LOGIN_ID'])){
   </div>
   <div class="panel-body">
   <p>Masukkan Username &amp; password Anda.</p>
-<form role="form" method="post" action="<?php echo $_e343e503cb9623b59b7d7c30484aa086;?>_73dce75d92181ca956e737b3cb66db98.php">
+<form role="form" method="post" action="<?php echo $look;?>_73dce75d92181ca956e737b3cb66db98.php">
   <div class="form-group">
     <input type="text" name="username" value="" class="form-control" id="" autocomplete="off" placeholder="Username">
   </div>

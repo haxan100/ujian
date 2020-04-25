@@ -55,7 +55,7 @@ if(!empty($_b8d8980f155aa1475a25a57a6b2df92e)){
 	<td></td>
 	<td>
 	<button type="submit" name="save" class="btn btn-primary"><i class="icon-ok"></i> Simpan</button> 
-	<button type="button" name="cancel" class="btn btn-default" onclick="location.href='<?php echo $_e343e503cb9623b59b7d7c30484aa086;?>'">Batal</button>
+	<button type="button" name="cancel" class="btn btn-default" onclick="location.href='<?php echo $look;?>'">Batal</button>
 	</td>
   </tr>
 </table>

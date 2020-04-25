@@ -5,7 +5,7 @@ date_default_timezone_set("Asia/Jakarta");
 
 require_once 'config.php';
 if(!isset($_SESSION['LOGIN_ID'])){
-	exit("<script>location.href='".$_e343e503cb9623b59b7d7c30484aa086."';</script>");
+	exit("<script>location.href='".$look."';</script>");
 }
 //$conn=mysqli_query($conns,"select * from ujian where id_siswa='".$_SESSION['LOGIN_ID']."' and selesai='N'");
 //$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
@@ -24,15 +24,15 @@ if(mysqli_num_rows($conn)>0){
 	$_36fd7f7111215a7056422e47518363d7=$_60169cd1c47b7a7a85ab44f884635e41['waktu_pengerjaan']*60;
 	
 	if($_8f128c86231aedb3ad839316104082b1=='Y'){
-		exit("<script>location.href='".$_e343e503cb9623b59b7d7c30484aa086."?hal=ujian&id=".$_b78f9e7c4587e8583ab713f126277f88."';</script>");
+		exit("<script>location.href='".$look."?hal=ujian&id=".$_b78f9e7c4587e8583ab713f126277f88."';</script>");
 	}else{
 		if($_02202b271eddd150fb9b3a5c12a8639d >= $_36fd7f7111215a7056422e47518363d7){
 			mysqli_query($conns,"update ujian set selesai='Y' where id_ujian='".$_fbd326c813664d903c80679981cafba3."'");
-			exit("<script>location.href='".$_e343e503cb9623b59b7d7c30484aa086."?hal=ujian&id=".$_b78f9e7c4587e8583ab713f126277f88."';</script>");
+			exit("<script>location.href='".$look."?hal=ujian&id=".$_b78f9e7c4587e8583ab713f126277f88."';</script>");
 		}
 	}
 }else{
-	exit("<script>location.href='".$_e343e503cb9623b59b7d7c30484aa086."?hal=paket_ujian';</script>");
+	exit("<script>location.href='".$look."?hal=paket_ujian';</script>");
 }
 
 if(isset($_POST['jawab'])){
@@ -59,7 +59,7 @@ if(isset($_POST['jawab'])){
 }
 if(isset($_POST['selesai'])){
 	mysqli_query($conns,"update ujian set selesai='Y' where id_ujian='".$_fbd326c813664d903c80679981cafba3."'");
-	exit("<script>location.href='".$_e343e503cb9623b59b7d7c30484aa086."?hal=ujian&id=".$_b78f9e7c4587e8583ab713f126277f88."';</script>");
+	exit("<script>location.href='".$look."?hal=ujian&id=".$_b78f9e7c4587e8583ab713f126277f88."';</script>");
 }
 
 $_1b66aa9bfba43381db0e3cc139369d48=array();
@@ -248,7 +248,7 @@ $(document).ready(function(){
 			success: function(data) {
 				if(data=='off'){
 					$('#timer').html('<span class="label label-danger">Waktu : 00:00:00</span>');
-					window.location.href='<?php echo $_e343e503cb9623b59b7d7c30484aa086;?>?hal=tes';
+					window.location.href='<?php echo $look;?>?hal=tes';
 				}else{
 					$('#timer').html(data);
 				}

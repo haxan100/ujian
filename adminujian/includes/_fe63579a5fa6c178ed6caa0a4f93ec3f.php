@@ -56,7 +56,7 @@ while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn)){
 	$_8e529f7c1789a19f5ed8b2edb0af9fa7.='
 	<div class="col-lg-3 col-md-4 col-xs-6 thumb text-center" style="margin-bottom:10px;">
 		<a class="thumbnail gambar" href="#gambar_modal" data-toggle="modal" data-src="'.$_60169cd1c47b7a7a85ab44f884635e41['nama'].'">
-			<img class="img-responsive" src="'.$_e343e503cb9623b59b7d7c30484aa086.'uploads/'.$_60169cd1c47b7a7a85ab44f884635e41['nama'].'" alt="">
+			<img class="img-responsive" src="'.$look.'uploads/'.$_60169cd1c47b7a7a85ab44f884635e41['nama'].'" alt="">
 		</a>
 		<div style="margin-top:-10px;">
 		<a href="#" onclick="DeleteConfirm(\''.$_4bf2fdb3ab37a41b537e7360f7e4b007.'&amp;id='.$_3584859062ea9ecfb39b93bfcef8e869.'&amp;action=delete\');return(false);" class="btn btn-danger btn-sm">Hapus</a>
@@ -77,7 +77,7 @@ function DeleteConfirm(url){
 $(document).ready(function(){
 	$('input[type=file]').bootstrapFileInput();
 	$(".gambar").click(function() {
-		$('#url_gambar').val('<?php echo $_e343e503cb9623b59b7d7c30484aa086.'thumb.php?name=';?>' + $(this).attr('data-src'));
+		$('#url_gambar').val('<?php echo $look.'thumb.php?name=';?>' + $(this).attr('data-src'));
 	});
 	
 });

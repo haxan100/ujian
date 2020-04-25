@@ -30,7 +30,7 @@ if(isset($_POST['mulai'])){
 	for($_a16d2280393ce6a2a5428a4a8d09e354=0;$_a16d2280393ce6a2a5428a4a8d09e354<count($_1b66aa9bfba43381db0e3cc139369d48);$_a16d2280393ce6a2a5428a4a8d09e354++){
 		mysqli_query($conns,"insert into ujian_detail(id_ujian,id_soal,jawaban) values('".$_fbd326c813664d903c80679981cafba3."','".$_1b66aa9bfba43381db0e3cc139369d48[$_a16d2280393ce6a2a5428a4a8d09e354]."','')");
 	}
-	exit("<script>location.href='".$_e343e503cb9623b59b7d7c30484aa086."_07b8b0f04e1dbda1240ce57d13aa6d1a.php';</script>");
+	exit("<script>location.href='".$look."_07b8b0f04e1dbda1240ce57d13aa6d1a.php';</script>");
 }
 $_8f128c86231aedb3ad839316104082b1='N';
 $_c04df7e5dc078931b278b5a69b691465=0;

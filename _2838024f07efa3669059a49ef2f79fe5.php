@@ -4,7 +4,7 @@ session_start();
 include 'config.php';
 
 session_destroy();
-exit("<script>window.location='".$_e343e503cb9623b59b7d7c30484aa086."';</script>");
+exit("<script>window.location='".$look."';</script>");
 ?>
 
 <?php
