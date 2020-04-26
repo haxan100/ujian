@@ -18,16 +18,16 @@ switch($cek){
 		
 	default:
 		if(isset($_SESSION['LOGIN_ID'])){
-			$cek="include 'includes/halm2.php';";break;
+			$cek="includes/halm2.php';";break;
 		}else{
-			$cek="include 'includes/halm3.php';";$pagge=false;break;
+			$cek="includes/halm3.php';";$pagge=false;break;
 		}
 		//$cek="include 'includes/halm3.php';";break;
 		break;
 }
 
 
-$look=$cek;
+$slook=$cek;
 if($pagge==true and !isset($_SESSION['LOGIN_ID'])){
 	exit("<script>location.href='".$halm."';</script>");
 }

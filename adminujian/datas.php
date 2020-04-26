@@ -33,11 +33,13 @@ switch($cek){
 	case 'ubah_password':$cek="include 'includes/ubahpw.php';";break;
 		
 	default:
-		$cek="include 'includes/halm3.php';";
+		$cek= "include 'includes/hlm3.php';";
+		// $cek="include 'includes/_f749c95c34082c3f121fdbc702ba16c3.php';";
+
 		$_cc22937b56838835a601f50e2182877b=false;$_48a1844952b5c9fadf189204a5103503=array();
 		break;
 }
-$look=$cek;
+$slook=$cek;
 
 if($_cc22937b56838835a601f50e2182877b==true and !isset($_SESSION['LOGIN_ID'])){
 	exit("<script>location.href='".$look."';</script>");

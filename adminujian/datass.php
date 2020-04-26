@@ -1,4 +1,6 @@
-<?php if(!defined('myweb')){ exit(); }?>
+<?php if (!defined('myweb')) {
+    exit();
+} ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,8 +45,8 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/sb-admin-2.js"></script>
-	
-	
+
+
 
 </head>
 
@@ -54,12 +56,14 @@
 
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-static-top" role="navigation" style="margin-bottom: 0">
-			<?php include '_1c1ae65fe9828eb6d3cee4edacf90018.php';?>
-			<?php include '_7feb09b1cc77316e82afe633b4476000.php';?>
+            <?php include '_1c1ae65fe9828eb6d3cee4edacf90018.php'; ?>
+            <?php include '_7feb09b1cc77316e82afe633b4476000.php'; ?>
+
         </nav>
 
         <div id="page-wrapper" style="overflow: scroll;height:200px;margin-top:-1px;">
-			<?php eval($look);?>
+            <?php eval($slook);  
+            ?>
         </div>
         <!-- /#page-wrapper -->
 
@@ -67,7 +71,7 @@
     <!-- /#wrapper -->
 
     <!-- jQuery Version 1.11.0 -->
-<!--<div class="footer">
+    <!--<div class="footer">
       <div class="container">
         <p class="text-muted">&copy; 2014. Developed by <a href="http://www.jogjalab.com">JOGJALAB.COM</a>.</p>
       </div>
@@ -83,4 +87,3 @@
 haxan100
 */
 ?>
-
