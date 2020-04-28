@@ -14,10 +14,10 @@ if(isset($_POST['save'])){
 	$_31985b26056f955fec6db8f46f87653f=$_POST['nama'];
 	$nisn=$_POST['nisn'];
 	$_f0619632751681b5561b70caf2920a71=$_POST['gender'];
-	$_72e838785b161ce1f713d6b1a452e270=$_POST['kelas'];
+	$idkelas=$_POST['kelas'];
 	$password=$_POST['password'];
 	
-	if(empty($_72e838785b161ce1f713d6b1a452e270) or empty($nisn) or empty($_31985b26056f955fec6db8f46f87653f) or empty($_f0619632751681b5561b70caf2920a71) or empty($password)){
+	if(empty($idkelas) or empty($nisn) or empty($_31985b26056f955fec6db8f46f87653f) or empty($_f0619632751681b5561b70caf2920a71) or empty($password)){
 		$_b5adde8d7d7412251f47419fe9bf51a7='<strong>Error !</strong> Lengkapi form di bawah ini.';
 	}else{
 		if($_d35a39212fd75e833aea38f90831b2cb=='add'){
@@ -27,7 +27,7 @@ if(isset($_POST['save'])){
 			}else{
 			
 				$conn="insert into siswa(id_kelas,nisn, password, nama, gender) 
-				values('".$_72e838785b161ce1f713d6b1a452e270."', '".$nisn."', '".md5($password)."', '".$_31985b26056f955fec6db8f46f87653f."', '".$_f0619632751681b5561b70caf2920a71."')";
+				values('".$idkelas."', '".$nisn."', '".md5($password)."', '".$_31985b26056f955fec6db8f46f87653f."', '".$_f0619632751681b5561b70caf2920a71."')";
 				mysqli_query($conns,$conn);
 				
 				if(!file_exists($fotos.'/uploads/')){
@@ -63,7 +63,7 @@ if(isset($_POST['save'])){
 				if($_5ff579d3c1dff8240c09ee80edb46288==''){
 					$_45b37027578ddbc5040cf6b3961c7916=", password='".md5($password)."' ";
 				}
-				$conn="update siswa set id_kelas='".$_72e838785b161ce1f713d6b1a452e270."', nisn='".$nisn."', nama='".$_31985b26056f955fec6db8f46f87653f."', gender='".$_f0619632751681b5561b70caf2920a71."' ".$_45b37027578ddbc5040cf6b3961c7916." where id_siswa='".$_3584859062ea9ecfb39b93bfcef8e869."'";
+				$conn="update siswa set id_kelas='".$idkelas."', nisn='".$nisn."', nama='".$_31985b26056f955fec6db8f46f87653f."', gender='".$_f0619632751681b5561b70caf2920a71."' ".$_45b37027578ddbc5040cf6b3961c7916." where id_siswa='".$_3584859062ea9ecfb39b93bfcef8e869."'";
 				mysqli_query($conns,$conn);
 				if(!file_exists($fotos.'/uploads/')){
 					mkdir($fotos.'/uploads/');
@@ -100,7 +100,7 @@ if(isset($_POST['save'])){
 	exit("<script>location.href='".$_4bf2fdb3ab37a41b537e7360f7e4b007."&id=".$_3584859062ea9ecfb39b93bfcef8e869."&action=edit';</script>");
 }else{
 	$_3584859062ea9ecfb39b93bfcef8e869='';
-	$_72e838785b161ce1f713d6b1a452e270='';$nisn='';$_31985b26056f955fec6db8f46f87653f='';$_f0619632751681b5561b70caf2920a71='';$password='';
+	$idkelas='';$nisn='';$_31985b26056f955fec6db8f46f87653f='';$_f0619632751681b5561b70caf2920a71='';$password='';
 	if(empty($_GET['action'])){$_d35a39212fd75e833aea38f90831b2cb='add';}else{$_d35a39212fd75e833aea38f90831b2cb=$_GET['action'];}
 	if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
 		$_3584859062ea9ecfb39b93bfcef8e869=$_GET['id'];
@@ -109,7 +109,7 @@ if(isset($_POST['save'])){
 		$nisn=$sql['nisn'];
 		$_31985b26056f955fec6db8f46f87653f=$sql['nama'];
 		$_f0619632751681b5561b70caf2920a71=$sql['gender'];
-		$_72e838785b161ce1f713d6b1a452e270=$sql['id_kelas'];
+		$idkelas=$sql['id_kelas'];
 		$password=$sql['password'];
 		
 	}
@@ -135,7 +135,7 @@ for($mulai=0;$mulai<count($_f8eb8624de17a1bcbd564bdda7e7e4ec);$mulai++){
 $_a6abb7c18ac54429027c2440b5329b86='<option value=""></option>';
 $conn=mysqli_query($conns,"select * from kelas order by nama");
 while($sql=mysqli_fetch_array($conn)){
-	if($sql['id_kelas']==$_72e838785b161ce1f713d6b1a452e270){$_3cb9cdaed257453cfa56b9ef81b44c57='selected';}else{$_3cb9cdaed257453cfa56b9ef81b44c57='';}
+	if($sql['id_kelas']==$idkelas){$_3cb9cdaed257453cfa56b9ef81b44c57='selected';}else{$_3cb9cdaed257453cfa56b9ef81b44c57='';}
 	$_a6abb7c18ac54429027c2440b5329b86.='<option value="'.$sql['id_kelas'].'" '.$_3cb9cdaed257453cfa56b9ef81b44c57.'>'.$sql['nama'].'</option>';
 }
 

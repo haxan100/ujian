@@ -37,7 +37,7 @@ if(mysqli_num_rows($conn) > 0){
 		$_52f720bdaf922c68904e386cbf0cd227++;
 		$_7da43659dfebcaab2ad4bbd2f2a98f30=mysqli_query($conns,"select count(*) as jml from soal_paket where id_paket='".$sql['id_paket']."'");
 		$_84ebecebe3a7c3b32dff74f8dce19fce=mysqli_fetch_array($_7da43659dfebcaab2ad4bbd2f2a98f30);
-		$_b9e53b5867b7fd393a3d5ddf2ceefdf6=$_84ebecebe3a7c3b32dff74f8dce19fce['jml'];
+		$jumlah=$_84ebecebe3a7c3b32dff74f8dce19fce['jml'];
 		
 		$_346cdacfcfcb66a12c88d6345a2f0d81.='
 		<tr>
@@ -45,7 +45,7 @@ if(mysqli_num_rows($conn) > 0){
 		<td style="text-align:center;">'.date('d-m-Y',strtotime($sql['tanggal_mulai'])).'</td>
 		<td>'.$sql['nama'].'</td>
 		<td style="text-align:center;">'.$sql['waktu_pengerjaan'].' menit</td>
-		<td style="text-align:center;">'.$_b9e53b5867b7fd393a3d5ddf2ceefdf6.'</td>
+		<td style="text-align:center;">'.$jumlah.'</td>
 		<td style="text-align:center;">'.$sql['nilai'].'</td>
 		</tr>
 		';

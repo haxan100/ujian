@@ -7,11 +7,11 @@ $sql=mysqli_fetch_array($conn);
 $nisn=$sql['nisn'];
 $_31985b26056f955fec6db8f46f87653f=$sql['nama'];
 $_f0619632751681b5561b70caf2920a71=$_f0619632751681b5561b70caf2920a71[$sql['gender']];
-$_72e838785b161ce1f713d6b1a452e270=$sql['id_kelas'];
+$idkelas=$sql['id_kelas'];
 
-$conn=mysqli_query($conns,"select * from kelas where id_kelas='".$_72e838785b161ce1f713d6b1a452e270."'");
+$conn=mysqli_query($conns,"select * from kelas where id_kelas='".$idkelas."'");
 $sql=mysqli_fetch_array($conn);
-$_38895153c69c18db0dbba317a1d8d369=$sql['nama'];
+$nama=$sql['nama'];
 
 ?>
 
@@ -35,7 +35,7 @@ $_38895153c69c18db0dbba317a1d8d369=$sql['nama'];
 	  </tr>
 	  <tr>
 		<td style="vertical-align:middle;">Kelas</td>
-		<td>: <?php echo $_38895153c69c18db0dbba317a1d8d369;?></td>
+		<td>: <?php echo $nama;?></td>
 	  </tr>
 	</table>
 </div>

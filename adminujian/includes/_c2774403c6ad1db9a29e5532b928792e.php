@@ -6,10 +6,10 @@ if(!isset($_SESSION['LOGIN_ID'])){
 }
 include '../../config.php';
 
-$_b78f9e7c4587e8583ab713f126277f88='';
+$id='';
 $_5bbbff8933f7b8be381684bd463e6d16='';
 if(isset($_GET['paket'])){
-	$_b78f9e7c4587e8583ab713f126277f88=$_GET['paket'];
+	$id=$_GET['paket'];
 }
 if(isset($_GET['pelajaran'])){
 	$_5bbbff8933f7b8be381684bd463e6d16=$_GET['pelajaran'];
@@ -40,11 +40,11 @@ for($mulai=1;$mulai<=$_f52ba22baf75438bb1b02f476954c023;$mulai++){
 }
 $_3074d1218d14946af4694b3e14b827ca='';
 if(($_4e4149dcf4b3b60bf0aaf69dd2348c4d+1)>1){
-	$_3074d1218d14946af4694b3e14b827ca='<a href="'.$_5778a9156adf82bd65a3ec7d62084491.'&page='.$_4e4149dcf4b3b60bf0aaf69dd2348c4d.'" class="btn btn-primary btn_page" data-param="paket='.$_b78f9e7c4587e8583ab713f126277f88.'&pelajaran='.$_5bbbff8933f7b8be381684bd463e6d16.'&q='.$_36923cf62618d1b9981740738971e651.'&page='.$_4e4149dcf4b3b60bf0aaf69dd2348c4d.'" style="float:left;margin-right:5px;">&laquo; Prev</a>';
+	$_3074d1218d14946af4694b3e14b827ca='<a href="'.$_5778a9156adf82bd65a3ec7d62084491.'&page='.$_4e4149dcf4b3b60bf0aaf69dd2348c4d.'" class="btn btn-primary btn_page" data-param="paket='.$id.'&pelajaran='.$_5bbbff8933f7b8be381684bd463e6d16.'&q='.$_36923cf62618d1b9981740738971e651.'&page='.$_4e4149dcf4b3b60bf0aaf69dd2348c4d.'" style="float:left;margin-right:5px;">&laquo; Prev</a>';
 }
 $_ad963400e016efad59a28f377e32aa99='';
 if(($_4e4149dcf4b3b60bf0aaf69dd2348c4d+1)<$_f52ba22baf75438bb1b02f476954c023){
-	$_ad963400e016efad59a28f377e32aa99='<a href="'.$_5778a9156adf82bd65a3ec7d62084491.'&page='.($_4e4149dcf4b3b60bf0aaf69dd2348c4d+2).'" class="btn btn-primary btn_page" data-param="paket='.$_b78f9e7c4587e8583ab713f126277f88.'&pelajaran='.$_5bbbff8933f7b8be381684bd463e6d16.'&q='.$_36923cf62618d1b9981740738971e651.'&page='.($_4e4149dcf4b3b60bf0aaf69dd2348c4d+2).'" style=""> Next &raquo;</a>';
+	$_ad963400e016efad59a28f377e32aa99='<a href="'.$_5778a9156adf82bd65a3ec7d62084491.'&page='.($_4e4149dcf4b3b60bf0aaf69dd2348c4d+2).'" class="btn btn-primary btn_page" data-param="paket='.$id.'&pelajaran='.$_5bbbff8933f7b8be381684bd463e6d16.'&q='.$_36923cf62618d1b9981740738971e651.'&page='.($_4e4149dcf4b3b60bf0aaf69dd2348c4d+2).'" style=""> Next &raquo;</a>';
 }
 
 $_4e4149dcf4b3b60bf0aaf69dd2348c4d=$_4e4149dcf4b3b60bf0aaf69dd2348c4d*$_111f1b5b84b5c819ea9ae35968fce466;
@@ -58,7 +58,7 @@ if(mysqli_num_rows($conn) > 0){
 	while($sql=mysqli_fetch_array($conn)){
 		$_52f720bdaf922c68904e386cbf0cd227++;
 		$_3584859062ea9ecfb39b93bfcef8e869=$sql['id_soal'];
-		if(mysqli_num_rows(mysqli_query($conns,"select id_soal_paket from soal_paket where id_paket='".$_b78f9e7c4587e8583ab713f126277f88."' and id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."'")) > 0){
+		if(mysqli_num_rows(mysqli_query($conns,"select id_soal_paket from soal_paket where id_paket='".$id."' and id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."'")) > 0){
 			$_d4cb19f81c23886f544f26709bd4f799.='
 			  <tr>
 				<td style="text-align:center;">'.$_52f720bdaf922c68904e386cbf0cd227.'</td>
@@ -87,7 +87,7 @@ while($sql=mysqli_fetch_array($conn)){
 
 ?>
 <form id="form_soal" action="" method="get">
-	<input name="paket" type="hidden" value="<?php echo $_b78f9e7c4587e8583ab713f126277f88;?>" />
+	<input name="paket" type="hidden" value="<?php echo $id;?>" />
 	<select name="pelajaran" class="form-control" style="width:300px;float:left;margin-right:5px;"><?php echo $_3718d16a4c63e6e0d669e38e63f8c5c0;?></select>
 
 	<input name="q" placeholder="Pencarian" type="text" class="form-control" value="<?php echo $_36923cf62618d1b9981740738971e651;?>" style="width:200px;float:left;margin-right:5px;" /> <button type="submit" class="btn btn-primary">Cari</button>
@@ -111,7 +111,7 @@ while($sql=mysqli_fetch_array($conn)){
 <?php if($_12ef5f8660c2350214ce228aad66392d > 0){ ?>
 <div class="row-fluid">
 <form action="" id="form_page" method="get" style="float:right">
-<input name="paket" type="hidden" value="<?php echo $_b78f9e7c4587e8583ab713f126277f88;?>" />
+<input name="paket" type="hidden" value="<?php echo $id;?>" />
 <input name="pelajaran" type="hidden" value="<?php echo $_5bbbff8933f7b8be381684bd463e6d16;?>" />
 <input name="q" type="hidden" value="<?php echo $_36923cf62618d1b9981740738971e651;?>" />
 <?php echo $_3074d1218d14946af4694b3e14b827ca;?>
@@ -186,7 +186,7 @@ $(document).ready(function(){
 		$.ajax({
 			type: 'GET',
 			url: 'includes/_04bf5d59351c7f04f5381a7e6f95e557.php',
-			data: 'paket=<?php echo $_b78f9e7c4587e8583ab713f126277f88;?>&id='+id+'&action=addsoal',
+			data: 'paket=<?php echo $id;?>&id='+id+'&action=addsoal',
 			beforeSend: function(data) {
 				
 			},

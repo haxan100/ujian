@@ -7,7 +7,7 @@ if(isset($_POST['save'])){
 	$_3584859062ea9ecfb39b93bfcef8e869=$_POST['id'];
 	$_d35a39212fd75e833aea38f90831b2cb=$_POST['action'];
 	$_5bbbff8933f7b8be381684bd463e6d16=$_POST['pelajaran'];
-	$_1b66aa9bfba43381db0e3cc139369d48=$_POST['soal'];
+	$paket=$_POST['soal'];
 	$_b65003120790c3e628f304c85a36a615=$_POST['kunci'];
 	$_a2162101cd2c071e2931c2254b25ca5e[0]=$_POST['jawaban'][0];
 	$_a2162101cd2c071e2931c2254b25ca5e[1]=$_POST['jawaban'][1];
@@ -15,11 +15,11 @@ if(isset($_POST['save'])){
 	$_a2162101cd2c071e2931c2254b25ca5e[3]=$_POST['jawaban'][3];
 	$_a2162101cd2c071e2931c2254b25ca5e[4]=$_POST['jawaban'][4];
 
-	if(empty($_5bbbff8933f7b8be381684bd463e6d16) or empty($_1b66aa9bfba43381db0e3cc139369d48) or empty($_b65003120790c3e628f304c85a36a615) or empty($_a2162101cd2c071e2931c2254b25ca5e[0]) or empty($_a2162101cd2c071e2931c2254b25ca5e[1]) or empty($_a2162101cd2c071e2931c2254b25ca5e[2]) or empty($_a2162101cd2c071e2931c2254b25ca5e[3]) or empty($_a2162101cd2c071e2931c2254b25ca5e[4])){
+	if(empty($_5bbbff8933f7b8be381684bd463e6d16) or empty($paket) or empty($_b65003120790c3e628f304c85a36a615) or empty($_a2162101cd2c071e2931c2254b25ca5e[0]) or empty($_a2162101cd2c071e2931c2254b25ca5e[1]) or empty($_a2162101cd2c071e2931c2254b25ca5e[2]) or empty($_a2162101cd2c071e2931c2254b25ca5e[3]) or empty($_a2162101cd2c071e2931c2254b25ca5e[4])){
 		$_b5adde8d7d7412251f47419fe9bf51a7='<strong>Error !</strong> Lengkapi form di bawah ini.';
 	}else{
 		if($_d35a39212fd75e833aea38f90831b2cb=='add'){
-			$conn="insert into soal(detail,kunci,id_pelajaran) values('".trim($_1b66aa9bfba43381db0e3cc139369d48)."','".$_b65003120790c3e628f304c85a36a615."','".$_5bbbff8933f7b8be381684bd463e6d16."')";
+			$conn="insert into soal(detail,kunci,id_pelajaran) values('".trim($paket)."','".$_b65003120790c3e628f304c85a36a615."','".$_5bbbff8933f7b8be381684bd463e6d16."')";
 			mysqli_query($conns,$conn);
 			$_5cf085bf5081a50e78311063db83f771=mysqli_insert_id($conns);
 			$_f77c5a659797b862f0fc544aa9a0c023=array('A','B','C','D','E');
@@ -29,7 +29,7 @@ if(isset($_POST['save'])){
 			exit("<script>location.href='".$pengumuman1."&pelajaran=".$_5bbbff8933f7b8be381684bd463e6d16."';</script>");
 		}
 		if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
-			$conn="update soal set detail='".trim($_1b66aa9bfba43381db0e3cc139369d48)."',kunci='".$_b65003120790c3e628f304c85a36a615."',id_pelajaran='".$_5bbbff8933f7b8be381684bd463e6d16."' where id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."'";
+			$conn="update soal set detail='".trim($paket)."',kunci='".$_b65003120790c3e628f304c85a36a615."',id_pelajaran='".$_5bbbff8933f7b8be381684bd463e6d16."' where id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."'";
 			mysqli_query($conns,$conn);
 			mysqli_query($conns,"delete from soal_jawaban where id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."'");
 			$_f77c5a659797b862f0fc544aa9a0c023=array('A','B','C','D','E');
@@ -41,14 +41,14 @@ if(isset($_POST['save'])){
 		
 	}
 }else{
-	$_5bbbff8933f7b8be381684bd463e6d16='';$_1b66aa9bfba43381db0e3cc139369d48='';$_b65003120790c3e628f304c85a36a615='';$_a2162101cd2c071e2931c2254b25ca5e[0]='';$_a2162101cd2c071e2931c2254b25ca5e[1]='';$_a2162101cd2c071e2931c2254b25ca5e[2]='';$_a2162101cd2c071e2931c2254b25ca5e[3]='';$_a2162101cd2c071e2931c2254b25ca5e[4]='';
+	$_5bbbff8933f7b8be381684bd463e6d16='';$paket='';$_b65003120790c3e628f304c85a36a615='';$_a2162101cd2c071e2931c2254b25ca5e[0]='';$_a2162101cd2c071e2931c2254b25ca5e[1]='';$_a2162101cd2c071e2931c2254b25ca5e[2]='';$_a2162101cd2c071e2931c2254b25ca5e[3]='';$_a2162101cd2c071e2931c2254b25ca5e[4]='';
 	if(empty($_GET['action'])){$_d35a39212fd75e833aea38f90831b2cb='add';}else{$_d35a39212fd75e833aea38f90831b2cb=$_GET['action'];}
 	if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
 		$_3584859062ea9ecfb39b93bfcef8e869=$_GET['id'];
 		$conn=mysqli_query($conns,"select * from soal where id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."'");
 		$sql=mysqli_fetch_array($conn);
 		$_5bbbff8933f7b8be381684bd463e6d16=$sql['id_pelajaran'];
-		$_1b66aa9bfba43381db0e3cc139369d48=$sql['detail'];
+		$paket=$sql['detail'];
 		$_b65003120790c3e628f304c85a36a615=$sql['kunci'];
 		$_52f720bdaf922c68904e386cbf0cd227=0;
 		$conn=mysqli_query($conns,"select * from soal_jawaban where id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."' order by id_soal_jawaban");
@@ -139,7 +139,7 @@ $(document).ready(function(){
 	  </tr>
 	  <tr>
 		<td style="vertical-align:middle;">Soal<span class="required">*</span> </td>
-		<td><textarea name="soal" id="soal" cols="" rows="" class="form-control ckeditor form-required" style="height:300px;"><?php echo $_1b66aa9bfba43381db0e3cc139369d48;?></textarea></td>
+		<td><textarea name="soal" id="soal" cols="" rows="" class="form-control ckeditor form-required" style="height:300px;"><?php echo $paket;?></textarea></td>
 	  </tr>
 	  <tr>
 		<td style="vertical-align:middle;">Jawaban <span class="required">*</span> </td>

@@ -4,36 +4,36 @@
 $pengumuman1='?hal=soal_ujian';
 $_4bf2fdb3ab37a41b537e7360f7e4b007='?hal=soal_ujian';
 if(isset($_POST['delete'])){
-	$_b78f9e7c4587e8583ab713f126277f88=$_POST['paket'];
+	$id=$_POST['paket'];
 	for($mulai=0;$mulai<count($_POST['soal']);$mulai++){
-		mysqli_query($conns,"delete from soal_paket where id_soal_paket='".$_POST['soal'][$mulai]."' and id_paket='".$_b78f9e7c4587e8583ab713f126277f88."'");
+		mysqli_query($conns,"delete from soal_paket where id_soal_paket='".$_POST['soal'][$mulai]."' and id_paket='".$id."'");
 	}
-	exit("<script>location.href='".$pengumuman1.'&paket='.$_b78f9e7c4587e8583ab713f126277f88."';</script>");
+	exit("<script>location.href='".$pengumuman1.'&paket='.$id."';</script>");
 }
 if(isset($_GET['action'])){
 	if($_GET['action']=='add'){
-		$_b78f9e7c4587e8583ab713f126277f88=$_GET['paket'];
+		$id=$_GET['paket'];
 		$_5cf085bf5081a50e78311063db83f771=$_GET['id'];
-		mysqli_query($conns,"insert into soal_paket(id_paket, id_soal) values('".$_b78f9e7c4587e8583ab713f126277f88."','".$_5cf085bf5081a50e78311063db83f771."')");
-		exit("<script>location.href='".$pengumuman1.'&paket='.$_b78f9e7c4587e8583ab713f126277f88."';</script>");
+		mysqli_query($conns,"insert into soal_paket(id_paket, id_soal) values('".$id."','".$_5cf085bf5081a50e78311063db83f771."')");
+		exit("<script>location.href='".$pengumuman1.'&paket='.$id."';</script>");
 	}
 	if($_GET['action']=='remove'){
-		$_b78f9e7c4587e8583ab713f126277f88=$_GET['paket'];
+		$id=$_GET['paket'];
 		$_843b71d0acc61983f36ea357e493357b=$_GET['id'];
-		mysqli_query($conns,"delete from soal_paket where id_soal_paket='".$_843b71d0acc61983f36ea357e493357b."' and id_paket='".$_b78f9e7c4587e8583ab713f126277f88."'");
-		exit("<script>location.href='".$pengumuman1.'&paket='.$_b78f9e7c4587e8583ab713f126277f88."';</script>");
+		mysqli_query($conns,"delete from soal_paket where id_soal_paket='".$_843b71d0acc61983f36ea357e493357b."' and id_paket='".$id."'");
+		exit("<script>location.href='".$pengumuman1.'&paket='.$id."';</script>");
 	}
 }
-$_b78f9e7c4587e8583ab713f126277f88='';
+$id='';
 if(isset($_GET['paket'])){
-	$_b78f9e7c4587e8583ab713f126277f88=$_GET['paket'];
+	$id=$_GET['paket'];
 }
 
-$conn=mysqli_query($conns,"select count(*) as jml from soal_paket where id_paket='".$_b78f9e7c4587e8583ab713f126277f88."'");
+$conn=mysqli_query($conns,"select count(*) as jml from soal_paket where id_paket='".$id."'");
 $sql=mysqli_fetch_array($conn);
 $_12ef5f8660c2350214ce228aad66392d=$sql['jml'];
 
-$_bd374a8757e4ad5e55de663a02a9adde=$pengumuman1.'&paket='.$_b78f9e7c4587e8583ab713f126277f88;
+$_bd374a8757e4ad5e55de663a02a9adde=$pengumuman1.'&paket='.$id;
 $_111f1b5b84b5c819ea9ae35968fce466=10;
 $_4e4149dcf4b3b60bf0aaf69dd2348c4d=0;if(isset($_GET['page'])){$_4e4149dcf4b3b60bf0aaf69dd2348c4d=$_GET['page'];}
 if($_4e4149dcf4b3b60bf0aaf69dd2348c4d<1){$_4e4149dcf4b3b60bf0aaf69dd2348c4d=1;}$result=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;$_4e4149dcf4b3b60bf0aaf69dd2348c4d--;$_f52ba22baf75438bb1b02f476954c023=($_12ef5f8660c2350214ce228aad66392d -($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466)) / $_111f1b5b84b5c819ea9ae35968fce466;if($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466 > 0){$_f52ba22baf75438bb1b02f476954c023++;}
@@ -43,7 +43,7 @@ if(($_4e4149dcf4b3b60bf0aaf69dd2348c4d+1)<$_f52ba22baf75438bb1b02f476954c023){$_
 $_addbb9f4792a53c78e32e91e1c94f075='<ul class="pagination">'.$_addbb9f4792a53c78e32e91e1c94f075.'</ul>';$_4e4149dcf4b3b60bf0aaf69dd2348c4d=$_4e4149dcf4b3b60bf0aaf69dd2348c4d*$_111f1b5b84b5c819ea9ae35968fce466;$_52f720bdaf922c68904e386cbf0cd227=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;
 
 $_d4cb19f81c23886f544f26709bd4f799='';
-$conn="select * from soal_paket inner join soal on soal_paket.id_soal=soal.id_soal where soal_paket.id_paket='".$_b78f9e7c4587e8583ab713f126277f88."' order by soal_paket.id_soal_paket limit ".$_4e4149dcf4b3b60bf0aaf69dd2348c4d.",".$_111f1b5b84b5c819ea9ae35968fce466;
+$conn="select * from soal_paket inner join soal on soal_paket.id_soal=soal.id_soal where soal_paket.id_paket='".$id."' order by soal_paket.id_soal_paket limit ".$_4e4149dcf4b3b60bf0aaf69dd2348c4d.",".$_111f1b5b84b5c819ea9ae35968fce466;
 $conn=mysqli_query($conns,$conn);
 if(mysqli_num_rows($conn) > 0){
 	while($sql=mysqli_fetch_array($conn)){
@@ -64,7 +64,7 @@ if(mysqli_num_rows($conn) > 0){
 		<td>'.$sql['detail'].'</td>
 		<td>'.$_7587462c90f9624fb5baf236b890ad8a.'</td>
 		<td style="text-align:center;">
-		<a href="?hal=soal_ujian&paket='.$_b78f9e7c4587e8583ab713f126277f88.'&id='.$_3584859062ea9ecfb39b93bfcef8e869.'&action=remove" class="btn btn-danger btn-xs">Hilangkan</a>
+		<a href="?hal=soal_ujian&paket='.$id.'&id='.$_3584859062ea9ecfb39b93bfcef8e869.'&action=remove" class="btn btn-danger btn-xs">Hilangkan</a>
 		</td>
 		</tr>
 		';
@@ -73,7 +73,7 @@ if(mysqli_num_rows($conn) > 0){
 $opsi='<option value="">Pilih Paket</option>';
 $conn=mysqli_query($conns,"select * from paket order by id_paket");
 while($sql=mysqli_fetch_array($conn)){
-	if($_b78f9e7c4587e8583ab713f126277f88==$sql['id_paket']){$_3cb9cdaed257453cfa56b9ef81b44c57='selected';}else{$_3cb9cdaed257453cfa56b9ef81b44c57='';}
+	if($id==$sql['id_paket']){$_3cb9cdaed257453cfa56b9ef81b44c57='selected';}else{$_3cb9cdaed257453cfa56b9ef81b44c57='';}
 	$opsi.='<option value="'.$sql['id_paket'].'" '.$_3cb9cdaed257453cfa56b9ef81b44c57.'>'.$sql['nama'].'</option>';
 }
 
@@ -107,9 +107,9 @@ function DeleteSelectedConfirm(){
 <select name="paket" id="paket" class="form-control" style="width:300px;float:left;margin-right:5px;" onchange="submit()"><?php echo $opsi;?></select>
 </form>
 <div style="float:right">
-<!--<a href="_ca2af8a29582009a8583f110b425c5e6.php?paket=<?php echo $_b78f9e7c4587e8583ab713f126277f88;?>" class="btn btn-success <?php if($_b78f9e7c4587e8583ab713f126277f88==''){echo 'disabled';}?>">Tambah Soal</a>-->
-<button type="button" class="btn btn-success <?php if($_b78f9e7c4587e8583ab713f126277f88==''){echo 'disabled';}?>" id="btn_add_soal" data-toggle="modal" href="#input_soal_modal">Tambah Soal</button>
-&nbsp;<a href="_ca2af8a29582009a8583f110b425c5e6.php?paket=<?php echo $_b78f9e7c4587e8583ab713f126277f88;?>" class="btn btn-primary <?php if($_b78f9e7c4587e8583ab713f126277f88==''){echo 'disabled';}?>" target="_blank">Simulasi Tes</a>
+<!--<a href="_ca2af8a29582009a8583f110b425c5e6.php?paket=<?php echo $id;?>" class="btn btn-success <?php if($id==''){echo 'disabled';}?>">Tambah Soal</a>-->
+<button type="button" class="btn btn-success <?php if($id==''){echo 'disabled';}?>" id="btn_add_soal" data-toggle="modal" href="#input_soal_modal">Tambah Soal</button>
+&nbsp;<a href="_ca2af8a29582009a8583f110b425c5e6.php?paket=<?php echo $id;?>" class="btn btn-primary <?php if($id==''){echo 'disabled';}?>" target="_blank">Simulasi Tes</a>
 
 </div>
 
@@ -125,7 +125,7 @@ function DeleteSelectedConfirm(){
 	}else{
 	?>
 	<form action="<?php echo $pengumuman1;?>" method="post">
-	<input name="paket" type="hidden" value="<?php echo $_b78f9e7c4587e8583ab713f126277f88;?>" />
+	<input name="paket" type="hidden" value="<?php echo $id;?>" />
 	<table class="table table-striped table-hover table-bordered">
 	  <thead>
 	  <tr>
@@ -173,7 +173,7 @@ jQuery(document).ready(function() {
 		$.ajax({
 			type: 'GET',
 			url: 'includes/_c2774403c6ad1db9a29e5532b928792e.php',
-			data: 'paket=<?php echo $_b78f9e7c4587e8583ab713f126277f88;?>',
+			data: 'paket=<?php echo $id;?>',
 			beforeSend: function(data) {
 				$('#daftar_soal').html('Loading...');
 			},

@@ -7,32 +7,32 @@ if(isset($_POST['save'])){
 	$_3584859062ea9ecfb39b93bfcef8e869=$_POST['id'];
 	$_d35a39212fd75e833aea38f90831b2cb=$_POST['action'];
 	$_31985b26056f955fec6db8f46f87653f=$_POST['nama'];
-	$_36fd7f7111215a7056422e47518363d7=$_POST['waktu_pengerjaan'];
+	$waktu=$_POST['waktu_pengerjaan'];
 
-	if(empty($_31985b26056f955fec6db8f46f87653f) or empty($_36fd7f7111215a7056422e47518363d7)){
+	if(empty($_31985b26056f955fec6db8f46f87653f) or empty($waktu)){
 		$_b5adde8d7d7412251f47419fe9bf51a7='<strong>Error !</strong> Lengkapi form di bawah ini.';
 	}else{
 		if($_d35a39212fd75e833aea38f90831b2cb=='add'){
-			$conn="insert into paket(nama,waktu_pengerjaan) values('".$_31985b26056f955fec6db8f46f87653f."','".$_36fd7f7111215a7056422e47518363d7."')";
+			$conn="insert into paket(nama,waktu_pengerjaan) values('".$_31985b26056f955fec6db8f46f87653f."','".$waktu."')";
 			mysqli_query($conns,$conn);
 			exit("<script>location.href='".$pengumuman1."';</script>");
 		}
 		if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
-			$conn="update paket set nama='".$_31985b26056f955fec6db8f46f87653f."',waktu_pengerjaan='".$_36fd7f7111215a7056422e47518363d7."' where id_paket='".$_3584859062ea9ecfb39b93bfcef8e869."'";
+			$conn="update paket set nama='".$_31985b26056f955fec6db8f46f87653f."',waktu_pengerjaan='".$waktu."' where id_paket='".$_3584859062ea9ecfb39b93bfcef8e869."'";
 			mysqli_query($conns,$conn);
 			exit("<script>location.href='".$pengumuman1."';</script>");
 		}
 		
 	}
 }else{
-	$_31985b26056f955fec6db8f46f87653f='';$_36fd7f7111215a7056422e47518363d7='';
+	$_31985b26056f955fec6db8f46f87653f='';$waktu='';
 	if(empty($_GET['action'])){$_d35a39212fd75e833aea38f90831b2cb='add';}else{$_d35a39212fd75e833aea38f90831b2cb=$_GET['action'];}
 	if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
 		$_3584859062ea9ecfb39b93bfcef8e869=$_GET['id'];
 		$conn=mysqli_query($conns,"select * from paket where id_paket='".$_3584859062ea9ecfb39b93bfcef8e869."'");
 		$sql=mysqli_fetch_array($conn);
 		$_31985b26056f955fec6db8f46f87653f=$sql['nama'];
-		$_36fd7f7111215a7056422e47518363d7=$sql['waktu_pengerjaan'];
+		$waktu=$sql['waktu_pengerjaan'];
 	}
 	if($_d35a39212fd75e833aea38f90831b2cb=='delete'){
 		$_3584859062ea9ecfb39b93bfcef8e869=$_GET['id'];
@@ -79,7 +79,7 @@ if($_d35a39212fd75e833aea38f90831b2cb=='add'){$_06c518f70e97b19c7ec907f36542ce6e
 	  </tr>
 	  <tr>
 		<td style="vertical-align:middle;">Waktu Pengerjaan<span class="required">*</span> </td>
-		<td><input name="waktu_pengerjaan" type="text" class="form-control" value="<?php echo $_36fd7f7111215a7056422e47518363d7;?>" style="width:100px;float:left;margin-right:5px;"> <span class="help-block" style="float:left;">Menit</span></td>
+		<td><input name="waktu_pengerjaan" type="text" class="form-control" value="<?php echo $waktu;?>" style="width:100px;float:left;margin-right:5px;"> <span class="help-block" style="float:left;">Menit</span></td>
 	  </tr>
 	  <tr>
 		<td></td>

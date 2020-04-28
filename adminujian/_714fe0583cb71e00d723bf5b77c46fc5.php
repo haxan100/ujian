@@ -6,13 +6,13 @@ if(!isset($_SESSION['LOGIN_ID'])){
 }
 include '../config.php';
 
-$_72e838785b161ce1f713d6b1a452e270='';
+$idkelas='';
 if(isset($_GET['kelas'])){
-	$_72e838785b161ce1f713d6b1a452e270=$_GET['kelas'];
+	$idkelas=$_GET['kelas'];
 }
 $_2f912c6d42fb67b89f6d73741e22a97c='';
-if($_72e838785b161ce1f713d6b1a452e270!=''){
-	$_2f912c6d42fb67b89f6d73741e22a97c=" and id_kelas='".$_72e838785b161ce1f713d6b1a452e270."' ";
+if($idkelas!=''){
+	$_2f912c6d42fb67b89f6d73741e22a97c=" and id_kelas='".$idkelas."' ";
 }
 
 $_52f720bdaf922c68904e386cbf0cd227=0;
@@ -21,10 +21,10 @@ $conn=mysqli_query($conns,"select * from siswa where nisn like '%%' ".$_2f912c6d
 while($sql=mysqli_fetch_array($conn)){
 	$_7da43659dfebcaab2ad4bbd2f2a98f30=mysqli_query($conns,"select nama from kelas where id_kelas='".$sql['id_kelas']."'");
 	$_84ebecebe3a7c3b32dff74f8dce19fce=mysqli_fetch_array($_7da43659dfebcaab2ad4bbd2f2a98f30);
-	$_38895153c69c18db0dbba317a1d8d369=$_84ebecebe3a7c3b32dff74f8dce19fce['nama'];
+	$nama=$_84ebecebe3a7c3b32dff74f8dce19fce['nama'];
 	
 	$_52f720bdaf922c68904e386cbf0cd227++;
-	$_7318a606a3118d468dae7078098fba7b.=$_52f720bdaf922c68904e386cbf0cd227."|".$sql['nisn']."|".$sql['nama']."|".$sql['gender']."|".$_38895153c69c18db0dbba317a1d8d369."\n";
+	$_7318a606a3118d468dae7078098fba7b.=$_52f720bdaf922c68904e386cbf0cd227."|".$sql['nisn']."|".$sql['nama']."|".$sql['gender']."|".$nama."\n";
 }
 
 $_b0d5d47f3d2e32a124c14253aba3976a=array('No','NISN','Nama Siswa','J. Kelamin','Kelas');

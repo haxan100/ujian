@@ -8,24 +8,24 @@ if(!isset($_SESSION['LOGIN_ID'])){
 	die;
 }
 
-$_b78f9e7c4587e8583ab713f126277f88='';
+$id='';
 if(isset($_GET['paket'])){
-	$_b78f9e7c4587e8583ab713f126277f88=$_GET['paket'];
+	$id=$_GET['paket'];
 }
-$conn=mysqli_query($conns,"select nama from paket where id_paket='".$_b78f9e7c4587e8583ab713f126277f88."'");
+$conn=mysqli_query($conns,"select nama from paket where id_paket='".$id."'");
 $sql=mysqli_fetch_array($conn);
-$_4cbd557d34801deff9f3656970cd5398=$sql['nama'];
+$nama=$sql['nama'];
 
 $_52f720bdaf922c68904e386cbf0cd227=0;
 $_d4cb19f81c23886f544f26709bd4f799='';
-$conn=mysqli_query($conns,"select * from peserta inner join siswa on peserta.id_siswa=siswa.id_siswa where peserta.id_paket='".$_b78f9e7c4587e8583ab713f126277f88."' order by nisn");
+$conn=mysqli_query($conns,"select * from peserta inner join siswa on peserta.id_siswa=siswa.id_siswa where peserta.id_paket='".$id."' order by nisn");
 while($sql=mysqli_fetch_array($conn)){
 	$_7da43659dfebcaab2ad4bbd2f2a98f30=mysqli_query($conns,"select nama from kelas where id_kelas='".$sql['id_kelas']."'");
 	$_84ebecebe3a7c3b32dff74f8dce19fce=mysqli_fetch_array($_7da43659dfebcaab2ad4bbd2f2a98f30);
-	$_38895153c69c18db0dbba317a1d8d369=$_84ebecebe3a7c3b32dff74f8dce19fce['nama'];
-	$_7da43659dfebcaab2ad4bbd2f2a98f30=mysqli_query($conns,"select nilai from ujian where id_paket='".$_b78f9e7c4587e8583ab713f126277f88."' and id_siswa='".$sql['id_siswa']."'");
+	$nama=$_84ebecebe3a7c3b32dff74f8dce19fce['nama'];
+	$_7da43659dfebcaab2ad4bbd2f2a98f30=mysqli_query($conns,"select nilai from ujian where id_paket='".$id."' and id_siswa='".$sql['id_siswa']."'");
 	$_84ebecebe3a7c3b32dff74f8dce19fce=mysqli_fetch_array($_7da43659dfebcaab2ad4bbd2f2a98f30);
-	$_c04df7e5dc078931b278b5a69b691465=$_84ebecebe3a7c3b32dff74f8dce19fce['nilai'];
+	$nilai=$_84ebecebe3a7c3b32dff74f8dce19fce['nilai'];
 	
 	$_52f720bdaf922c68904e386cbf0cd227++;
 	
@@ -35,8 +35,8 @@ while($sql=mysqli_fetch_array($conn)){
 	<td style="font-size:12px;border:0;padding:0 5px 0 5px;">'.$sql['nisn'].'</td>
 	<td style="font-size:12px;border:0;padding:0 5px 0 5px;">'.$sql['nama'].'</td>
 	<td style="text-align:center;font-size:12px;border:0;padding:0 5px 0 5px;">'.$sql['gender'].'</td>
-	<td style="font-size:12px;border:0;padding:0 5px 0 5px;">'.$_38895153c69c18db0dbba317a1d8d369.'</td>
-	<td style="text-align:center;font-size:12px;border:0;padding:0 5px 0 5px;">'.$_c04df7e5dc078931b278b5a69b691465.'</td>
+	<td style="font-size:12px;border:0;padding:0 5px 0 5px;">'.$nama.'</td>
+	<td style="text-align:center;font-size:12px;border:0;padding:0 5px 0 5px;">'.$nilai.'</td>
 	</tr>
 	';
 }
@@ -148,7 +148,7 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6,p,ul,ol,form,table,address {
 	<tr>
     <td>
 	<center>
-	<strong>HASIL TRY OUT/UJIAN CBT OFFLINE<br /><?php echo strtoupper($_4cbd557d34801deff9f3656970cd5398);?></strong>
+	<strong>HASIL TRY OUT/UJIAN CBT OFFLINE<br /><?php echo strtoupper($nama);?></strong>
 	</center>
 	
 	<div style="clear:both;height:40px;"></div>

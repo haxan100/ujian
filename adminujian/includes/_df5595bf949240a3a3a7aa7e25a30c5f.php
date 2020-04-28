@@ -64,17 +64,17 @@ if(isset($_POST['save'])){
 			$_31985b26056f955fec6db8f46f87653f=$sql['nama'];
 			$_f0619632751681b5561b70caf2920a71=$sql['gender'];
 			$_b74a36690339daf77274de5ad720d6eb=$sql['alamat'];
-			$_38895153c69c18db0dbba317a1d8d369=$sql['kelas'];
-			$_72e838785b161ce1f713d6b1a452e270='';
-			$_7da43659dfebcaab2ad4bbd2f2a98f30=mysqli_query($conns,"select id_kelas from kelas where kode='".$_38895153c69c18db0dbba317a1d8d369."'");
+			$nama=$sql['kelas'];
+			$idkelas='';
+			$_7da43659dfebcaab2ad4bbd2f2a98f30=mysqli_query($conns,"select id_kelas from kelas where kode='".$nama."'");
 			if(mysqli_num_rows($_7da43659dfebcaab2ad4bbd2f2a98f30)>0){
 				$_84ebecebe3a7c3b32dff74f8dce19fce=mysqli_fetch_array($_7da43659dfebcaab2ad4bbd2f2a98f30);
-				$_72e838785b161ce1f713d6b1a452e270=$_84ebecebe3a7c3b32dff74f8dce19fce['id_kelas'];
+				$idkelas=$_84ebecebe3a7c3b32dff74f8dce19fce['id_kelas'];
 			}
 			if(mysqli_num_rows(mysqli_query("select nisn from siswa where nisn='".$nisn."'"))>0){
-				$_7da43659dfebcaab2ad4bbd2f2a98f30="update siswa set nama='".$_31985b26056f955fec6db8f46f87653f."', alamat='".$_b74a36690339daf77274de5ad720d6eb."', gender='".$_f0619632751681b5561b70caf2920a71."', id_kelas='".$_72e838785b161ce1f713d6b1a452e270."' where nisn='".$nisn."'";
+				$_7da43659dfebcaab2ad4bbd2f2a98f30="update siswa set nama='".$_31985b26056f955fec6db8f46f87653f."', alamat='".$_b74a36690339daf77274de5ad720d6eb."', gender='".$_f0619632751681b5561b70caf2920a71."', id_kelas='".$idkelas."' where nisn='".$nisn."'";
 			}else{
-				$_7da43659dfebcaab2ad4bbd2f2a98f30="insert into siswa(nisn,nama,alamat,gender,id_kelas) values('".$nisn."','".$_31985b26056f955fec6db8f46f87653f."','".$_b74a36690339daf77274de5ad720d6eb."','".$_f0619632751681b5561b70caf2920a71."','".$_72e838785b161ce1f713d6b1a452e270."')";
+				$_7da43659dfebcaab2ad4bbd2f2a98f30="insert into siswa(nisn,nama,alamat,gender,id_kelas) values('".$nisn."','".$_31985b26056f955fec6db8f46f87653f."','".$_b74a36690339daf77274de5ad720d6eb."','".$_f0619632751681b5561b70caf2920a71."','".$idkelas."')";
 			}
 			mysqli_query($conns,$_7da43659dfebcaab2ad4bbd2f2a98f30);
 		}

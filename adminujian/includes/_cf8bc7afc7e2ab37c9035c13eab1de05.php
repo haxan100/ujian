@@ -12,24 +12,24 @@ if(isset($_POST['delete'])){
 }
 
 
-$_72e838785b161ce1f713d6b1a452e270='';
+$idkelas='';
 $_36923cf62618d1b9981740738971e651='';
 if(isset($_GET['kelas'])){
-	$_72e838785b161ce1f713d6b1a452e270=$_GET['kelas'];
+	$idkelas=$_GET['kelas'];
 }
 if(isset($_GET['q'])){
 	$_36923cf62618d1b9981740738971e651=$_GET['q'];
 }
 $_2f912c6d42fb67b89f6d73741e22a97c='';
-if($_72e838785b161ce1f713d6b1a452e270!=''){
-	$_2f912c6d42fb67b89f6d73741e22a97c=" and id_kelas='".$_72e838785b161ce1f713d6b1a452e270."' ";
+if($idkelas!=''){
+	$_2f912c6d42fb67b89f6d73741e22a97c=" and id_kelas='".$idkelas."' ";
 }
 
 $conn=mysqli_query($conns,"select count(*) as jml from siswa where (nisn like '%".$_36923cf62618d1b9981740738971e651."%' or nama like '%".$_36923cf62618d1b9981740738971e651."%') ".$_2f912c6d42fb67b89f6d73741e22a97c);
 $sql=mysqli_fetch_array($conn);
 $_12ef5f8660c2350214ce228aad66392d=$sql['jml'];
 
-$_bd374a8757e4ad5e55de663a02a9adde=$pengumuman1.'&kelas='.$_72e838785b161ce1f713d6b1a452e270.'&q='.$_36923cf62618d1b9981740738971e651;
+$_bd374a8757e4ad5e55de663a02a9adde=$pengumuman1.'&kelas='.$idkelas.'&q='.$_36923cf62618d1b9981740738971e651;
 $_111f1b5b84b5c819ea9ae35968fce466=50;
 $_4e4149dcf4b3b60bf0aaf69dd2348c4d=0;if(isset($_GET['page'])){$_4e4149dcf4b3b60bf0aaf69dd2348c4d=$_GET['page'];}
 if($_4e4149dcf4b3b60bf0aaf69dd2348c4d<1){$_4e4149dcf4b3b60bf0aaf69dd2348c4d=1;}$result=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;$_4e4149dcf4b3b60bf0aaf69dd2348c4d--;$_f52ba22baf75438bb1b02f476954c023=($_12ef5f8660c2350214ce228aad66392d -($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466)) / $_111f1b5b84b5c819ea9ae35968fce466;if($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466 > 0){$_f52ba22baf75438bb1b02f476954c023++;}
@@ -55,7 +55,7 @@ if(mysqli_num_rows($conn) > 0){
 		
 		$_7da43659dfebcaab2ad4bbd2f2a98f30=mysqli_query($conns,"select nama from kelas where id_kelas='".$sql['id_kelas']."'");
 		$_84ebecebe3a7c3b32dff74f8dce19fce=mysqli_fetch_array($_7da43659dfebcaab2ad4bbd2f2a98f30);
-		$_38895153c69c18db0dbba317a1d8d369=$_84ebecebe3a7c3b32dff74f8dce19fce['nama'];
+		$nama=$_84ebecebe3a7c3b32dff74f8dce19fce['nama'];
 		/*if($sql['status']=='N'){
 			$_65337fceccf221b0c62cd3400655c8aa='<li class="disabled"><a href="#" onclick="return(false)">Hapus Hasil Tes</a></li>';
 		}else{
@@ -81,7 +81,7 @@ if(mysqli_num_rows($conn) > 0){
 			<td>'.$sql['nisn'].'</td>
 			<td>'.$sql['nama'].'</td>
 			<td>'.$_f0619632751681b5561b70caf2920a71[$sql['gender']].'</td>
-			<td>'.$_38895153c69c18db0dbba317a1d8d369.'</td>
+			<td>'.$nama.'</td>
 		  </tr>
 		';
 	}
@@ -90,7 +90,7 @@ if(mysqli_num_rows($conn) > 0){
 $_a6abb7c18ac54429027c2440b5329b86='<option value="">Semua Kelas</option>';
 $conn=mysqli_query($conns,"select * from kelas order by nama");
 while($sql=mysqli_fetch_array($conn)){
-	if($_72e838785b161ce1f713d6b1a452e270==$sql['id_kelas']){$_3cb9cdaed257453cfa56b9ef81b44c57='selected';}else{$_3cb9cdaed257453cfa56b9ef81b44c57='';}
+	if($idkelas==$sql['id_kelas']){$_3cb9cdaed257453cfa56b9ef81b44c57='selected';}else{$_3cb9cdaed257453cfa56b9ef81b44c57='';}
 	$_a6abb7c18ac54429027c2440b5329b86.='<option value="'.$sql['id_kelas'].'" '.$_3cb9cdaed257453cfa56b9ef81b44c57.'>'.$sql['nama'].'</option>';
 }
 
@@ -130,7 +130,7 @@ function DeleteSelectedConfirm(){
 <a href="?hal=siswa&action=update_status" class="btn btn-primary" style="float:"><i class="fa fa-check-square-o"></i> Cek Status Data</a>-->
 <a href="<?php echo $_4bf2fdb3ab37a41b537e7360f7e4b007;?>" class="btn btn-primary"><i class="fa fa-plus"></i> Input Siswa Baru</a>
 &nbsp;<a href="?hal=import_siswa" class="btn btn-primary"><i class="fa fa-arrow-circle-o-down"></i> Import</a>
-&nbsp;<a href="_714fe0583cb71e00d723bf5b77c46fc5.php?kelas=<?php echo $_72e838785b161ce1f713d6b1a452e270;?>" class="btn btn-primary"><i class="fa fa-save"></i> Download</a>
+&nbsp;<a href="_714fe0583cb71e00d723bf5b77c46fc5.php?kelas=<?php echo $idkelas;?>" class="btn btn-primary"><i class="fa fa-save"></i> Download</a>
 
 </div>
 <div style="height:10px;clear:both;"></div>

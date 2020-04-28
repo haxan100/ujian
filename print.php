@@ -5,30 +5,30 @@ session_start();
 include 'config.php'; 
 include 'configAll.php';
 
-$_b78f9e7c4587e8583ab713f126277f88='';
+$id='';
 if(isset($_GET['id'])){
-	$_b78f9e7c4587e8583ab713f126277f88=$_GET['id'];
+	$id=$_GET['id'];
 }
 
-$_c04df7e5dc078931b278b5a69b691465=0;
-$conn=mysqli_query($conns,"select * from ujian where id_siswa='".$_SESSION['LOGIN_ID']."' and id_paket='".$_b78f9e7c4587e8583ab713f126277f88."'");
+$nilai=0;
+$conn=mysqli_query($conns,"select * from ujian where id_siswa='".$_SESSION['LOGIN_ID']."' and id_paket='".$id."'");
 if(mysqli_num_rows($conn)>0){
 	$sql=mysqli_fetch_array($conn);
-	$_fbd326c813664d903c80679981cafba3=$sql['id_ujian'];
+	$sqli=$sql['id_ujian'];
 	$stat=$sql['selesai'];
-	$_c04df7e5dc078931b278b5a69b691465=$sql['nilai'];
+	$nilai=$sql['nilai'];
 }
-$conn=mysqli_query($conns,"select * from paket where id_paket='".$_b78f9e7c4587e8583ab713f126277f88."'");
+$conn=mysqli_query($conns,"select * from paket where id_paket='".$id."'");
 $sql=mysqli_fetch_array($conn);
-$_4cbd557d34801deff9f3656970cd5398=$sql['nama'];
+$nama=$sql['nama'];
 $conn=mysqli_query($conns,"select * from siswa where id_siswa='".$_SESSION['LOGIN_ID']."'");
 $sql=mysqli_fetch_array($conn);
 $nisn=$sql['nisn'];
 $nama=$sql['nama'];
-$_72e838785b161ce1f713d6b1a452e270=$sql['id_kelas'];
-$conn=mysqli_query($conns,"select * from kelas where id_kelas='".$_72e838785b161ce1f713d6b1a452e270."'");
+$idkelas=$sql['id_kelas'];
+$conn=mysqli_query($conns,"select * from kelas where id_kelas='".$idkelas."'");
 $sql=mysqli_fetch_array($conn);
-$_38895153c69c18db0dbba317a1d8d369=$sql['nama'];
+$nama=$sql['nama'];
 
 ?>
 
@@ -138,7 +138,7 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6,p,ul,ol,form,table,address {
     <td>
 	<center>
 	<strong>HASIL UJIAN<br />
-	<?php echo strtoupper($_4cbd557d34801deff9f3656970cd5398);?></strong>
+	<?php echo strtoupper($nama);?></strong>
 	</center>
 	
 	<div style="clear:both;height:40px;"></div>
@@ -156,7 +156,7 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6,p,ul,ol,form,table,address {
 		  </tr>
 		  <tr>
 			<td style="vertical-align:middle;border-width:0;padding:0px;">KELAS </td>
-			<td style="border-width:0;padding:0px;">: <?php echo $_38895153c69c18db0dbba317a1d8d369;?></td>
+			<td style="border-width:0;padding:0px;">: <?php echo $nama;?></td>
 		  </tr>
 		</table>
 		</div>
@@ -167,7 +167,7 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6,p,ul,ol,form,table,address {
 	<div style="clear:both;height:20px;"></div>
 	<div class="row">
 		<div class="col-lg-12">
-		SKOR HASIL UJIAN ANDA ADALAH : <strong><?php echo $_c04df7e5dc078931b278b5a69b691465;?></strong>
+		SKOR HASIL UJIAN ANDA ADALAH : <strong><?php echo $nilai;?></strong>
 		</div>
 		
 	</div>
