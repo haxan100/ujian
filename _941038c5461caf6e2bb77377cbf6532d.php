@@ -15,7 +15,7 @@ $conn=mysqli_query($conns,"select * from ujian where id_siswa='".$_SESSION['LOGI
 if(mysqli_num_rows($conn)>0){
 	$sql=mysqli_fetch_array($conn);
 	$_fbd326c813664d903c80679981cafba3=$sql['id_ujian'];
-	$_8f128c86231aedb3ad839316104082b1=$sql['selesai'];
+	$stat=$sql['selesai'];
 	$_c04df7e5dc078931b278b5a69b691465=$sql['nilai'];
 }
 $conn=mysqli_query($conns,"select * from paket where id_paket='".$_b78f9e7c4587e8583ab713f126277f88."'");
@@ -23,8 +23,8 @@ $sql=mysqli_fetch_array($conn);
 $_4cbd557d34801deff9f3656970cd5398=$sql['nama'];
 $conn=mysqli_query($conns,"select * from siswa where id_siswa='".$_SESSION['LOGIN_ID']."'");
 $sql=mysqli_fetch_array($conn);
-$_5ab9622c6027ac8a26ecfedc9e0c5f27=$sql['nisn'];
-$_1c52cc9c9ab07c5f9e034d3d9fca55dc=$sql['nama'];
+$nisn=$sql['nisn'];
+$nama=$sql['nama'];
 $_72e838785b161ce1f713d6b1a452e270=$sql['id_kelas'];
 $conn=mysqli_query($conns,"select * from kelas where id_kelas='".$_72e838785b161ce1f713d6b1a452e270."'");
 $sql=mysqli_fetch_array($conn);
@@ -148,11 +148,11 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6,p,ul,ol,form,table,address {
 		<table width="100%" border="0" cellspacing="0" cellpadding="4" class="table">
 		  <tr>
 			<td width="170" style="vertical-align:middle;border-width:0;padding:0px;">USERNAME </td>
-			<td style="border-width:0;padding:0px;">: <?php echo $_5ab9622c6027ac8a26ecfedc9e0c5f27;?></td>
+			<td style="border-width:0;padding:0px;">: <?php echo $nisn;?></td>
 		  </tr>
 		  <tr>
 			<td style="vertical-align:middle;border-width:0;padding:0px;">NAMA PESERTA DIDIK </td>
-			<td style="border-width:0;padding:0px;">: <?php echo $_1c52cc9c9ab07c5f9e034d3d9fca55dc;?></td>
+			<td style="border-width:0;padding:0px;">: <?php echo $nama;?></td>
 		  </tr>
 		  <tr>
 			<td style="vertical-align:middle;border-width:0;padding:0px;">KELAS </td>

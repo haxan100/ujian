@@ -17,13 +17,13 @@ if(mysqli_num_rows($conn)>0){
 	$sql=mysqli_fetch_array($conn);
 	$_fbd326c813664d903c80679981cafba3=$sql['id_ujian'];
 	$_b78f9e7c4587e8583ab713f126277f88=$sql['id_paket'];
-	$_8f128c86231aedb3ad839316104082b1=$sql['selesai'];
+	$stat=$sql['selesai'];
 	$_02202b271eddd150fb9b3a5c12a8639d=$sql['lama_pengerjaan'];
 	$conn=mysqli_query($conns,"select * from paket where id_paket='".$_b78f9e7c4587e8583ab713f126277f88."'");
 	$sql=mysqli_fetch_array($conn);
 	$_36fd7f7111215a7056422e47518363d7=$sql['waktu_pengerjaan']*60;
 	
-	if($_8f128c86231aedb3ad839316104082b1=='Y'){
+	if($stat=='Y'){
 		exit("<script>location.href='".$look."?hal=ujian&id=".$_b78f9e7c4587e8583ab713f126277f88."';</script>");
 	}else{
 		if($_02202b271eddd150fb9b3a5c12a8639d >= $_36fd7f7111215a7056422e47518363d7){

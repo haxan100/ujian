@@ -32,19 +32,19 @@ if(isset($_POST['mulai'])){
 	}
 	exit("<script>location.href='".$look."_07b8b0f04e1dbda1240ce57d13aa6d1a.php';</script>");
 }
-$_8f128c86231aedb3ad839316104082b1='N';
+$stat='N';
 $_c04df7e5dc078931b278b5a69b691465=0;
 $conn=mysqli_query($conns,"select * from ujian where id_siswa='".$_SESSION['LOGIN_ID']."' and id_paket='".$_b78f9e7c4587e8583ab713f126277f88."'");
 if(mysqli_num_rows($conn)>0){
 	$sql=mysqli_fetch_array($conn);
 	$_fbd326c813664d903c80679981cafba3=$sql['id_ujian'];
-	$_8f128c86231aedb3ad839316104082b1=$sql['selesai'];
+	$stat=$sql['selesai'];
 	$_c04df7e5dc078931b278b5a69b691465=$sql['nilai'];
 }
 $conn=mysqli_query($conns,"select * from siswa where id_siswa='".$_SESSION['LOGIN_ID']."'");
 $sql=mysqli_fetch_array($conn);
-$_5ab9622c6027ac8a26ecfedc9e0c5f27=$sql['nisn'];
-$_1c52cc9c9ab07c5f9e034d3d9fca55dc=$sql['nama'];
+$nisn=$sql['nisn'];
+$nama=$sql['nama'];
 $_72e838785b161ce1f713d6b1a452e270=$sql['id_kelas'];
 $conn=mysqli_query($conns,"select * from kelas where id_kelas='".$_72e838785b161ce1f713d6b1a452e270."'");
 $sql=mysqli_fetch_array($conn);
@@ -54,7 +54,7 @@ $_38895153c69c18db0dbba317a1d8d369=$sql['nama'];
 <div class="row">
 	<div class="col-lg-12">
 		<h1 class="page-header" style="margin-top:0">
-		<?php if($_8f128c86231aedb3ad839316104082b1=='Y'){echo 'Hasil Ujian';}else{echo 'Ujian';}?>
+		<?php if($stat=='Y'){echo 'Hasil Ujian';}else{echo 'Ujian';}?>
 		</h1>
 	</div>
 </div>
@@ -64,7 +64,7 @@ if($_b78f9e7c4587e8583ab713f126277f88==''){
 }else{ 
 ?>
 <?php
-if($_8f128c86231aedb3ad839316104082b1=='Y'){
+if($stat=='Y'){
 ?>
 <div class="row">
 	<div class="col-lg-12">
@@ -72,11 +72,11 @@ if($_8f128c86231aedb3ad839316104082b1=='Y'){
 			<table width="100%" border="0" cellspacing="4" cellpadding="4" class="table">
 			  <tr>
 				<td width="150" style="vertical-align:middle;border-top-width:0;">Username</td>
-				<td style="border-top-width:0;">: <?php echo $_5ab9622c6027ac8a26ecfedc9e0c5f27;?></td>
+				<td style="border-top-width:0;">: <?php echo $nisn;?></td>
 			  </tr>
 			  <tr>
 				<td style="vertical-align:middle;">Nama Siswa</td>
-				<td>: <?php echo $_1c52cc9c9ab07c5f9e034d3d9fca55dc;?></td>
+				<td>: <?php echo $nama;?></td>
 			  </tr>
 			  <tr>
 				<td style="vertical-align:middle;">Kelas</td>

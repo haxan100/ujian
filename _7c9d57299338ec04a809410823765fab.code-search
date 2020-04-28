@@ -8,7 +8,7 @@ hal.php:
 
 hal2.php:
   58: <a href="./" class="list-group-item <?php if($sesi==''){echo 'active';}?>">Dashboard</a>
-  59: <!--<a href="?hal=tes" class="list-group-item <?php if($sesi=='tes'){echo 'active';}?>"><?php if($_8f128c86231aedb3ad839316104082b1=='Y'){echo 'Hasil Ujian';}else{echo 'Ujian';}?></a>-->
+  59: <!--<a href="?hal=tes" class="list-group-item <?php if($sesi=='tes'){echo 'active';}?>"><?php if($stat=='Y'){echo 'Hasil Ujian';}else{echo 'Ujian';}?></a>-->
   60: <a href="?hal=paket_ujian" class="list-group-item <?php if($sesi=='paket_ujian' or $sesi=='paket_ujian'){echo 'active';}?>">Paket Ujian</a>
   61: <a href="?hal=profil" class="list-group-item <?php if($sesi=='profil'){echo 'active';}?>">Profil Siswa</a>
   62: <a href="?hal=ubah_password" class="list-group-item <?php if($sesi=='ubah_password'){echo 'active';}?>">Ubah Password</a>

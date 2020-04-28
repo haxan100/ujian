@@ -1,11 +1,11 @@
 <?php if(!defined('myweb')){ exit(); }?>
 <?php
-$_8f128c86231aedb3ad839316104082b1='N';
+$stat='N';
 if(isset($_SESSION['LOGIN_ID'])){
 	$conn=mysqli_query($conns,"select selesai from ujian where id_siswa='".$_SESSION['LOGIN_ID']."'");
 	if(mysqli_num_rows($conn)>0){
 		$sql=mysqli_fetch_array($conn);
-		$_8f128c86231aedb3ad839316104082b1=$sql['selesai'];
+		$stat=$sql['selesai'];
 	}
 }
 

@@ -32,7 +32,7 @@ $_510c1613a4f826b5612ae2ac9bdeb894=$sql['nama'];
                         <?php if($_2d2649677c494e9597d976bbb9df65e0['type']=='admin'){?>
 						<li><a href="?hal=ubah_password"><i class="fa fa-lock fa-fw"></i> Ubah Password</a></li>
                         <?php } ?>
-						<li><a href="_2838024f07efa3669059a49ef2f79fe5.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+						<li><a href="redir.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
