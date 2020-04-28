@@ -44,7 +44,7 @@ $slook=$cek;
 if($_cc22937b56838835a601f50e2182877b==true and !isset($_SESSION['LOGIN_ID'])){
 	exit("<script>location.href='".$look."';</script>");
 }
-if(count($_48a1844952b5c9fadf189204a5103503)>0 and !in_array($_2d2649677c494e9597d976bbb9df65e0['type'],$_48a1844952b5c9fadf189204a5103503)){
+if(count($_48a1844952b5c9fadf189204a5103503)>0 and !in_array($id['type'],$_48a1844952b5c9fadf189204a5103503)){
 	exit("<script>location.href='".$look."';</script>");
 }
 ?>

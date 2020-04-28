@@ -48,12 +48,12 @@ while($sql=mysqli_fetch_array($conn)){
 	$nama[]=$sql['id_kelas'];
 }
 
-$_a6abb7c18ac54429027c2440b5329b86='<option value="">Pilih Kelas</option>';
+$opsiKelas='<option value="">Pilih Kelas</option>';
 if(count($nama)>0){
 	$conn=mysqli_query($conns,"select * from kelas where id_kelas in (".implode(',',$nama).") order by nama");
 	while($sql=mysqli_fetch_array($conn)){
 		if($idkelas==$sql['id_kelas']){$selectOpsi='selected';}else{$selectOpsi='';}
-		$_a6abb7c18ac54429027c2440b5329b86.='<option value="'.$sql['id_kelas'].'" '.$selectOpsi.'>'.$sql['nama'].'</option>';
+		$opsiKelas.='<option value="'.$sql['id_kelas'].'" '.$selectOpsi.'>'.$sql['nama'].'</option>';
 	}
 }
 ?>
@@ -71,7 +71,7 @@ if(count($nama)>0){
 <form action="" name="" method="get">
 <input name="hal" type="hidden" value="pengumuman" />
 <select name="paket" class="form-control" onchange="submit()" style="width:300px;float:left;margin-right:5px;"><?php echo $opsi;?></select>
-<select name="kelas" class="form-control" onchange="submit()" style="width:300px;float:left;"><?php echo $_a6abb7c18ac54429027c2440b5329b86;?></select>
+<select name="kelas" class="form-control" onchange="submit()" style="width:300px;float:left;"><?php echo $opsiKelas;?></select>
 </form>
 <div style="clear:both;height:10px;"></div>
 <?php 

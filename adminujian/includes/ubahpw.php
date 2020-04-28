@@ -8,8 +8,8 @@ if(isset($_POST['save'])){
 		if($_POST['password']!=$_POST['password1']){
 			$err='<strong>Error !</strong> Password baru tidak sama.';
 		}else{
-			if(mysqli_num_rows(mysqli_query($conns,"select * from user where id_user='".$_2d2649677c494e9597d976bbb9df65e0['id']."' and password='".md5($_POST['passwordlama'])."'"))>0){
-				mysqli_query($conns,"update user set password='".md5($_POST['password'])."' where id_user='".$_2d2649677c494e9597d976bbb9df65e0['id']."'");
+			if(mysqli_num_rows(mysqli_query($conns,"select * from user where id_user='".$id['id']."' and password='".md5($_POST['passwordlama'])."'"))>0){
+				mysqli_query($conns,"update user set password='".md5($_POST['password'])."' where id_user='".$id['id']."'");
 				$notif='<strong>Sukses !</strong> Password baru berhasil disimpan.';
 			}else{
 				$err='<strong>Error !</strong> Password Anda tidak sesuai.';

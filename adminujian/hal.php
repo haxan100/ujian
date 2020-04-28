@@ -29,7 +29,7 @@ $_510c1613a4f826b5612ae2ac9bdeb894=$sql['nama'];
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <?php if($_2d2649677c494e9597d976bbb9df65e0['type']=='admin'){?>
+                        <?php if($id['type']=='admin'){?>
 						<li><a href="?hal=ubah_password"><i class="fa fa-lock fa-fw"></i> Ubah Password</a></li>
                         <?php } ?>
 						<li><a href="redir.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>

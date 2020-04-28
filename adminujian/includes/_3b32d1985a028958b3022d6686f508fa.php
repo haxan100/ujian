@@ -132,11 +132,11 @@ for($mulai=0;$mulai<count($jenisKelamin);$mulai++){
 	if(strtolower($jenisKelamin[$mulai][0])==strtolower($gender)){$selectOpsi='selected';}else{$selectOpsi='';}
 	$opsi.='<option value="'.$jenisKelamin[$mulai][0].'" '.$selectOpsi.'>'.$jenisKelamin[$mulai][1].'</option>';
 }
-$_a6abb7c18ac54429027c2440b5329b86='<option value=""></option>';
+$opsiKelas='<option value=""></option>';
 $conn=mysqli_query($conns,"select * from kelas order by nama");
 while($sql=mysqli_fetch_array($conn)){
 	if($sql['id_kelas']==$idkelas){$selectOpsi='selected';}else{$selectOpsi='';}
-	$_a6abb7c18ac54429027c2440b5329b86.='<option value="'.$sql['id_kelas'].'" '.$selectOpsi.'>'.$sql['nama'].'</option>';
+	$opsiKelas.='<option value="'.$sql['id_kelas'].'" '.$selectOpsi.'>'.$sql['nama'].'</option>';
 }
 
 if($_d35a39212fd75e833aea38f90831b2cb=='add'){$_06c518f70e97b19c7ec907f36542ce6e='INPUT DATA SISWA';}else{$_06c518f70e97b19c7ec907f36542ce6e='EDIT DATA SISWA';}
@@ -201,7 +201,7 @@ if(!empty($err)){
 <table width="100%" border="0" cellspacing="4" cellpadding="4" class="table">
   <tr>
 	<td style="vertical-align:middle;border-top-width:0;">Kelas<span class="required">*</span> </td>
-	<td style="vertical-align:middle;border-top-width:0;"><select name="kelas" id="kelas" class="form-control form-required" style="width:300px;"><?php echo $_a6abb7c18ac54429027c2440b5329b86;?></select></td>
+	<td style="vertical-align:middle;border-top-width:0;"><select name="kelas" id="kelas" class="form-control form-required" style="width:300px;"><?php echo $opsiKelas;?></select></td>
 	<td style="border-top-width:0;" rowspan="6" width="220">
 	<div class="thumbnail">
       <img src="<?php echo $gambar;?>" alt="Foto depan" width="200" /><center>Foto </center>

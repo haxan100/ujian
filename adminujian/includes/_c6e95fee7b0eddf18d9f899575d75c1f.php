@@ -80,17 +80,17 @@ if(mysqli_num_rows($conn) > 0){
 		$_517eb60ce7142569b3b2229552f16958=$awal;
 	}
 }
-$_a6abb7c18ac54429027c2440b5329b86='<option value="">Pilih Kelas</option>';
+$opsiKelas='<option value="">Pilih Kelas</option>';
 $conn=mysqli_query($conns,"select * from kelas order by nama");
 while($sql=mysqli_fetch_array($conn)){
 	if($idkelas==$sql['id_kelas']){$selectOpsi='selected';}else{$selectOpsi='';}
-	$_a6abb7c18ac54429027c2440b5329b86.='<option value="'.$sql['id_kelas'].'" '.$selectOpsi.'>'.$sql['nama'].'</option>';
+	$opsiKelas.='<option value="'.$sql['id_kelas'].'" '.$selectOpsi.'>'.$sql['nama'].'</option>';
 }
 
 ?>
 <form id="form_siswa" action="" method="get">
 	<input name="paket" type="hidden" value="<?php echo $id;?>" />
-	<select name="kelas" class="form-control" style="width:300px;float:left;margin-right:5px;"><?php echo $_a6abb7c18ac54429027c2440b5329b86;?></select>
+	<select name="kelas" class="form-control" style="width:300px;float:left;margin-right:5px;"><?php echo $opsiKelas;?></select>
 
 	<input name="q" placeholder="Pencarian" type="text" class="form-control" value="<?php echo $_36923cf62618d1b9981740738971e651;?>" style="width:200px;float:left;margin-right:5px;" /> <button type="submit" class="btn btn-primary">Cari</button>
 	<div style="clear:both;height:10px;"></div>

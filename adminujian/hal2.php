@@ -1,6 +1,6 @@
 <?php if(!defined('myweb')){ exit(); }?>
 <?php
-if($_2d2649677c494e9597d976bbb9df65e0['type']=='admin'){
+if($id['type']=='admin'){
 ?>
 <div class="navbar-default sidebar" role="navigation">
 	<div class="sidebar-nav navbar-collapse">

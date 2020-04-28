@@ -87,11 +87,11 @@ if(mysqli_num_rows($conn) > 0){
 	}
 }
 
-$_a6abb7c18ac54429027c2440b5329b86='<option value="">Semua Kelas</option>';
+$opsiKelas='<option value="">Semua Kelas</option>';
 $conn=mysqli_query($conns,"select * from kelas order by nama");
 while($sql=mysqli_fetch_array($conn)){
 	if($idkelas==$sql['id_kelas']){$selectOpsi='selected';}else{$selectOpsi='';}
-	$_a6abb7c18ac54429027c2440b5329b86.='<option value="'.$sql['id_kelas'].'" '.$selectOpsi.'>'.$sql['nama'].'</option>';
+	$opsiKelas.='<option value="'.$sql['id_kelas'].'" '.$selectOpsi.'>'.$sql['nama'].'</option>';
 }
 
 ?>
@@ -122,7 +122,7 @@ function DeleteSelectedConfirm(){
 
 <form action="" name="" method="get" style="float:left">
 <input name="hal" type="hidden" value="siswa" />
-<select name="kelas" class="form-control" onchange="submit()" style="width:150px;float:left;margin-right:5px;"><?php echo $_a6abb7c18ac54429027c2440b5329b86;?></select>
+<select name="kelas" class="form-control" onchange="submit()" style="width:150px;float:left;margin-right:5px;"><?php echo $opsiKelas;?></select>
 <input name="q" type="text" value="<?php echo $_36923cf62618d1b9981740738971e651;?>" class="form-control" placeholder="Pencarian" style="float:left;width:150px;" /> &nbsp;<button type="submit" name="" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> </button>
 </form>
 <div style="float:right">
