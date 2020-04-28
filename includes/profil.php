@@ -1,12 +1,12 @@
 <?php if(!defined('myweb')){ exit(); }?>
 <?php
-$_f0619632751681b5561b70caf2920a71=array('L'=>'Laki-laki','P'=>'Perempuan');
+$gender=array('L'=>'Laki-laki','P'=>'Perempuan');
 
 $conn=mysqli_query($conns,"select * from siswa where id_siswa='".$_SESSION['LOGIN_ID']."'");
 $sql=mysqli_fetch_array($conn);
 $nisn=$sql['nisn'];
-$_31985b26056f955fec6db8f46f87653f=$sql['nama'];
-$_f0619632751681b5561b70caf2920a71=$_f0619632751681b5561b70caf2920a71[$sql['gender']];
+$nama=$sql['nama'];
+$gender=$gender[$sql['gender']];
 $idkelas=$sql['id_kelas'];
 
 $conn=mysqli_query($conns,"select * from kelas where id_kelas='".$idkelas."'");
@@ -27,11 +27,11 @@ $nama=$sql['nama'];
 	  </tr>
 	  <tr>
 		<td style="vertical-align:middle;">Nama Siswa</td>
-		<td>: <?php echo $_31985b26056f955fec6db8f46f87653f;?></td>
+		<td>: <?php echo $nama;?></td>
 	  </tr>
 	  <tr>
 		<td style="vertical-align:middle;">Jenis Kelamin</td>
-		<td>: <?php echo $_f0619632751681b5561b70caf2920a71;?></td>
+		<td>: <?php echo $gender;?></td>
 	  </tr>
 	  <tr>
 		<td style="vertical-align:middle;">Kelas</td>

@@ -2,7 +2,7 @@
 <?php
 
 $pengumuman1='?hal=statistik';
-$_4bf2fdb3ab37a41b537e7360f7e4b007='?hal=statistik';
+$regis='?hal=statistik';
 
 $id_periode='';
 if(isset($_GET['periode'])){
@@ -45,8 +45,8 @@ for($mulai=0;$mulai<count($hitung);$mulai++){
 $_6ce2e221e9de82dc1b70b582fb6e5a98='<option value="">Pilih Periode</option>';
 $conn=mysqli_query($conns,"select * from periode order by id_periode");
 while($sql=mysqli_fetch_array($conn)){
-	if($id_periode==$sql['id_periode']){$_3cb9cdaed257453cfa56b9ef81b44c57='selected';}else{$_3cb9cdaed257453cfa56b9ef81b44c57='';}
-	$_6ce2e221e9de82dc1b70b582fb6e5a98.='<option value="'.$sql['id_periode'].'" '.$_3cb9cdaed257453cfa56b9ef81b44c57.'>'.$sql['nama'].'</option>';
+	if($id_periode==$sql['id_periode']){$selectOpsi='selected';}else{$selectOpsi='';}
+	$_6ce2e221e9de82dc1b70b582fb6e5a98.='<option value="'.$sql['id_periode'].'" '.$selectOpsi.'>'.$sql['nama'].'</option>';
 }
 
 

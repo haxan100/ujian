@@ -1,7 +1,7 @@
 <?php if(!defined('myweb')){ exit(); }?>
 <?php
 $pengumuman1='?hal=home';
-$_4bf2fdb3ab37a41b537e7360f7e4b007='?hal=home';
+$regis='?hal=home';
 
 if(isset($_POST['save'])){
 	$_21eff29b583aa9be1b965eb96e6c56ed=$_POST['detail'];
@@ -38,7 +38,7 @@ if(isset($_POST['save'])){
 	<div class="col-lg-12">
 
 
-<form action="<?php echo $_4bf2fdb3ab37a41b537e7360f7e4b007;?>" name="" method="post" enctype="multipart/form-data">
+<form action="<?php echo $regis;?>" name="" method="post" enctype="multipart/form-data">
 <?php
 if(!empty($err)){
 	echo '

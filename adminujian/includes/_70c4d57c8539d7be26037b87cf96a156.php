@@ -1,7 +1,7 @@
 <?php if(!defined('myweb')){ exit(); }?>
 <?php
 $pengumuman1='?hal=soal';
-$_4bf2fdb3ab37a41b537e7360f7e4b007='?hal=update_soal';
+$regis='?hal=update_soal';
 
 if(isset($_POST['save'])){
 	$_3584859062ea9ecfb39b93bfcef8e869=$_POST['id'];
@@ -66,8 +66,8 @@ if(isset($_POST['save'])){
 $_3718d16a4c63e6e0d669e38e63f8c5c0='<option value=""></option>';
 $conn=mysqli_query($conns,"select * from pelajaran order by nama");
 while($sql=mysqli_fetch_array($conn)){
-	if($sql['id_pelajaran']==$_5bbbff8933f7b8be381684bd463e6d16){$_3cb9cdaed257453cfa56b9ef81b44c57='selected';}else{$_3cb9cdaed257453cfa56b9ef81b44c57='';}
-	$_3718d16a4c63e6e0d669e38e63f8c5c0.='<option value="'.$sql['id_pelajaran'].'" '.$_3cb9cdaed257453cfa56b9ef81b44c57.'>'.$sql['nama'].'</option>';
+	if($sql['id_pelajaran']==$_5bbbff8933f7b8be381684bd463e6d16){$selectOpsi='selected';}else{$selectOpsi='';}
+	$_3718d16a4c63e6e0d669e38e63f8c5c0.='<option value="'.$sql['id_pelajaran'].'" '.$selectOpsi.'>'.$sql['nama'].'</option>';
 }
 
 if($_d35a39212fd75e833aea38f90831b2cb=='add'){$_06c518f70e97b19c7ec907f36542ce6e='INPUT DATA SOAL';}else{$_06c518f70e97b19c7ec907f36542ce6e='EDIT DATA SOAL';}
@@ -80,7 +80,7 @@ $(document).ready(function(){
 	CKEDITOR.config.enterMode = CKEDITOR.ENTER_BR;
 	$('#save').click(function() {
 		$('#form_soal').attr('target','');
-		$('#form_soal').attr('action','<?php echo $_4bf2fdb3ab37a41b537e7360f7e4b007;?>');
+		$('#form_soal').attr('action','<?php echo $regis;?>');
 		next=true;
 		/*$('.form-required').each(function( index ) {
 			if($( this ).val()==''){
@@ -117,7 +117,7 @@ $(document).ready(function(){
 	</div>
 </div>
 
-<form action="<?php echo $_4bf2fdb3ab37a41b537e7360f7e4b007;?>" name="" id="form_soal" method="post" enctype="multipart/form-data">
+<form action="<?php echo $regis;?>" name="" id="form_soal" method="post" enctype="multipart/form-data">
 <input name="id" type="hidden" value="<?php echo $_3584859062ea9ecfb39b93bfcef8e869;?>">
 <input name="action" type="hidden" value="<?php echo $_d35a39212fd75e833aea38f90831b2cb;?>">
 

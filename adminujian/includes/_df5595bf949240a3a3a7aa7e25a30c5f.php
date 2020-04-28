@@ -1,7 +1,7 @@
 <?php if(!defined('myweb')){ exit(); }?>
 <?php
 $pengumuman1='?hal=soal';
-$_4bf2fdb3ab37a41b537e7360f7e4b007='?hal=import_soal';
+$regis='?hal=import_soal';
 
 $err='';
 $notif=false;
@@ -61,9 +61,9 @@ if(isset($_POST['save'])){
 		$conn=mysqli_query($conns,"select * from soal_tmp where nisn<>''");
 		while($sql=mysqli_fetch_array($conn)){
 			$nisn=$sql['nisn'];
-			$_31985b26056f955fec6db8f46f87653f=$sql['nama'];
-			$_f0619632751681b5561b70caf2920a71=$sql['gender'];
-			$_b74a36690339daf77274de5ad720d6eb=$sql['alamat'];
+			$nama=$sql['nama'];
+			$gender=$sql['gender'];
+			$alamat=$sql['alamat'];
 			$nama=$sql['kelas'];
 			$idkelas='';
 			$juml=mysqli_query($conns,"select id_kelas from kelas where kode='".$nama."'");
@@ -72,9 +72,9 @@ if(isset($_POST['save'])){
 				$idkelas=$totAll['id_kelas'];
 			}
 			if(mysqli_num_rows(mysqli_query("select nisn from siswa where nisn='".$nisn."'"))>0){
-				$juml="update siswa set nama='".$_31985b26056f955fec6db8f46f87653f."', alamat='".$_b74a36690339daf77274de5ad720d6eb."', gender='".$_f0619632751681b5561b70caf2920a71."', id_kelas='".$idkelas."' where nisn='".$nisn."'";
+				$juml="update siswa set nama='".$nama."', alamat='".$alamat."', gender='".$gender."', id_kelas='".$idkelas."' where nisn='".$nisn."'";
 			}else{
-				$juml="insert into siswa(nisn,nama,alamat,gender,id_kelas) values('".$nisn."','".$_31985b26056f955fec6db8f46f87653f."','".$_b74a36690339daf77274de5ad720d6eb."','".$_f0619632751681b5561b70caf2920a71."','".$idkelas."')";
+				$juml="insert into siswa(nisn,nama,alamat,gender,id_kelas) values('".$nisn."','".$nama."','".$alamat."','".$gender."','".$idkelas."')";
 			}
 			mysqli_query($conns,$juml);
 		}
@@ -86,7 +86,7 @@ if(isset($_POST['save'])){
 $_3718d16a4c63e6e0d669e38e63f8c5c0='<option value=""></option>';
 $conn=mysqli_query($conns,"select * from pelajaran order by nama");
 while($sql=mysqli_fetch_array($conn)){
-	//if($sql['id_pelajaran']==$_5bbbff8933f7b8be381684bd463e6d16){$_3cb9cdaed257453cfa56b9ef81b44c57='selected';}else{$_3cb9cdaed257453cfa56b9ef81b44c57='';}
+	//if($sql['id_pelajaran']==$_5bbbff8933f7b8be381684bd463e6d16){$selectOpsi='selected';}else{$selectOpsi='';}
 	$_3718d16a4c63e6e0d669e38e63f8c5c0.='<option value="'.$sql['id_pelajaran'].'">'.$sql['nama'].'</option>';
 }
 
@@ -96,7 +96,7 @@ while($sql=mysqli_fetch_array($conn)){
 $(document).ready(function(){
 	$('#save').click(function() {
 		$('#form_import').attr('target','');
-		$('#form_import').attr('action','<?php echo $_4bf2fdb3ab37a41b537e7360f7e4b007;?>');
+		$('#form_import').attr('action','<?php echo $regis;?>');
 		//$('#pesan_error').hide();
 		next=true;
 		$('.form-required').each(function( index ) {
@@ -120,7 +120,7 @@ $(document).ready(function(){
 <div class="row">
 	<div class="col-lg-12">
 
-<form action="<?php echo $_4bf2fdb3ab37a41b537e7360f7e4b007;?>" name="" id="form_import" method="post" enctype="multipart/form-data">
+<form action="<?php echo $regis;?>" name="" id="form_import" method="post" enctype="multipart/form-data">
 <?php
 if(!empty($err)){
 	echo '

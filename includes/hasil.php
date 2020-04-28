@@ -2,7 +2,7 @@
 <?php
 
 $pengumuman1='?hal=pengumuman';
-$_4bf2fdb3ab37a41b537e7360f7e4b007='?hal=pengumuman';
+$regis='?hal=pengumuman';
 
 $id='';
 if(isset($_GET['paket'])){
@@ -39,8 +39,8 @@ if(mysqli_num_rows($conn) > 0){
 $opsi='<option value="">Pilih Paket Ujian</option>';
 $conn=mysqli_query($conns,"select * from paket where aktif='Y' order by nama");
 while($sql=mysqli_fetch_array($conn)){
-	if($id==$sql['id_paket']){$_3cb9cdaed257453cfa56b9ef81b44c57='selected';}else{$_3cb9cdaed257453cfa56b9ef81b44c57='';}
-	$opsi.='<option value="'.$sql['id_paket'].'" '.$_3cb9cdaed257453cfa56b9ef81b44c57.'>'.$sql['nama'].'</option>';
+	if($id==$sql['id_paket']){$selectOpsi='selected';}else{$selectOpsi='';}
+	$opsi.='<option value="'.$sql['id_paket'].'" '.$selectOpsi.'>'.$sql['nama'].'</option>';
 }
 $nama=array();
 $conn=mysqli_query($conns,"select siswa.id_kelas from siswa inner join peserta on siswa.id_siswa=peserta.id_siswa where peserta.id_paket='".$id."'");
@@ -52,8 +52,8 @@ $_a6abb7c18ac54429027c2440b5329b86='<option value="">Pilih Kelas</option>';
 if(count($nama)>0){
 	$conn=mysqli_query($conns,"select * from kelas where id_kelas in (".implode(',',$nama).") order by nama");
 	while($sql=mysqli_fetch_array($conn)){
-		if($idkelas==$sql['id_kelas']){$_3cb9cdaed257453cfa56b9ef81b44c57='selected';}else{$_3cb9cdaed257453cfa56b9ef81b44c57='';}
-		$_a6abb7c18ac54429027c2440b5329b86.='<option value="'.$sql['id_kelas'].'" '.$_3cb9cdaed257453cfa56b9ef81b44c57.'>'.$sql['nama'].'</option>';
+		if($idkelas==$sql['id_kelas']){$selectOpsi='selected';}else{$selectOpsi='';}
+		$_a6abb7c18ac54429027c2440b5329b86.='<option value="'.$sql['id_kelas'].'" '.$selectOpsi.'>'.$sql['nama'].'</option>';
 	}
 }
 ?>

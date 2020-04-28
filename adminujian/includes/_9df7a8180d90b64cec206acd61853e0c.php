@@ -1,37 +1,37 @@
 <?php if(!defined('myweb')){ exit(); }?>
 <?php
 $pengumuman1='?hal=paket';
-$_4bf2fdb3ab37a41b537e7360f7e4b007='?hal=update_paket';
+$regis='?hal=update_paket';
 
 if(isset($_POST['save'])){
 	$_3584859062ea9ecfb39b93bfcef8e869=$_POST['id'];
 	$_d35a39212fd75e833aea38f90831b2cb=$_POST['action'];
-	$_31985b26056f955fec6db8f46f87653f=$_POST['nama'];
+	$nama=$_POST['nama'];
 	$waktu=$_POST['waktu_pengerjaan'];
 
-	if(empty($_31985b26056f955fec6db8f46f87653f) or empty($waktu)){
+	if(empty($nama) or empty($waktu)){
 		$err='<strong>Error !</strong> Lengkapi form di bawah ini.';
 	}else{
 		if($_d35a39212fd75e833aea38f90831b2cb=='add'){
-			$conn="insert into paket(nama,waktu_pengerjaan) values('".$_31985b26056f955fec6db8f46f87653f."','".$waktu."')";
+			$conn="insert into paket(nama,waktu_pengerjaan) values('".$nama."','".$waktu."')";
 			mysqli_query($conns,$conn);
 			exit("<script>location.href='".$pengumuman1."';</script>");
 		}
 		if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
-			$conn="update paket set nama='".$_31985b26056f955fec6db8f46f87653f."',waktu_pengerjaan='".$waktu."' where id_paket='".$_3584859062ea9ecfb39b93bfcef8e869."'";
+			$conn="update paket set nama='".$nama."',waktu_pengerjaan='".$waktu."' where id_paket='".$_3584859062ea9ecfb39b93bfcef8e869."'";
 			mysqli_query($conns,$conn);
 			exit("<script>location.href='".$pengumuman1."';</script>");
 		}
 		
 	}
 }else{
-	$_31985b26056f955fec6db8f46f87653f='';$waktu='';
+	$nama='';$waktu='';
 	if(empty($_GET['action'])){$_d35a39212fd75e833aea38f90831b2cb='add';}else{$_d35a39212fd75e833aea38f90831b2cb=$_GET['action'];}
 	if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
 		$_3584859062ea9ecfb39b93bfcef8e869=$_GET['id'];
 		$conn=mysqli_query($conns,"select * from paket where id_paket='".$_3584859062ea9ecfb39b93bfcef8e869."'");
 		$sql=mysqli_fetch_array($conn);
-		$_31985b26056f955fec6db8f46f87653f=$sql['nama'];
+		$nama=$sql['nama'];
 		$waktu=$sql['waktu_pengerjaan'];
 	}
 	if($_d35a39212fd75e833aea38f90831b2cb=='delete'){
@@ -57,7 +57,7 @@ if($_d35a39212fd75e833aea38f90831b2cb=='add'){$_06c518f70e97b19c7ec907f36542ce6e
 	</div>
 </div>
 
-<form action="<?php echo $_4bf2fdb3ab37a41b537e7360f7e4b007;?>" name="" method="post" enctype="multipart/form-data">
+<form action="<?php echo $regis;?>" name="" method="post" enctype="multipart/form-data">
 <input name="id" type="hidden" value="<?php echo $_3584859062ea9ecfb39b93bfcef8e869;?>">
 <input name="action" type="hidden" value="<?php echo $_d35a39212fd75e833aea38f90831b2cb;?>">
 
@@ -75,7 +75,7 @@ if($_d35a39212fd75e833aea38f90831b2cb=='add'){$_06c518f70e97b19c7ec907f36542ce6e
 	<table width="100%" border="0" cellspacing="4" cellpadding="4" class="table">
 	  <tr>
 		<td width="150" style="vertical-align:middle;border-top-width:0;">Nama Paket Ujian/Tes<span class="required">*</span> </td>
-		<td style="border-top-width:0;"><input name="nama" type="text" class="form-control" value="<?php echo $_31985b26056f955fec6db8f46f87653f;?>" style="width:300px;"></td>
+		<td style="border-top-width:0;"><input name="nama" type="text" class="form-control" value="<?php echo $nama;?>" style="width:300px;"></td>
 	  </tr>
 	  <tr>
 		<td style="vertical-align:middle;">Waktu Pengerjaan<span class="required">*</span> </td>

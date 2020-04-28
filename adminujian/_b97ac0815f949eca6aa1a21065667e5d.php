@@ -26,13 +26,13 @@ while($sql=mysqli_fetch_array($conn)){
 	$_3e33e017cd76b9b7e6c7364fb91e2e90=trim($totAll['jawaban']);
 	$juml=mysqli_query($conns,"select jawaban from soal_jawaban where id_soal='".$sql['id_soal']."' and kode='D'");
 	$totAll=mysqli_fetch_array($juml);
-	$_20fd65e9c7406034fadc682f06732868=trim($totAll['jawaban']);
+	$lists=trim($totAll['jawaban']);
 	$juml=mysqli_query($conns,"select jawaban from soal_jawaban where id_soal='".$sql['id_soal']."' and kode='E'");
 	$totAll=mysqli_fetch_array($juml);
 	$_0d54236da20594ec13fc81b209733931=trim($totAll['jawaban']);
 	
 	$_52f720bdaf922c68904e386cbf0cd227++;
-	$_7318a606a3118d468dae7078098fba7b.=$_52f720bdaf922c68904e386cbf0cd227."|".trim($sql['detail'])."|".$_52d5b5e885b21331cfd2304be571de0b."|".$_da3e61414e50aee968132f03d265e0cf."|".$_3e33e017cd76b9b7e6c7364fb91e2e90."|".$_20fd65e9c7406034fadc682f06732868."|".$_0d54236da20594ec13fc81b209733931."|".$sql['kunci']."\n";
+	$_7318a606a3118d468dae7078098fba7b.=$_52f720bdaf922c68904e386cbf0cd227."|".trim($sql['detail'])."|".$_52d5b5e885b21331cfd2304be571de0b."|".$_da3e61414e50aee968132f03d265e0cf."|".$_3e33e017cd76b9b7e6c7364fb91e2e90."|".$lists."|".$_0d54236da20594ec13fc81b209733931."|".$sql['kunci']."\n";
 }
 
 $_b0d5d47f3d2e32a124c14253aba3976a=array('No','Soal','A','B','C','D','E','Kunci');

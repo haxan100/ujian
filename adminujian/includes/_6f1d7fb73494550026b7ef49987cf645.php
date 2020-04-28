@@ -1,22 +1,22 @@
 <?php if(!defined('myweb')){ exit(); }?>
 <?php
 $pengumuman1='?hal=pelajaran';
-$_4bf2fdb3ab37a41b537e7360f7e4b007='?hal=update_pelajaran';
+$regis='?hal=update_pelajaran';
 
 if(isset($_POST['save'])){
 	$_3584859062ea9ecfb39b93bfcef8e869=$_POST['id'];
 	$_d35a39212fd75e833aea38f90831b2cb=$_POST['action'];
-	$_31985b26056f955fec6db8f46f87653f=$_POST['nama'];
+	$nama=$_POST['nama'];
 	$_f77c5a659797b862f0fc544aa9a0c023=$_POST['kode'];
 
-	if(empty($_f77c5a659797b862f0fc544aa9a0c023) or empty($_31985b26056f955fec6db8f46f87653f)){
+	if(empty($_f77c5a659797b862f0fc544aa9a0c023) or empty($nama)){
 		$err='<strong>Error !</strong> Lengkapi form di bawah ini.';
 	}else{
 		if($_d35a39212fd75e833aea38f90831b2cb=='add'){
 			if(mysqli_num_rows(mysqli_query($conns,"select * from pelajaran where kode='".$_f77c5a659797b862f0fc544aa9a0c023."'"))>0){
 				$err='Kode sudah terdaftar. Silahkan daftarkan kode yang lain.';
 			}else{
-				$conn="insert into pelajaran(kode, nama) values('".$_f77c5a659797b862f0fc544aa9a0c023."', '".$_31985b26056f955fec6db8f46f87653f."')";
+				$conn="insert into pelajaran(kode, nama) values('".$_f77c5a659797b862f0fc544aa9a0c023."', '".$nama."')";
 				mysqli_query($conns,$conn);
 				exit("<script>location.href='".$pengumuman1."';</script>");
 			}
@@ -28,7 +28,7 @@ if(isset($_POST['save'])){
 			if(mysqli_num_rows(mysqli_query($conns,"select * from pelajaran where kode='".$_f77c5a659797b862f0fc544aa9a0c023."' and kode<>'".$_08fdfd209a120f38f85507412165a4ef."'"))>0){
 				$err='Kode sudah terdaftar. Silahkan daftarkan kode yang lain.';
 			}else{
-				$conn="update pelajaran set kode='".$_f77c5a659797b862f0fc544aa9a0c023."',nama='".$_31985b26056f955fec6db8f46f87653f."' where id_pelajaran='".$_3584859062ea9ecfb39b93bfcef8e869."'";
+				$conn="update pelajaran set kode='".$_f77c5a659797b862f0fc544aa9a0c023."',nama='".$nama."' where id_pelajaran='".$_3584859062ea9ecfb39b93bfcef8e869."'";
 				mysqli_query($conns,$conn);
 				exit("<script>location.href='".$pengumuman1."';</script>");
 			}
@@ -36,13 +36,13 @@ if(isset($_POST['save'])){
 		
 	}
 }else{
-$_31985b26056f955fec6db8f46f87653f='';$_f77c5a659797b862f0fc544aa9a0c023='';
+$nama='';$_f77c5a659797b862f0fc544aa9a0c023='';
 	if(empty($_GET['action'])){$_d35a39212fd75e833aea38f90831b2cb='add';}else{$_d35a39212fd75e833aea38f90831b2cb=$_GET['action'];}
 	if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
 		$_3584859062ea9ecfb39b93bfcef8e869=$_GET['id'];
 		$conn=mysqli_query($conns,"select * from pelajaran where id_pelajaran='".$_3584859062ea9ecfb39b93bfcef8e869."'");
 		$sql=mysqli_fetch_array($conn);
-		$_31985b26056f955fec6db8f46f87653f=$sql['nama'];
+		$nama=$sql['nama'];
 		$_f77c5a659797b862f0fc544aa9a0c023=$sql['kode'];
 	}
 	if($_d35a39212fd75e833aea38f90831b2cb=='delete'){
@@ -62,7 +62,7 @@ if($_d35a39212fd75e833aea38f90831b2cb=='add'){$_06c518f70e97b19c7ec907f36542ce6e
 	</div>
 </div>
 
-<form action="<?php echo $_4bf2fdb3ab37a41b537e7360f7e4b007;?>" name="" method="post" enctype="multipart/form-data">
+<form action="<?php echo $regis;?>" name="" method="post" enctype="multipart/form-data">
 <input name="id" type="hidden" value="<?php echo $_3584859062ea9ecfb39b93bfcef8e869;?>">
 <input name="action" type="hidden" value="<?php echo $_d35a39212fd75e833aea38f90831b2cb;?>">
 
@@ -84,7 +84,7 @@ if($_d35a39212fd75e833aea38f90831b2cb=='add'){$_06c518f70e97b19c7ec907f36542ce6e
 	  </tr>
 	  <tr>
 		<td width="200" style="vertical-align:middle;">Nama Mata Pelajaran untuk Kelas<span class="required">*</span> </td>
-		<td><input name="nama" type="text" class="form-control" value="<?php echo $_31985b26056f955fec6db8f46f87653f;?>" style="width:300px;"></td>
+		<td><input name="nama" type="text" class="form-control" value="<?php echo $nama;?>" style="width:300px;"></td>
 	  </tr>
 	  <tr>
 		<td></td>

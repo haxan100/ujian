@@ -4,7 +4,7 @@ function getDataURI($_90b42a0a84ed04cf1e133e7d0b4c87fd, $_e93cf66fc1806033550e37
 	return 'data: '.(function_exists('mime_content_type') ? mime_content_type($_90b42a0a84ed04cf1e133e7d0b4c87fd) : $_e93cf66fc1806033550e3794ea9ea258).';base64,'.base64_encode(file_get_contents($_90b42a0a84ed04cf1e133e7d0b4c87fd));
 }
 $pengumuman1='?hal=image_header';
-$_4bf2fdb3ab37a41b537e7360f7e4b007='?hal=image_header';
+$regis='?hal=image_header';
 $_352323c15d1fa78cef3ff6277fa8502c=(500*1024);
 $_4c792b9297dbe7cb2afcfd2333932891=array('png');
 
@@ -45,7 +45,7 @@ $(document).ready(function(){
 
 
 
-<form action="<?php echo $_4bf2fdb3ab37a41b537e7360f7e4b007;?>" name="" method="post" enctype="multipart/form-data">
+<form action="<?php echo $regis;?>" name="" method="post" enctype="multipart/form-data">
 <?php
 if(!empty($err)){
 	echo '

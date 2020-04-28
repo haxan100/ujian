@@ -2,7 +2,7 @@
 <?php
 
 $pengumuman1='?hal=statistik';
-$_4bf2fdb3ab37a41b537e7360f7e4b007='?hal=statistik';
+$regis='?hal=statistik';
 
 $conn=mysqli_query($ ,"select * from periode where tanggal_mulai<='".date('Y-m-d H:i:s')."' and tanggal_akhir>='".date('Y-m-d H:i:s')."'");
 $sql=mysqli_fetch_array($conn);

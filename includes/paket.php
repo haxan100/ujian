@@ -2,7 +2,7 @@
 <?php
 
 $pengumuman1='?hal=ujian';
-$_4bf2fdb3ab37a41b537e7360f7e4b007='?hal=ujian';
+$regis='?hal=ujian';
 
 $_52f720bdaf922c68904e386cbf0cd227=0;
 $_d4cb19f81c23886f544f26709bd4f799='';
