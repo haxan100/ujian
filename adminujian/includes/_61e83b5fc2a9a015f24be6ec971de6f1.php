@@ -3,8 +3,8 @@
 $pengumuman1='?hal=siswa';
 $_4bf2fdb3ab37a41b537e7360f7e4b007='?hal=import_siswa';
 
-$_b5adde8d7d7412251f47419fe9bf51a7='';
-$_b8d8980f155aa1475a25a57a6b2df92e=false;
+$err='';
+$notif=false;
 
 if(isset($_POST['save'])){
 	if($_FILES['csv']['error']==0) {	
@@ -98,10 +98,10 @@ $(document).ready(function(){
 
 <form action="<?php echo $_4bf2fdb3ab37a41b537e7360f7e4b007;?>" name="" method="post" enctype="multipart/form-data">
 <?php
-if(!empty($_b5adde8d7d7412251f47419fe9bf51a7)){
+if(!empty($err)){
 	echo '
 	   <div class="alert alert-danger ">
-		  '.$_b5adde8d7d7412251f47419fe9bf51a7.'
+		  '.$err.'
 	   </div>
 	';
 }

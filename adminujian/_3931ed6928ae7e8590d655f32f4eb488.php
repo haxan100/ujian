@@ -7,7 +7,7 @@ if(isset($_POST["login"])){
 	$password=$_POST['password'];
 	
 	if(empty($username) or empty($password)){
-		$_b5adde8d7d7412251f47419fe9bf51a7='<strong>Error !</strong> Masukan username dan password.';
+		$err='<strong>Error !</strong> Masukan username dan password.';
 	}else{
 			$conn=mysqli_query($conns,"SELECT * FROM user WHERE username='".escape($username)."' AND password='".md5($password)."'");
 			if(mysqli_num_rows($conn)>0){
@@ -18,7 +18,7 @@ if(isset($_POST["login"])){
 				$_SESSION['LOGIN_TYPE']=$siswa;
 				exit("<script>window.location='".$admin."';</script>");
 			}else{
-				$_b5adde8d7d7412251f47419fe9bf51a7='<strong>Error !</strong> Username dan password yang Anda masukkan salah.';
+				$err='<strong>Error !</strong> Username dan password yang Anda masukkan salah.';
 			}
 
 	}
@@ -72,10 +72,10 @@ if(isset($_POST["login"])){
                     </div>
                     <div class="panel-body">
 <?php
-if(!empty($_b5adde8d7d7412251f47419fe9bf51a7)){
+if(!empty($err)){
 	echo '
 	   <div class="alert alert-danger ">
-		  '.$_b5adde8d7d7412251f47419fe9bf51a7.'
+		  '.$err.'
 	   </div>
 	';
 }

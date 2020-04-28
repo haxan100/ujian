@@ -10,11 +10,11 @@ if(isset($_POST['save'])){
 	$_f77c5a659797b862f0fc544aa9a0c023=$_POST['kode'];
 
 	if(empty($_f77c5a659797b862f0fc544aa9a0c023) or empty($_31985b26056f955fec6db8f46f87653f)){
-		$_b5adde8d7d7412251f47419fe9bf51a7='<strong>Error !</strong> Lengkapi form di bawah ini.';
+		$err='<strong>Error !</strong> Lengkapi form di bawah ini.';
 	}else{
 		if($_d35a39212fd75e833aea38f90831b2cb=='add'){
 			if(mysqli_num_rows(mysqli_query($conns,"select * from kelas where kode='".$_f77c5a659797b862f0fc544aa9a0c023."'"))>0){
-				$_b5adde8d7d7412251f47419fe9bf51a7='Kode sudah terdaftar. Silahkan daftarkan kode yang lain.';
+				$err='Kode sudah terdaftar. Silahkan daftarkan kode yang lain.';
 			}else{
 				$conn="insert into kelas(kode, nama) values('".$_f77c5a659797b862f0fc544aa9a0c023."', '".$_31985b26056f955fec6db8f46f87653f."')";
 				mysqli_query($conns,$conn);
@@ -26,7 +26,7 @@ if(isset($_POST['save'])){
 			$sql=mysqli_fetch_array($conn);
 			$_08fdfd209a120f38f85507412165a4ef=$sql['kode'];
 			if(mysqli_num_rows(mysqli_query($conns,"select * from kelas where kode='".$_f77c5a659797b862f0fc544aa9a0c023."' and kode<>'".$_08fdfd209a120f38f85507412165a4ef."'"))>0){
-				$_b5adde8d7d7412251f47419fe9bf51a7='Kode sudah terdaftar. Silahkan daftarkan kode yang lain.';
+				$err='Kode sudah terdaftar. Silahkan daftarkan kode yang lain.';
 			}else{
 				$conn="update kelas set kode='".$_f77c5a659797b862f0fc544aa9a0c023."',nama='".$_31985b26056f955fec6db8f46f87653f."' where id_kelas='".$_3584859062ea9ecfb39b93bfcef8e869."'";
 				mysqli_query($conns,$conn);
@@ -69,10 +69,10 @@ if($_d35a39212fd75e833aea38f90831b2cb=='add'){$_06c518f70e97b19c7ec907f36542ce6e
 <div class="row">
 	<div class="col-lg-12">
 	<?php
-	if(!empty($_b5adde8d7d7412251f47419fe9bf51a7)){
+	if(!empty($err)){
 		echo '
 		   <div class="alert alert-danger ">
-			  '.$_b5adde8d7d7412251f47419fe9bf51a7.'
+			  '.$err.'
 		   </div>
 		';
 	}

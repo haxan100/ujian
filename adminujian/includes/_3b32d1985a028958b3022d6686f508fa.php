@@ -18,11 +18,11 @@ if(isset($_POST['save'])){
 	$password=$_POST['password'];
 	
 	if(empty($idkelas) or empty($nisn) or empty($_31985b26056f955fec6db8f46f87653f) or empty($_f0619632751681b5561b70caf2920a71) or empty($password)){
-		$_b5adde8d7d7412251f47419fe9bf51a7='<strong>Error !</strong> Lengkapi form di bawah ini.';
+		$err='<strong>Error !</strong> Lengkapi form di bawah ini.';
 	}else{
 		if($_d35a39212fd75e833aea38f90831b2cb=='add'){
 			if(mysqli_num_rows(mysqli_query($conns,"select * from siswa where nisn='".$nisn."'"))>0){
-				$_b5adde8d7d7412251f47419fe9bf51a7='Username sudah terdaftar. Silahkan daftarkan Username yang lain atau lakukan edit profil siswa.';
+				$err='Username sudah terdaftar. Silahkan daftarkan Username yang lain atau lakukan edit profil siswa.';
 				$password='';
 			}else{
 			
@@ -57,7 +57,7 @@ if(isset($_POST['save'])){
 			$_84cbb4ee450782b7e500304a62e91ac0=$sql['nisn'];
 			$_5ff579d3c1dff8240c09ee80edb46288=$sql['password'];
 			if(mysqli_num_rows(mysqli_query($conns,"select * from siswa where nisn='".$nisn."' and nisn<>'".$_84cbb4ee450782b7e500304a62e91ac0."'"))>0){
-				$_b5adde8d7d7412251f47419fe9bf51a7='Username sudah terdaftar. Silahkan daftarkan Username yang lain atau lakukan edit profil siswa.';
+				$err='Username sudah terdaftar. Silahkan daftarkan Username yang lain atau lakukan edit profil siswa.';
 			}else{
 				$_45b37027578ddbc5040cf6b3961c7916='';
 				if($_5ff579d3c1dff8240c09ee80edb46288==''){
@@ -189,10 +189,10 @@ $(document).ready(function(){
 <input name="id" type="hidden" value="<?php echo $_3584859062ea9ecfb39b93bfcef8e869;?>">
 <input name="action" type="hidden" value="<?php echo $_d35a39212fd75e833aea38f90831b2cb;?>">
 <?php
-if(!empty($_b5adde8d7d7412251f47419fe9bf51a7)){
+if(!empty($err)){
 	echo '
 	   <div class="alert alert-danger ">
-		  '.$_b5adde8d7d7412251f47419fe9bf51a7.'
+		  '.$err.'
 	   </div>
 	';
 }

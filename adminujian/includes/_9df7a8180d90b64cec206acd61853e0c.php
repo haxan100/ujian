@@ -10,7 +10,7 @@ if(isset($_POST['save'])){
 	$waktu=$_POST['waktu_pengerjaan'];
 
 	if(empty($_31985b26056f955fec6db8f46f87653f) or empty($waktu)){
-		$_b5adde8d7d7412251f47419fe9bf51a7='<strong>Error !</strong> Lengkapi form di bawah ini.';
+		$err='<strong>Error !</strong> Lengkapi form di bawah ini.';
 	}else{
 		if($_d35a39212fd75e833aea38f90831b2cb=='add'){
 			$conn="insert into paket(nama,waktu_pengerjaan) values('".$_31985b26056f955fec6db8f46f87653f."','".$waktu."')";
@@ -64,10 +64,10 @@ if($_d35a39212fd75e833aea38f90831b2cb=='add'){$_06c518f70e97b19c7ec907f36542ce6e
 <div class="row">
 	<div class="col-lg-12">
 	<?php
-	if(!empty($_b5adde8d7d7412251f47419fe9bf51a7)){
+	if(!empty($err)){
 		echo '
 		   <div class="alert alert-danger ">
-			  '.$_b5adde8d7d7412251f47419fe9bf51a7.'
+			  '.$err.'
 		   </div>
 		';
 	}

@@ -7,7 +7,7 @@ if(isset($_POST['save'])){
 	$_21eff29b583aa9be1b965eb96e6c56ed=$_POST['detail'];
 	
 	if(empty($_21eff29b583aa9be1b965eb96e6c56ed)){
-		$_b5adde8d7d7412251f47419fe9bf51a7='Masih ada beberapa kesalahan. Silahkan periksa lagi form di bawah ini.';
+		$err='Masih ada beberapa kesalahan. Silahkan periksa lagi form di bawah ini.';
 		$password='';
 	}else{
 		if(mysqli_num_rows(mysqli_query($conns,"select * from konten where kode='informasi'"))==0){
@@ -17,7 +17,7 @@ if(isset($_POST['save'])){
 			$conn="update konten set detail='".$_21eff29b583aa9be1b965eb96e6c56ed."' where kode='informasi'";
 			mysqli_query($conns,$conn);
 		}
-		$_b8d8980f155aa1475a25a57a6b2df92e='Data berhasil disimpan.';
+		$notif='Data berhasil disimpan.';
 		
 	}
 }else{
@@ -40,17 +40,17 @@ if(isset($_POST['save'])){
 
 <form action="<?php echo $_4bf2fdb3ab37a41b537e7360f7e4b007;?>" name="" method="post" enctype="multipart/form-data">
 <?php
-if(!empty($_b5adde8d7d7412251f47419fe9bf51a7)){
+if(!empty($err)){
 	echo '
 	   <div class="alert alert-danger ">
-		  '.$_b5adde8d7d7412251f47419fe9bf51a7.'
+		  '.$err.'
 	   </div>
 	';
 }
-if(!empty($_b8d8980f155aa1475a25a57a6b2df92e)){
+if(!empty($notif)){
 	echo '
 	   <div class="alert alert-success ">
-		  '.$_b8d8980f155aa1475a25a57a6b2df92e.'
+		  '.$notif.'
 	   </div>
 	';
 }

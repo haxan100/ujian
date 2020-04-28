@@ -3,16 +3,16 @@
 
 if(isset($_POST['save'])){
 	if(empty($_POST['passwordlama']) or empty($_POST['password']) or empty($_POST['password1'])){
-		$_b5adde8d7d7412251f47419fe9bf51a7='<strong>Error !</strong> Lengkapi form di bawah ini.';
+		$err='<strong>Error !</strong> Lengkapi form di bawah ini.';
 	}else{
 		if($_POST['password']!=$_POST['password1']){
-			$_b5adde8d7d7412251f47419fe9bf51a7='<strong>Error !</strong> Password baru tidak sama.';
+			$err='<strong>Error !</strong> Password baru tidak sama.';
 		}else{
 			if(mysqli_num_rows(mysqli_query($conns,"select * from user where id_user='".$_2d2649677c494e9597d976bbb9df65e0['id']."' and password='".md5($_POST['passwordlama'])."'"))>0){
 				mysqli_query($conns,"update user set password='".md5($_POST['password'])."' where id_user='".$_2d2649677c494e9597d976bbb9df65e0['id']."'");
-				$_b8d8980f155aa1475a25a57a6b2df92e='<strong>Sukses !</strong> Password baru berhasil disimpan.';
+				$notif='<strong>Sukses !</strong> Password baru berhasil disimpan.';
 			}else{
-				$_b5adde8d7d7412251f47419fe9bf51a7='<strong>Error !</strong> Password Anda tidak sesuai.';
+				$err='<strong>Error !</strong> Password Anda tidak sesuai.';
 			}
 		}
 	}
@@ -31,11 +31,11 @@ if(isset($_POST['save'])){
 
 <form action="" name="" method="post">
 <?php
-if(!empty($_b5adde8d7d7412251f47419fe9bf51a7)){
-	echo '<div class="alert alert-danger ">'.$_b5adde8d7d7412251f47419fe9bf51a7.'</div>';
+if(!empty($err)){
+	echo '<div class="alert alert-danger ">'.$err.'</div>';
 }
-if(!empty($_b8d8980f155aa1475a25a57a6b2df92e)){
-	echo '<div class="alert alert-success ">'.$_b8d8980f155aa1475a25a57a6b2df92e.'</div>';
+if(!empty($notif)){
+	echo '<div class="alert alert-success ">'.$notif.'</div>';
 }
 ?>
 <table width="100%" border="0" cellspacing="4" cellpadding="4" class="table">

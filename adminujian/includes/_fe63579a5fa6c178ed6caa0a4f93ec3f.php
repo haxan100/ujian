@@ -21,7 +21,7 @@ if(isset($_POST['save'])){
 			mysqli_query($conns,"insert into gambar(nama) values('".$_3656889a448a7af799d2d7955bed2354."')");
 		}
 	}
-	$_b8d8980f155aa1475a25a57a6b2df92e='Upload file berhasil. Jumlah file : <strong>'.$_52f720bdaf922c68904e386cbf0cd227.'</strong>';
+	$notif='Upload file berhasil. Jumlah file : <strong>'.$_52f720bdaf922c68904e386cbf0cd227.'</strong>';
 }
 if(isset($_GET['action']) and $_GET['action']=='delete'){
 	$_3584859062ea9ecfb39b93bfcef8e869=$_GET['id'];
@@ -94,17 +94,17 @@ $(document).ready(function(){
 
 <form action="<?php echo $_4bf2fdb3ab37a41b537e7360f7e4b007;?>" name="" method="post" enctype="multipart/form-data">
 <?php
-if(!empty($_b5adde8d7d7412251f47419fe9bf51a7)){
+if(!empty($err)){
 	echo '
 	   <div class="alert alert-danger ">
-		  '.$_b5adde8d7d7412251f47419fe9bf51a7.'
+		  '.$err.'
 	   </div>
 	';
 }
-if(!empty($_b8d8980f155aa1475a25a57a6b2df92e)){
+if(!empty($notif)){
 	echo '
 	   <div class="alert alert-success ">
-		  '.$_b8d8980f155aa1475a25a57a6b2df92e.'
+		  '.$notif.'
 	   </div>
 	';
 }

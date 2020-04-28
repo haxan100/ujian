@@ -16,7 +16,7 @@ if(isset($_POST['save'])){
 	$_a2162101cd2c071e2931c2254b25ca5e[4]=$_POST['jawaban'][4];
 
 	if(empty($_5bbbff8933f7b8be381684bd463e6d16) or empty($paket) or empty($_b65003120790c3e628f304c85a36a615) or empty($_a2162101cd2c071e2931c2254b25ca5e[0]) or empty($_a2162101cd2c071e2931c2254b25ca5e[1]) or empty($_a2162101cd2c071e2931c2254b25ca5e[2]) or empty($_a2162101cd2c071e2931c2254b25ca5e[3]) or empty($_a2162101cd2c071e2931c2254b25ca5e[4])){
-		$_b5adde8d7d7412251f47419fe9bf51a7='<strong>Error !</strong> Lengkapi form di bawah ini.';
+		$err='<strong>Error !</strong> Lengkapi form di bawah ini.';
 	}else{
 		if($_d35a39212fd75e833aea38f90831b2cb=='add'){
 			$conn="insert into soal(detail,kunci,id_pelajaran) values('".trim($paket)."','".$_b65003120790c3e628f304c85a36a615."','".$_5bbbff8933f7b8be381684bd463e6d16."')";
@@ -124,10 +124,10 @@ $(document).ready(function(){
 <div class="row">
 	<div class="col-lg-12">
 	<?php
-	if(!empty($_b5adde8d7d7412251f47419fe9bf51a7)){
+	if(!empty($err)){
 		echo '
 		   <div class="alert alert-danger ">
-			  '.$_b5adde8d7d7412251f47419fe9bf51a7.'
+			  '.$err.'
 		   </div>
 		';
 	}

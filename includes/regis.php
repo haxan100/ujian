@@ -6,7 +6,7 @@ $conn=mysqli_query($conns,"select * from periode where tanggal_mulai<='".date('Y
 $sql=mysqli_fetch_array($conn);
 $_67c4414db31f60967df5c435d2d681ec=$sql['id_periode'];
 if(isset($_SESSION['LOGIN_ID'])){
-	$_b5adde8d7d7412251f47419fe9bf51a7='<strong>Error !</strong> Silahkan Anda logout terlebih dahulu.';
+	$err='<strong>Error !</strong> Silahkan Anda logout terlebih dahulu.';
 }
 if(isset($_POST['save'])){
 	$_31985b26056f955fec6db8f46f87653f=$_POST['nama'];
@@ -26,17 +26,17 @@ if(isset($_POST['save'])){
 	$password=$_POST['password'];
 	
 	if(empty($nisn) or empty($_2b175c5566c49ee6bc6c7102ea34c928) or empty($_31985b26056f955fec6db8f46f87653f) or empty($_b74a36690339daf77274de5ad720d6eb) or empty($_f0619632751681b5561b70caf2920a71) or empty($_0ac2f3020a61bfa511f3961e3110d25a) or empty($_57232923c739e8b5307942d700ce7176) or empty($_5fd6b61e78db94204fb3558b61371e8c) or empty($_82bf26af3c00cdc7b632bcef2a5c8e37) or empty($_ce828b486ccf88dd2970f52ab123be65) or empty($_e50768a7e92b0df261c63a201b14c513) or empty($_a412e4f839cc170d86d39c7788e454f5) or empty($_0a22a15d3692a4e52aea2b257e6a358d) or empty($password)){
-		$_b5adde8d7d7412251f47419fe9bf51a7='<strong>Error !</strong> Lengkapi form di bawah ini.';
+		$err='<strong>Error !</strong> Lengkapi form di bawah ini.';
 	}else{
 		if($_67c4414db31f60967df5c435d2d681ec==''){
-			$_b5adde8d7d7412251f47419fe9bf51a7='<strong>Error !</strong> Belum ada periode PPDB yang aktif saat ini.';
+			$err='<strong>Error !</strong> Belum ada periode PPDB yang aktif saat ini.';
 		}else{
 			if(mysqli_num_rows(mysqli_query($conns,"select * from siswa where nisn='".$nisn."'"))>0){
-				$_b5adde8d7d7412251f47419fe9bf51a7='NISN sudah terdaftar. Silahkan gunakan NISN yang lain.';
+				$err='NISN sudah terdaftar. Silahkan gunakan NISN yang lain.';
 				$password='';
 			}else{
 				if(mysqli_num_rows(mysqli_query($conns,"select * from siswa where no_pendaftaran='".$_2b175c5566c49ee6bc6c7102ea34c928."'"))>0){
-					$_b5adde8d7d7412251f47419fe9bf51a7='No Pendaftaran sudah terdaftar. Silahkan gunakan No Pendaftaran yang lain.';
+					$err='No Pendaftaran sudah terdaftar. Silahkan gunakan No Pendaftaran yang lain.';
 					$password='';
 				}else{
 					list($_20fd65e9c7406034fadc682f06732868,$_f52ba22baf75438bb1b02f476954c023,$_36a4dc9ccf2bdc09d800556724231fc6)=explode('/',$_57232923c739e8b5307942d700ce7176);
@@ -126,10 +126,10 @@ if($_67c4414db31f60967df5c435d2d681ec==''){
 
 <form action="<?php echo $_4bf2fdb3ab37a41b537e7360f7e4b007;?>" id="form_siswa" name="" method="post" enctype="multipart/form-data">
 <?php
-if(!empty($_b5adde8d7d7412251f47419fe9bf51a7)){
+if(!empty($err)){
 	echo '
 	   <div class="alert alert-danger ">
-		  '.$_b5adde8d7d7412251f47419fe9bf51a7.'
+		  '.$err.'
 	   </div>
 	';
 }
