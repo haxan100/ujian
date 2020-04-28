@@ -150,15 +150,15 @@ mysqli_close($conns);
 		<table class="table" style="margin:0;">
 		  <?php
 		  
-		  for($_a16d2280393ce6a2a5428a4a8d09e354=0;$_a16d2280393ce6a2a5428a4a8d09e354<count($_44e2f87ec0f5ce9c128c029fd0ab97c6);$_a16d2280393ce6a2a5428a4a8d09e354++){
-		  		if($_44e2f87ec0f5ce9c128c029fd0ab97c6[$_a16d2280393ce6a2a5428a4a8d09e354][0]==$_a2162101cd2c071e2931c2254b25ca5e[$_5cf085bf5081a50e78311063db83f771]){$_21d32120212be9984823e1b45de91ffc='active';$_2f70cd41a2cf123740e148619314f912='btn-warning';}else{$_21d32120212be9984823e1b45de91ffc='';$_2f70cd41a2cf123740e148619314f912='btn-default';}
+		  for($mulai=0;$mulai<count($_44e2f87ec0f5ce9c128c029fd0ab97c6);$mulai++){
+		  		if($_44e2f87ec0f5ce9c128c029fd0ab97c6[$mulai][0]==$_a2162101cd2c071e2931c2254b25ca5e[$_5cf085bf5081a50e78311063db83f771]){$_21d32120212be9984823e1b45de91ffc='active';$_2f70cd41a2cf123740e148619314f912='btn-warning';}else{$_21d32120212be9984823e1b45de91ffc='';$_2f70cd41a2cf123740e148619314f912='btn-default';}
 				echo '
 				<tr>
 				<td width="10" style="border:none;">
-				<button type="submit" name="jawab" value="'.$_44e2f87ec0f5ce9c128c029fd0ab97c6[$_a16d2280393ce6a2a5428a4a8d09e354][0].'" class="btn '.$_2f70cd41a2cf123740e148619314f912.' '.$_21d32120212be9984823e1b45de91ffc.'">'.chr(65+$_a16d2280393ce6a2a5428a4a8d09e354).' </button>
+				<button type="submit" name="jawab" value="'.$_44e2f87ec0f5ce9c128c029fd0ab97c6[$mulai][0].'" class="btn '.$_2f70cd41a2cf123740e148619314f912.' '.$_21d32120212be9984823e1b45de91ffc.'">'.chr(65+$mulai).' </button>
 				</td>
 				<td style="border:none;">
-				'.$_44e2f87ec0f5ce9c128c029fd0ab97c6[$_a16d2280393ce6a2a5428a4a8d09e354][1].'
+				'.$_44e2f87ec0f5ce9c128c029fd0ab97c6[$mulai][1].'
 				</td>
 				</tr>
 				
@@ -210,10 +210,10 @@ mysqli_close($conns);
 <center>
 <?php
 $_52f720bdaf922c68904e386cbf0cd227=0;
-for($_a16d2280393ce6a2a5428a4a8d09e354=0;$_a16d2280393ce6a2a5428a4a8d09e354<count($_1b66aa9bfba43381db0e3cc139369d48);$_a16d2280393ce6a2a5428a4a8d09e354++){
+for($mulai=0;$mulai<count($_1b66aa9bfba43381db0e3cc139369d48);$mulai++){
 	$_52f720bdaf922c68904e386cbf0cd227++;
 	if($_b44cb2e694287fa912cc50de8b3a920b==$_52f720bdaf922c68904e386cbf0cd227){$_21d32120212be9984823e1b45de91ffc='active';}else{$_21d32120212be9984823e1b45de91ffc='';}
-	if($_1b66aa9bfba43381db0e3cc139369d48[$_a16d2280393ce6a2a5428a4a8d09e354][1]!=''){
+	if($_1b66aa9bfba43381db0e3cc139369d48[$mulai][1]!=''){
 		echo '<a href="#" class="btn btn-info btn-sm '.$_21d32120212be9984823e1b45de91ffc.'" style="margin-bottom:5px;">'.$_52f720bdaf922c68904e386cbf0cd227.' <i class="fa fa-check"></i></a> ';
 	}else{
 		echo '<a href="#" class="btn btn-default btn-sm '.$_21d32120212be9984823e1b45de91ffc.'" style="margin-bottom:5px;">'.$_52f720bdaf922c68904e386cbf0cd227.'</a> ';

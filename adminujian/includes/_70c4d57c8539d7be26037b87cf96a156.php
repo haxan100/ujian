@@ -23,8 +23,8 @@ if(isset($_POST['save'])){
 			mysqli_query($conns,$conn);
 			$_5cf085bf5081a50e78311063db83f771=mysqli_insert_id($conns);
 			$_f77c5a659797b862f0fc544aa9a0c023=array('A','B','C','D','E');
-			for($_a16d2280393ce6a2a5428a4a8d09e354=0;$_a16d2280393ce6a2a5428a4a8d09e354<count($_a2162101cd2c071e2931c2254b25ca5e);$_a16d2280393ce6a2a5428a4a8d09e354++){
-				mysqli_query($conns,"insert into soal_jawaban(id_soal,kode,jawaban) values('".$_5cf085bf5081a50e78311063db83f771."','".$_f77c5a659797b862f0fc544aa9a0c023[$_a16d2280393ce6a2a5428a4a8d09e354]."','".trim($_a2162101cd2c071e2931c2254b25ca5e[$_a16d2280393ce6a2a5428a4a8d09e354])."')");
+			for($mulai=0;$mulai<count($_a2162101cd2c071e2931c2254b25ca5e);$mulai++){
+				mysqli_query($conns,"insert into soal_jawaban(id_soal,kode,jawaban) values('".$_5cf085bf5081a50e78311063db83f771."','".$_f77c5a659797b862f0fc544aa9a0c023[$mulai]."','".trim($_a2162101cd2c071e2931c2254b25ca5e[$mulai])."')");
 			}
 			exit("<script>location.href='".$pengumuman1."&pelajaran=".$_5bbbff8933f7b8be381684bd463e6d16."';</script>");
 		}
@@ -33,8 +33,8 @@ if(isset($_POST['save'])){
 			mysqli_query($conns,$conn);
 			mysqli_query($conns,"delete from soal_jawaban where id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."'");
 			$_f77c5a659797b862f0fc544aa9a0c023=array('A','B','C','D','E');
-			for($_a16d2280393ce6a2a5428a4a8d09e354=0;$_a16d2280393ce6a2a5428a4a8d09e354<count($_a2162101cd2c071e2931c2254b25ca5e);$_a16d2280393ce6a2a5428a4a8d09e354++){
-				mysqli_query($conns,"insert into soal_jawaban(id_soal,kode,jawaban) values('".$_3584859062ea9ecfb39b93bfcef8e869."','".$_f77c5a659797b862f0fc544aa9a0c023[$_a16d2280393ce6a2a5428a4a8d09e354]."','".trim($_a2162101cd2c071e2931c2254b25ca5e[$_a16d2280393ce6a2a5428a4a8d09e354])."')");
+			for($mulai=0;$mulai<count($_a2162101cd2c071e2931c2254b25ca5e);$mulai++){
+				mysqli_query($conns,"insert into soal_jawaban(id_soal,kode,jawaban) values('".$_3584859062ea9ecfb39b93bfcef8e869."','".$_f77c5a659797b862f0fc544aa9a0c023[$mulai]."','".trim($_a2162101cd2c071e2931c2254b25ca5e[$mulai])."')");
 			}
 			exit("<script>location.href='".$pengumuman1."&pelajaran=".$_5bbbff8933f7b8be381684bd463e6d16."';</script>");
 		}

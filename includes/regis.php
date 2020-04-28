@@ -62,9 +62,9 @@ $_f8eb8624de17a1bcbd564bdda7e7e4ec[]=array('L','Laki-laki');
 $_f8eb8624de17a1bcbd564bdda7e7e4ec[]=array('P','Perempuan');
 
 $_3f921bc4290e25e3e064046a5f91a781='<option value=""></option>';
-for($_a16d2280393ce6a2a5428a4a8d09e354=0;$_a16d2280393ce6a2a5428a4a8d09e354<count($_f8eb8624de17a1bcbd564bdda7e7e4ec);$_a16d2280393ce6a2a5428a4a8d09e354++){
-	if(strtolower($_f8eb8624de17a1bcbd564bdda7e7e4ec[$_a16d2280393ce6a2a5428a4a8d09e354][0])==strtolower($_f0619632751681b5561b70caf2920a71)){$_3cb9cdaed257453cfa56b9ef81b44c57='selected';}else{$_3cb9cdaed257453cfa56b9ef81b44c57='';}
-	$_3f921bc4290e25e3e064046a5f91a781.='<option value="'.$_f8eb8624de17a1bcbd564bdda7e7e4ec[$_a16d2280393ce6a2a5428a4a8d09e354][0].'" '.$_3cb9cdaed257453cfa56b9ef81b44c57.'>'.$_f8eb8624de17a1bcbd564bdda7e7e4ec[$_a16d2280393ce6a2a5428a4a8d09e354][1].'</option>';
+for($mulai=0;$mulai<count($_f8eb8624de17a1bcbd564bdda7e7e4ec);$mulai++){
+	if(strtolower($_f8eb8624de17a1bcbd564bdda7e7e4ec[$mulai][0])==strtolower($_f0619632751681b5561b70caf2920a71)){$_3cb9cdaed257453cfa56b9ef81b44c57='selected';}else{$_3cb9cdaed257453cfa56b9ef81b44c57='';}
+	$_3f921bc4290e25e3e064046a5f91a781.='<option value="'.$_f8eb8624de17a1bcbd564bdda7e7e4ec[$mulai][0].'" '.$_3cb9cdaed257453cfa56b9ef81b44c57.'>'.$_f8eb8624de17a1bcbd564bdda7e7e4ec[$mulai][1].'</option>';
 }
 $_b847d626109199f9fe6eadf71f825eef='<option value=""></option>';
 $conn=mysqli_query($conns,"select * from jurusan order by nama");

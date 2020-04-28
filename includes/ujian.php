@@ -24,11 +24,11 @@ if(isset($_POST['mulai'])){
 	while($sql=mysqli_fetch_array($conn)){
 		$_1b66aa9bfba43381db0e3cc139369d48[]=$sql['id_soal'];
 	}
-	for($_a16d2280393ce6a2a5428a4a8d09e354=0;$_a16d2280393ce6a2a5428a4a8d09e354<=10;$_a16d2280393ce6a2a5428a4a8d09e354++){
+	for($mulai=0;$mulai<=10;$mulai++){
 		shuffle($_1b66aa9bfba43381db0e3cc139369d48);
 	}
-	for($_a16d2280393ce6a2a5428a4a8d09e354=0;$_a16d2280393ce6a2a5428a4a8d09e354<count($_1b66aa9bfba43381db0e3cc139369d48);$_a16d2280393ce6a2a5428a4a8d09e354++){
-		mysqli_query($conns,"insert into ujian_detail(id_ujian,id_soal,jawaban) values('".$_fbd326c813664d903c80679981cafba3."','".$_1b66aa9bfba43381db0e3cc139369d48[$_a16d2280393ce6a2a5428a4a8d09e354]."','')");
+	for($mulai=0;$mulai<count($_1b66aa9bfba43381db0e3cc139369d48);$mulai++){
+		mysqli_query($conns,"insert into ujian_detail(id_ujian,id_soal,jawaban) values('".$_fbd326c813664d903c80679981cafba3."','".$_1b66aa9bfba43381db0e3cc139369d48[$mulai]."','')");
 	}
 	exit("<script>location.href='".$look."_07b8b0f04e1dbda1240ce57d13aa6d1a.php';</script>");
 }
