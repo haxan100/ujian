@@ -20,12 +20,12 @@ $_52f720bdaf922c68904e386cbf0cd227=0;
 $_d4cb19f81c23886f544f26709bd4f799='';
 $conn=mysqli_query($conns,"select * from peserta inner join siswa on peserta.id_siswa=siswa.id_siswa where peserta.id_paket='".$id."' order by nisn");
 while($sql=mysqli_fetch_array($conn)){
-	$_7da43659dfebcaab2ad4bbd2f2a98f30=mysqli_query($conns,"select nama from kelas where id_kelas='".$sql['id_kelas']."'");
-	$_84ebecebe3a7c3b32dff74f8dce19fce=mysqli_fetch_array($_7da43659dfebcaab2ad4bbd2f2a98f30);
-	$nama=$_84ebecebe3a7c3b32dff74f8dce19fce['nama'];
-	$_7da43659dfebcaab2ad4bbd2f2a98f30=mysqli_query($conns,"select nilai from ujian where id_paket='".$id."' and id_siswa='".$sql['id_siswa']."'");
-	$_84ebecebe3a7c3b32dff74f8dce19fce=mysqli_fetch_array($_7da43659dfebcaab2ad4bbd2f2a98f30);
-	$nilai=$_84ebecebe3a7c3b32dff74f8dce19fce['nilai'];
+	$juml=mysqli_query($conns,"select nama from kelas where id_kelas='".$sql['id_kelas']."'");
+	$totAll=mysqli_fetch_array($juml);
+	$nama=$totAll['nama'];
+	$juml=mysqli_query($conns,"select nilai from ujian where id_paket='".$id."' and id_siswa='".$sql['id_siswa']."'");
+	$totAll=mysqli_fetch_array($juml);
+	$nilai=$totAll['nilai'];
 	
 	$_52f720bdaf922c68904e386cbf0cd227++;
 	

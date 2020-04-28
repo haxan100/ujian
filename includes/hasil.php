@@ -22,9 +22,9 @@ if(mysqli_num_rows($conn) > 0){
 	while($sql=mysqli_fetch_array($conn)){
 		$_52f720bdaf922c68904e386cbf0cd227++;
 		
-		$_7da43659dfebcaab2ad4bbd2f2a98f30=mysqli_query($conns,"select nilai from ujian where id_paket='".$id."' and id_siswa='".$sql['id_siswa']."' and selesai='Y'");
-		$_84ebecebe3a7c3b32dff74f8dce19fce=mysqli_fetch_array($_7da43659dfebcaab2ad4bbd2f2a98f30);
-		$nilai=$_84ebecebe3a7c3b32dff74f8dce19fce['nilai'];
+		$juml=mysqli_query($conns,"select nilai from ujian where id_paket='".$id."' and id_siswa='".$sql['id_siswa']."' and selesai='Y'");
+		$totAll=mysqli_fetch_array($juml);
+		$nilai=$totAll['nilai'];
 
 		$hasil.='
 		  <tr>

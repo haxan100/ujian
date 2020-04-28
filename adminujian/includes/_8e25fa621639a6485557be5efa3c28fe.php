@@ -39,14 +39,14 @@ if(mysqli_num_rows($conn) > 0){
 		//if(mysqli_num_rows(mysqli_query($conns,"select * from program where id_periode='".$_3584859062ea9ecfb39b93bfcef8e869."' limit 0,1"))>0){$_25407a67a7a597297818c35a0d0ed51d=true;}
 		if($_25407a67a7a597297818c35a0d0ed51d==true){$_849d693c62dfe15394a642123c1599c8='disabled';$_f22a1fc2263e04ec8ae7a008a249229e='return(false);';}else{$_849d693c62dfe15394a642123c1599c8='';$_f22a1fc2263e04ec8ae7a008a249229e='';}
 		$_f3f4775da2a6e3f93bd69f99d887efc2='<table class="table" style="background:none;">';
-		$_7da43659dfebcaab2ad4bbd2f2a98f30=mysqli_query($conns,"select * from soal_jawaban where id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."' order by id_soal_jawaban");
-		while($_84ebecebe3a7c3b32dff74f8dce19fce=mysqli_fetch_array($_7da43659dfebcaab2ad4bbd2f2a98f30)){
-			if($_84ebecebe3a7c3b32dff74f8dce19fce['kode']==$_b65003120790c3e628f304c85a36a615){
-				$_c0d907c3e4a81c61f89d044e588eac19='<span class="label label-warning">'.$_84ebecebe3a7c3b32dff74f8dce19fce['kode'].'.</span>';
+		$juml=mysqli_query($conns,"select * from soal_jawaban where id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."' order by id_soal_jawaban");
+		while($totAll=mysqli_fetch_array($juml)){
+			if($totAll['kode']==$_b65003120790c3e628f304c85a36a615){
+				$_c0d907c3e4a81c61f89d044e588eac19='<span class="label label-warning">'.$totAll['kode'].'.</span>';
 			}else{
-				$_c0d907c3e4a81c61f89d044e588eac19='<span class="label label-info">'.$_84ebecebe3a7c3b32dff74f8dce19fce['kode'].'.</span>';
+				$_c0d907c3e4a81c61f89d044e588eac19='<span class="label label-info">'.$totAll['kode'].'.</span>';
 			}
-			$_f3f4775da2a6e3f93bd69f99d887efc2.='<tr><td width="20" style="border:none;">'.$_c0d907c3e4a81c61f89d044e588eac19.'</td><td style="border:none;">'.$_84ebecebe3a7c3b32dff74f8dce19fce['jawaban'].'</td></tr>';
+			$_f3f4775da2a6e3f93bd69f99d887efc2.='<tr><td width="20" style="border:none;">'.$_c0d907c3e4a81c61f89d044e588eac19.'</td><td style="border:none;">'.$totAll['jawaban'].'</td></tr>';
 		}
 		$_f3f4775da2a6e3f93bd69f99d887efc2.='</table>';
 		

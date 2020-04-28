@@ -6,40 +6,40 @@ $_4bf2fdb3ab37a41b537e7360f7e4b007='?hal=statistik';
 
 $conn=mysqli_query($ ,"select * from periode where tanggal_mulai<='".date('Y-m-d H:i:s')."' and tanggal_akhir>='".date('Y-m-d H:i:s')."'");
 $sql=mysqli_fetch_array($conn);
-$_67c4414db31f60967df5c435d2d681ec=$sql['id_periode'];
+$id_periode=$sql['id_periode'];
 
-$_c223f438869210327f0c3eb44c425fd7=array();
-$_90b6ac16500791eaa80fcaa07bc642d3=array();
+$hitung=array();
+$namaas=array();
 $conn=mysqli_query($conns,"select * from jurusan order by nama");
 while($sql=mysqli_fetch_array($conn)){
-	$_c223f438869210327f0c3eb44c425fd7[]=array($sql['id_jurusan'],$sql['nama']);
-	$_90b6ac16500791eaa80fcaa07bc642d3[]="'".$sql['nama']."'";
+	$hitung[]=array($sql['id_jurusan'],$sql['nama']);
+	$namaas[]="'".$sql['nama']."'";
 }
-$_2472fec7fb362c94f5f432b81b032aee=array();
-for($mulai=0;$mulai<count($_c223f438869210327f0c3eb44c425fd7);$mulai++){
-	$conn=mysqli_query($conns,"select jumlah from periode_kuota where id_periode='".$_67c4414db31f60967df5c435d2d681ec."' and id_jurusan='".$_c223f438869210327f0c3eb44c425fd7[$mulai][0]."'");
+$jumlahAll=array();
+for($mulai=0;$mulai<count($hitung);$mulai++){
+	$conn=mysqli_query($conns,"select jumlah from periode_kuota where id_periode='".$id_periode."' and id_jurusan='".$hitung[$mulai][0]."'");
 	$sql=mysqli_fetch_array($conn);
-	$_2472fec7fb362c94f5f432b81b032aee[$_c223f438869210327f0c3eb44c425fd7[$mulai][0]]=$sql['jumlah'];
+	$jumlahAll[$hitung[$mulai][0]]=$sql['jumlah'];
 }
-$_5384b3c0a26bdc2e3f20ac92d72a4d1f=array();
-$_5ae59f693126c3aac8b8421eb941c192=array();
-$_5caedc7f711e40e12fc91cda9bb57a3a=array();
-for($mulai=0;$mulai<count($_c223f438869210327f0c3eb44c425fd7);$mulai++){
+$tablesatu=array();
+$tablesdua=array();
+$tablestiga=array();
+for($mulai=0;$mulai<count($hitung);$mulai++){
 	
-	$_7da43659dfebcaab2ad4bbd2f2a98f30=mysqli_query($conns,"select count(*) as jml from siswa where id_periode='".$_67c4414db31f60967df5c435d2d681ec."' and id_jurusan='".$_c223f438869210327f0c3eb44c425fd7[$mulai][0]."'");
-	$_84ebecebe3a7c3b32dff74f8dce19fce=mysqli_fetch_array($_7da43659dfebcaab2ad4bbd2f2a98f30);
-	$_1455c2ab6559ed39c9c24e2a3d3a0e8f=$_84ebecebe3a7c3b32dff74f8dce19fce['jml'];
-	$_7da43659dfebcaab2ad4bbd2f2a98f30=mysqli_query($conns,"select count(*) as jml from siswa where id_periode='".$_67c4414db31f60967df5c435d2d681ec."' and id_jurusan='".$_c223f438869210327f0c3eb44c425fd7[$mulai][0]."' and status='Y'");
-	$_84ebecebe3a7c3b32dff74f8dce19fce=mysqli_fetch_array($_7da43659dfebcaab2ad4bbd2f2a98f30);
-	$_c9e80fb342a93b752d3a59d1d1546cb8=$_84ebecebe3a7c3b32dff74f8dce19fce['jml'];
-	if($_c9e80fb342a93b752d3a59d1d1546cb8>$_2472fec7fb362c94f5f432b81b032aee[$_c223f438869210327f0c3eb44c425fd7[$mulai][0]]){
-		$_c9e80fb342a93b752d3a59d1d1546cb8=$_2472fec7fb362c94f5f432b81b032aee[$_c223f438869210327f0c3eb44c425fd7[$mulai][0]];
+	$juml=mysqli_query($conns,"select count(*) as jml from siswa where id_periode='".$id_periode."' and id_jurusan='".$hitung[$mulai][0]."'");
+	$totAll=mysqli_fetch_array($juml);
+	$jml=$totAll['jml'];
+	$juml=mysqli_query($conns,"select count(*) as jml from siswa where id_periode='".$id_periode."' and id_jurusan='".$hitung[$mulai][0]."' and status='Y'");
+	$totAll=mysqli_fetch_array($juml);
+	$TotAwal=$totAll['jml'];
+	if($TotAwal>$jumlahAll[$hitung[$mulai][0]]){
+		$TotAwal=$jumlahAll[$hitung[$mulai][0]];
 	}
-	$_3bf6d34085b4a7f7f2748a8009b73a50=$_1455c2ab6559ed39c9c24e2a3d3a0e8f-$_c9e80fb342a93b752d3a59d1d1546cb8;
+	$totalSemua=$jml-$TotAwal;
 	
-	$_5384b3c0a26bdc2e3f20ac92d72a4d1f[]=$_1455c2ab6559ed39c9c24e2a3d3a0e8f;
-	$_5ae59f693126c3aac8b8421eb941c192[]=$_c9e80fb342a93b752d3a59d1d1546cb8;
-	$_5caedc7f711e40e12fc91cda9bb57a3a[]=$_3bf6d34085b4a7f7f2748a8009b73a50;
+	$tablesatu[]=$jml;
+	$tablesdua[]=$TotAwal;
+	$tablestiga[]=$totalSemua;
 }
 
 
@@ -53,10 +53,10 @@ for($mulai=0;$mulai<count($_c223f438869210327f0c3eb44c425fd7);$mulai++){
 <script type="text/javascript">
 
 $(document).ready(function(){
-        var s1 = [<?php echo implode(',',$_5384b3c0a26bdc2e3f20ac92d72a4d1f);?>];
-        var s2 = [<?php echo implode(',',$_5ae59f693126c3aac8b8421eb941c192);?>];
-        var s3 = [<?php echo implode(',',$_5caedc7f711e40e12fc91cda9bb57a3a);?>];
-        var ticks = [<?php echo implode(',',$_90b6ac16500791eaa80fcaa07bc642d3);?>];
+        var s1 = [<?php echo implode(',',$tablesatu);?>];
+        var s2 = [<?php echo implode(',',$tablesdua);?>];
+        var s3 = [<?php echo implode(',',$tablestiga);?>];
+        var ticks = [<?php echo implode(',',$namaas);?>];
          
         plot2 = $.jqplot('chart2', [s1, s2, s3], {
             seriesDefaults: {
@@ -145,7 +145,7 @@ td.jqplot-table-legend {
 	<div class="col-lg-12">
 
 <?php
-if($_67c4414db31f60967df5c435d2d681ec==''){
+if($id_periode==''){
 	echo '<div class="alert alert-danger">Mohon maaf, tidak ada periode PPDB yang aktif saat ini</div>';
 }else{
 ?>

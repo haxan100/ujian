@@ -4,7 +4,7 @@ $pengumuman1='?hal=registrasi';
 $_4bf2fdb3ab37a41b537e7360f7e4b007='?hal=registrasi';
 $conn=mysqli_query($conns,"select * from periode where tanggal_mulai<='".date('Y-m-d H:i:s')."' and tanggal_akhir>='".date('Y-m-d H:i:s')."'");
 $sql=mysqli_fetch_array($conn);
-$_67c4414db31f60967df5c435d2d681ec=$sql['id_periode'];
+$id_periode=$sql['id_periode'];
 if(isset($_SESSION['LOGIN_ID'])){
 	$err='<strong>Error !</strong> Silahkan Anda logout terlebih dahulu.';
 }
@@ -28,7 +28,7 @@ if(isset($_POST['save'])){
 	if(empty($nisn) or empty($_2b175c5566c49ee6bc6c7102ea34c928) or empty($_31985b26056f955fec6db8f46f87653f) or empty($_b74a36690339daf77274de5ad720d6eb) or empty($_f0619632751681b5561b70caf2920a71) or empty($_0ac2f3020a61bfa511f3961e3110d25a) or empty($_57232923c739e8b5307942d700ce7176) or empty($_5fd6b61e78db94204fb3558b61371e8c) or empty($_82bf26af3c00cdc7b632bcef2a5c8e37) or empty($_ce828b486ccf88dd2970f52ab123be65) or empty($_e50768a7e92b0df261c63a201b14c513) or empty($_a412e4f839cc170d86d39c7788e454f5) or empty($_0a22a15d3692a4e52aea2b257e6a358d) or empty($password)){
 		$err='<strong>Error !</strong> Lengkapi form di bawah ini.';
 	}else{
-		if($_67c4414db31f60967df5c435d2d681ec==''){
+		if($id_periode==''){
 			$err='<strong>Error !</strong> Belum ada periode PPDB yang aktif saat ini.';
 		}else{
 			if(mysqli_num_rows(mysqli_query($conns,"select * from siswa where nisn='".$nisn."'"))>0){
@@ -42,7 +42,7 @@ if(isset($_POST['save'])){
 					list($_20fd65e9c7406034fadc682f06732868,$_f52ba22baf75438bb1b02f476954c023,$_36a4dc9ccf2bdc09d800556724231fc6)=explode('/',$_57232923c739e8b5307942d700ce7176);
 					$_57232923c739e8b5307942d700ce7176=$_36a4dc9ccf2bdc09d800556724231fc6.'-'.$_f52ba22baf75438bb1b02f476954c023.'-'.$_20fd65e9c7406034fadc682f06732868;
 					$conn="insert into siswa(id_periode,no_pendaftaran,nisn, password, nama, alamat, gender, tempat_lahir, tanggal_lahir, telp, id_agama, nama_ayah, nama_ibu, asal_sekolah, alamat_sekolah, id_jurusan,last_update) 
-					values('".$_67c4414db31f60967df5c435d2d681ec."', '".escape($_2b175c5566c49ee6bc6c7102ea34c928)."', '".escape($nisn)."', '".md5($password)."', '".escape($_31985b26056f955fec6db8f46f87653f)."', '".escape($_b74a36690339daf77274de5ad720d6eb)."'
+					values('".$id_periode."', '".escape($_2b175c5566c49ee6bc6c7102ea34c928)."', '".escape($nisn)."', '".md5($password)."', '".escape($_31985b26056f955fec6db8f46f87653f)."', '".escape($_b74a36690339daf77274de5ad720d6eb)."'
 					, '".escape($_f0619632751681b5561b70caf2920a71)."', '".escape($_0ac2f3020a61bfa511f3961e3110d25a)."', '".escape($_57232923c739e8b5307942d700ce7176)."', '".escape($_271c0ceb1ecec7f25180a7ba056c1fb4)."', '".escape($_5fd6b61e78db94204fb3558b61371e8c)."', '".escape($_82bf26af3c00cdc7b632bcef2a5c8e37)."', '".escape($_ce828b486ccf88dd2970f52ab123be65)."'
 					, '".escape($_e50768a7e92b0df261c63a201b14c513)."', '".escape($_a412e4f839cc170d86d39c7788e454f5)."', '".escape($_0a22a15d3692a4e52aea2b257e6a358d)."','".date('Y-m-d H:i:s')."')";
 					mysqli_query($conns,$conn);
@@ -115,7 +115,7 @@ $(document).ready(function(){
 	</div>
 </div>
 <?php
-if($_67c4414db31f60967df5c435d2d681ec==''){
+if($id_periode==''){
 	echo '<div class="alert alert-danger">Mohon maaf, tidak ada periode PPDB yang aktif saat ini</div>';
 }else{
 ?>

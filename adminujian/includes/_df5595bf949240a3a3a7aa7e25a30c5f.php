@@ -66,17 +66,17 @@ if(isset($_POST['save'])){
 			$_b74a36690339daf77274de5ad720d6eb=$sql['alamat'];
 			$nama=$sql['kelas'];
 			$idkelas='';
-			$_7da43659dfebcaab2ad4bbd2f2a98f30=mysqli_query($conns,"select id_kelas from kelas where kode='".$nama."'");
-			if(mysqli_num_rows($_7da43659dfebcaab2ad4bbd2f2a98f30)>0){
-				$_84ebecebe3a7c3b32dff74f8dce19fce=mysqli_fetch_array($_7da43659dfebcaab2ad4bbd2f2a98f30);
-				$idkelas=$_84ebecebe3a7c3b32dff74f8dce19fce['id_kelas'];
+			$juml=mysqli_query($conns,"select id_kelas from kelas where kode='".$nama."'");
+			if(mysqli_num_rows($juml)>0){
+				$totAll=mysqli_fetch_array($juml);
+				$idkelas=$totAll['id_kelas'];
 			}
 			if(mysqli_num_rows(mysqli_query("select nisn from siswa where nisn='".$nisn."'"))>0){
-				$_7da43659dfebcaab2ad4bbd2f2a98f30="update siswa set nama='".$_31985b26056f955fec6db8f46f87653f."', alamat='".$_b74a36690339daf77274de5ad720d6eb."', gender='".$_f0619632751681b5561b70caf2920a71."', id_kelas='".$idkelas."' where nisn='".$nisn."'";
+				$juml="update siswa set nama='".$_31985b26056f955fec6db8f46f87653f."', alamat='".$_b74a36690339daf77274de5ad720d6eb."', gender='".$_f0619632751681b5561b70caf2920a71."', id_kelas='".$idkelas."' where nisn='".$nisn."'";
 			}else{
-				$_7da43659dfebcaab2ad4bbd2f2a98f30="insert into siswa(nisn,nama,alamat,gender,id_kelas) values('".$nisn."','".$_31985b26056f955fec6db8f46f87653f."','".$_b74a36690339daf77274de5ad720d6eb."','".$_f0619632751681b5561b70caf2920a71."','".$idkelas."')";
+				$juml="insert into siswa(nisn,nama,alamat,gender,id_kelas) values('".$nisn."','".$_31985b26056f955fec6db8f46f87653f."','".$_b74a36690339daf77274de5ad720d6eb."','".$_f0619632751681b5561b70caf2920a71."','".$idkelas."')";
 			}
-			mysqli_query($conns,$_7da43659dfebcaab2ad4bbd2f2a98f30);
+			mysqli_query($conns,$juml);
 		}
 		mysqli_query($conns,"truncate table soal_tmp");
 		

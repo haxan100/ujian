@@ -10,7 +10,7 @@ if(!isset($_SESSION['LOGIN_ID'])){
 
 //$conn=mysqli_query($conns,"select * from periode where tanggal_mulai<='".date('Y-m-d H:i:s')."' and tanggal_akhir>='".date('Y-m-d H:i:s')."'");
 //$sql=mysqli_fetch_array($conn);
-//$_67c4414db31f60967df5c435d2d681ec=$sql['id_periode'];
+//$id_periode=$sql['id_periode'];
 //$waktu=$sql['waktu_pengerjaan']*60;
 $id='';
 $sqli='';

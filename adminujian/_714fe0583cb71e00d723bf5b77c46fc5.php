@@ -19,9 +19,9 @@ $_52f720bdaf922c68904e386cbf0cd227=0;
 $_7318a606a3118d468dae7078098fba7b='';
 $conn=mysqli_query($conns,"select * from siswa where nisn like '%%' ".$_2f912c6d42fb67b89f6d73741e22a97c." order by nisn");
 while($sql=mysqli_fetch_array($conn)){
-	$_7da43659dfebcaab2ad4bbd2f2a98f30=mysqli_query($conns,"select nama from kelas where id_kelas='".$sql['id_kelas']."'");
-	$_84ebecebe3a7c3b32dff74f8dce19fce=mysqli_fetch_array($_7da43659dfebcaab2ad4bbd2f2a98f30);
-	$nama=$_84ebecebe3a7c3b32dff74f8dce19fce['nama'];
+	$juml=mysqli_query($conns,"select nama from kelas where id_kelas='".$sql['id_kelas']."'");
+	$totAll=mysqli_fetch_array($juml);
+	$nama=$totAll['nama'];
 	
 	$_52f720bdaf922c68904e386cbf0cd227++;
 	$_7318a606a3118d468dae7078098fba7b.=$_52f720bdaf922c68904e386cbf0cd227."|".$sql['nisn']."|".$sql['nama']."|".$sql['gender']."|".$nama."\n";

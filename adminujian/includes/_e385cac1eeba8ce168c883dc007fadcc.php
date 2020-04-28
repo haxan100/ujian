@@ -40,15 +40,15 @@ if(mysqli_num_rows($conn) > 0){
 		$_25407a67a7a597297818c35a0d0ed51d=false;
 		//if(mysqli_num_rows(mysqli_query($conns,"select * from program where id_paket='".$_3584859062ea9ecfb39b93bfcef8e869."' limit 0,1"))>0){$_25407a67a7a597297818c35a0d0ed51d=true;}
 		if($_25407a67a7a597297818c35a0d0ed51d==true){$_849d693c62dfe15394a642123c1599c8='disabled';$_f22a1fc2263e04ec8ae7a008a249229e='return(false);';}else{$_849d693c62dfe15394a642123c1599c8='';$_f22a1fc2263e04ec8ae7a008a249229e='';}
-		$_7da43659dfebcaab2ad4bbd2f2a98f30=mysqli_query($conns,"select kelas.nama from siswa inner join kelas on siswa.id_kelas=kelas.id_kelas where siswa.id_siswa='".$sql['id_siswa']."'");
-		$_84ebecebe3a7c3b32dff74f8dce19fce=mysqli_fetch_array($_7da43659dfebcaab2ad4bbd2f2a98f30);
-		$nama=$_84ebecebe3a7c3b32dff74f8dce19fce['nama'];
+		$juml=mysqli_query($conns,"select kelas.nama from siswa inner join kelas on siswa.id_kelas=kelas.id_kelas where siswa.id_siswa='".$sql['id_siswa']."'");
+		$totAll=mysqli_fetch_array($juml);
+		$nama=$totAll['nama'];
 		$sqli='';
-		$_7da43659dfebcaab2ad4bbd2f2a98f30=mysqli_query($conns,"select * from ujian where id_paket='".$id."' and id_siswa='".$sql['id_siswa']."' and selesai='Y'");
-		if(mysqli_num_rows($_7da43659dfebcaab2ad4bbd2f2a98f30)>0){
-		$_84ebecebe3a7c3b32dff74f8dce19fce=mysqli_fetch_array($_7da43659dfebcaab2ad4bbd2f2a98f30);
-			$sqli=$_84ebecebe3a7c3b32dff74f8dce19fce['id_ujian'];
-			$nilai=$_84ebecebe3a7c3b32dff74f8dce19fce['nilai'];
+		$juml=mysqli_query($conns,"select * from ujian where id_paket='".$id."' and id_siswa='".$sql['id_siswa']."' and selesai='Y'");
+		if(mysqli_num_rows($juml)>0){
+		$totAll=mysqli_fetch_array($juml);
+			$sqli=$totAll['id_ujian'];
+			$nilai=$totAll['nilai'];
 			$_98024b3b946c00745df4e12781e5901d='<a href="'.$pengumuman1.'&id='.$sqli.'&action=hapus_ujian" class="btn btn-danger btn-xs btn_hapus">Hapus Ujian</a>';
 		}else{
 			$nilai='';

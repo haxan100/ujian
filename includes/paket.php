@@ -35,9 +35,9 @@ $conn=mysqli_query($conns,$conn);
 if(mysqli_num_rows($conn) > 0){
 	while($sql=mysqli_fetch_array($conn)){
 		$_52f720bdaf922c68904e386cbf0cd227++;
-		$_7da43659dfebcaab2ad4bbd2f2a98f30=mysqli_query($conns,"select count(*) as jml from soal_paket where id_paket='".$sql['id_paket']."'");
-		$_84ebecebe3a7c3b32dff74f8dce19fce=mysqli_fetch_array($_7da43659dfebcaab2ad4bbd2f2a98f30);
-		$jumlah=$_84ebecebe3a7c3b32dff74f8dce19fce['jml'];
+		$juml=mysqli_query($conns,"select count(*) as jml from soal_paket where id_paket='".$sql['id_paket']."'");
+		$totAll=mysqli_fetch_array($juml);
+		$jumlah=$totAll['jml'];
 		
 		$_346cdacfcfcb66a12c88d6345a2f0d81.='
 		<tr>
