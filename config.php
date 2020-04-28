@@ -1,15 +1,15 @@
 <?php
-$_7fe116ac06b6078d0c6ef403f3bbdc28 = 'localhost'; # hostname
-$_43ea23fc53c527d7ec2c5826a584b6d4 = 'root'; # username
-$_2bc48b257d5d15a0a235f444fbec995f = ''; # password
-$_bddc31963757f5f11835091cbdecb7ee = 'ujian_sekolah'; # nama database
+$host = 'localhost'; # hostname
+$username = 'root'; # username
+$pass = ''; # password
+$dbname = 'ujian_sekolah'; # nama database
 
 $look = 'http://localhost/project/ujian/'; # alamat web
-$_28cd827e9a3b578c3cfbcd7f0fd18d96 = 'http://localhost/project/ujian/adminujian/'; # alamat web admin
+$admin = 'http://localhost/project/ujian/adminujian/'; # alamat web admin
 $fotos = 'http://localhost/project/ujian/'; # alamat path web
 
-$conns = mysqli_connect($_7fe116ac06b6078d0c6ef403f3bbdc28,$_43ea23fc53c527d7ec2c5826a584b6d4,$_2bc48b257d5d15a0a235f444fbec995f) or die('Koneksi ke server database gagal.');
-mysqli_select_db($conns,$_bddc31963757f5f11835091cbdecb7ee) or die('Database tidak ditemukan.');
+$conns = mysqli_connect($host,$username,$pass) or die('Koneksi ke server database gagal.');
+mysqli_select_db($conns,$dbname) or die('Database tidak ditemukan.');
 
 ?>
 

@@ -16,7 +16,7 @@ if(isset($_POST["login"])){
 				$siswa='admin';
 				$_SESSION['LOGIN_ID']=$_78e1548d7ed1e38321b4ce5cddb2c8a7;
 				$_SESSION['LOGIN_TYPE']=$siswa;
-				exit("<script>window.location='".$_28cd827e9a3b578c3cfbcd7f0fd18d96."';</script>");
+				exit("<script>window.location='".$admin."';</script>");
 			}else{
 				$_b5adde8d7d7412251f47419fe9bf51a7='<strong>Error !</strong> Username dan password yang Anda masukkan salah.';
 			}

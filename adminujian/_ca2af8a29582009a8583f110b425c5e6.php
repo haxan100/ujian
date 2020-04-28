@@ -22,7 +22,7 @@ if(isset($_GET['paket'])){
 	}
 	$_SESSION['SIMULASI_SOAL']=$_cc5c6e696c11a4fdf170ece8ba9fdc6f;
 	$_SESSION['SIMULASI_NILAI']=0;
-	exit("<script>location.href='".$_28cd827e9a3b578c3cfbcd7f0fd18d96."_ca2af8a29582009a8583f110b425c5e6.php';</script>");
+	exit("<script>location.href='".$admin."_ca2af8a29582009a8583f110b425c5e6.php';</script>");
 }
 $_b78f9e7c4587e8583ab713f126277f88='';
 if(isset($_SESSION['SIMULASI_ID'])){
@@ -30,7 +30,7 @@ if(isset($_SESSION['SIMULASI_ID'])){
 }
 
 if($_b78f9e7c4587e8583ab713f126277f88==''){
-	exit("<script>location.href='".$_28cd827e9a3b578c3cfbcd7f0fd18d96."';</script>");
+	exit("<script>location.href='".$admin."';</script>");
 }
 $conn=mysqli_query($conns,"select * from paket where id_paket='".$_b78f9e7c4587e8583ab713f126277f88."'");
 $sql=mysqli_fetch_array($conn);
@@ -43,7 +43,7 @@ if($_02202b271eddd150fb9b3a5c12a8639d >= $_36fd7f7111215a7056422e47518363d7){
 	unset($_SESSION['SIMULASI_TIME']);
 	unset($_SESSION['SIMULASI_SOAL']);
 	unset($_SESSION['SIMULASI_NILAI']);
-	exit("<script>location.href='".$_28cd827e9a3b578c3cfbcd7f0fd18d96."';</script>");
+	exit("<script>location.href='".$admin."';</script>");
 }
 
 if(isset($_POST['jawab'])){
@@ -76,7 +76,7 @@ if(isset($_POST['selesai'])){
 	unset($_SESSION['SIMULASI_TIME']);
 	unset($_SESSION['SIMULASI_SOAL']);
 	unset($_SESSION['SIMULASI_NILAI']);
-	exit("<script>location.href='".$_28cd827e9a3b578c3cfbcd7f0fd18d96."';</script>");
+	exit("<script>location.href='".$admin."';</script>");
 }
 
 $_1b66aa9bfba43381db0e3cc139369d48=array();
@@ -267,7 +267,7 @@ $(document).ready(function(){
 			success: function(data) {
 				if(data=='off'){
 					$('#timer').html('<span class="label label-danger">Waktu : 00:00:00</span>');
-					window.location.href='<?php echo $_28cd827e9a3b578c3cfbcd7f0fd18d96;?>';
+					window.location.href='<?php echo $admin;?>';
 				}else{
 					$('#timer').html(data);
 				}
