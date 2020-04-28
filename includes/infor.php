@@ -2,7 +2,7 @@
 <?php
 $conn=mysqli_query($conns,"select * from konten where kode='informasi'");
 $sql=mysqli_fetch_array($conn);
-$_21eff29b583aa9be1b965eb96e6c56ed=$sql['detail'];
+$detail=$sql['detail'];
 
 ?>
 <div class="row">
@@ -12,7 +12,7 @@ $_21eff29b583aa9be1b965eb96e6c56ed=$sql['detail'];
 </div>
 <div class="row">
 <div class="col-lg-12">
-<?php echo $_21eff29b583aa9be1b965eb96e6c56ed;?>
+<?php echo $detail;?>
 </div>
 </div>
 

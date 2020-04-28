@@ -4,17 +4,17 @@ $pengumuman1='?hal=informasi';
 $regis='?hal=informasi';
 
 if(isset($_POST['save'])){
-	$_21eff29b583aa9be1b965eb96e6c56ed=$_POST['detail'];
+	$detail=$_POST['detail'];
 	
-	if(empty($_21eff29b583aa9be1b965eb96e6c56ed)){
+	if(empty($detail)){
 		$err='Masih ada beberapa kesalahan. Silahkan periksa lagi form di bawah ini.';
 		$password='';
 	}else{
 		if(mysqli_num_rows(mysqli_query($conns,"select * from konten where kode='informasi'"))==0){
-			$conn="insert into konten(kode, detail) values('informasi','".$_21eff29b583aa9be1b965eb96e6c56ed."')";
+			$conn="insert into konten(kode, detail) values('informasi','".$detail."')";
 			mysqli_query($conns,$conn);
 		}else{
-			$conn="update konten set detail='".$_21eff29b583aa9be1b965eb96e6c56ed."' where kode='informasi'";
+			$conn="update konten set detail='".$detail."' where kode='informasi'";
 			mysqli_query($conns,$conn);
 		}
 		$notif='Data berhasil disimpan.';
@@ -23,7 +23,7 @@ if(isset($_POST['save'])){
 }else{
 	$conn=mysqli_query($conns,"select * from konten where kode='informasi'");
 	$sql=mysqli_fetch_array($conn);
-	$_21eff29b583aa9be1b965eb96e6c56ed=$sql['detail'];
+	$detail=$sql['detail'];
 }
 
 ?>
@@ -58,7 +58,7 @@ if(!empty($notif)){
 
 <table width="100%" border="0" cellspacing="4" cellpadding="4" class="table">
   <tr>
-	<td style="border-top-width:0;"><textarea name="detail" cols="" rows="" class="form-control ckeditor" style="height:300px;"><?php echo $_21eff29b583aa9be1b965eb96e6c56ed;?></textarea></td>
+	<td style="border-top-width:0;"><textarea name="detail" cols="" rows="" class="form-control ckeditor" style="height:300px;"><?php echo $detail;?></textarea></td>
   </tr>
   <tr>
 	<td>
