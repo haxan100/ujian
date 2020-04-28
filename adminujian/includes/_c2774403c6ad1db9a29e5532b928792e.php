@@ -48,34 +48,34 @@ if(($_4e4149dcf4b3b60bf0aaf69dd2348c4d+1)<$listing){
 }
 
 $_4e4149dcf4b3b60bf0aaf69dd2348c4d=$_4e4149dcf4b3b60bf0aaf69dd2348c4d*$_111f1b5b84b5c819ea9ae35968fce466;
-$_52f720bdaf922c68904e386cbf0cd227=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;
-$_8e976f2b17f9b4d8660549c18b67af83=$_52f720bdaf922c68904e386cbf0cd227+1;
+$awal=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;
+$_8e976f2b17f9b4d8660549c18b67af83=$awal+1;
 
-$_d4cb19f81c23886f544f26709bd4f799='';
+$tables='';
 $conn="select * from soal where id_pelajaran='".$_5bbbff8933f7b8be381684bd463e6d16."' and detail like '%".$_36923cf62618d1b9981740738971e651."%' order by id_soal limit ".$_4e4149dcf4b3b60bf0aaf69dd2348c4d.",".$_111f1b5b84b5c819ea9ae35968fce466;
 $conn=mysqli_query($conns,$conn);
 if(mysqli_num_rows($conn) > 0){
 	while($sql=mysqli_fetch_array($conn)){
-		$_52f720bdaf922c68904e386cbf0cd227++;
-		$_3584859062ea9ecfb39b93bfcef8e869=$sql['id_soal'];
-		if(mysqli_num_rows(mysqli_query($conns,"select id_soal_paket from soal_paket where id_paket='".$id."' and id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."'")) > 0){
-			$_d4cb19f81c23886f544f26709bd4f799.='
+		$awal++;
+		$id_paket=$sql['id_soal'];
+		if(mysqli_num_rows(mysqli_query($conns,"select id_soal_paket from soal_paket where id_paket='".$id."' and id_soal='".$id_paket."'")) > 0){
+			$tables.='
 			  <tr>
-				<td style="text-align:center;">'.$_52f720bdaf922c68904e386cbf0cd227.'</td>
+				<td style="text-align:center;">'.$awal.'</td>
 				<td>'.$sql['detail'].'</td>
 				<td style="text-align:center;"><button type="button" class="btn btn-success btn-xs disabled"><i class="fa fa-check"></i></button></td>
 			  </tr>
 			';
 		}else{
-			$_d4cb19f81c23886f544f26709bd4f799.='
+			$tables.='
 			  <tr>
-				<td style="text-align:center;">'.$_52f720bdaf922c68904e386cbf0cd227.'</td>
+				<td style="text-align:center;">'.$awal.'</td>
 				<td>'.$sql['detail'].'</td>
-				<td style="text-align:center;"><button type="button" class="btn btn-success btn-xs data_table" data-id="'.$_3584859062ea9ecfb39b93bfcef8e869.'"><i class="fa fa-plus"></i></button></td>
+				<td style="text-align:center;"><button type="button" class="btn btn-success btn-xs data_table" data-id="'.$id_paket.'"><i class="fa fa-plus"></i></button></td>
 			  </tr>
 			';
 		}
-		$_517eb60ce7142569b3b2229552f16958=$_52f720bdaf922c68904e386cbf0cd227;
+		$_517eb60ce7142569b3b2229552f16958=$awal;
 	}
 }
 $_3718d16a4c63e6e0d669e38e63f8c5c0='<option value="">Pilih Pelajaran</option>';
@@ -102,7 +102,7 @@ while($sql=mysqli_fetch_array($conn)){
 	  </tr>
 	  </thead>
 	  <tbody>
-	  <?php echo $_d4cb19f81c23886f544f26709bd4f799;?>
+	  <?php echo $tables;?>
 	  </tbody>
 	</table>
 	

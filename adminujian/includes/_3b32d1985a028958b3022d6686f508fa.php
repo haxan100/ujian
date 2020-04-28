@@ -9,7 +9,7 @@ $gambar='images/no-thumb.jpg';
 $_f0e3e1311253a34acb082c35dd0cf0da='';
 
 if(isset($_POST['save'])){
-	$_3584859062ea9ecfb39b93bfcef8e869=$_POST['id'];
+	$id_paket=$_POST['id'];
 	$_d35a39212fd75e833aea38f90831b2cb=$_POST['action'];
 	$nama=$_POST['nama'];
 	$nisn=$_POST['nisn'];
@@ -52,7 +52,7 @@ if(isset($_POST['save'])){
 			}
 		}
 		if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
-			$conn=mysqli_query($conns,"select * from siswa where id_siswa='".$_3584859062ea9ecfb39b93bfcef8e869."'");
+			$conn=mysqli_query($conns,"select * from siswa where id_siswa='".$id_paket."'");
 			$sql=mysqli_fetch_array($conn);
 			$_84cbb4ee450782b7e500304a62e91ac0=$sql['nisn'];
 			$_5ff579d3c1dff8240c09ee80edb46288=$sql['password'];
@@ -63,7 +63,7 @@ if(isset($_POST['save'])){
 				if($_5ff579d3c1dff8240c09ee80edb46288==''){
 					$_45b37027578ddbc5040cf6b3961c7916=", password='".md5($password)."' ";
 				}
-				$conn="update siswa set id_kelas='".$idkelas."', nisn='".$nisn."', nama='".$nama."', gender='".$gender."' ".$_45b37027578ddbc5040cf6b3961c7916." where id_siswa='".$_3584859062ea9ecfb39b93bfcef8e869."'";
+				$conn="update siswa set id_kelas='".$idkelas."', nisn='".$nisn."', nama='".$nama."', gender='".$gender."' ".$_45b37027578ddbc5040cf6b3961c7916." where id_siswa='".$id_paket."'";
 				mysqli_query($conns,$conn);
 				if(!file_exists($fotos.'/uploads/')){
 					mkdir($fotos.'/uploads/');
@@ -88,23 +88,23 @@ if(isset($_POST['save'])){
 		
 	}
 }elseif(isset($_POST['reset'])){
-	$_3584859062ea9ecfb39b93bfcef8e869=$_POST['id'];
-	mysqli_query($conns,"update siswa set password='' where id_siswa='".$_3584859062ea9ecfb39b93bfcef8e869."'");
-	exit("<script>location.href='".$regis."&id=".$_3584859062ea9ecfb39b93bfcef8e869."&action=edit';</script>");
+	$id_paket=$_POST['id'];
+	mysqli_query($conns,"update siswa set password='' where id_siswa='".$id_paket."'");
+	exit("<script>location.href='".$regis."&id=".$id_paket."&action=edit';</script>");
 }elseif(isset($_POST['deletefoto'])){
-	$_3584859062ea9ecfb39b93bfcef8e869=$_POST['id'];
-	$conn=mysqli_query($conns,"select nisn from siswa where id_siswa='".$_3584859062ea9ecfb39b93bfcef8e869."'");
+	$id_paket=$_POST['id'];
+	$conn=mysqli_query($conns,"select nisn from siswa where id_siswa='".$id_paket."'");
 	$sql=mysqli_fetch_array($conn);
 	$nisn=$sql['nisn'];
 	if(file_exists($fotos.'/uploads/foto/'.$nisn.'.jpg')){unlink($fotos.'/uploads/foto/'.$nisn.'.jpg');}
-	exit("<script>location.href='".$regis."&id=".$_3584859062ea9ecfb39b93bfcef8e869."&action=edit';</script>");
+	exit("<script>location.href='".$regis."&id=".$id_paket."&action=edit';</script>");
 }else{
-	$_3584859062ea9ecfb39b93bfcef8e869='';
+	$id_paket='';
 	$idkelas='';$nisn='';$nama='';$gender='';$password='';
 	if(empty($_GET['action'])){$_d35a39212fd75e833aea38f90831b2cb='add';}else{$_d35a39212fd75e833aea38f90831b2cb=$_GET['action'];}
 	if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
-		$_3584859062ea9ecfb39b93bfcef8e869=$_GET['id'];
-		$conn=mysqli_query($conns,"select * from siswa where id_siswa='".$_3584859062ea9ecfb39b93bfcef8e869."'");
+		$id_paket=$_GET['id'];
+		$conn=mysqli_query($conns,"select * from siswa where id_siswa='".$id_paket."'");
 		$sql=mysqli_fetch_array($conn);
 		$nisn=$sql['nisn'];
 		$nama=$sql['nama'];
@@ -114,8 +114,8 @@ if(isset($_POST['save'])){
 		
 	}
 	if($_d35a39212fd75e833aea38f90831b2cb=='delete'){
-		$_3584859062ea9ecfb39b93bfcef8e869=$_GET['id'];
-		mysqli_query($conns,"delete from siswa where id_siswa='".$_3584859062ea9ecfb39b93bfcef8e869."'");
+		$id_paket=$_GET['id'];
+		mysqli_query($conns,"delete from siswa where id_siswa='".$id_paket."'");
 		exit("<script>location.href='".$pengumuman1."';</script>");
 	}
 }
@@ -186,7 +186,7 @@ $(document).ready(function(){
 
 
 <form action="<?php echo $regis;?>" id="form_siswa" name="" method="post" enctype="multipart/form-data">
-<input name="id" type="hidden" value="<?php echo $_3584859062ea9ecfb39b93bfcef8e869;?>">
+<input name="id" type="hidden" value="<?php echo $id_paket;?>">
 <input name="action" type="hidden" value="<?php echo $_d35a39212fd75e833aea38f90831b2cb;?>">
 <?php
 if(!empty($err)){

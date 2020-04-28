@@ -4,7 +4,7 @@ $pengumuman1='?hal=paket';
 $regis='?hal=update_paket';
 
 if(isset($_POST['save'])){
-	$_3584859062ea9ecfb39b93bfcef8e869=$_POST['id'];
+	$id_paket=$_POST['id'];
 	$_d35a39212fd75e833aea38f90831b2cb=$_POST['action'];
 	$nama=$_POST['nama'];
 	$waktu=$_POST['waktu_pengerjaan'];
@@ -18,7 +18,7 @@ if(isset($_POST['save'])){
 			exit("<script>location.href='".$pengumuman1."';</script>");
 		}
 		if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
-			$conn="update paket set nama='".$nama."',waktu_pengerjaan='".$waktu."' where id_paket='".$_3584859062ea9ecfb39b93bfcef8e869."'";
+			$conn="update paket set nama='".$nama."',waktu_pengerjaan='".$waktu."' where id_paket='".$id_paket."'";
 			mysqli_query($conns,$conn);
 			exit("<script>location.href='".$pengumuman1."';</script>");
 		}
@@ -28,21 +28,21 @@ if(isset($_POST['save'])){
 	$nama='';$waktu='';
 	if(empty($_GET['action'])){$_d35a39212fd75e833aea38f90831b2cb='add';}else{$_d35a39212fd75e833aea38f90831b2cb=$_GET['action'];}
 	if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
-		$_3584859062ea9ecfb39b93bfcef8e869=$_GET['id'];
-		$conn=mysqli_query($conns,"select * from paket where id_paket='".$_3584859062ea9ecfb39b93bfcef8e869."'");
+		$id_paket=$_GET['id'];
+		$conn=mysqli_query($conns,"select * from paket where id_paket='".$id_paket."'");
 		$sql=mysqli_fetch_array($conn);
 		$nama=$sql['nama'];
 		$waktu=$sql['waktu_pengerjaan'];
 	}
 	if($_d35a39212fd75e833aea38f90831b2cb=='delete'){
-		$_3584859062ea9ecfb39b93bfcef8e869=$_GET['id'];
-		mysqli_query($conns,"delete from paket where id_paket='".$_3584859062ea9ecfb39b93bfcef8e869."'");
+		$id_paket=$_GET['id'];
+		mysqli_query($conns,"delete from paket where id_paket='".$id_paket."'");
 		exit("<script>location.href='".$pengumuman1."';</script>");
 	}
 	/*if($_d35a39212fd75e833aea38f90831b2cb=='aktif'){
-		$_3584859062ea9ecfb39b93bfcef8e869=$_GET['id'];
-		mysqli_query($conns,"update paket set aktif='Y' where id_paket='".$_3584859062ea9ecfb39b93bfcef8e869."'");
-		mysqli_query($conns,"update paket set aktif='N' where id_paket<>'".$_3584859062ea9ecfb39b93bfcef8e869."'");
+		$id_paket=$_GET['id'];
+		mysqli_query($conns,"update paket set aktif='Y' where id_paket='".$id_paket."'");
+		mysqli_query($conns,"update paket set aktif='N' where id_paket<>'".$id_paket."'");
 		exit("<script>location.href='".$pengumuman1."';</script>");
 	}*/
 }
@@ -58,7 +58,7 @@ if($_d35a39212fd75e833aea38f90831b2cb=='add'){$_06c518f70e97b19c7ec907f36542ce6e
 </div>
 
 <form action="<?php echo $regis;?>" name="" method="post" enctype="multipart/form-data">
-<input name="id" type="hidden" value="<?php echo $_3584859062ea9ecfb39b93bfcef8e869;?>">
+<input name="id" type="hidden" value="<?php echo $id_paket;?>">
 <input name="action" type="hidden" value="<?php echo $_d35a39212fd75e833aea38f90831b2cb;?>">
 
 <div class="row">

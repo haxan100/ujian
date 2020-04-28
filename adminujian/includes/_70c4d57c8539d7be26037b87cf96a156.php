@@ -4,7 +4,7 @@ $pengumuman1='?hal=soal';
 $regis='?hal=update_soal';
 
 if(isset($_POST['save'])){
-	$_3584859062ea9ecfb39b93bfcef8e869=$_POST['id'];
+	$id_paket=$_POST['id'];
 	$_d35a39212fd75e833aea38f90831b2cb=$_POST['action'];
 	$_5bbbff8933f7b8be381684bd463e6d16=$_POST['pelajaran'];
 	$paket=$_POST['soal'];
@@ -29,12 +29,12 @@ if(isset($_POST['save'])){
 			exit("<script>location.href='".$pengumuman1."&pelajaran=".$_5bbbff8933f7b8be381684bd463e6d16."';</script>");
 		}
 		if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
-			$conn="update soal set detail='".trim($paket)."',kunci='".$_b65003120790c3e628f304c85a36a615."',id_pelajaran='".$_5bbbff8933f7b8be381684bd463e6d16."' where id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."'";
+			$conn="update soal set detail='".trim($paket)."',kunci='".$_b65003120790c3e628f304c85a36a615."',id_pelajaran='".$_5bbbff8933f7b8be381684bd463e6d16."' where id_soal='".$id_paket."'";
 			mysqli_query($conns,$conn);
-			mysqli_query($conns,"delete from soal_jawaban where id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."'");
+			mysqli_query($conns,"delete from soal_jawaban where id_soal='".$id_paket."'");
 			$_f77c5a659797b862f0fc544aa9a0c023=array('A','B','C','D','E');
 			for($mulai=0;$mulai<count($_a2162101cd2c071e2931c2254b25ca5e);$mulai++){
-				mysqli_query($conns,"insert into soal_jawaban(id_soal,kode,jawaban) values('".$_3584859062ea9ecfb39b93bfcef8e869."','".$_f77c5a659797b862f0fc544aa9a0c023[$mulai]."','".trim($_a2162101cd2c071e2931c2254b25ca5e[$mulai])."')");
+				mysqli_query($conns,"insert into soal_jawaban(id_soal,kode,jawaban) values('".$id_paket."','".$_f77c5a659797b862f0fc544aa9a0c023[$mulai]."','".trim($_a2162101cd2c071e2931c2254b25ca5e[$mulai])."')");
 			}
 			exit("<script>location.href='".$pengumuman1."&pelajaran=".$_5bbbff8933f7b8be381684bd463e6d16."';</script>");
 		}
@@ -44,22 +44,22 @@ if(isset($_POST['save'])){
 	$_5bbbff8933f7b8be381684bd463e6d16='';$paket='';$_b65003120790c3e628f304c85a36a615='';$_a2162101cd2c071e2931c2254b25ca5e[0]='';$_a2162101cd2c071e2931c2254b25ca5e[1]='';$_a2162101cd2c071e2931c2254b25ca5e[2]='';$_a2162101cd2c071e2931c2254b25ca5e[3]='';$_a2162101cd2c071e2931c2254b25ca5e[4]='';
 	if(empty($_GET['action'])){$_d35a39212fd75e833aea38f90831b2cb='add';}else{$_d35a39212fd75e833aea38f90831b2cb=$_GET['action'];}
 	if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
-		$_3584859062ea9ecfb39b93bfcef8e869=$_GET['id'];
-		$conn=mysqli_query($conns,"select * from soal where id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."'");
+		$id_paket=$_GET['id'];
+		$conn=mysqli_query($conns,"select * from soal where id_soal='".$id_paket."'");
 		$sql=mysqli_fetch_array($conn);
 		$_5bbbff8933f7b8be381684bd463e6d16=$sql['id_pelajaran'];
 		$paket=$sql['detail'];
 		$_b65003120790c3e628f304c85a36a615=$sql['kunci'];
-		$_52f720bdaf922c68904e386cbf0cd227=0;
-		$conn=mysqli_query($conns,"select * from soal_jawaban where id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."' order by id_soal_jawaban");
+		$awal=0;
+		$conn=mysqli_query($conns,"select * from soal_jawaban where id_soal='".$id_paket."' order by id_soal_jawaban");
 		while($sql=mysqli_fetch_array($conn)){
-			$_a2162101cd2c071e2931c2254b25ca5e[$_52f720bdaf922c68904e386cbf0cd227]=$sql['jawaban'];
-			$_52f720bdaf922c68904e386cbf0cd227++;
+			$_a2162101cd2c071e2931c2254b25ca5e[$awal]=$sql['jawaban'];
+			$awal++;
 		}
 	}
 	if($_d35a39212fd75e833aea38f90831b2cb=='delete'){
-		$_3584859062ea9ecfb39b93bfcef8e869=$_GET['id'];
-		mysqli_query($conns,"delete from soal where id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."'");
+		$id_paket=$_GET['id'];
+		mysqli_query($conns,"delete from soal where id_soal='".$id_paket."'");
 		exit("<script>location.href='".$pengumuman1."';</script>");
 	}
 }
@@ -118,7 +118,7 @@ $(document).ready(function(){
 </div>
 
 <form action="<?php echo $regis;?>" name="" id="form_soal" method="post" enctype="multipart/form-data">
-<input name="id" type="hidden" value="<?php echo $_3584859062ea9ecfb39b93bfcef8e869;?>">
+<input name="id" type="hidden" value="<?php echo $id_paket;?>">
 <input name="action" type="hidden" value="<?php echo $_d35a39212fd75e833aea38f90831b2cb;?>">
 
 <div class="row">

@@ -15,7 +15,7 @@ if($idkelas!=''){
 	$_2f912c6d42fb67b89f6d73741e22a97c=" and id_kelas='".$idkelas."' ";
 }
 
-$_52f720bdaf922c68904e386cbf0cd227=0;
+$awal=0;
 $_7318a606a3118d468dae7078098fba7b='';
 $conn=mysqli_query($conns,"select * from siswa where nisn like '%%' ".$_2f912c6d42fb67b89f6d73741e22a97c." order by nisn");
 while($sql=mysqli_fetch_array($conn)){
@@ -23,8 +23,8 @@ while($sql=mysqli_fetch_array($conn)){
 	$totAll=mysqli_fetch_array($juml);
 	$nama=$totAll['nama'];
 	
-	$_52f720bdaf922c68904e386cbf0cd227++;
-	$_7318a606a3118d468dae7078098fba7b.=$_52f720bdaf922c68904e386cbf0cd227."|".$sql['nisn']."|".$sql['nama']."|".$sql['gender']."|".$nama."\n";
+	$awal++;
+	$_7318a606a3118d468dae7078098fba7b.=$awal."|".$sql['nisn']."|".$sql['nama']."|".$sql['gender']."|".$nama."\n";
 }
 
 $_b0d5d47f3d2e32a124c14253aba3976a=array('No','NISN','Nama Siswa','J. Kelamin','Kelas');

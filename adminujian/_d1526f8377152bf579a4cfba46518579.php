@@ -16,8 +16,8 @@ $conn=mysqli_query($conns,"select nama from paket where id_paket='".$id."'");
 $sql=mysqli_fetch_array($conn);
 $nama=$sql['nama'];
 
-$_52f720bdaf922c68904e386cbf0cd227=0;
-$_d4cb19f81c23886f544f26709bd4f799='';
+$awal=0;
+$tables='';
 $conn=mysqli_query($conns,"select * from peserta inner join siswa on peserta.id_siswa=siswa.id_siswa where peserta.id_paket='".$id."' order by nisn");
 while($sql=mysqli_fetch_array($conn)){
 	$juml=mysqli_query($conns,"select nama from kelas where id_kelas='".$sql['id_kelas']."'");
@@ -27,11 +27,11 @@ while($sql=mysqli_fetch_array($conn)){
 	$totAll=mysqli_fetch_array($juml);
 	$nilai=$totAll['nilai'];
 	
-	$_52f720bdaf922c68904e386cbf0cd227++;
+	$awal++;
 	
-	$_d4cb19f81c23886f544f26709bd4f799.='
+	$tables.='
 	<tr>
-	<td style="text-align:center;font-size:12px;border:0;padding:0 5px 0 5px;">'.$_52f720bdaf922c68904e386cbf0cd227.'</td>
+	<td style="text-align:center;font-size:12px;border:0;padding:0 5px 0 5px;">'.$awal.'</td>
 	<td style="font-size:12px;border:0;padding:0 5px 0 5px;">'.$sql['nisn'].'</td>
 	<td style="font-size:12px;border:0;padding:0 5px 0 5px;">'.$sql['nama'].'</td>
 	<td style="text-align:center;font-size:12px;border:0;padding:0 5px 0 5px;">'.$sql['gender'].'</td>
@@ -167,7 +167,7 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6,p,ul,ol,form,table,address {
 			  </tr>
 			  </thead>
 			  <tbody>
-			  <?php echo $_d4cb19f81c23886f544f26709bd4f799;?>
+			  <?php echo $tables;?>
 			  </tbody>
 			</table>
 			</div>

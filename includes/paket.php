@@ -4,44 +4,44 @@
 $pengumuman1='?hal=ujian';
 $regis='?hal=ujian';
 
-$_52f720bdaf922c68904e386cbf0cd227=0;
-$_d4cb19f81c23886f544f26709bd4f799='';
+$awal=0;
+$tables='';
 $conn="select * from paket where aktif='Y' and id_paket not in (select id_paket from ujian where id_siswa='".$_SESSION['LOGIN_ID']."') order by id_paket desc";
 $conn=mysqli_query($conns,$conn);
 if(mysqli_num_rows($conn) > 0){
 	while($sql=mysqli_fetch_array($conn)){
-		$_52f720bdaf922c68904e386cbf0cd227++;
-		$_3584859062ea9ecfb39b93bfcef8e869=$sql['id_paket'];
+		$awal++;
+		$id_paket=$sql['id_paket'];
 		if($sql['aktif']=='Y'){
-			$_75de32ef2738499ab53bba79a1a5a51d='<li><a href="?hal=paket&amp;id='.$_3584859062ea9ecfb39b93bfcef8e869.'&amp;action=disabled">Status : Tidak Aktif</a></li>';
+			$opsiPaket='<li><a href="?hal=paket&amp;id='.$id_paket.'&amp;action=disabled">Status : Tidak Aktif</a></li>';
 		}else{
-			$_75de32ef2738499ab53bba79a1a5a51d='<li><a href="?hal=paket&amp;id='.$_3584859062ea9ecfb39b93bfcef8e869.'&amp;action=enabled">Status : Aktif</a></li>';
+			$opsiPaket='<li><a href="?hal=paket&amp;id='.$id_paket.'&amp;action=enabled">Status : Aktif</a></li>';
 		}
 		
-		$_d4cb19f81c23886f544f26709bd4f799.='
+		$tables.='
 		<tr>
-		<td style="text-align:center;">'.$_52f720bdaf922c68904e386cbf0cd227.'</td>
+		<td style="text-align:center;">'.$awal.'</td>
 		<td>'.$sql['nama'].'</td>
 		<td style="text-align:center;">'.$sql['waktu_pengerjaan'].' menit</td>
-		<td style="text-align:center;"><a href="?hal=ujian&amp;id='.$_3584859062ea9ecfb39b93bfcef8e869.'" class="btn btn-primary btn-sm">Masuk</a></td>
+		<td style="text-align:center;"><a href="?hal=ujian&amp;id='.$id_paket.'" class="btn btn-primary btn-sm">Masuk</a></td>
 		</tr>
 		';
 	}
 }
-$_52f720bdaf922c68904e386cbf0cd227=0;
-$_346cdacfcfcb66a12c88d6345a2f0d81='';
+$awal=0;
+$tablesSis='';
 $conn="select * from paket inner join ujian on paket.id_paket=ujian.id_paket where ujian.id_siswa='".$_SESSION['LOGIN_ID']."' and selesai='Y' order by ujian.id_ujian desc";
 $conn=mysqli_query($conns,$conn);
 if(mysqli_num_rows($conn) > 0){
 	while($sql=mysqli_fetch_array($conn)){
-		$_52f720bdaf922c68904e386cbf0cd227++;
+		$awal++;
 		$juml=mysqli_query($conns,"select count(*) as jml from soal_paket where id_paket='".$sql['id_paket']."'");
 		$totAll=mysqli_fetch_array($juml);
 		$jumlah=$totAll['jml'];
 		
-		$_346cdacfcfcb66a12c88d6345a2f0d81.='
+		$tablesSis.='
 		<tr>
-		<td style="text-align:center;">'.$_52f720bdaf922c68904e386cbf0cd227.'</td>
+		<td style="text-align:center;">'.$awal.'</td>
 		<td style="text-align:center;">'.date('d-m-Y',strtotime($sql['tanggal_mulai'])).'</td>
 		<td>'.$sql['nama'].'</td>
 		<td style="text-align:center;">'.$sql['waktu_pengerjaan'].' menit</td>
@@ -64,7 +64,7 @@ if(mysqli_num_rows($conn) > 0){
 <div class="row">
 	<div class="col-lg-12">
 	<?php 
-	if($_d4cb19f81c23886f544f26709bd4f799==''){ 
+	if($tables==''){ 
 		echo '<div class="alert alert-danger ">Data tidak ditemukan.</div>';
 	}else{
 	?>
@@ -79,7 +79,7 @@ if(mysqli_num_rows($conn) > 0){
 	  </tr>
 	  </thead>
 	  <tbody>
-	  <?php echo $_d4cb19f81c23886f544f26709bd4f799;?>
+	  <?php echo $tables;?>
 	  </tbody>
 	</table>
 	</div>
@@ -98,7 +98,7 @@ if(mysqli_num_rows($conn) > 0){
 <div class="row">
 	<div class="col-lg-12">
 	<?php 
-	if($_346cdacfcfcb66a12c88d6345a2f0d81==''){ 
+	if($tablesSis==''){ 
 		echo '<div class="alert alert-danger ">Data tidak ditemukan.</div>';
 	}else{
 	?>
@@ -115,7 +115,7 @@ if(mysqli_num_rows($conn) > 0){
 	  </tr>
 	  </thead>
 	  <tbody>
-	  <?php echo $_346cdacfcfcb66a12c88d6345a2f0d81;?>
+	  <?php echo $tablesSis;?>
 	  </tbody>
 	</table>
 	</div>

@@ -14,13 +14,13 @@ if(isset($_GET['kelas'])){
 }
 
 
-$_52f720bdaf922c68904e386cbf0cd227=0;
+$awal=0;
 $hasil='';
 $conn="select * from peserta inner join siswa on peserta.id_siswa=siswa.id_siswa where peserta.id_paket='".$id."' and siswa.id_kelas='".$idkelas."' order by peserta.id_peserta";
 $conn=mysqli_query($conns,$conn);
 if(mysqli_num_rows($conn) > 0){
 	while($sql=mysqli_fetch_array($conn)){
-		$_52f720bdaf922c68904e386cbf0cd227++;
+		$awal++;
 		
 		$juml=mysqli_query($conns,"select nilai from ujian where id_paket='".$id."' and id_siswa='".$sql['id_siswa']."' and selesai='Y'");
 		$totAll=mysqli_fetch_array($juml);
@@ -28,7 +28,7 @@ if(mysqli_num_rows($conn) > 0){
 
 		$hasil.='
 		  <tr>
-			<td style="text-align:center;">'.$_52f720bdaf922c68904e386cbf0cd227.'</td>
+			<td style="text-align:center;">'.$awal.'</td>
 			<td>'.$sql['nisn'].'</td>
 			<td>'.$sql['nama'].'</td>
 			<td style="text-align:center;">'.$nilai.'</td>

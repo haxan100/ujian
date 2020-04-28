@@ -4,7 +4,7 @@ $pengumuman1='?hal=kompetensi';
 $regis='?hal=update_kompetensi';
 
 if(isset($_POST['save'])){
-	$_3584859062ea9ecfb39b93bfcef8e869=$_POST['id'];
+	$id_paket=$_POST['id'];
 	$_d35a39212fd75e833aea38f90831b2cb=$_POST['action'];
 	$nama=$_POST['nama'];
 	$_f77c5a659797b862f0fc544aa9a0c023=$_POST['kode'];
@@ -22,13 +22,13 @@ if(isset($_POST['save'])){
 			}
 		}
 		if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
-			$conn=mysqli_query($conns,"select * from kompetensi where id_kompetensi='".$_3584859062ea9ecfb39b93bfcef8e869."'");
+			$conn=mysqli_query($conns,"select * from kompetensi where id_kompetensi='".$id_paket."'");
 			$sql=mysqli_fetch_array($conn);
 			$_08fdfd209a120f38f85507412165a4ef=$sql['kode'];
 			if(mysqli_num_rows(mysqli_query($conns,"select * from kompetensi where kode='".$_f77c5a659797b862f0fc544aa9a0c023."' and kode<>'".$_08fdfd209a120f38f85507412165a4ef."'"))>0){
 				$err='Kode sudah terdaftar. Silahkan daftarkan kode yang lain.';
 			}else{
-				$conn="update kompetensi set kode='".$_f77c5a659797b862f0fc544aa9a0c023."',nama='".$nama."' where id_kompetensi='".$_3584859062ea9ecfb39b93bfcef8e869."'";
+				$conn="update kompetensi set kode='".$_f77c5a659797b862f0fc544aa9a0c023."',nama='".$nama."' where id_kompetensi='".$id_paket."'";
 				mysqli_query($conns,$conn);
 				exit("<script>location.href='".$pengumuman1."';</script>");
 			}
@@ -39,15 +39,15 @@ if(isset($_POST['save'])){
 	$nama='';$_f77c5a659797b862f0fc544aa9a0c023='';
 	if(empty($_GET['action'])){$_d35a39212fd75e833aea38f90831b2cb='add';}else{$_d35a39212fd75e833aea38f90831b2cb=$_GET['action'];}
 	if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
-		$_3584859062ea9ecfb39b93bfcef8e869=$_GET['id'];
-		$conn=mysqli_query($conns,"select * from kompetensi where id_kompetensi='".$_3584859062ea9ecfb39b93bfcef8e869."'");
+		$id_paket=$_GET['id'];
+		$conn=mysqli_query($conns,"select * from kompetensi where id_kompetensi='".$id_paket."'");
 		$sql=mysqli_fetch_array($conn);
 		$nama=$sql['nama'];
 		$_f77c5a659797b862f0fc544aa9a0c023=$sql['kode'];
 	}
 	if($_d35a39212fd75e833aea38f90831b2cb=='delete'){
-		$_3584859062ea9ecfb39b93bfcef8e869=$_GET['id'];
-		mysqli_query($conns,"delete from kompetensi where id_kompetensi='".$_3584859062ea9ecfb39b93bfcef8e869."'");
+		$id_paket=$_GET['id'];
+		mysqli_query($conns,"delete from kompetensi where id_kompetensi='".$id_paket."'");
 		exit("<script>location.href='".$pengumuman1."';</script>");
 	}
 }
@@ -68,7 +68,7 @@ $(document).ready(function(){
 </div>
 
 <form action="<?php echo $regis;?>" name="" method="post" enctype="multipart/form-data">
-<input name="id" type="hidden" value="<?php echo $_3584859062ea9ecfb39b93bfcef8e869;?>">
+<input name="id" type="hidden" value="<?php echo $id_paket;?>">
 <input name="action" type="hidden" value="<?php echo $_d35a39212fd75e833aea38f90831b2cb;?>">
 
 <div class="row">

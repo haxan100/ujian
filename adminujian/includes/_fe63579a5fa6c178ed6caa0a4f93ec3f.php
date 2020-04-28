@@ -6,13 +6,13 @@ $_352323c15d1fa78cef3ff6277fa8502c=(4*1024*1024);
 $_4c792b9297dbe7cb2afcfd2333932891=array('jpg','jpeg','png');
 
 if(isset($_POST['save'])){
-	$_52f720bdaf922c68904e386cbf0cd227=0;
+	$awal=0;
 	foreach ($_FILES['gambar']['name'] as $_6b6e98cde8b33087a33e4d3a497bd86b => $_9b395079675c6a66ff23ea9c6c4a668e) {     
 		if ($_FILES['gambar']['error'][$_6b6e98cde8b33087a33e4d3a497bd86b] == 4) {
 			continue;
 		}	       
 		if ($_FILES['gambar']['error'][$_6b6e98cde8b33087a33e4d3a497bd86b] == 0) {	           
-			$_52f720bdaf922c68904e386cbf0cd227++;
+			$awal++;
 			$_cc5c6e696c11a4fdf170ece8ba9fdc6f=strtolower($_FILES['gambar']['name'][$_6b6e98cde8b33087a33e4d3a497bd86b]);
 			$_cc5c6e696c11a4fdf170ece8ba9fdc6f=explode(".", $_cc5c6e696c11a4fdf170ece8ba9fdc6f);
 			$_c762a21cf01f9dfbea30dd29d5b7cbd9=end($_cc5c6e696c11a4fdf170ece8ba9fdc6f);
@@ -21,14 +21,14 @@ if(isset($_POST['save'])){
 			mysqli_query($conns,"insert into gambar(nama) values('".$_3656889a448a7af799d2d7955bed2354."')");
 		}
 	}
-	$notif='Upload file berhasil. Jumlah file : <strong>'.$_52f720bdaf922c68904e386cbf0cd227.'</strong>';
+	$notif='Upload file berhasil. Jumlah file : <strong>'.$awal.'</strong>';
 }
 if(isset($_GET['action']) and $_GET['action']=='delete'){
-	$_3584859062ea9ecfb39b93bfcef8e869=$_GET['id'];
-	$conn=mysqli_query($conns,"select * from gambar where id_gambar='".$_3584859062ea9ecfb39b93bfcef8e869."'");
+	$id_paket=$_GET['id'];
+	$conn=mysqli_query($conns,"select * from gambar where id_gambar='".$id_paket."'");
 	$sql=mysqli_fetch_array($conn);
 	$_3656889a448a7af799d2d7955bed2354=$sql['nama'];
-	mysqli_query($conns,"delete from gambar where id_gambar='".$_3584859062ea9ecfb39b93bfcef8e869."'");
+	mysqli_query($conns,"delete from gambar where id_gambar='".$id_paket."'");
 	unlink($fotos.'/uploads/'.$_3656889a448a7af799d2d7955bed2354);
 	exit("<script>location.href='".$pengumuman1."';</script>");
 }
@@ -44,22 +44,22 @@ if($_4e4149dcf4b3b60bf0aaf69dd2348c4d<1){$_4e4149dcf4b3b60bf0aaf69dd2348c4d=1;}$
 if(($_4e4149dcf4b3b60bf0aaf69dd2348c4d+1)>1){$_addbb9f4792a53c78e32e91e1c94f075='<li><a href="'.$_bd374a8757e4ad5e55de663a02a9adde.'&page='.$_4e4149dcf4b3b60bf0aaf69dd2348c4d.'">&laquo;</a></li>';}else{$_addbb9f4792a53c78e32e91e1c94f075='<li class="disabled"><a href="#">&laquo;</a></li>';}
 for($mulai=1;$mulai<=$listing;$mulai++){if($mulai==($_4e4149dcf4b3b60bf0aaf69dd2348c4d+1)){$selectOpsi='class="active"';}else{$selectOpsi='';}$_addbb9f4792a53c78e32e91e1c94f075.='<li '.$selectOpsi.'><a href="'.$_bd374a8757e4ad5e55de663a02a9adde.'&page='.$mulai.'">'.$mulai.'</a></li>';}
 if(($_4e4149dcf4b3b60bf0aaf69dd2348c4d+1)<$listing){$_addbb9f4792a53c78e32e91e1c94f075.='<li><a href="'.$_bd374a8757e4ad5e55de663a02a9adde.'&page='.($_4e4149dcf4b3b60bf0aaf69dd2348c4d+2).'">&raquo;</a></li>';}else{$_addbb9f4792a53c78e32e91e1c94f075.='<li class="disabled"><a href="#">&raquo;</a></li>';}
-$_addbb9f4792a53c78e32e91e1c94f075='<ul class="pagination">'.$_addbb9f4792a53c78e32e91e1c94f075.'</ul>';$_4e4149dcf4b3b60bf0aaf69dd2348c4d=$_4e4149dcf4b3b60bf0aaf69dd2348c4d*$_111f1b5b84b5c819ea9ae35968fce466;$_52f720bdaf922c68904e386cbf0cd227=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;
+$_addbb9f4792a53c78e32e91e1c94f075='<ul class="pagination">'.$_addbb9f4792a53c78e32e91e1c94f075.'</ul>';$_4e4149dcf4b3b60bf0aaf69dd2348c4d=$_4e4149dcf4b3b60bf0aaf69dd2348c4d*$_111f1b5b84b5c819ea9ae35968fce466;$awal=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;
 
-$_d4cb19f81c23886f544f26709bd4f799='';
+$tables='';
 $_8e529f7c1789a19f5ed8b2edb0af9fa7='';
 $conn="select * from gambar order by id_gambar limit ".$_4e4149dcf4b3b60bf0aaf69dd2348c4d.",".$_111f1b5b84b5c819ea9ae35968fce466;
 $conn=mysqli_query($conns,$conn);
 while($sql=mysqli_fetch_array($conn)){
-	$_52f720bdaf922c68904e386cbf0cd227++;
-	$_3584859062ea9ecfb39b93bfcef8e869=$sql['id_gambar'];
+	$awal++;
+	$id_paket=$sql['id_gambar'];
 	$_8e529f7c1789a19f5ed8b2edb0af9fa7.='
 	<div class="col-lg-3 col-md-4 col-xs-6 thumb text-center" style="margin-bottom:10px;">
 		<a class="thumbnail gambar" href="#gambar_modal" data-toggle="modal" data-src="'.$sql['nama'].'">
 			<img class="img-responsive" src="'.$look.'uploads/'.$sql['nama'].'" alt="">
 		</a>
 		<div style="margin-top:-10px;">
-		<a href="#" onclick="DeleteConfirm(\''.$regis.'&amp;id='.$_3584859062ea9ecfb39b93bfcef8e869.'&amp;action=delete\');return(false);" class="btn btn-danger btn-sm">Hapus</a>
+		<a href="#" onclick="DeleteConfirm(\''.$regis.'&amp;id='.$id_paket.'&amp;action=delete\');return(false);" class="btn btn-danger btn-sm">Hapus</a>
 		</div>
 	</div>
 	';

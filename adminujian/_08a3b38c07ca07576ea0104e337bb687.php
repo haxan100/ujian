@@ -11,7 +11,7 @@ if(isset($_GET['paket'])){
 	$id=$_GET['paket'];
 }
 
-$_52f720bdaf922c68904e386cbf0cd227=0;
+$awal=0;
 $_7318a606a3118d468dae7078098fba7b='';
 $conn=mysqli_query($conns,"select * from peserta inner join siswa on peserta.id_siswa=siswa.id_siswa where peserta.id_paket='".$id."' order by nisn");
 while($sql=mysqli_fetch_array($conn)){
@@ -22,8 +22,8 @@ while($sql=mysqli_fetch_array($conn)){
 	$totAll=mysqli_fetch_array($juml);
 	$nilai=$totAll['nilai'];
 	
-	$_52f720bdaf922c68904e386cbf0cd227++;
-	$_7318a606a3118d468dae7078098fba7b.=$_52f720bdaf922c68904e386cbf0cd227."|".$sql['nisn']."|".$sql['nama']."|".$sql['gender']."|".$nama."|".$nilai."\n";
+	$awal++;
+	$_7318a606a3118d468dae7078098fba7b.=$awal."|".$sql['nisn']."|".$sql['nama']."|".$sql['gender']."|".$nama."|".$nilai."\n";
 }
 
 $_b0d5d47f3d2e32a124c14253aba3976a=array('No','NISN','Nama Siswa','J. Kelamin','Kelas','Nilai');

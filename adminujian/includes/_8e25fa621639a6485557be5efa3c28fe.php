@@ -24,22 +24,22 @@ if($_4e4149dcf4b3b60bf0aaf69dd2348c4d<1){$_4e4149dcf4b3b60bf0aaf69dd2348c4d=1;}$
 if(($_4e4149dcf4b3b60bf0aaf69dd2348c4d+1)>1){$_addbb9f4792a53c78e32e91e1c94f075='<li><a href="'.$_bd374a8757e4ad5e55de663a02a9adde.'&page='.$_4e4149dcf4b3b60bf0aaf69dd2348c4d.'">&laquo;</a></li>';}else{$_addbb9f4792a53c78e32e91e1c94f075='<li class="disabled"><a href="#">&laquo;</a></li>';}
 for($mulai=1;$mulai<=$listing;$mulai++){if($mulai==($_4e4149dcf4b3b60bf0aaf69dd2348c4d+1)){$selectOpsi='class="active"';}else{$selectOpsi='';}$_addbb9f4792a53c78e32e91e1c94f075.='<li '.$selectOpsi.'><a href="'.$_bd374a8757e4ad5e55de663a02a9adde.'&page='.$mulai.'">'.$mulai.'</a></li>';}
 if(($_4e4149dcf4b3b60bf0aaf69dd2348c4d+1)<$listing){$_addbb9f4792a53c78e32e91e1c94f075.='<li><a href="'.$_bd374a8757e4ad5e55de663a02a9adde.'&page='.($_4e4149dcf4b3b60bf0aaf69dd2348c4d+2).'">&raquo;</a></li>';}else{$_addbb9f4792a53c78e32e91e1c94f075.='<li class="disabled"><a href="#">&raquo;</a></li>';}
-$_addbb9f4792a53c78e32e91e1c94f075='<ul class="pagination">'.$_addbb9f4792a53c78e32e91e1c94f075.'</ul>';$_4e4149dcf4b3b60bf0aaf69dd2348c4d=$_4e4149dcf4b3b60bf0aaf69dd2348c4d*$_111f1b5b84b5c819ea9ae35968fce466;$_52f720bdaf922c68904e386cbf0cd227=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;
+$_addbb9f4792a53c78e32e91e1c94f075='<ul class="pagination">'.$_addbb9f4792a53c78e32e91e1c94f075.'</ul>';$_4e4149dcf4b3b60bf0aaf69dd2348c4d=$_4e4149dcf4b3b60bf0aaf69dd2348c4d*$_111f1b5b84b5c819ea9ae35968fce466;$awal=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;
 
 $_971d98e0ad23e0905a3d3f4b08d46579=array('Y'=>'<span class="label label-success">AKTIF</span>','N'=>'<span class="label label-danger">Tidak Aktif</span>');
-$_d4cb19f81c23886f544f26709bd4f799='';
+$tables='';
 $conn="select * from soal where id_pelajaran='".$_5bbbff8933f7b8be381684bd463e6d16."' and detail like '%".$_36923cf62618d1b9981740738971e651."%' order by id_soal limit ".$_4e4149dcf4b3b60bf0aaf69dd2348c4d.",".$_111f1b5b84b5c819ea9ae35968fce466;
 $conn=mysqli_query($conns,$conn);
 if(mysqli_num_rows($conn) > 0){
 	while($sql=mysqli_fetch_array($conn)){
-		$_52f720bdaf922c68904e386cbf0cd227++;
-		$_3584859062ea9ecfb39b93bfcef8e869=$sql['id_soal'];
+		$awal++;
+		$id_paket=$sql['id_soal'];
 		$_b65003120790c3e628f304c85a36a615=$sql['kunci'];
 		$_25407a67a7a597297818c35a0d0ed51d=false;
-		//if(mysqli_num_rows(mysqli_query($conns,"select * from program where id_periode='".$_3584859062ea9ecfb39b93bfcef8e869."' limit 0,1"))>0){$_25407a67a7a597297818c35a0d0ed51d=true;}
+		//if(mysqli_num_rows(mysqli_query($conns,"select * from program where id_periode='".$id_paket."' limit 0,1"))>0){$_25407a67a7a597297818c35a0d0ed51d=true;}
 		if($_25407a67a7a597297818c35a0d0ed51d==true){$_849d693c62dfe15394a642123c1599c8='disabled';$_f22a1fc2263e04ec8ae7a008a249229e='return(false);';}else{$_849d693c62dfe15394a642123c1599c8='';$_f22a1fc2263e04ec8ae7a008a249229e='';}
 		$_f3f4775da2a6e3f93bd69f99d887efc2='<table class="table" style="background:none;">';
-		$juml=mysqli_query($conns,"select * from soal_jawaban where id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."' order by id_soal_jawaban");
+		$juml=mysqli_query($conns,"select * from soal_jawaban where id_soal='".$id_paket."' order by id_soal_jawaban");
 		while($totAll=mysqli_fetch_array($juml)){
 			if($totAll['kode']==$_b65003120790c3e628f304c85a36a615){
 				$_c0d907c3e4a81c61f89d044e588eac19='<span class="label label-warning">'.$totAll['kode'].'.</span>';
@@ -50,7 +50,7 @@ if(mysqli_num_rows($conn) > 0){
 		}
 		$_f3f4775da2a6e3f93bd69f99d887efc2.='</table>';
 		
-		$_d4cb19f81c23886f544f26709bd4f799.='
+		$tables.='
 		<tr>
 		<td style="text-align:center;">
 		<div class="btn-group">
@@ -58,12 +58,12 @@ if(mysqli_num_rows($conn) > 0){
 		Aksi <span class="caret"></span>
 		</button>
 		<ul class="dropdown-menu" role="menu">
-		<li><a href="'.$regis.'&amp;id='.$_3584859062ea9ecfb39b93bfcef8e869.'&amp;action=edit">Edit</a></li>
-		<li class="'.$_849d693c62dfe15394a642123c1599c8.'"><a href="#" onclick="'.$_f22a1fc2263e04ec8ae7a008a249229e.'DeleteConfirm(\''.$regis.'&amp;id='.$_3584859062ea9ecfb39b93bfcef8e869.'&amp;action=delete\');return(false);">Hapus</a></li>
+		<li><a href="'.$regis.'&amp;id='.$id_paket.'&amp;action=edit">Edit</a></li>
+		<li class="'.$_849d693c62dfe15394a642123c1599c8.'"><a href="#" onclick="'.$_f22a1fc2263e04ec8ae7a008a249229e.'DeleteConfirm(\''.$regis.'&amp;id='.$id_paket.'&amp;action=delete\');return(false);">Hapus</a></li>
 		</ul>
 		</div>
 		</td>
-		<td style="text-align:center;">'.$_52f720bdaf922c68904e386cbf0cd227.'</td>
+		<td style="text-align:center;">'.$awal.'</td>
 		<td>
 		'.$sql['detail'].'
 		'.$_f3f4775da2a6e3f93bd69f99d887efc2.'
@@ -109,7 +109,7 @@ function DeleteConfirm(url){
 </div>
 <div style="height:10px;clear:both;"></div>
 <?php 
-if($_d4cb19f81c23886f544f26709bd4f799==''){ 
+if($tables==''){ 
 	echo '<div class="alert alert-danger ">Data tidak ditemukan.</div>';
 }else{
 ?>
@@ -122,7 +122,7 @@ if($_d4cb19f81c23886f544f26709bd4f799==''){
   </tr>
   </thead>
   <tbody>
-  <?php echo $_d4cb19f81c23886f544f26709bd4f799;?>
+  <?php echo $tables;?>
   </tbody>
 </table>
 <center>

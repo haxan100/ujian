@@ -209,14 +209,14 @@ mysqli_close($conns);
 <hr>
 <center>
 <?php
-$_52f720bdaf922c68904e386cbf0cd227=0;
+$awal=0;
 for($mulai=0;$mulai<count($paket);$mulai++){
-	$_52f720bdaf922c68904e386cbf0cd227++;
-	if($_b44cb2e694287fa912cc50de8b3a920b==$_52f720bdaf922c68904e386cbf0cd227){$_21d32120212be9984823e1b45de91ffc='active';}else{$_21d32120212be9984823e1b45de91ffc='';}
+	$awal++;
+	if($_b44cb2e694287fa912cc50de8b3a920b==$awal){$_21d32120212be9984823e1b45de91ffc='active';}else{$_21d32120212be9984823e1b45de91ffc='';}
 	if($paket[$mulai][1]!=''){
-		echo '<a href="#" class="btn btn-info btn-sm '.$_21d32120212be9984823e1b45de91ffc.'" style="margin-bottom:5px;">'.$_52f720bdaf922c68904e386cbf0cd227.' <i class="fa fa-check"></i></a> ';
+		echo '<a href="#" class="btn btn-info btn-sm '.$_21d32120212be9984823e1b45de91ffc.'" style="margin-bottom:5px;">'.$awal.' <i class="fa fa-check"></i></a> ';
 	}else{
-		echo '<a href="#" class="btn btn-default btn-sm '.$_21d32120212be9984823e1b45de91ffc.'" style="margin-bottom:5px;">'.$_52f720bdaf922c68904e386cbf0cd227.'</a> ';
+		echo '<a href="#" class="btn btn-default btn-sm '.$_21d32120212be9984823e1b45de91ffc.'" style="margin-bottom:5px;">'.$awal.'</a> ';
 	}
 }
 ?>
@@ -269,8 +269,8 @@ $(document).ready(function(){
 ---------------------------------------------
 haxan100
 soal sebelumnya=<?php echo $_1261cd629575acc614af0867c1e29e37;?>
-ujian.php?no='.$_52f720bdaf922c68904e386cbf0cd227.'
-ujian.php?no='.$_52f720bdaf922c68904e386cbf0cd227.'
+ujian.php?no='.$awal.'
+ujian.php?no='.$awal.'
 */
 ?>
 
