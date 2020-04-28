@@ -13,8 +13,8 @@ if(isset($_GET['id'])){
 }
 $_362661de726a1fb08719c20884bcdbed='<option value=""></option>';
 $conn=mysqli_query($conns,"select * from kelas where id_kompetensi='".$_a586aa86cb709c56ef938116a232ce5a."'");
-while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn)){
-	$_362661de726a1fb08719c20884bcdbed.='<option value="'.$_60169cd1c47b7a7a85ab44f884635e41['id_kelas'].'">'.$_60169cd1c47b7a7a85ab44f884635e41['nama'].'</option>';
+while($sql=mysqli_fetch_array($conn)){
+	$_362661de726a1fb08719c20884bcdbed.='<option value="'.$sql['id_kelas'].'">'.$sql['nama'].'</option>';
 }
 echo $_362661de726a1fb08719c20884bcdbed;
 ?>

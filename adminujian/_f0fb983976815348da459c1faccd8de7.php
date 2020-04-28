@@ -8,9 +8,9 @@ if(!isset($_SESSION['SIMULASI_ID'])){
 	echo 'off';die;
 }
 $conn=mysqli_query($conns,"select * from paket where id_paket='".$_SESSION['SIMULASI_ID']."'");
-$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
-$_b78f9e7c4587e8583ab713f126277f88=$_60169cd1c47b7a7a85ab44f884635e41['id_paket'];
-$_36fd7f7111215a7056422e47518363d7=$_60169cd1c47b7a7a85ab44f884635e41['waktu_pengerjaan']*60;
+$sql=mysqli_fetch_array($conn);
+$_b78f9e7c4587e8583ab713f126277f88=$sql['id_paket'];
+$_36fd7f7111215a7056422e47518363d7=$sql['waktu_pengerjaan']*60;
 
 $_02202b271eddd150fb9b3a5c12a8639d=$_SESSION['SIMULASI_TIME'];
 if($_02202b271eddd150fb9b3a5c12a8639d >= $_36fd7f7111215a7056422e47518363d7){

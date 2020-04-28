@@ -30,9 +30,9 @@ if(isset($_POST['save'])){
 	if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
 		$_3584859062ea9ecfb39b93bfcef8e869=$_GET['id'];
 		$conn=mysqli_query($conns,"select * from paket where id_paket='".$_3584859062ea9ecfb39b93bfcef8e869."'");
-		$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
-		$_31985b26056f955fec6db8f46f87653f=$_60169cd1c47b7a7a85ab44f884635e41['nama'];
-		$_36fd7f7111215a7056422e47518363d7=$_60169cd1c47b7a7a85ab44f884635e41['waktu_pengerjaan'];
+		$sql=mysqli_fetch_array($conn);
+		$_31985b26056f955fec6db8f46f87653f=$sql['nama'];
+		$_36fd7f7111215a7056422e47518363d7=$sql['waktu_pengerjaan'];
 	}
 	if($_d35a39212fd75e833aea38f90831b2cb=='delete'){
 		$_3584859062ea9ecfb39b93bfcef8e869=$_GET['id'];

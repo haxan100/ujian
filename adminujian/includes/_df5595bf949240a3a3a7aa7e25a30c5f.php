@@ -59,12 +59,12 @@ if(isset($_POST['save'])){
 		unlink($_3656889a448a7af799d2d7955bed2354);
 		
 		$conn=mysqli_query($conns,"select * from soal_tmp where nisn<>''");
-		while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn)){
-			$_5ab9622c6027ac8a26ecfedc9e0c5f27=$_60169cd1c47b7a7a85ab44f884635e41['nisn'];
-			$_31985b26056f955fec6db8f46f87653f=$_60169cd1c47b7a7a85ab44f884635e41['nama'];
-			$_f0619632751681b5561b70caf2920a71=$_60169cd1c47b7a7a85ab44f884635e41['gender'];
-			$_b74a36690339daf77274de5ad720d6eb=$_60169cd1c47b7a7a85ab44f884635e41['alamat'];
-			$_38895153c69c18db0dbba317a1d8d369=$_60169cd1c47b7a7a85ab44f884635e41['kelas'];
+		while($sql=mysqli_fetch_array($conn)){
+			$_5ab9622c6027ac8a26ecfedc9e0c5f27=$sql['nisn'];
+			$_31985b26056f955fec6db8f46f87653f=$sql['nama'];
+			$_f0619632751681b5561b70caf2920a71=$sql['gender'];
+			$_b74a36690339daf77274de5ad720d6eb=$sql['alamat'];
+			$_38895153c69c18db0dbba317a1d8d369=$sql['kelas'];
 			$_72e838785b161ce1f713d6b1a452e270='';
 			$_7da43659dfebcaab2ad4bbd2f2a98f30=mysqli_query($conns,"select id_kelas from kelas where kode='".$_38895153c69c18db0dbba317a1d8d369."'");
 			if(mysqli_num_rows($_7da43659dfebcaab2ad4bbd2f2a98f30)>0){
@@ -85,9 +85,9 @@ if(isset($_POST['save'])){
 }
 $_3718d16a4c63e6e0d669e38e63f8c5c0='<option value=""></option>';
 $conn=mysqli_query($conns,"select * from pelajaran order by nama");
-while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn)){
-	//if($_60169cd1c47b7a7a85ab44f884635e41['id_pelajaran']==$_5bbbff8933f7b8be381684bd463e6d16){$_3cb9cdaed257453cfa56b9ef81b44c57='selected';}else{$_3cb9cdaed257453cfa56b9ef81b44c57='';}
-	$_3718d16a4c63e6e0d669e38e63f8c5c0.='<option value="'.$_60169cd1c47b7a7a85ab44f884635e41['id_pelajaran'].'">'.$_60169cd1c47b7a7a85ab44f884635e41['nama'].'</option>';
+while($sql=mysqli_fetch_array($conn)){
+	//if($sql['id_pelajaran']==$_5bbbff8933f7b8be381684bd463e6d16){$_3cb9cdaed257453cfa56b9ef81b44c57='selected';}else{$_3cb9cdaed257453cfa56b9ef81b44c57='';}
+	$_3718d16a4c63e6e0d669e38e63f8c5c0.='<option value="'.$sql['id_pelajaran'].'">'.$sql['nama'].'</option>';
 }
 
 ?>

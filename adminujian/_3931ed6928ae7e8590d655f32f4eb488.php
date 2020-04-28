@@ -1,21 +1,21 @@
 <?php if(!defined('myweb')){ exit(); }?>
 <?php
 
-$_2d76471e6f56a63e6f0105dd92db4254='';
+$username='';
 if(isset($_POST["login"])){
-	$_2d76471e6f56a63e6f0105dd92db4254=$_POST['username'];
-	$_243e61e9410a9f577d2d662c67025ee9=$_POST['password'];
+	$username=$_POST['username'];
+	$password=$_POST['password'];
 	
-	if(empty($_2d76471e6f56a63e6f0105dd92db4254) or empty($_243e61e9410a9f577d2d662c67025ee9)){
+	if(empty($username) or empty($password)){
 		$_b5adde8d7d7412251f47419fe9bf51a7='<strong>Error !</strong> Masukan username dan password.';
 	}else{
-			$conn=mysqli_query($conns,"SELECT * FROM user WHERE username='".escape($_2d76471e6f56a63e6f0105dd92db4254)."' AND password='".md5($_243e61e9410a9f577d2d662c67025ee9)."'");
+			$conn=mysqli_query($conns,"SELECT * FROM user WHERE username='".escape($username)."' AND password='".md5($password)."'");
 			if(mysqli_num_rows($conn)>0){
-				$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
-				$_78e1548d7ed1e38321b4ce5cddb2c8a7=$_60169cd1c47b7a7a85ab44f884635e41['id_user'];
-				$_65dfacb39960c22313740a131148fb81='admin';
+				$sql=mysqli_fetch_array($conn);
+				$_78e1548d7ed1e38321b4ce5cddb2c8a7=$sql['id_user'];
+				$siswa='admin';
 				$_SESSION['LOGIN_ID']=$_78e1548d7ed1e38321b4ce5cddb2c8a7;
-				$_SESSION['LOGIN_TYPE']=$_65dfacb39960c22313740a131148fb81;
+				$_SESSION['LOGIN_TYPE']=$siswa;
 				exit("<script>window.location='".$_28cd827e9a3b578c3cfbcd7f0fd18d96."';</script>");
 			}else{
 				$_b5adde8d7d7412251f47419fe9bf51a7='<strong>Error !</strong> Username dan password yang Anda masukkan salah.';

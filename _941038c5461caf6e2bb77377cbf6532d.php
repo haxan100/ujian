@@ -13,22 +13,22 @@ if(isset($_GET['id'])){
 $_c04df7e5dc078931b278b5a69b691465=0;
 $conn=mysqli_query($conns,"select * from ujian where id_siswa='".$_SESSION['LOGIN_ID']."' and id_paket='".$_b78f9e7c4587e8583ab713f126277f88."'");
 if(mysqli_num_rows($conn)>0){
-	$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
-	$_fbd326c813664d903c80679981cafba3=$_60169cd1c47b7a7a85ab44f884635e41['id_ujian'];
-	$_8f128c86231aedb3ad839316104082b1=$_60169cd1c47b7a7a85ab44f884635e41['selesai'];
-	$_c04df7e5dc078931b278b5a69b691465=$_60169cd1c47b7a7a85ab44f884635e41['nilai'];
+	$sql=mysqli_fetch_array($conn);
+	$_fbd326c813664d903c80679981cafba3=$sql['id_ujian'];
+	$_8f128c86231aedb3ad839316104082b1=$sql['selesai'];
+	$_c04df7e5dc078931b278b5a69b691465=$sql['nilai'];
 }
 $conn=mysqli_query($conns,"select * from paket where id_paket='".$_b78f9e7c4587e8583ab713f126277f88."'");
-$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
-$_4cbd557d34801deff9f3656970cd5398=$_60169cd1c47b7a7a85ab44f884635e41['nama'];
+$sql=mysqli_fetch_array($conn);
+$_4cbd557d34801deff9f3656970cd5398=$sql['nama'];
 $conn=mysqli_query($conns,"select * from siswa where id_siswa='".$_SESSION['LOGIN_ID']."'");
-$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
-$_5ab9622c6027ac8a26ecfedc9e0c5f27=$_60169cd1c47b7a7a85ab44f884635e41['nisn'];
-$_1c52cc9c9ab07c5f9e034d3d9fca55dc=$_60169cd1c47b7a7a85ab44f884635e41['nama'];
-$_72e838785b161ce1f713d6b1a452e270=$_60169cd1c47b7a7a85ab44f884635e41['id_kelas'];
+$sql=mysqli_fetch_array($conn);
+$_5ab9622c6027ac8a26ecfedc9e0c5f27=$sql['nisn'];
+$_1c52cc9c9ab07c5f9e034d3d9fca55dc=$sql['nama'];
+$_72e838785b161ce1f713d6b1a452e270=$sql['id_kelas'];
 $conn=mysqli_query($conns,"select * from kelas where id_kelas='".$_72e838785b161ce1f713d6b1a452e270."'");
-$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
-$_38895153c69c18db0dbba317a1d8d369=$_60169cd1c47b7a7a85ab44f884635e41['nama'];
+$sql=mysqli_fetch_array($conn);
+$_38895153c69c18db0dbba317a1d8d369=$sql['nama'];
 
 ?>
 

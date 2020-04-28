@@ -1,8 +1,8 @@
 <?php if(!defined('myweb')){ exit(); }?>
 <?php
 $conn=mysqli_query($conns,"select * from user where id_user='".$_SESSION['LOGIN_ID']."'");
-$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
-$_510c1613a4f826b5612ae2ac9bdeb894=$_60169cd1c47b7a7a85ab44f884635e41['nama'];
+$sql=mysqli_fetch_array($conn);
+$_510c1613a4f826b5612ae2ac9bdeb894=$sql['nama'];
 
 ?>
 

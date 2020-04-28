@@ -8,20 +8,20 @@ if(!isset($_SESSION['LOGIN_ID'])){
 	exit("<script>location.href='".$look."';</script>");
 }
 //$conn=mysqli_query($conns,"select * from ujian where id_siswa='".$_SESSION['LOGIN_ID']."' and selesai='N'");
-//$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
-//$_b78f9e7c4587e8583ab713f126277f88=$_60169cd1c47b7a7a85ab44f884635e41['id_paket'];
+//$sql=mysqli_fetch_array($conn);
+//$_b78f9e7c4587e8583ab713f126277f88=$sql['id_paket'];
 $_b78f9e7c4587e8583ab713f126277f88='';
 $_fbd326c813664d903c80679981cafba3='';
 $conn=mysqli_query($conns,"select * from ujian where id_siswa='".$_SESSION['LOGIN_ID']."' order by id_ujian desc limit 0,1");
 if(mysqli_num_rows($conn)>0){
-	$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
-	$_fbd326c813664d903c80679981cafba3=$_60169cd1c47b7a7a85ab44f884635e41['id_ujian'];
-	$_b78f9e7c4587e8583ab713f126277f88=$_60169cd1c47b7a7a85ab44f884635e41['id_paket'];
-	$_8f128c86231aedb3ad839316104082b1=$_60169cd1c47b7a7a85ab44f884635e41['selesai'];
-	$_02202b271eddd150fb9b3a5c12a8639d=$_60169cd1c47b7a7a85ab44f884635e41['lama_pengerjaan'];
+	$sql=mysqli_fetch_array($conn);
+	$_fbd326c813664d903c80679981cafba3=$sql['id_ujian'];
+	$_b78f9e7c4587e8583ab713f126277f88=$sql['id_paket'];
+	$_8f128c86231aedb3ad839316104082b1=$sql['selesai'];
+	$_02202b271eddd150fb9b3a5c12a8639d=$sql['lama_pengerjaan'];
 	$conn=mysqli_query($conns,"select * from paket where id_paket='".$_b78f9e7c4587e8583ab713f126277f88."'");
-	$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
-	$_36fd7f7111215a7056422e47518363d7=$_60169cd1c47b7a7a85ab44f884635e41['waktu_pengerjaan']*60;
+	$sql=mysqli_fetch_array($conn);
+	$_36fd7f7111215a7056422e47518363d7=$sql['waktu_pengerjaan']*60;
 	
 	if($_8f128c86231aedb3ad839316104082b1=='Y'){
 		exit("<script>location.href='".$look."?hal=ujian&id=".$_b78f9e7c4587e8583ab713f126277f88."';</script>");
@@ -40,14 +40,14 @@ if(isset($_POST['jawab'])){
 	$_b65003120790c3e628f304c85a36a615=array();
 	$_b9e53b5867b7fd393a3d5ddf2ceefdf6=0;
 	$conn=mysqli_query($conns,"select * from soal_paket inner join soal on soal_paket.id_soal=soal.id_soal where soal_paket.id_paket='".$_b78f9e7c4587e8583ab713f126277f88."'");
-	while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn)){
+	while($sql=mysqli_fetch_array($conn)){
 		$_b9e53b5867b7fd393a3d5ddf2ceefdf6++;
-		$_b65003120790c3e628f304c85a36a615[$_60169cd1c47b7a7a85ab44f884635e41['id_soal']]=$_60169cd1c47b7a7a85ab44f884635e41['kunci'];
+		$_b65003120790c3e628f304c85a36a615[$sql['id_soal']]=$sql['kunci'];
 	}
 	$_c04df7e5dc078931b278b5a69b691465=0;
 	$conn=mysqli_query($conns,"select * from ujian_detail where id_ujian='".$_fbd326c813664d903c80679981cafba3."'");
-	while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn)){
-		if($_60169cd1c47b7a7a85ab44f884635e41['jawaban']==$_b65003120790c3e628f304c85a36a615[$_60169cd1c47b7a7a85ab44f884635e41['id_soal']]){
+	while($sql=mysqli_fetch_array($conn)){
+		if($sql['jawaban']==$_b65003120790c3e628f304c85a36a615[$sql['id_soal']]){
 			$_c04df7e5dc078931b278b5a69b691465++;
 		}
 	}
@@ -65,9 +65,9 @@ if(isset($_POST['selesai'])){
 $_1b66aa9bfba43381db0e3cc139369d48=array();
 $_a2162101cd2c071e2931c2254b25ca5e=array();
 $conn=mysqli_query($conns,"select * from ujian_detail where id_ujian='".$_fbd326c813664d903c80679981cafba3."'");
-while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn)){
-	$_1b66aa9bfba43381db0e3cc139369d48[]=array($_60169cd1c47b7a7a85ab44f884635e41['id_soal'],$_60169cd1c47b7a7a85ab44f884635e41['jawaban']);
-	$_a2162101cd2c071e2931c2254b25ca5e[$_60169cd1c47b7a7a85ab44f884635e41['id_soal']]=$_60169cd1c47b7a7a85ab44f884635e41['jawaban'];
+while($sql=mysqli_fetch_array($conn)){
+	$_1b66aa9bfba43381db0e3cc139369d48[]=array($sql['id_soal'],$sql['jawaban']);
+	$_a2162101cd2c071e2931c2254b25ca5e[$sql['id_soal']]=$sql['jawaban'];
 }
 $_b44cb2e694287fa912cc50de8b3a920b=1;
 if(isset($_GET['no'])){
@@ -78,12 +78,12 @@ if(isset($_GET['no'])){
 }
 $_5cf085bf5081a50e78311063db83f771=$_1b66aa9bfba43381db0e3cc139369d48[$_b44cb2e694287fa912cc50de8b3a920b-1][0];
 $conn=mysqli_query($conns,"select * from soal where id_soal='".$_5cf085bf5081a50e78311063db83f771."'");
-$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
-$_575b8b230b1ea2ddac1d342440dfc821=$_60169cd1c47b7a7a85ab44f884635e41['detail'];
+$sql=mysqli_fetch_array($conn);
+$_575b8b230b1ea2ddac1d342440dfc821=$sql['detail'];
 $_44e2f87ec0f5ce9c128c029fd0ab97c6=array();
 $conn=mysqli_query($conns,"select * from soal_jawaban where id_soal='".$_5cf085bf5081a50e78311063db83f771."' order by id_soal_jawaban");
-while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn)){
-	$_44e2f87ec0f5ce9c128c029fd0ab97c6[]=array($_60169cd1c47b7a7a85ab44f884635e41['kode'],$_60169cd1c47b7a7a85ab44f884635e41['jawaban']);
+while($sql=mysqli_fetch_array($conn)){
+	$_44e2f87ec0f5ce9c128c029fd0ab97c6[]=array($sql['kode'],$sql['jawaban']);
 }
 
 

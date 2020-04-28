@@ -10,8 +10,8 @@ if(isset($_GET['q'])){
 }
 
 $conn=mysqli_query($conns,"select count(*) as jml from kelas where (kode like '%".$_36923cf62618d1b9981740738971e651."%' or nama like '%".$_36923cf62618d1b9981740738971e651."%')");
-$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
-$_12ef5f8660c2350214ce228aad66392d=$_60169cd1c47b7a7a85ab44f884635e41['jml'];
+$sql=mysqli_fetch_array($conn);
+$_12ef5f8660c2350214ce228aad66392d=$sql['jml'];
 
 $_bd374a8757e4ad5e55de663a02a9adde=$pengumuman1.'&q='.$_36923cf62618d1b9981740738971e651;
 $_111f1b5b84b5c819ea9ae35968fce466=20;
@@ -26,9 +26,9 @@ $_d4cb19f81c23886f544f26709bd4f799='';
 $conn="select * from kelas where (kode like '%".$_36923cf62618d1b9981740738971e651."%' or nama like '%".$_36923cf62618d1b9981740738971e651."%') order by nama limit ".$_4e4149dcf4b3b60bf0aaf69dd2348c4d.",".$_111f1b5b84b5c819ea9ae35968fce466;
 $conn=mysqli_query($conns,$conn);
 if(mysqli_num_rows($conn) > 0){
-	while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn)){
+	while($sql=mysqli_fetch_array($conn)){
 		$_52f720bdaf922c68904e386cbf0cd227++;
-		$_3584859062ea9ecfb39b93bfcef8e869=$_60169cd1c47b7a7a85ab44f884635e41['id_kelas'];
+		$_3584859062ea9ecfb39b93bfcef8e869=$sql['id_kelas'];
 		$_25407a67a7a597297818c35a0d0ed51d=false;
 		if($_25407a67a7a597297818c35a0d0ed51d==true){$_849d693c62dfe15394a642123c1599c8='disabled';$_f22a1fc2263e04ec8ae7a008a249229e='return(false);';}else{$_849d693c62dfe15394a642123c1599c8='';$_f22a1fc2263e04ec8ae7a008a249229e='';}
 
@@ -46,8 +46,8 @@ if(mysqli_num_rows($conn) > 0){
 		</div>
 		</td>
 		<td style="text-align:center;">'.$_52f720bdaf922c68904e386cbf0cd227.'</td>
-		<td>'.$_60169cd1c47b7a7a85ab44f884635e41['kode'].'</td>
-		<td>'.$_60169cd1c47b7a7a85ab44f884635e41['nama'].'</td>
+		<td>'.$sql['kode'].'</td>
+		<td>'.$sql['nama'].'</td>
 		</tr>
 		';
 	}

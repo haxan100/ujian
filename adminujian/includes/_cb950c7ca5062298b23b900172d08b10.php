@@ -8,7 +8,7 @@ if(isset($_POST['save'])){
 	
 	if(empty($_21eff29b583aa9be1b965eb96e6c56ed)){
 		$_b5adde8d7d7412251f47419fe9bf51a7='Masih ada beberapa kesalahan. Silahkan periksa lagi form di bawah ini.';
-		$_243e61e9410a9f577d2d662c67025ee9='';
+		$password='';
 	}else{
 		if(mysqli_num_rows(mysqli_query($conns,"select * from konten where kode='informasi'"))==0){
 			$conn="insert into konten(kode, detail) values('informasi','".$_21eff29b583aa9be1b965eb96e6c56ed."')";
@@ -22,8 +22,8 @@ if(isset($_POST['save'])){
 	}
 }else{
 	$conn=mysqli_query($conns,"select * from konten where kode='informasi'");
-	$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
-	$_21eff29b583aa9be1b965eb96e6c56ed=$_60169cd1c47b7a7a85ab44f884635e41['detail'];
+	$sql=mysqli_fetch_array($conn);
+	$_21eff29b583aa9be1b965eb96e6c56ed=$sql['detail'];
 }
 
 ?>

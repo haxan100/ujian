@@ -26,16 +26,16 @@ if(isset($_POST['save'])){
 if(isset($_GET['action']) and $_GET['action']=='delete'){
 	$_3584859062ea9ecfb39b93bfcef8e869=$_GET['id'];
 	$conn=mysqli_query($conns,"select * from gambar where id_gambar='".$_3584859062ea9ecfb39b93bfcef8e869."'");
-	$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
-	$_3656889a448a7af799d2d7955bed2354=$_60169cd1c47b7a7a85ab44f884635e41['nama'];
+	$sql=mysqli_fetch_array($conn);
+	$_3656889a448a7af799d2d7955bed2354=$sql['nama'];
 	mysqli_query($conns,"delete from gambar where id_gambar='".$_3584859062ea9ecfb39b93bfcef8e869."'");
 	unlink($_714ca9eb87223ad2d6815f90173fde78.'/uploads/'.$_3656889a448a7af799d2d7955bed2354);
 	exit("<script>location.href='".$pengumuman1."';</script>");
 }
 
 $conn=mysqli_query($conns,"select count(*) as jml from gambar ");
-$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
-$_12ef5f8660c2350214ce228aad66392d=$_60169cd1c47b7a7a85ab44f884635e41['jml'];
+$sql=mysqli_fetch_array($conn);
+$_12ef5f8660c2350214ce228aad66392d=$sql['jml'];
 
 $_bd374a8757e4ad5e55de663a02a9adde=$pengumuman1;
 $_111f1b5b84b5c819ea9ae35968fce466=20;
@@ -50,13 +50,13 @@ $_d4cb19f81c23886f544f26709bd4f799='';
 $_8e529f7c1789a19f5ed8b2edb0af9fa7='';
 $conn="select * from gambar order by id_gambar limit ".$_4e4149dcf4b3b60bf0aaf69dd2348c4d.",".$_111f1b5b84b5c819ea9ae35968fce466;
 $conn=mysqli_query($conns,$conn);
-while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn)){
+while($sql=mysqli_fetch_array($conn)){
 	$_52f720bdaf922c68904e386cbf0cd227++;
-	$_3584859062ea9ecfb39b93bfcef8e869=$_60169cd1c47b7a7a85ab44f884635e41['id_gambar'];
+	$_3584859062ea9ecfb39b93bfcef8e869=$sql['id_gambar'];
 	$_8e529f7c1789a19f5ed8b2edb0af9fa7.='
 	<div class="col-lg-3 col-md-4 col-xs-6 thumb text-center" style="margin-bottom:10px;">
-		<a class="thumbnail gambar" href="#gambar_modal" data-toggle="modal" data-src="'.$_60169cd1c47b7a7a85ab44f884635e41['nama'].'">
-			<img class="img-responsive" src="'.$look.'uploads/'.$_60169cd1c47b7a7a85ab44f884635e41['nama'].'" alt="">
+		<a class="thumbnail gambar" href="#gambar_modal" data-toggle="modal" data-src="'.$sql['nama'].'">
+			<img class="img-responsive" src="'.$look.'uploads/'.$sql['nama'].'" alt="">
 		</a>
 		<div style="margin-top:-10px;">
 		<a href="#" onclick="DeleteConfirm(\''.$_4bf2fdb3ab37a41b537e7360f7e4b007.'&amp;id='.$_3584859062ea9ecfb39b93bfcef8e869.'&amp;action=delete\');return(false);" class="btn btn-danger btn-sm">Hapus</a>

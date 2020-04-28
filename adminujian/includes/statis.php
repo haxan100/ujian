@@ -11,15 +11,15 @@ if(isset($_GET['periode'])){
 $_c223f438869210327f0c3eb44c425fd7=array();
 $_90b6ac16500791eaa80fcaa07bc642d3=array();
 $conn=mysqli_query($conns,"select * from jurusan order by nama");
-while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn)){
-	$_c223f438869210327f0c3eb44c425fd7[]=array($_60169cd1c47b7a7a85ab44f884635e41['id_jurusan'],$_60169cd1c47b7a7a85ab44f884635e41['nama']);
-	$_90b6ac16500791eaa80fcaa07bc642d3[]="'".$_60169cd1c47b7a7a85ab44f884635e41['nama']."'";
+while($sql=mysqli_fetch_array($conn)){
+	$_c223f438869210327f0c3eb44c425fd7[]=array($sql['id_jurusan'],$sql['nama']);
+	$_90b6ac16500791eaa80fcaa07bc642d3[]="'".$sql['nama']."'";
 }
 $_2472fec7fb362c94f5f432b81b032aee=array();
 for($_a16d2280393ce6a2a5428a4a8d09e354=0;$_a16d2280393ce6a2a5428a4a8d09e354<count($_c223f438869210327f0c3eb44c425fd7);$_a16d2280393ce6a2a5428a4a8d09e354++){
 	$conn=mysqli_query($conns,"select jumlah from periode_kuota where id_periode='".$_67c4414db31f60967df5c435d2d681ec."' and id_jurusan='".$_c223f438869210327f0c3eb44c425fd7[$_a16d2280393ce6a2a5428a4a8d09e354][0]."'");
-	$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
-	$_2472fec7fb362c94f5f432b81b032aee[$_c223f438869210327f0c3eb44c425fd7[$_a16d2280393ce6a2a5428a4a8d09e354][0]]=$_60169cd1c47b7a7a85ab44f884635e41['jumlah'];
+	$sql=mysqli_fetch_array($conn);
+	$_2472fec7fb362c94f5f432b81b032aee[$_c223f438869210327f0c3eb44c425fd7[$_a16d2280393ce6a2a5428a4a8d09e354][0]]=$sql['jumlah'];
 }
 $_5384b3c0a26bdc2e3f20ac92d72a4d1f=array();
 $_5ae59f693126c3aac8b8421eb941c192=array();
@@ -44,9 +44,9 @@ for($_a16d2280393ce6a2a5428a4a8d09e354=0;$_a16d2280393ce6a2a5428a4a8d09e354<coun
 
 $_6ce2e221e9de82dc1b70b582fb6e5a98='<option value="">Pilih Periode</option>';
 $conn=mysqli_query($conns,"select * from periode order by id_periode");
-while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn)){
-	if($_67c4414db31f60967df5c435d2d681ec==$_60169cd1c47b7a7a85ab44f884635e41['id_periode']){$_3cb9cdaed257453cfa56b9ef81b44c57='selected';}else{$_3cb9cdaed257453cfa56b9ef81b44c57='';}
-	$_6ce2e221e9de82dc1b70b582fb6e5a98.='<option value="'.$_60169cd1c47b7a7a85ab44f884635e41['id_periode'].'" '.$_3cb9cdaed257453cfa56b9ef81b44c57.'>'.$_60169cd1c47b7a7a85ab44f884635e41['nama'].'</option>';
+while($sql=mysqli_fetch_array($conn)){
+	if($_67c4414db31f60967df5c435d2d681ec==$sql['id_periode']){$_3cb9cdaed257453cfa56b9ef81b44c57='selected';}else{$_3cb9cdaed257453cfa56b9ef81b44c57='';}
+	$_6ce2e221e9de82dc1b70b582fb6e5a98.='<option value="'.$sql['id_periode'].'" '.$_3cb9cdaed257453cfa56b9ef81b44c57.'>'.$sql['nama'].'</option>';
 }
 
 

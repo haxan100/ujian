@@ -14,8 +14,8 @@ if(isset($_GET['q'])){
 }
 
 $conn =mysqli_query($conns,"select count(*) as jml from soal where id_pelajaran='".$_5bbbff8933f7b8be381684bd463e6d16."' and detail like '%".$_36923cf62618d1b9981740738971e651."%'");
-$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
-$_12ef5f8660c2350214ce228aad66392d=$_60169cd1c47b7a7a85ab44f884635e41['jml'];
+$sql=mysqli_fetch_array($conn);
+$_12ef5f8660c2350214ce228aad66392d=$sql['jml'];
 
 $_bd374a8757e4ad5e55de663a02a9adde=$pengumuman1.'&q='.$_36923cf62618d1b9981740738971e651;
 $_111f1b5b84b5c819ea9ae35968fce466=100;
@@ -31,10 +31,10 @@ $_d4cb19f81c23886f544f26709bd4f799='';
 $conn="select * from soal where id_pelajaran='".$_5bbbff8933f7b8be381684bd463e6d16."' and detail like '%".$_36923cf62618d1b9981740738971e651."%' order by id_soal limit ".$_4e4149dcf4b3b60bf0aaf69dd2348c4d.",".$_111f1b5b84b5c819ea9ae35968fce466;
 $conn=mysqli_query($conns,$conn);
 if(mysqli_num_rows($conn) > 0){
-	while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn)){
+	while($sql=mysqli_fetch_array($conn)){
 		$_52f720bdaf922c68904e386cbf0cd227++;
-		$_3584859062ea9ecfb39b93bfcef8e869=$_60169cd1c47b7a7a85ab44f884635e41['id_soal'];
-		$_b65003120790c3e628f304c85a36a615=$_60169cd1c47b7a7a85ab44f884635e41['kunci'];
+		$_3584859062ea9ecfb39b93bfcef8e869=$sql['id_soal'];
+		$_b65003120790c3e628f304c85a36a615=$sql['kunci'];
 		$_25407a67a7a597297818c35a0d0ed51d=false;
 		//if(mysqli_num_rows(mysqli_query($conns,"select * from program where id_periode='".$_3584859062ea9ecfb39b93bfcef8e869."' limit 0,1"))>0){$_25407a67a7a597297818c35a0d0ed51d=true;}
 		if($_25407a67a7a597297818c35a0d0ed51d==true){$_849d693c62dfe15394a642123c1599c8='disabled';$_f22a1fc2263e04ec8ae7a008a249229e='return(false);';}else{$_849d693c62dfe15394a642123c1599c8='';$_f22a1fc2263e04ec8ae7a008a249229e='';}
@@ -65,7 +65,7 @@ if(mysqli_num_rows($conn) > 0){
 		</td>
 		<td style="text-align:center;">'.$_52f720bdaf922c68904e386cbf0cd227.'</td>
 		<td>
-		'.$_60169cd1c47b7a7a85ab44f884635e41['detail'].'
+		'.$sql['detail'].'
 		'.$_f3f4775da2a6e3f93bd69f99d887efc2.'
 		</td>
 		</tr>
@@ -74,9 +74,9 @@ if(mysqli_num_rows($conn) > 0){
 }
 $_3718d16a4c63e6e0d669e38e63f8c5c0='<option value="">Pilih Pelajaran</option>';
 $conn=mysqli_query($conns,"select * from pelajaran order by nama");
-while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn)){
-	if($_5bbbff8933f7b8be381684bd463e6d16==$_60169cd1c47b7a7a85ab44f884635e41['id_pelajaran']){$_3cb9cdaed257453cfa56b9ef81b44c57='selected';}else{$_3cb9cdaed257453cfa56b9ef81b44c57='';}
-	$_3718d16a4c63e6e0d669e38e63f8c5c0.='<option value="'.$_60169cd1c47b7a7a85ab44f884635e41['id_pelajaran'].'" '.$_3cb9cdaed257453cfa56b9ef81b44c57.'>'.$_60169cd1c47b7a7a85ab44f884635e41['nama'].'</option>';
+while($sql=mysqli_fetch_array($conn)){
+	if($_5bbbff8933f7b8be381684bd463e6d16==$sql['id_pelajaran']){$_3cb9cdaed257453cfa56b9ef81b44c57='selected';}else{$_3cb9cdaed257453cfa56b9ef81b44c57='';}
+	$_3718d16a4c63e6e0d669e38e63f8c5c0.='<option value="'.$sql['id_pelajaran'].'" '.$_3cb9cdaed257453cfa56b9ef81b44c57.'>'.$sql['nama'].'</option>';
 }
 
 ?>

@@ -46,14 +46,14 @@ if(isset($_POST['save'])){
 	if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
 		$_3584859062ea9ecfb39b93bfcef8e869=$_GET['id'];
 		$conn=mysqli_query($conns,"select * from soal where id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."'");
-		$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
-		$_5bbbff8933f7b8be381684bd463e6d16=$_60169cd1c47b7a7a85ab44f884635e41['id_pelajaran'];
-		$_1b66aa9bfba43381db0e3cc139369d48=$_60169cd1c47b7a7a85ab44f884635e41['detail'];
-		$_b65003120790c3e628f304c85a36a615=$_60169cd1c47b7a7a85ab44f884635e41['kunci'];
+		$sql=mysqli_fetch_array($conn);
+		$_5bbbff8933f7b8be381684bd463e6d16=$sql['id_pelajaran'];
+		$_1b66aa9bfba43381db0e3cc139369d48=$sql['detail'];
+		$_b65003120790c3e628f304c85a36a615=$sql['kunci'];
 		$_52f720bdaf922c68904e386cbf0cd227=0;
 		$conn=mysqli_query($conns,"select * from soal_jawaban where id_soal='".$_3584859062ea9ecfb39b93bfcef8e869."' order by id_soal_jawaban");
-		while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn)){
-			$_a2162101cd2c071e2931c2254b25ca5e[$_52f720bdaf922c68904e386cbf0cd227]=$_60169cd1c47b7a7a85ab44f884635e41['jawaban'];
+		while($sql=mysqli_fetch_array($conn)){
+			$_a2162101cd2c071e2931c2254b25ca5e[$_52f720bdaf922c68904e386cbf0cd227]=$sql['jawaban'];
 			$_52f720bdaf922c68904e386cbf0cd227++;
 		}
 	}
@@ -65,9 +65,9 @@ if(isset($_POST['save'])){
 }
 $_3718d16a4c63e6e0d669e38e63f8c5c0='<option value=""></option>';
 $conn=mysqli_query($conns,"select * from pelajaran order by nama");
-while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn)){
-	if($_60169cd1c47b7a7a85ab44f884635e41['id_pelajaran']==$_5bbbff8933f7b8be381684bd463e6d16){$_3cb9cdaed257453cfa56b9ef81b44c57='selected';}else{$_3cb9cdaed257453cfa56b9ef81b44c57='';}
-	$_3718d16a4c63e6e0d669e38e63f8c5c0.='<option value="'.$_60169cd1c47b7a7a85ab44f884635e41['id_pelajaran'].'" '.$_3cb9cdaed257453cfa56b9ef81b44c57.'>'.$_60169cd1c47b7a7a85ab44f884635e41['nama'].'</option>';
+while($sql=mysqli_fetch_array($conn)){
+	if($sql['id_pelajaran']==$_5bbbff8933f7b8be381684bd463e6d16){$_3cb9cdaed257453cfa56b9ef81b44c57='selected';}else{$_3cb9cdaed257453cfa56b9ef81b44c57='';}
+	$_3718d16a4c63e6e0d669e38e63f8c5c0.='<option value="'.$sql['id_pelajaran'].'" '.$_3cb9cdaed257453cfa56b9ef81b44c57.'>'.$sql['nama'].'</option>';
 }
 
 if($_d35a39212fd75e833aea38f90831b2cb=='add'){$_06c518f70e97b19c7ec907f36542ce6e='INPUT DATA SOAL';}else{$_06c518f70e97b19c7ec907f36542ce6e='EDIT DATA SOAL';}

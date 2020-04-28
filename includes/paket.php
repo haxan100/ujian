@@ -9,10 +9,10 @@ $_d4cb19f81c23886f544f26709bd4f799='';
 $conn="select * from paket where aktif='Y' and id_paket not in (select id_paket from ujian where id_siswa='".$_SESSION['LOGIN_ID']."') order by id_paket desc";
 $conn=mysqli_query($conns,$conn);
 if(mysqli_num_rows($conn) > 0){
-	while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn)){
+	while($sql=mysqli_fetch_array($conn)){
 		$_52f720bdaf922c68904e386cbf0cd227++;
-		$_3584859062ea9ecfb39b93bfcef8e869=$_60169cd1c47b7a7a85ab44f884635e41['id_paket'];
-		if($_60169cd1c47b7a7a85ab44f884635e41['aktif']=='Y'){
+		$_3584859062ea9ecfb39b93bfcef8e869=$sql['id_paket'];
+		if($sql['aktif']=='Y'){
 			$_75de32ef2738499ab53bba79a1a5a51d='<li><a href="?hal=paket&amp;id='.$_3584859062ea9ecfb39b93bfcef8e869.'&amp;action=disabled">Status : Tidak Aktif</a></li>';
 		}else{
 			$_75de32ef2738499ab53bba79a1a5a51d='<li><a href="?hal=paket&amp;id='.$_3584859062ea9ecfb39b93bfcef8e869.'&amp;action=enabled">Status : Aktif</a></li>';
@@ -21,8 +21,8 @@ if(mysqli_num_rows($conn) > 0){
 		$_d4cb19f81c23886f544f26709bd4f799.='
 		<tr>
 		<td style="text-align:center;">'.$_52f720bdaf922c68904e386cbf0cd227.'</td>
-		<td>'.$_60169cd1c47b7a7a85ab44f884635e41['nama'].'</td>
-		<td style="text-align:center;">'.$_60169cd1c47b7a7a85ab44f884635e41['waktu_pengerjaan'].' menit</td>
+		<td>'.$sql['nama'].'</td>
+		<td style="text-align:center;">'.$sql['waktu_pengerjaan'].' menit</td>
 		<td style="text-align:center;"><a href="?hal=ujian&amp;id='.$_3584859062ea9ecfb39b93bfcef8e869.'" class="btn btn-primary btn-sm">Masuk</a></td>
 		</tr>
 		';
@@ -33,20 +33,20 @@ $_346cdacfcfcb66a12c88d6345a2f0d81='';
 $conn="select * from paket inner join ujian on paket.id_paket=ujian.id_paket where ujian.id_siswa='".$_SESSION['LOGIN_ID']."' and selesai='Y' order by ujian.id_ujian desc";
 $conn=mysqli_query($conns,$conn);
 if(mysqli_num_rows($conn) > 0){
-	while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn)){
+	while($sql=mysqli_fetch_array($conn)){
 		$_52f720bdaf922c68904e386cbf0cd227++;
-		$_7da43659dfebcaab2ad4bbd2f2a98f30=mysqli_query($conns,"select count(*) as jml from soal_paket where id_paket='".$_60169cd1c47b7a7a85ab44f884635e41['id_paket']."'");
+		$_7da43659dfebcaab2ad4bbd2f2a98f30=mysqli_query($conns,"select count(*) as jml from soal_paket where id_paket='".$sql['id_paket']."'");
 		$_84ebecebe3a7c3b32dff74f8dce19fce=mysqli_fetch_array($_7da43659dfebcaab2ad4bbd2f2a98f30);
 		$_b9e53b5867b7fd393a3d5ddf2ceefdf6=$_84ebecebe3a7c3b32dff74f8dce19fce['jml'];
 		
 		$_346cdacfcfcb66a12c88d6345a2f0d81.='
 		<tr>
 		<td style="text-align:center;">'.$_52f720bdaf922c68904e386cbf0cd227.'</td>
-		<td style="text-align:center;">'.date('d-m-Y',strtotime($_60169cd1c47b7a7a85ab44f884635e41['tanggal_mulai'])).'</td>
-		<td>'.$_60169cd1c47b7a7a85ab44f884635e41['nama'].'</td>
-		<td style="text-align:center;">'.$_60169cd1c47b7a7a85ab44f884635e41['waktu_pengerjaan'].' menit</td>
+		<td style="text-align:center;">'.date('d-m-Y',strtotime($sql['tanggal_mulai'])).'</td>
+		<td>'.$sql['nama'].'</td>
+		<td style="text-align:center;">'.$sql['waktu_pengerjaan'].' menit</td>
 		<td style="text-align:center;">'.$_b9e53b5867b7fd393a3d5ddf2ceefdf6.'</td>
-		<td style="text-align:center;">'.$_60169cd1c47b7a7a85ab44f884635e41['nilai'].'</td>
+		<td style="text-align:center;">'.$sql['nilai'].'</td>
 		</tr>
 		';
 	}

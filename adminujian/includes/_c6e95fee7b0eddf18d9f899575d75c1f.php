@@ -28,8 +28,8 @@ if($_4e4149dcf4b3b60bf0aaf69dd2348c4d<1){$_4e4149dcf4b3b60bf0aaf69dd2348c4d=1;}
 $result=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;
 $_4e4149dcf4b3b60bf0aaf69dd2348c4d--;
 $conn=mysqli_query($conns,"select count(*) as jml from siswa where id_kelas='".$_72e838785b161ce1f713d6b1a452e270."' and (nisn like '%".$_36923cf62618d1b9981740738971e651."%' or nama like '%".$_36923cf62618d1b9981740738971e651."%')");
-$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
-$_12ef5f8660c2350214ce228aad66392d=$_60169cd1c47b7a7a85ab44f884635e41['jml'];
+$sql=mysqli_fetch_array($conn);
+$_12ef5f8660c2350214ce228aad66392d=$sql['jml'];
 $_f52ba22baf75438bb1b02f476954c023=($_12ef5f8660c2350214ce228aad66392d -($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466)) / $_111f1b5b84b5c819ea9ae35968fce466;
 
 if($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466 > 0){$_f52ba22baf75438bb1b02f476954c023++;}
@@ -55,15 +55,15 @@ $hasil='';
 $conn="select * from siswa where id_kelas='".$_72e838785b161ce1f713d6b1a452e270."' and (nisn like '%".$_36923cf62618d1b9981740738971e651."%' or nama like '%".$_36923cf62618d1b9981740738971e651."%') order by nisn limit ".$_4e4149dcf4b3b60bf0aaf69dd2348c4d.",".$_111f1b5b84b5c819ea9ae35968fce466;
 $conn=mysqli_query($conns,$conn);
 if(mysqli_num_rows($conn) > 0){
-	while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn)){
+	while($sql=mysqli_fetch_array($conn)){
 		$_52f720bdaf922c68904e386cbf0cd227++;
-		$_3584859062ea9ecfb39b93bfcef8e869=$_60169cd1c47b7a7a85ab44f884635e41['id_siswa'];
+		$_3584859062ea9ecfb39b93bfcef8e869=$sql['id_siswa'];
 		if(mysqli_num_rows(mysqli_query($conns,"select id_peserta from peserta where id_paket='".$_b78f9e7c4587e8583ab713f126277f88."' and id_siswa='".$_3584859062ea9ecfb39b93bfcef8e869."'")) > 0){
 			$hasil.='
 			  <tr>
 				<td style="text-align:center;">'.$_52f720bdaf922c68904e386cbf0cd227.'</td>
-				<td>'.$_60169cd1c47b7a7a85ab44f884635e41['nisn'].'</td>
-				<td>'.$_60169cd1c47b7a7a85ab44f884635e41['nama'].'</td>
+				<td>'.$sql['nisn'].'</td>
+				<td>'.$sql['nama'].'</td>
 				<td style="text-align:center;"><button type="button" class="btn btn-success btn-xs disabled"><i class="fa fa-check"></i></button></td>
 			  </tr>
 			';
@@ -71,8 +71,8 @@ if(mysqli_num_rows($conn) > 0){
 			$hasil.='
 			  <tr>
 				<td style="text-align:center;">'.$_52f720bdaf922c68904e386cbf0cd227.'</td>
-				<td>'.$_60169cd1c47b7a7a85ab44f884635e41['nisn'].'</td>
-				<td>'.$_60169cd1c47b7a7a85ab44f884635e41['nama'].'</td>
+				<td>'.$sql['nisn'].'</td>
+				<td>'.$sql['nama'].'</td>
 				<td style="text-align:center;"><button type="button" class="btn btn-success btn-xs data_table" data-id="'.$_3584859062ea9ecfb39b93bfcef8e869.'"><i class="fa fa-plus"></i></button></td>
 			  </tr>
 			';
@@ -82,9 +82,9 @@ if(mysqli_num_rows($conn) > 0){
 }
 $_a6abb7c18ac54429027c2440b5329b86='<option value="">Pilih Kelas</option>';
 $conn=mysqli_query($conns,"select * from kelas order by nama");
-while($_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn)){
-	if($_72e838785b161ce1f713d6b1a452e270==$_60169cd1c47b7a7a85ab44f884635e41['id_kelas']){$_3cb9cdaed257453cfa56b9ef81b44c57='selected';}else{$_3cb9cdaed257453cfa56b9ef81b44c57='';}
-	$_a6abb7c18ac54429027c2440b5329b86.='<option value="'.$_60169cd1c47b7a7a85ab44f884635e41['id_kelas'].'" '.$_3cb9cdaed257453cfa56b9ef81b44c57.'>'.$_60169cd1c47b7a7a85ab44f884635e41['nama'].'</option>';
+while($sql=mysqli_fetch_array($conn)){
+	if($_72e838785b161ce1f713d6b1a452e270==$sql['id_kelas']){$_3cb9cdaed257453cfa56b9ef81b44c57='selected';}else{$_3cb9cdaed257453cfa56b9ef81b44c57='';}
+	$_a6abb7c18ac54429027c2440b5329b86.='<option value="'.$sql['id_kelas'].'" '.$_3cb9cdaed257453cfa56b9ef81b44c57.'>'.$sql['nama'].'</option>';
 }
 
 ?>

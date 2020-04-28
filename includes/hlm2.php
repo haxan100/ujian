@@ -4,8 +4,8 @@ $_8f128c86231aedb3ad839316104082b1='N';
 if(isset($_SESSION['LOGIN_ID'])){
 	$conn=mysqli_query($conns,"select selesai from ujian where id_siswa='".$_SESSION['LOGIN_ID']."'");
 	if(mysqli_num_rows($conn)>0){
-		$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
-		$_8f128c86231aedb3ad839316104082b1=$_60169cd1c47b7a7a85ab44f884635e41['selesai'];
+		$sql=mysqli_fetch_array($conn);
+		$_8f128c86231aedb3ad839316104082b1=$sql['selesai'];
 	}
 }
 

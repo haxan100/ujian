@@ -23,8 +23,8 @@ if(isset($_POST['save'])){
 		}
 		if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
 			$conn=mysqli_query($conns,"select * from kompetensi where id_kompetensi='".$_3584859062ea9ecfb39b93bfcef8e869."'");
-			$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
-			$_08fdfd209a120f38f85507412165a4ef=$_60169cd1c47b7a7a85ab44f884635e41['kode'];
+			$sql=mysqli_fetch_array($conn);
+			$_08fdfd209a120f38f85507412165a4ef=$sql['kode'];
 			if(mysqli_num_rows(mysqli_query($conns,"select * from kompetensi where kode='".$_f77c5a659797b862f0fc544aa9a0c023."' and kode<>'".$_08fdfd209a120f38f85507412165a4ef."'"))>0){
 				$_b5adde8d7d7412251f47419fe9bf51a7='Kode sudah terdaftar. Silahkan daftarkan kode yang lain.';
 			}else{
@@ -41,9 +41,9 @@ if(isset($_POST['save'])){
 	if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
 		$_3584859062ea9ecfb39b93bfcef8e869=$_GET['id'];
 		$conn=mysqli_query($conns,"select * from kompetensi where id_kompetensi='".$_3584859062ea9ecfb39b93bfcef8e869."'");
-		$_60169cd1c47b7a7a85ab44f884635e41=mysqli_fetch_array($conn);
-		$_31985b26056f955fec6db8f46f87653f=$_60169cd1c47b7a7a85ab44f884635e41['nama'];
-		$_f77c5a659797b862f0fc544aa9a0c023=$_60169cd1c47b7a7a85ab44f884635e41['kode'];
+		$sql=mysqli_fetch_array($conn);
+		$_31985b26056f955fec6db8f46f87653f=$sql['nama'];
+		$_f77c5a659797b862f0fc544aa9a0c023=$sql['kode'];
 	}
 	if($_d35a39212fd75e833aea38f90831b2cb=='delete'){
 		$_3584859062ea9ecfb39b93bfcef8e869=$_GET['id'];
