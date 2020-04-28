@@ -2,7 +2,7 @@
 <?php
 $conn=mysqli_query($conns,"select * from user where id_user='".$_SESSION['LOGIN_ID']."'");
 $sql=mysqli_fetch_array($conn);
-$_510c1613a4f826b5612ae2ac9bdeb894=$sql['nama'];
+$nama=$sql['nama'];
 
 ?>
 
@@ -18,7 +18,7 @@ $_510c1613a4f826b5612ae2ac9bdeb894=$sql['nama'];
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
-                <li><span style="color:#fff;">Selamat datang, <strong><?php echo $_510c1613a4f826b5612ae2ac9bdeb894;?></strong> </span></li>
+                <li><span style="color:#fff;">Selamat datang, <strong><?php echo $nama;?></strong> </span></li>
                 <!-- /.dropdown -->
                 
                 <!-- /.dropdown -->
