@@ -56,8 +56,8 @@
 
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <?php include '_1c1ae65fe9828eb6d3cee4edacf90018.php'; ?>
-            <?php include '_7feb09b1cc77316e82afe633b4476000.php'; ?>
+            <?php include 'hal.php'; ?>
+            <?php include 'hal2.php'; ?>
 
         </nav>
 

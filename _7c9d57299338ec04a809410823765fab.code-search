@@ -2,11 +2,11 @@
 
 64 results - 18 files
 
-_1c1ae65fe9828eb6d3cee4edacf90018.php:
+hal.php:
   23:         <li <?php if($sesi==''){echo 'class="active"';}?>><a href="./">Home</a></li>
   25: 		<li <?php if($sesi=='pengumuman'){echo 'class="active"';}?>><a href="?hal=pengumuman">Daftar Hasil Ujian</a></li>
 
-_7feb09b1cc77316e82afe633b4476000.php:
+hal2.php:
   58: <a href="./" class="list-group-item <?php if($sesi==''){echo 'active';}?>">Dashboard</a>
   59: <!--<a href="?hal=tes" class="list-group-item <?php if($sesi=='tes'){echo 'active';}?>"><?php if($_8f128c86231aedb3ad839316104082b1=='Y'){echo 'Hasil Ujian';}else{echo 'Ujian';}?></a>-->
   60: <a href="?hal=paket_ujian" class="list-group-item <?php if($sesi=='paket_ujian' or $sesi=='paket_ujian'){echo 'active';}?>">Paket Ujian</a>
@@ -16,7 +16,7 @@ _7feb09b1cc77316e82afe633b4476000.php:
 _f0b08a817cc558048a5f4f571365edaa.php:
   7: $sesi=$_71a6fd054f6ebc38e69167ab39449848;
 
-adminujian\_7feb09b1cc77316e82afe633b4476000.php:
+adminujian\hal2.php:
    8: 			<li><a <?php if($sesi==''){echo 'class="active"';}?> href="./"><i class="fa fa-home fa-fw"></i> Dashboard</a></li>
    9: 			<li <?php if($sesi=='kelas' or $sesi=='update_kelas' or $sesi=='pelajaran' or $sesi=='update_pelajaran' or $sesi=='siswa' or $sesi=='update_siswa' or $sesi=='import_siswa' or $sesi=='soal' or $sesi=='update_soal' or $sesi=='import_soal'){echo 'class="active"';}?>><a href="#"><i class="fa fa-cogs fa-fw"></i> Master<span class="fa arrow"></span></a>
   11: 					<li><a <?php if($sesi=='kelas' or $sesi=='update_kelas'){echo 'class="active"';}?> href="?hal=kelas">Kelas</a></li>

