@@ -18,7 +18,7 @@ if(mysqli_num_rows($conn)>0){
 	$sqli=$sql['id_ujian'];
 	$id=$sql['id_paket'];
 	$stat=$sql['selesai'];
-	$_02202b271eddd150fb9b3a5c12a8639d=$sql['lama_pengerjaan'];
+	$simulasi_waktu=$sql['lama_pengerjaan'];
 	$conn=mysqli_query($conns,"select * from paket where id_paket='".$id."'");
 	$sql=mysqli_fetch_array($conn);
 	$waktu=$sql['waktu_pengerjaan']*60;
@@ -26,7 +26,7 @@ if(mysqli_num_rows($conn)>0){
 	if($stat=='Y'){
 		exit("<script>location.href='".$look."?hal=ujian&id=".$id."';</script>");
 	}else{
-		if($_02202b271eddd150fb9b3a5c12a8639d >= $waktu){
+		if($simulasi_waktu >= $waktu){
 			mysqli_query($conns,"update ujian set selesai='Y' where id_ujian='".$sqli."'");
 			exit("<script>location.href='".$look."?hal=ujian&id=".$id."';</script>");
 		}
@@ -125,7 +125,7 @@ mysqli_close($conns);
 <div class="row">
 	<div class="col-lg-12">
 		<h1 class="page-headers" style="margin-top:0;text-align:center;">
-		<span id="timer"><span class="label label-success">Waktu : <?php echo gmdate("H:i:s", ($waktu-$_02202b271eddd150fb9b3a5c12a8639d));?></span></span>
+		<span id="timer"><span class="label label-success">Waktu : <?php echo gmdate("H:i:s", ($waktu-$simulasi_waktu));?></span></span>
 		<span class="label label-info">Soal : <?php echo $_b44cb2e694287fa912cc50de8b3a920b.'/'.count($paket);?></span>
 		</h1>
 		

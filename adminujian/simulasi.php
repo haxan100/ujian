@@ -37,8 +37,8 @@ $sql=mysqli_fetch_array($conn);
 $id=$sql['id_paket'];
 $waktu=$sql['waktu_pengerjaan']*60;
 
-$_02202b271eddd150fb9b3a5c12a8639d=$_SESSION['SIMULASI_TIME'];
-if($_02202b271eddd150fb9b3a5c12a8639d >= $waktu){
+$simulasi_waktu=$_SESSION['SIMULASI_TIME'];
+if($simulasi_waktu >= $waktu){
 	unset($_SESSION['SIMULASI_ID']);
 	unset($_SESSION['SIMULASI_TIME']);
 	unset($_SESSION['SIMULASI_SOAL']);
@@ -144,7 +144,7 @@ mysqli_close($conns);
 <div class="row">
 	<div class="col-lg-12">
 		<h1 class="page-headers" style="margin-top:0;text-align:center;">
-		<span id="timer"><span class="label label-success">Sisa Waktu : <?php echo gmdate("H:i:s", ($waktu-$_02202b271eddd150fb9b3a5c12a8639d));?></span></span>
+		<span id="timer"><span class="label label-success">Sisa Waktu : <?php echo gmdate("H:i:s", ($waktu-$simulasi_waktu));?></span></span>
 		<span class="label label-info">Soal : <?php echo $_b44cb2e694287fa912cc50de8b3a920b.'/'.count($paket);?></span>
 		</h1>
 		
