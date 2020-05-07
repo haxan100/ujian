@@ -42,11 +42,11 @@ for($mulai=0;$mulai<count($hitung);$mulai++){
 	$tablestiga[]=$totalSemua;
 }
 
-$_6ce2e221e9de82dc1b70b582fb6e5a98='<option value="">Pilih Periode</option>';
+$optionStatis='<option value="">Pilih Periode</option>';
 $conn=mysqli_query($conns,"select * from periode order by id_periode");
 while($sql=mysqli_fetch_array($conn)){
 	if($id_periode==$sql['id_periode']){$selectOpsi='selected';}else{$selectOpsi='';}
-	$_6ce2e221e9de82dc1b70b582fb6e5a98.='<option value="'.$sql['id_periode'].'" '.$selectOpsi.'>'.$sql['nama'].'</option>';
+	$optionStatis.='<option value="'.$sql['id_periode'].'" '.$selectOpsi.'>'.$sql['nama'].'</option>';
 }
 
 
@@ -151,7 +151,7 @@ td.jqplot-table-legend {
 	<div class="col-lg-12">
 <form action="" name="" method="get" style="float:left">
 <input name="hal" type="hidden" value="statistik" />
-<select name="periode" class="form-control" onchange="submit()" style="width:150px;float:left;margin-right:5px;"><?php echo $_6ce2e221e9de82dc1b70b582fb6e5a98;?></select>
+<select name="periode" class="form-control" onchange="submit()" style="width:150px;float:left;margin-right:5px;"><?php echo $optionStatis;?></select>
 </form>
 <div style="clear:both;"></div>
 <?php if($id_periode!=''){ ?>

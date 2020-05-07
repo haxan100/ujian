@@ -82,11 +82,11 @@ if(mysqli_num_rows($conn) > 0){
 	}
 }
 
-$_6ce2e221e9de82dc1b70b582fb6e5a98='<option value="">Pilih Periode</option>';
+$optionStatis='<option value="">Pilih Periode</option>';
 $conn=mysqli_query($conns,"select * from periode order by id_periode");
 while($sql=mysqli_fetch_array($conn)){
 	if($id_periode==$sql['id_periode']){$selectOpsi='selected';}else{$selectOpsi='';}
-	$_6ce2e221e9de82dc1b70b582fb6e5a98.='<option value="'.$sql['id_periode'].'" '.$selectOpsi.'>'.$sql['nama'].'</option>';
+	$optionStatis.='<option value="'.$sql['id_periode'].'" '.$selectOpsi.'>'.$sql['nama'].'</option>';
 }
 $opsiJurusan='<option value="">Pilih Kompetensi</option>';
 $conn=mysqli_query($conns,"select * from jurusan order by nama");
@@ -109,7 +109,7 @@ while($sql=mysqli_fetch_array($conn)){
 
 <form action="" name="" method="get" style="float:left">
 <input name="hal" type="hidden" value="hasil_tes" />
-<select name="periode" class="form-control" style="width:150px;float:left;margin-right:5px;"><?php echo $_6ce2e221e9de82dc1b70b582fb6e5a98;?></select>
+<select name="periode" class="form-control" style="width:150px;float:left;margin-right:5px;"><?php echo $optionStatis;?></select>
 <select name="jurusan" class="form-control" style="width:170px;float:left;margin-right:5px;"><?php echo $opsiJurusan;?></select>
 <input name="q" type="text" value="<?php echo $_36923cf62618d1b9981740738971e651;?>" class="form-control" placeholder="Pencarian" style="float:left;width:150px;" /> &nbsp;<button type="submit" name="" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> </button>
 </form>
