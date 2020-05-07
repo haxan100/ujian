@@ -62,7 +62,7 @@ adminujian\includes\soal_ujian.php:
 adminujian\includes\_c6e95fee7b0eddf18d9f899575d75c1f.php:
   28: $sesi=$nilaiujiansoals;
 
-adminujian\includes\_c2774403c6ad1db9a29e5532b928792e.php:
+adminujian\includes\paketsoal.php:
   28: $sesi=$nilaiujiansoals;
 
 adminujian\includes\siswa.php:

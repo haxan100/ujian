@@ -130,7 +130,7 @@ $(document).ready(function(){
 	$('#form_soal').submit(function () {
 		$.ajax({
 			type: 'GET',
-			url: 'includes/_c2774403c6ad1db9a29e5532b928792e.php',
+			url: 'includes/paketsoal.php',
 			data: $(this).serialize(),
 			beforeSend: function(data) {
 				$('#daftar_soal').html('Loading...');
@@ -150,7 +150,7 @@ $(document).ready(function(){
 		
 		$.ajax({
 			type: 'GET',
-			url: 'includes/_c2774403c6ad1db9a29e5532b928792e.php',
+			url: 'includes/paketsoal.php',
 			data: $(this).serialize(),
 			beforeSend: function(data) {
 				$('#daftar_soal').html('Loading...');
@@ -166,7 +166,7 @@ $(document).ready(function(){
 	$('.btn_page').click(function () {
 		$.ajax({
 			type: 'GET',
-			url: 'includes/_c2774403c6ad1db9a29e5532b928792e.php',
+			url: 'includes/paketsoal.php',
 			data: $(this).attr('data-param'),
 			beforeSend: function(data) {
 				$('#daftar_soal').html('Loading...');

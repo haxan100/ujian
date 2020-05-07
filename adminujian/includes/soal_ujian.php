@@ -172,7 +172,7 @@ jQuery(document).ready(function() {
 	$('#btn_add_soal').click(function () {
 		$.ajax({
 			type: 'GET',
-			url: 'includes/_c2774403c6ad1db9a29e5532b928792e.php',
+			url: 'includes/paketsoal.php',
 			data: 'paket=<?php echo $id;?>',
 			beforeSend: function(data) {
 				$('#daftar_soal').html('Loading...');
