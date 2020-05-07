@@ -5,50 +5,50 @@ $pengumuman1='?hal=soal';
 $regis='?hal=update_soal';
 
 $mapel='';
-$_36923cf62618d1b9981740738971e651='';
+$sqlgetsoal='';
 if(isset($_GET['pelajaran'])){
 	$mapel=$_GET['pelajaran'];
 }
 if(isset($_GET['q'])){
-	$_36923cf62618d1b9981740738971e651=$_GET['q'];
+	$sqlgetsoal=$_GET['q'];
 }
 
-$conn =mysqli_query($conns,"select count(*) as jml from soal where id_pelajaran='".$mapel."' and detail like '%".$_36923cf62618d1b9981740738971e651."%'");
+$conn =mysqli_query($conns,"select count(*) as jml from soal where id_pelajaran='".$mapel."' and detail like '%".$sqlgetsoal."%'");
 $sql=mysqli_fetch_array($conn);
-$_12ef5f8660c2350214ce228aad66392d=$sql['jml'];
+$jumlahsoal=$sql['jml'];
 
-$_bd374a8757e4ad5e55de663a02a9adde=$pengumuman1.'&q='.$_36923cf62618d1b9981740738971e651;
-$_111f1b5b84b5c819ea9ae35968fce466=100;
-$_4e4149dcf4b3b60bf0aaf69dd2348c4d=0;if(isset($_GET['page'])){$_4e4149dcf4b3b60bf0aaf69dd2348c4d=$_GET['page'];}
-if($_4e4149dcf4b3b60bf0aaf69dd2348c4d<1){$_4e4149dcf4b3b60bf0aaf69dd2348c4d=1;}$result=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;$_4e4149dcf4b3b60bf0aaf69dd2348c4d--;$listing=($_12ef5f8660c2350214ce228aad66392d -($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466)) / $_111f1b5b84b5c819ea9ae35968fce466;if($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466 > 0){$listing++;}
-if(($_4e4149dcf4b3b60bf0aaf69dd2348c4d+1)>1){$_addbb9f4792a53c78e32e91e1c94f075='<li><a href="'.$_bd374a8757e4ad5e55de663a02a9adde.'&page='.$_4e4149dcf4b3b60bf0aaf69dd2348c4d.'">&laquo;</a></li>';}else{$_addbb9f4792a53c78e32e91e1c94f075='<li class="disabled"><a href="#">&laquo;</a></li>';}
-for($mulai=1;$mulai<=$listing;$mulai++){if($mulai==($_4e4149dcf4b3b60bf0aaf69dd2348c4d+1)){$selectOpsi='class="active"';}else{$selectOpsi='';}$_addbb9f4792a53c78e32e91e1c94f075.='<li '.$selectOpsi.'><a href="'.$_bd374a8757e4ad5e55de663a02a9adde.'&page='.$mulai.'">'.$mulai.'</a></li>';}
-if(($_4e4149dcf4b3b60bf0aaf69dd2348c4d+1)<$listing){$_addbb9f4792a53c78e32e91e1c94f075.='<li><a href="'.$_bd374a8757e4ad5e55de663a02a9adde.'&page='.($_4e4149dcf4b3b60bf0aaf69dd2348c4d+2).'">&raquo;</a></li>';}else{$_addbb9f4792a53c78e32e91e1c94f075.='<li class="disabled"><a href="#">&raquo;</a></li>';}
-$_addbb9f4792a53c78e32e91e1c94f075='<ul class="pagination">'.$_addbb9f4792a53c78e32e91e1c94f075.'</ul>';$_4e4149dcf4b3b60bf0aaf69dd2348c4d=$_4e4149dcf4b3b60bf0aaf69dd2348c4d*$_111f1b5b84b5c819ea9ae35968fce466;$awal=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;
+$awalsoals=$pengumuman1.'&q='.$sqlgetsoal;
+$nilaiujiansoal=100;
+$nilaiujiansoals=0;if(isset($_GET['page'])){$nilaiujiansoals=$_GET['page'];}
+if($nilaiujiansoals<1){$nilaiujiansoals=1;}$result=$nilaiujiansoals;$nilaiujiansoals--;$listing=($jumlahsoal -($jumlahsoal%$nilaiujiansoal)) / $nilaiujiansoal;if($jumlahsoal%$nilaiujiansoal > 0){$listing++;}
+if(($nilaiujiansoals+1)>1){$linksoalujian='<li><a href="'.$awalsoals.'&page='.$nilaiujiansoals.'">&laquo;</a></li>';}else{$linksoalujian='<li class="disabled"><a href="#">&laquo;</a></li>';}
+for($mulai=1;$mulai<=$listing;$mulai++){if($mulai==($nilaiujiansoals+1)){$selectOpsi='class="active"';}else{$selectOpsi='';}$linksoalujian.='<li '.$selectOpsi.'><a href="'.$awalsoals.'&page='.$mulai.'">'.$mulai.'</a></li>';}
+if(($nilaiujiansoals+1)<$listing){$linksoalujian.='<li><a href="'.$awalsoals.'&page='.($nilaiujiansoals+2).'">&raquo;</a></li>';}else{$linksoalujian.='<li class="disabled"><a href="#">&raquo;</a></li>';}
+$linksoalujian='<ul class="pagination">'.$linksoalujian.'</ul>';$nilaiujiansoals=$nilaiujiansoals*$nilaiujiansoal;$awal=$nilaiujiansoals;
 
-$_971d98e0ad23e0905a3d3f4b08d46579=array('Y'=>'<span class="label label-success">AKTIF</span>','N'=>'<span class="label label-danger">Tidak Aktif</span>');
+$arraysoal=array('Y'=>'<span class="label label-success">AKTIF</span>','N'=>'<span class="label label-danger">Tidak Aktif</span>');
 $tables='';
-$conn="select * from soal where id_pelajaran='".$mapel."' and detail like '%".$_36923cf62618d1b9981740738971e651."%' order by id_soal limit ".$_4e4149dcf4b3b60bf0aaf69dd2348c4d.",".$_111f1b5b84b5c819ea9ae35968fce466;
+$conn="select * from soal where id_pelajaran='".$mapel."' and detail like '%".$sqlgetsoal."%' order by id_soal limit ".$nilaiujiansoals.",".$nilaiujiansoal;
 $conn=mysqli_query($conns,$conn);
 if(mysqli_num_rows($conn) > 0){
 	while($sql=mysqli_fetch_array($conn)){
 		$awal++;
 		$id_paket=$sql['id_soal'];
 		$kunci=$sql['kunci'];
-		$_25407a67a7a597297818c35a0d0ed51d=false;
-		//if(mysqli_num_rows(mysqli_query($conns,"select * from program where id_periode='".$id_paket."' limit 0,1"))>0){$_25407a67a7a597297818c35a0d0ed51d=true;}
-		if($_25407a67a7a597297818c35a0d0ed51d==true){$optidis='disabled';$_f22a1fc2263e04ec8ae7a008a249229e='return(false);';}else{$optidis='';$_f22a1fc2263e04ec8ae7a008a249229e='';}
-		$_f3f4775da2a6e3f93bd69f99d887efc2='<table class="table" style="background:none;">';
+		$soalbenar=false;
+		//if(mysqli_num_rows(mysqli_query($conns,"select * from program where id_periode='".$id_paket."' limit 0,1"))>0){$soalbenar=true;}
+		if($soalbenar==true){$optidis='disabled';$soalkondisi='return(false);';}else{$optidis='';$soalkondisi='';}
+		$classtable='<table class="table" style="background:none;">';
 		$juml=mysqli_query($conns,"select * from soal_jawaban where id_soal='".$id_paket."' order by id_soal_jawaban");
 		while($totAll=mysqli_fetch_array($juml)){
 			if($totAll['kode']==$kunci){
-				$_c0d907c3e4a81c61f89d044e588eac19='<span class="label label-warning">'.$totAll['kode'].'.</span>';
+				$classlable='<span class="label label-warning">'.$totAll['kode'].'.</span>';
 			}else{
-				$_c0d907c3e4a81c61f89d044e588eac19='<span class="label label-info">'.$totAll['kode'].'.</span>';
+				$classlable='<span class="label label-info">'.$totAll['kode'].'.</span>';
 			}
-			$_f3f4775da2a6e3f93bd69f99d887efc2.='<tr><td width="20" style="border:none;">'.$_c0d907c3e4a81c61f89d044e588eac19.'</td><td style="border:none;">'.$totAll['jawaban'].'</td></tr>';
+			$classtable.='<tr><td width="20" style="border:none;">'.$classlable.'</td><td style="border:none;">'.$totAll['jawaban'].'</td></tr>';
 		}
-		$_f3f4775da2a6e3f93bd69f99d887efc2.='</table>';
+		$classtable.='</table>';
 		
 		$tables.='
 		<tr>
@@ -59,14 +59,14 @@ if(mysqli_num_rows($conn) > 0){
 		</button>
 		<ul class="dropdown-menu" role="menu">
 		<li><a href="'.$regis.'&amp;id='.$id_paket.'&amp;action=edit">Edit</a></li>
-		<li class="'.$optidis.'"><a href="#" onclick="'.$_f22a1fc2263e04ec8ae7a008a249229e.'DeleteConfirm(\''.$regis.'&amp;id='.$id_paket.'&amp;action=delete\');return(false);">Hapus</a></li>
+		<li class="'.$optidis.'"><a href="#" onclick="'.$soalkondisi.'DeleteConfirm(\''.$regis.'&amp;id='.$id_paket.'&amp;action=delete\');return(false);">Hapus</a></li>
 		</ul>
 		</div>
 		</td>
 		<td style="text-align:center;">'.$awal.'</td>
 		<td>
 		'.$sql['detail'].'
-		'.$_f3f4775da2a6e3f93bd69f99d887efc2.'
+		'.$classtable.'
 		</td>
 		</tr>
 		';
@@ -100,12 +100,12 @@ function DeleteConfirm(url){
 <form action="" name="" method="get" style="float:left">
 <input name="hal" type="hidden" value="soal" />
 <select name="pelajaran" class="form-control" onchange="submit()" style="width:300px;float:left;margin-right:5px;"><?php echo $option;?></select>
-<input name="q" type="text" value="<?php echo $_36923cf62618d1b9981740738971e651;?>" class="form-control" placeholder="Pencarian" style="float:left;width:200px;" /> &nbsp;<button type="submit" name="" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Cari</button>
+<input name="q" type="text" value="<?php echo $sqlgetsoal;?>" class="form-control" placeholder="Pencarian" style="float:left;width:200px;" /> &nbsp;<button type="submit" name="" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Cari</button>
 </form>
 <div style="float:right">
 <a href="<?php echo $regis;?>" class="btn btn-primary"><i class="fa fa-plus"></i> Input Soal Baru</a>
 &nbsp;<a href="?hal=import_soal" class="btn btn-primary"><i class="fa fa-arrow-circle-o-down"></i> Import</a>
-&nbsp;<a href="_b97ac0815f949eca6aa1a21065667e5d.php?pelajaran=<?php echo $mapel;?>" class="btn btn-primary"><i class="fa fa-save"></i> Download</a>
+&nbsp;<a href="jawaban.php?pelajaran=<?php echo $mapel;?>" class="btn btn-primary"><i class="fa fa-save"></i> Download</a>
 </div>
 <div style="height:10px;clear:both;"></div>
 <?php 
@@ -126,7 +126,7 @@ if($tables==''){
   </tbody>
 </table>
 <center>
-<?php echo $_addbb9f4792a53c78e32e91e1c94f075;?>
+<?php echo $linksoalujian;?>
 </center>
 <?php } ?>
 

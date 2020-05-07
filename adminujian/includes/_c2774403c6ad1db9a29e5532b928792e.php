@@ -14,45 +14,45 @@ if(isset($_GET['paket'])){
 if(isset($_GET['pelajaran'])){
 	$mapel=$_GET['pelajaran'];
 }
-$_36923cf62618d1b9981740738971e651='';
+$sqlgetsoal='';
 if(isset($_GET['q'])){
-	$_36923cf62618d1b9981740738971e651=$_GET['q'];
+	$sqlgetsoal=$_GET['q'];
 }
 $_517eb60ce7142569b3b2229552f16958=0;
-$_111f1b5b84b5c819ea9ae35968fce466=10;
-$_4e4149dcf4b3b60bf0aaf69dd2348c4d=0;
+$nilaiujiansoal=10;
+$nilaiujiansoals=0;
 $_5778a9156adf82bd65a3ec7d62084491='';
 
-if(isset($_GET['page'])){$_4e4149dcf4b3b60bf0aaf69dd2348c4d=$_GET['page'];}
-if($_4e4149dcf4b3b60bf0aaf69dd2348c4d<1){$_4e4149dcf4b3b60bf0aaf69dd2348c4d=1;}
-$result=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;
-$_4e4149dcf4b3b60bf0aaf69dd2348c4d--;
-$conn=mysqli_query($conns,"select count(*) as jml from soal where id_pelajaran='".$mapel."' and detail like '%".$_36923cf62618d1b9981740738971e651."%'");
+if(isset($_GET['page'])){$nilaiujiansoals=$_GET['page'];}
+if($nilaiujiansoals<1){$nilaiujiansoals=1;}
+$result=$nilaiujiansoals;
+$nilaiujiansoals--;
+$conn=mysqli_query($conns,"select count(*) as jml from soal where id_pelajaran='".$mapel."' and detail like '%".$sqlgetsoal."%'");
 $sql=mysqli_fetch_array($conn);
-$_12ef5f8660c2350214ce228aad66392d=$sql['jml'];
-$listing=($_12ef5f8660c2350214ce228aad66392d -($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466)) / $_111f1b5b84b5c819ea9ae35968fce466;
+$jumlahsoal=$sql['jml'];
+$listing=($jumlahsoal -($jumlahsoal%$nilaiujiansoal)) / $nilaiujiansoal;
 
-if($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466 > 0){$listing++;}
-$_addbb9f4792a53c78e32e91e1c94f075='';
+if($jumlahsoal%$nilaiujiansoal > 0){$listing++;}
+$linksoalujian='';
 for($mulai=1;$mulai<=$listing;$mulai++){
-	if($mulai==($_4e4149dcf4b3b60bf0aaf69dd2348c4d+1)){$selectOpsi=' selected';}else{$selectOpsi='';}
-	$_addbb9f4792a53c78e32e91e1c94f075.='<option value="'.$mulai.'"'.$selectOpsi.'>'.$mulai.'</option>';
+	if($mulai==($nilaiujiansoals+1)){$selectOpsi=' selected';}else{$selectOpsi='';}
+	$linksoalujian.='<option value="'.$mulai.'"'.$selectOpsi.'>'.$mulai.'</option>';
 }
 $_3074d1218d14946af4694b3e14b827ca='';
-if(($_4e4149dcf4b3b60bf0aaf69dd2348c4d+1)>1){
-	$_3074d1218d14946af4694b3e14b827ca='<a href="'.$_5778a9156adf82bd65a3ec7d62084491.'&page='.$_4e4149dcf4b3b60bf0aaf69dd2348c4d.'" class="btn btn-primary btn_page" data-param="paket='.$id.'&pelajaran='.$mapel.'&q='.$_36923cf62618d1b9981740738971e651.'&page='.$_4e4149dcf4b3b60bf0aaf69dd2348c4d.'" style="float:left;margin-right:5px;">&laquo; Prev</a>';
+if(($nilaiujiansoals+1)>1){
+	$_3074d1218d14946af4694b3e14b827ca='<a href="'.$_5778a9156adf82bd65a3ec7d62084491.'&page='.$nilaiujiansoals.'" class="btn btn-primary btn_page" data-param="paket='.$id.'&pelajaran='.$mapel.'&q='.$sqlgetsoal.'&page='.$nilaiujiansoals.'" style="float:left;margin-right:5px;">&laquo; Prev</a>';
 }
 $_ad963400e016efad59a28f377e32aa99='';
-if(($_4e4149dcf4b3b60bf0aaf69dd2348c4d+1)<$listing){
-	$_ad963400e016efad59a28f377e32aa99='<a href="'.$_5778a9156adf82bd65a3ec7d62084491.'&page='.($_4e4149dcf4b3b60bf0aaf69dd2348c4d+2).'" class="btn btn-primary btn_page" data-param="paket='.$id.'&pelajaran='.$mapel.'&q='.$_36923cf62618d1b9981740738971e651.'&page='.($_4e4149dcf4b3b60bf0aaf69dd2348c4d+2).'" style=""> Next &raquo;</a>';
+if(($nilaiujiansoals+1)<$listing){
+	$_ad963400e016efad59a28f377e32aa99='<a href="'.$_5778a9156adf82bd65a3ec7d62084491.'&page='.($nilaiujiansoals+2).'" class="btn btn-primary btn_page" data-param="paket='.$id.'&pelajaran='.$mapel.'&q='.$sqlgetsoal.'&page='.($nilaiujiansoals+2).'" style=""> Next &raquo;</a>';
 }
 
-$_4e4149dcf4b3b60bf0aaf69dd2348c4d=$_4e4149dcf4b3b60bf0aaf69dd2348c4d*$_111f1b5b84b5c819ea9ae35968fce466;
-$awal=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;
+$nilaiujiansoals=$nilaiujiansoals*$nilaiujiansoal;
+$awal=$nilaiujiansoals;
 $_8e976f2b17f9b4d8660549c18b67af83=$awal+1;
 
 $tables='';
-$conn="select * from soal where id_pelajaran='".$mapel."' and detail like '%".$_36923cf62618d1b9981740738971e651."%' order by id_soal limit ".$_4e4149dcf4b3b60bf0aaf69dd2348c4d.",".$_111f1b5b84b5c819ea9ae35968fce466;
+$conn="select * from soal where id_pelajaran='".$mapel."' and detail like '%".$sqlgetsoal."%' order by id_soal limit ".$nilaiujiansoals.",".$nilaiujiansoal;
 $conn=mysqli_query($conns,$conn);
 if(mysqli_num_rows($conn) > 0){
 	while($sql=mysqli_fetch_array($conn)){
@@ -90,7 +90,7 @@ while($sql=mysqli_fetch_array($conn)){
 	<input name="paket" type="hidden" value="<?php echo $id;?>" />
 	<select name="pelajaran" class="form-control" style="width:300px;float:left;margin-right:5px;"><?php echo $option;?></select>
 
-	<input name="q" placeholder="Pencarian" type="text" class="form-control" value="<?php echo $_36923cf62618d1b9981740738971e651;?>" style="width:200px;float:left;margin-right:5px;" /> <button type="submit" class="btn btn-primary">Cari</button>
+	<input name="q" placeholder="Pencarian" type="text" class="form-control" value="<?php echo $sqlgetsoal;?>" style="width:200px;float:left;margin-right:5px;" /> <button type="submit" class="btn btn-primary">Cari</button>
 	<div style="clear:both;height:10px;"></div>
 	<div class="panel panel-default">
 	<table class="table table-striped table-hover table-bordered">
@@ -108,19 +108,19 @@ while($sql=mysqli_fetch_array($conn)){
 	
 	</div>
 </form>
-<?php if($_12ef5f8660c2350214ce228aad66392d > 0){ ?>
+<?php if($jumlahsoal > 0){ ?>
 <div class="row-fluid">
 <form action="" id="form_page" method="get" style="float:right">
 <input name="paket" type="hidden" value="<?php echo $id;?>" />
 <input name="pelajaran" type="hidden" value="<?php echo $mapel;?>" />
-<input name="q" type="hidden" value="<?php echo $_36923cf62618d1b9981740738971e651;?>" />
+<input name="q" type="hidden" value="<?php echo $sqlgetsoal;?>" />
 <?php echo $_3074d1218d14946af4694b3e14b827ca;?>
-<select class="form-control" name="page" id="nav_page" style="width:70px;float:left;margin-right:5px;"><?php echo $_addbb9f4792a53c78e32e91e1c94f075;?></select>
+<select class="form-control" name="page" id="nav_page" style="width:70px;float:left;margin-right:5px;"><?php echo $linksoalujian;?></select>
 <?php echo $_ad963400e016efad59a28f377e32aa99;?>
 </form>
 </div>	
 <div class="row-fluid">
-<?php echo 'Menampilkan '.$_8e976f2b17f9b4d8660549c18b67af83.' hingga '.$_517eb60ce7142569b3b2229552f16958.' dari '.$_12ef5f8660c2350214ce228aad66392d.' data';?>
+<?php echo 'Menampilkan '.$_8e976f2b17f9b4d8660549c18b67af83.' hingga '.$_517eb60ce7142569b3b2229552f16958.' dari '.$jumlahsoal.' data';?>
 </div>	
 <?php } ?>
 	

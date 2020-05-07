@@ -6,7 +6,7 @@ $regis='?hal=hasil_tes';
 
 $id_periode='';
 $jurusan='';
-$_36923cf62618d1b9981740738971e651='';
+$sqlgetsoal='';
 if(isset($_GET['periode'])){
 	$id_periode=$_GET['periode'];
 }
@@ -14,7 +14,7 @@ if(isset($_GET['jurusan'])){
 	$jurusan=$_GET['jurusan'];
 }
 if(isset($_GET['q'])){
-	$_36923cf62618d1b9981740738971e651=$_GET['q'];
+	$sqlgetsoal=$_GET['q'];
 }
 
 $conn=mysqli_query($conns,"select jumlah from periode_kuota where id_periode='".$id_periode."' and id_jurusan='".$jurusan."'");
@@ -35,33 +35,33 @@ while($sql=mysqli_fetch_array($conn)){
 	}
 }
 
-$conn=mysqli_query($conns,"select count(*) as jml from siswa where id_periode='".$id_periode."' and id_jurusan='".$jurusan."' and status='Y' and (nisn like '%".$_36923cf62618d1b9981740738971e651."%' or nama like '%".$_36923cf62618d1b9981740738971e651."%') ");
+$conn=mysqli_query($conns,"select count(*) as jml from siswa where id_periode='".$id_periode."' and id_jurusan='".$jurusan."' and status='Y' and (nisn like '%".$sqlgetsoal."%' or nama like '%".$sqlgetsoal."%') ");
 $sql=mysqli_fetch_array($conn);
-$_12ef5f8660c2350214ce228aad66392d=$sql['jml'];
+$jumlahsoal=$sql['jml'];
 
 
-$_bd374a8757e4ad5e55de663a02a9adde=$pengumuman1.'&periode='.$id_periode.'&q='.$_36923cf62618d1b9981740738971e651.'&jurusan='.$jurusan;
-$_111f1b5b84b5c819ea9ae35968fce466=50;
-$_4e4149dcf4b3b60bf0aaf69dd2348c4d=0;if(isset($_GET['page'])){$_4e4149dcf4b3b60bf0aaf69dd2348c4d=$_GET['page'];}
-if($_4e4149dcf4b3b60bf0aaf69dd2348c4d<1){$_4e4149dcf4b3b60bf0aaf69dd2348c4d=1;}$result=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;$_4e4149dcf4b3b60bf0aaf69dd2348c4d--;$listing=($_12ef5f8660c2350214ce228aad66392d -($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466)) / $_111f1b5b84b5c819ea9ae35968fce466;if($_12ef5f8660c2350214ce228aad66392d%$_111f1b5b84b5c819ea9ae35968fce466 > 0){$listing++;}
-if(($_4e4149dcf4b3b60bf0aaf69dd2348c4d+1)>1){$_addbb9f4792a53c78e32e91e1c94f075='<li><a href="'.$_bd374a8757e4ad5e55de663a02a9adde.'&page='.$_4e4149dcf4b3b60bf0aaf69dd2348c4d.'">&laquo;</a></li>';}else{$_addbb9f4792a53c78e32e91e1c94f075='<li class="disabled"><a href="#">&laquo;</a></li>';}
-for($mulai=1;$mulai<=$listing;$mulai++){if($mulai==($_4e4149dcf4b3b60bf0aaf69dd2348c4d+1)){$selectOpsi='class="active"';}else{$selectOpsi='';}$_addbb9f4792a53c78e32e91e1c94f075.='<li '.$selectOpsi.'><a href="'.$_bd374a8757e4ad5e55de663a02a9adde.'&page='.$mulai.'">'.$mulai.'</a></li>';}
-if(($_4e4149dcf4b3b60bf0aaf69dd2348c4d+1)<$listing){$_addbb9f4792a53c78e32e91e1c94f075.='<li><a href="'.$_bd374a8757e4ad5e55de663a02a9adde.'&page='.($_4e4149dcf4b3b60bf0aaf69dd2348c4d+2).'">&raquo;</a></li>';}else{$_addbb9f4792a53c78e32e91e1c94f075.='<li class="disabled"><a href="#">&raquo;</a></li>';}
-$_addbb9f4792a53c78e32e91e1c94f075='<ul class="pagination">'.$_addbb9f4792a53c78e32e91e1c94f075.'</ul>';$_4e4149dcf4b3b60bf0aaf69dd2348c4d=$_4e4149dcf4b3b60bf0aaf69dd2348c4d*$_111f1b5b84b5c819ea9ae35968fce466;$awal=$_4e4149dcf4b3b60bf0aaf69dd2348c4d;
+$awalsoals=$pengumuman1.'&periode='.$id_periode.'&q='.$sqlgetsoal.'&jurusan='.$jurusan;
+$nilaiujiansoal=50;
+$nilaiujiansoals=0;if(isset($_GET['page'])){$nilaiujiansoals=$_GET['page'];}
+if($nilaiujiansoals<1){$nilaiujiansoals=1;}$result=$nilaiujiansoals;$nilaiujiansoals--;$listing=($jumlahsoal -($jumlahsoal%$nilaiujiansoal)) / $nilaiujiansoal;if($jumlahsoal%$nilaiujiansoal > 0){$listing++;}
+if(($nilaiujiansoals+1)>1){$linksoalujian='<li><a href="'.$awalsoals.'&page='.$nilaiujiansoals.'">&laquo;</a></li>';}else{$linksoalujian='<li class="disabled"><a href="#">&laquo;</a></li>';}
+for($mulai=1;$mulai<=$listing;$mulai++){if($mulai==($nilaiujiansoals+1)){$selectOpsi='class="active"';}else{$selectOpsi='';}$linksoalujian.='<li '.$selectOpsi.'><a href="'.$awalsoals.'&page='.$mulai.'">'.$mulai.'</a></li>';}
+if(($nilaiujiansoals+1)<$listing){$linksoalujian.='<li><a href="'.$awalsoals.'&page='.($nilaiujiansoals+2).'">&raquo;</a></li>';}else{$linksoalujian.='<li class="disabled"><a href="#">&raquo;</a></li>';}
+$linksoalujian='<ul class="pagination">'.$linksoalujian.'</ul>';$nilaiujiansoals=$nilaiujiansoals*$nilaiujiansoal;$awal=$nilaiujiansoals;
 
 $gender=array('L'=>'Laki-laki','P'=>'Perempuan');
 $_14be0ab06abae2d9280a6a375e905b2d=array('Y'=>'<span class="label label-success">Lulus</span>','N'=>'<span class="label label-danger">Tidak Lulus</span>');
 $tables='';
-$conn="select * from siswa where id_periode='".$id_periode."' and id_jurusan='".$jurusan."' and status='Y' and (nisn like '%".$_36923cf62618d1b9981740738971e651."%' or nama like '%".$_36923cf62618d1b9981740738971e651."%') order by nilai_tes desc,nisn limit ".$_4e4149dcf4b3b60bf0aaf69dd2348c4d.",".$_111f1b5b84b5c819ea9ae35968fce466;
+$conn="select * from siswa where id_periode='".$id_periode."' and id_jurusan='".$jurusan."' and status='Y' and (nisn like '%".$sqlgetsoal."%' or nama like '%".$sqlgetsoal."%') order by nilai_tes desc,nisn limit ".$nilaiujiansoals.",".$nilaiujiansoal;
 $conn=mysqli_query($conns,$conn);
 if(mysqli_num_rows($conn) > 0){
 	while($sql=mysqli_fetch_array($conn)){
 		$awal++;
 		$id_paket=$sql['id_siswa'];
-		$_25407a67a7a597297818c35a0d0ed51d=false;
-		/*if(mysqli_num_rows(mysqli_query($conns,"select * from recharge_detail where id_siswa='".$id_paket."' limit 0,1"))>0){$_25407a67a7a597297818c35a0d0ed51d=true;}
-		if(mysqli_num_rows(mysqli_query($conns,"select * from tukar_poin where id_siswa='".$id_paket."' limit 0,1"))>0){$_25407a67a7a597297818c35a0d0ed51d=true;}*/
-		if($_25407a67a7a597297818c35a0d0ed51d==true){$optidis='disabled';$_f22a1fc2263e04ec8ae7a008a249229e='return(false);';}else{$optidis='';$_f22a1fc2263e04ec8ae7a008a249229e='';}
+		$soalbenar=false;
+		/*if(mysqli_num_rows(mysqli_query($conns,"select * from recharge_detail where id_siswa='".$id_paket."' limit 0,1"))>0){$soalbenar=true;}
+		if(mysqli_num_rows(mysqli_query($conns,"select * from tukar_poin where id_siswa='".$id_paket."' limit 0,1"))>0){$soalbenar=true;}*/
+		if($soalbenar==true){$optidis='disabled';$soalkondisi='return(false);';}else{$optidis='';$soalkondisi='';}
 		
 		$juml=mysqli_query($conns,"select nama from jurusan where id_jurusan='".$sql['id_jurusan']."'");
 		$totAll=mysqli_fetch_array($juml);
@@ -111,7 +111,7 @@ while($sql=mysqli_fetch_array($conn)){
 <input name="hal" type="hidden" value="hasil_tes" />
 <select name="periode" class="form-control" style="width:150px;float:left;margin-right:5px;"><?php echo $optionStatis;?></select>
 <select name="jurusan" class="form-control" style="width:170px;float:left;margin-right:5px;"><?php echo $opsiJurusan;?></select>
-<input name="q" type="text" value="<?php echo $_36923cf62618d1b9981740738971e651;?>" class="form-control" placeholder="Pencarian" style="float:left;width:150px;" /> &nbsp;<button type="submit" name="" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> </button>
+<input name="q" type="text" value="<?php echo $sqlgetsoal;?>" class="form-control" placeholder="Pencarian" style="float:left;width:150px;" /> &nbsp;<button type="submit" name="" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> </button>
 </form>
 <div style="float:right">
 <a href="export_tes.php?periode=<?php echo $id_periode;?>&amp;jurusan=<?php echo $jurusan;?>" class="btn btn-primary <?php if($id_periode=='' or $jurusan==''){echo 'disabled';}?>"><i class="fa fa-save"></i> Download</a>&nbsp;
@@ -142,7 +142,7 @@ if($tables==''){
   </tbody>
 </table>
 <center>
-<?php echo $_addbb9f4792a53c78e32e91e1c94f075;?>
+<?php echo $linksoalujian;?>
 </center>
 <?php } ?>
 
