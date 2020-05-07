@@ -19,8 +19,8 @@ if(isset($_GET['action'])){
 	}
 	if($_GET['action']=='remove'){
 		$id=$_GET['paket'];
-		$_1ae735eae279342d0b6a018c1a26f9b6=$_GET['id'];
-		mysqli_query($conns,"delete from peserta where id_peserta='".$_1ae735eae279342d0b6a018c1a26f9b6."' and id_paket='".$id."'");
+		$idpeserta=$_GET['id'];
+		mysqli_query($conns,"delete from peserta where id_peserta='".$idpeserta."' and id_paket='".$id."'");
 		exit("<script>location.href='".$pengumuman1.'&paket='.$id."';</script>");
 	}
 }
@@ -169,7 +169,7 @@ jQuery(document).ready(function() {
 	$('#btn_add_siswa').click(function () {
 		$.ajax({
 			type: 'GET',
-			url: 'includes/_c6e95fee7b0eddf18d9f899575d75c1f.php',
+			url: 'includes/pesertadidik.php',
 			data: 'paket=<?php echo $id;?>',
 			beforeSend: function(data) {
 				$('#daftar_siswa').html('Loading...');

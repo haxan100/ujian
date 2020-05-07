@@ -18,10 +18,10 @@ $sqlgetsoal='';
 if(isset($_GET['q'])){
 	$sqlgetsoal=$_GET['q'];
 }
-$_517eb60ce7142569b3b2229552f16958=0;
+$nilaiawalpaket=0;
 $nilaiujiansoal=10;
 $nilaiujiansoals=0;
-$_5778a9156adf82bd65a3ec7d62084491='';
+$linkspaketsoal='';
 
 if(isset($_GET['page'])){$nilaiujiansoals=$_GET['page'];}
 if($nilaiujiansoals<1){$nilaiujiansoals=1;}
@@ -38,18 +38,18 @@ for($mulai=1;$mulai<=$listing;$mulai++){
 	if($mulai==($nilaiujiansoals+1)){$selectOpsi=' selected';}else{$selectOpsi='';}
 	$linksoalujian.='<option value="'.$mulai.'"'.$selectOpsi.'>'.$mulai.'</option>';
 }
-$_3074d1218d14946af4694b3e14b827ca='';
+$optionlink='';
 if(($nilaiujiansoals+1)>1){
-	$_3074d1218d14946af4694b3e14b827ca='<a href="'.$_5778a9156adf82bd65a3ec7d62084491.'&page='.$nilaiujiansoals.'" class="btn btn-primary btn_page" data-param="paket='.$id.'&kelas='.$idkelas.'&q='.$sqlgetsoal.'&page='.$nilaiujiansoals.'" style="float:left;margin-right:5px;">&laquo; Prev</a>';
+	$optionlink='<a href="'.$linkspaketsoal.'&page='.$nilaiujiansoals.'" class="btn btn-primary btn_page" data-param="paket='.$id.'&kelas='.$idkelas.'&q='.$sqlgetsoal.'&page='.$nilaiujiansoals.'" style="float:left;margin-right:5px;">&laquo; Prev</a>';
 }
-$_ad963400e016efad59a28f377e32aa99='';
+$optionpaketsoal='';
 if(($nilaiujiansoals+1)<$listing){
-	$_ad963400e016efad59a28f377e32aa99='<a href="'.$_5778a9156adf82bd65a3ec7d62084491.'&page='.($nilaiujiansoals+2).'" class="btn btn-primary btn_page" data-param="paket='.$id.'&kelas='.$idkelas.'&q='.$sqlgetsoal.'&page='.($nilaiujiansoals+2).'" style=""> Next &raquo;</a>';
+	$optionpaketsoal='<a href="'.$linkspaketsoal.'&page='.($nilaiujiansoals+2).'" class="btn btn-primary btn_page" data-param="paket='.$id.'&kelas='.$idkelas.'&q='.$sqlgetsoal.'&page='.($nilaiujiansoals+2).'" style=""> Next &raquo;</a>';
 }
 
 $nilaiujiansoals=$nilaiujiansoals*$nilaiujiansoal;
 $awal=$nilaiujiansoals;
-$_8e976f2b17f9b4d8660549c18b67af83=$awal+1;
+$awaljumlah=$awal+1;
 
 $hasil='';
 $conn="select * from siswa where id_kelas='".$idkelas."' and (nisn like '%".$sqlgetsoal."%' or nama like '%".$sqlgetsoal."%') order by nisn limit ".$nilaiujiansoals.",".$nilaiujiansoal;
@@ -77,7 +77,7 @@ if(mysqli_num_rows($conn) > 0){
 			  </tr>
 			';
 		}
-		$_517eb60ce7142569b3b2229552f16958=$awal;
+		$nilaiawalpaket=$awal;
 	}
 }
 $opsiKelas='<option value="">Pilih Kelas</option>';
@@ -117,13 +117,13 @@ while($sql=mysqli_fetch_array($conn)){
 <input name="paket" type="hidden" value="<?php echo $id;?>" />
 <input name="kelas" type="hidden" value="<?php echo $idkelas;?>" />
 <input name="q" type="hidden" value="<?php echo $sqlgetsoal;?>" />
-<?php echo $_3074d1218d14946af4694b3e14b827ca;?>
+<?php echo $optionlink;?>
 <select class="form-control" name="page" id="nav_page" style="width:70px;float:left;margin-right:5px;"><?php echo $linksoalujian;?></select>
-<?php echo $_ad963400e016efad59a28f377e32aa99;?>
+<?php echo $optionpaketsoal;?>
 </form>
 </div>	
 <div class="row-fluid">
-<?php echo 'Menampilkan '.$_8e976f2b17f9b4d8660549c18b67af83.' hingga '.$_517eb60ce7142569b3b2229552f16958.' dari '.$jumlahsoal.' data';?>
+<?php echo 'Menampilkan '.$awaljumlah.' hingga '.$nilaiawalpaket.' dari '.$jumlahsoal.' data';?>
 </div>	
 <?php } ?>
 	
@@ -133,7 +133,7 @@ $(document).ready(function(){
 	$('#form_siswa').submit(function () {
 		$.ajax({
 			type: 'GET',
-			url: 'includes/_c6e95fee7b0eddf18d9f899575d75c1f.php',
+			url: 'includes/pesertadidik.php',
 			data: $(this).serialize(),
 			beforeSend: function(data) {
 				$('#daftar_siswa').html('Loading...');
@@ -153,7 +153,7 @@ $(document).ready(function(){
 		
 		$.ajax({
 			type: 'GET',
-			url: 'includes/_c6e95fee7b0eddf18d9f899575d75c1f.php',
+			url: 'includes/pesertadidik.php',
 			data: $(this).serialize(),
 			beforeSend: function(data) {
 				$('#daftar_siswa').html('Loading...');
@@ -169,7 +169,7 @@ $(document).ready(function(){
 	$('.btn_page').click(function () {
 		$.ajax({
 			type: 'GET',
-			url: 'includes/_c6e95fee7b0eddf18d9f899575d75c1f.php',
+			url: 'includes/pesertadidik.php',
 			data: $(this).attr('data-param'),
 			beforeSend: function(data) {
 				$('#daftar_siswa').html('Loading...');

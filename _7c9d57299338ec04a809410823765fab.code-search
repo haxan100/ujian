@@ -59,7 +59,7 @@ adminujian\includes\pelajaran.php:
 adminujian\includes\soal_ujian.php:
   39: if($nilaiujiansoals<1){$nilaiujiansoals=1;}$sesi=$nilaiujiansoals;$nilaiujiansoals--;$listing=($jumlahsoal -($jumlahsoal%$nilaiujiansoal)) / $nilaiujiansoal;if($jumlahsoal%$nilaiujiansoal > 0){$listing++;}
 
-adminujian\includes\_c6e95fee7b0eddf18d9f899575d75c1f.php:
+adminujian\includes\pesertadidik.php:
   28: $sesi=$nilaiujiansoals;
 
 adminujian\includes\paketsoal.php:
