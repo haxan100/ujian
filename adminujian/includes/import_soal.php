@@ -20,28 +20,28 @@ if(isset($_POST['save'])){
 		$awalrayan=strtolower($_FILES['csv']['name']);
 		$awalrayan=explode(".", $awalrayan);
 		$extens=end($awalrayan);
-		$_ff1baa3769658f5a92e0b3662b91ebb9=time();
-		$namafoto=urlstring(basename($_FILES['csv']['name'],'.'.$extens).' '.$_ff1baa3769658f5a92e0b3662b91ebb9).'.'.$extens;
-		$_d5b0429b065568d4f03ae7e000debb5f='tmp-soal-'.$_ff1baa3769658f5a92e0b3662b91ebb9.'.csv';
+		$waktu=time();
+		$namafoto=urlstring(basename($_FILES['csv']['name'],'.'.$extens).' '.$waktu).'.'.$extens;
+		$fileimport='tmp-soal-'.$waktu.'.csv';
 		
 		if($extens=='zip'){
 			move_uploaded_file($_FILES['csv']['tmp_name'],$fotos.'/uploads/'.$namafoto);
-			$_5ae8874ca8599fc62fb261da1d13bf07 = new ZipArchive;
-			$_4002603e450f0db8d5a7ff540344175c = $_5ae8874ca8599fc62fb261da1d13bf07->open($fotos.'/uploads/'.$namafoto);
-			if ($_4002603e450f0db8d5a7ff540344175c === TRUE) {
-			  $_5ae8874ca8599fc62fb261da1d13bf07->renameIndex(0,$_d5b0429b065568d4f03ae7e000debb5f);
-			  $_5ae8874ca8599fc62fb261da1d13bf07->close();
+			$ziparch = new ZipArchive;
+			$fileimport = $ziparch->open($fotos.'/uploads/'.$namafoto);
+			if ($fileimport === TRUE) {
+			  $ziparch->renameIndex(0,$fileimport);
+			  $ziparch->close();
 			}	
-			$_4002603e450f0db8d5a7ff540344175c = $_5ae8874ca8599fc62fb261da1d13bf07->open($fotos.'/uploads/'.$namafoto);
-			if ($_4002603e450f0db8d5a7ff540344175c === TRUE) {
-			  $_5ae8874ca8599fc62fb261da1d13bf07->extractTo($fotos.'/uploads/');
-			  $_5ae8874ca8599fc62fb261da1d13bf07->close();
+			$fileimport = $ziparch->open($fotos.'/uploads/'.$namafoto);
+			if ($fileimport === TRUE) {
+			  $ziparch->extractTo($fotos.'/uploads/');
+			  $ziparch->close();
 			}	
 			unlink($fotos.'/uploads/'.$namafoto);
 		}else{
-			move_uploaded_file($_FILES['csv']['tmp_name'],$fotos.'/uploads/'.$_d5b0429b065568d4f03ae7e000debb5f);
+			move_uploaded_file($_FILES['csv']['tmp_name'],$fotos.'/uploads/'.$fileimport);
 		}
-		$namafoto=$fotos.'/uploads/'.$_d5b0429b065568d4f03ae7e000debb5f;
+		$namafoto=$fotos.'/uploads/'.$fileimport;
 		mysqli_query($conns,"truncate table soal_tmp");
 		
 		$conn="
