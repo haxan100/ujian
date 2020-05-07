@@ -53,16 +53,16 @@ if(isset($_POST['jawab'])){
 		}
 	}
 	
-	$_b65003120790c3e628f304c85a36a615=array();
+	$kunci=array();
 	$jumlah=0;
 	$conn=mysqli_query($conns,"select * from soal_paket inner join soal on soal_paket.id_soal=soal.id_soal where soal_paket.id_paket='".$id."'");
 	while($sql=mysqli_fetch_array($conn)){
 		$jumlah++;
-		$_b65003120790c3e628f304c85a36a615[$sql['id_soal']]=$sql['kunci'];
+		$kunci[$sql['id_soal']]=$sql['kunci'];
 	}
 	$nilai=0;
 	for($mulai=0;$mulai<count($_SESSION['SIMULASI_SOAL']);$mulai++){
-		if($_SESSION['SIMULASI_SOAL'][$mulai][1]==$_b65003120790c3e628f304c85a36a615[$_SESSION['SIMULASI_SOAL'][$mulai][0]]){
+		if($_SESSION['SIMULASI_SOAL'][$mulai][1]==$kunci[$_SESSION['SIMULASI_SOAL'][$mulai][0]]){
 			$nilai++;
 		}
 	}
@@ -80,10 +80,10 @@ if(isset($_POST['selesai'])){
 }
 
 $paket=array();
-$_a2162101cd2c071e2931c2254b25ca5e=array();
+$jawabana=array();
 for($mulai=0;$mulai<count($_SESSION['SIMULASI_SOAL']);$mulai++){
 	$paket[]=array($_SESSION['SIMULASI_SOAL'][$mulai][0],$_SESSION['SIMULASI_SOAL'][$mulai][1]);
-	$_a2162101cd2c071e2931c2254b25ca5e[$_SESSION['SIMULASI_SOAL'][$mulai][0]]=$_SESSION['SIMULASI_SOAL'][$mulai][1];
+	$jawabana[$_SESSION['SIMULASI_SOAL'][$mulai][0]]=$_SESSION['SIMULASI_SOAL'][$mulai][1];
 }
 $_b44cb2e694287fa912cc50de8b3a920b=1;
 if(isset($_GET['no'])){
@@ -92,12 +92,12 @@ if(isset($_GET['no'])){
 		$_b44cb2e694287fa912cc50de8b3a920b=count($paket);
 	}
 }
-$_5cf085bf5081a50e78311063db83f771=$paket[$_b44cb2e694287fa912cc50de8b3a920b-1][0];
-$conn=mysqli_query($conns,"select * from soal where id_soal='".$_5cf085bf5081a50e78311063db83f771."'");
+$mysqlcon=$paket[$_b44cb2e694287fa912cc50de8b3a920b-1][0];
+$conn=mysqli_query($conns,"select * from soal where id_soal='".$mysqlcon."'");
 $sql=mysqli_fetch_array($conn);
 $_575b8b230b1ea2ddac1d342440dfc821=$sql['detail'];
 $_44e2f87ec0f5ce9c128c029fd0ab97c6=array();
-$conn=mysqli_query($conns,"select * from soal_jawaban where id_soal='".$_5cf085bf5081a50e78311063db83f771."' order by id_soal_jawaban");
+$conn=mysqli_query($conns,"select * from soal_jawaban where id_soal='".$mysqlcon."' order by id_soal_jawaban");
 while($sql=mysqli_fetch_array($conn)){
 	$_44e2f87ec0f5ce9c128c029fd0ab97c6[]=array($sql['kode'],$sql['jawaban']);
 }
@@ -155,7 +155,7 @@ mysqli_close($conns);
 <div class="row">
 <div class="col-lg-12">
 <form action="" method="post">
-<input name="id" type="hidden" value="<?php echo $_5cf085bf5081a50e78311063db83f771;?>">
+<input name="id" type="hidden" value="<?php echo $mysqlcon;?>">
 <input name="no" type="hidden" value="<?php echo $_b44cb2e694287fa912cc50de8b3a920b;?>">
 <table class="table" style="margin:0;">
   <tr>
@@ -170,7 +170,7 @@ mysqli_close($conns);
 		  <?php
 		  
 		  for($mulai=0;$mulai<count($_44e2f87ec0f5ce9c128c029fd0ab97c6);$mulai++){
-		  		if($_44e2f87ec0f5ce9c128c029fd0ab97c6[$mulai][0]==$_a2162101cd2c071e2931c2254b25ca5e[$_5cf085bf5081a50e78311063db83f771]){$_21d32120212be9984823e1b45de91ffc='active';$_2f70cd41a2cf123740e148619314f912='btn-warning';}else{$_21d32120212be9984823e1b45de91ffc='';$_2f70cd41a2cf123740e148619314f912='btn-default';}
+		  		if($_44e2f87ec0f5ce9c128c029fd0ab97c6[$mulai][0]==$jawabana[$mysqlcon]){$_21d32120212be9984823e1b45de91ffc='active';$_2f70cd41a2cf123740e148619314f912='btn-warning';}else{$_21d32120212be9984823e1b45de91ffc='';$_2f70cd41a2cf123740e148619314f912='btn-default';}
 				echo '
 				<tr>
 				<td width="10" style="border:none;">

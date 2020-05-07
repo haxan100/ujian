@@ -83,11 +83,11 @@ if(isset($_POST['save'])){
 	}			
 	exit("<script>location.href='".$pengumuman1."';</script>");
 }
-$_3718d16a4c63e6e0d669e38e63f8c5c0='<option value=""></option>';
+$option='<option value=""></option>';
 $conn=mysqli_query($conns,"select * from pelajaran order by nama");
 while($sql=mysqli_fetch_array($conn)){
 	//if($sql['id_pelajaran']==$mapel){$selectOpsi='selected';}else{$selectOpsi='';}
-	$_3718d16a4c63e6e0d669e38e63f8c5c0.='<option value="'.$sql['id_pelajaran'].'">'.$sql['nama'].'</option>';
+	$option.='<option value="'.$sql['id_pelajaran'].'">'.$sql['nama'].'</option>';
 }
 
 ?>
@@ -134,7 +134,7 @@ if(!empty($err)){
 <table width="100%" border="0" cellspacing="4" cellpadding="4" class="table">
   <tr>
 	<td width="150" style="vertical-align:middle;border-top-width:0;">Pelajaran<span class="required">*</span> </td>
-	<td style="border-top-width:0;"><select name="pelajaran" id="pelajaran" class="form-control form-required" style="width:300px;"><?php echo $_3718d16a4c63e6e0d669e38e63f8c5c0;?></select></td>
+	<td style="border-top-width:0;"><select name="pelajaran" id="pelajaran" class="form-control form-required" style="width:300px;"><?php echo $option;?></select></td>
   </tr>
   <tr>
 	<td style="vertical-align:middle;">File Data Soal<span class="required">*</span> </td>

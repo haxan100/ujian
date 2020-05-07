@@ -10,7 +10,7 @@ $_f0e3e1311253a34acb082c35dd0cf0da='';
 
 if(isset($_POST['save'])){
 	$id_paket=$_POST['id'];
-	$_d35a39212fd75e833aea38f90831b2cb=$_POST['action'];
+	$aksi=$_POST['action'];
 	$nama=$_POST['nama'];
 	$nisn=$_POST['nisn'];
 	$gender=$_POST['gender'];
@@ -20,7 +20,7 @@ if(isset($_POST['save'])){
 	if(empty($idkelas) or empty($nisn) or empty($nama) or empty($gender) or empty($password)){
 		$err='<strong>Error !</strong> Lengkapi form di bawah ini.';
 	}else{
-		if($_d35a39212fd75e833aea38f90831b2cb=='add'){
+		if($aksi=='add'){
 			if(mysqli_num_rows(mysqli_query($conns,"select * from siswa where nisn='".$nisn."'"))>0){
 				$err='Username sudah terdaftar. Silahkan daftarkan Username yang lain atau lakukan edit profil siswa.';
 				$password='';
@@ -51,7 +51,7 @@ if(isset($_POST['save'])){
 				exit("<script>location.href='".$pengumuman1."';</script>");
 			}
 		}
-		if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
+		if($aksi=='edit'){
 			$conn=mysqli_query($conns,"select * from siswa where id_siswa='".$id_paket."'");
 			$sql=mysqli_fetch_array($conn);
 			$_84cbb4ee450782b7e500304a62e91ac0=$sql['nisn'];
@@ -101,8 +101,8 @@ if(isset($_POST['save'])){
 }else{
 	$id_paket='';
 	$idkelas='';$nisn='';$nama='';$gender='';$password='';
-	if(empty($_GET['action'])){$_d35a39212fd75e833aea38f90831b2cb='add';}else{$_d35a39212fd75e833aea38f90831b2cb=$_GET['action'];}
-	if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
+	if(empty($_GET['action'])){$aksi='add';}else{$aksi=$_GET['action'];}
+	if($aksi=='edit'){
 		$id_paket=$_GET['id'];
 		$conn=mysqli_query($conns,"select * from siswa where id_siswa='".$id_paket."'");
 		$sql=mysqli_fetch_array($conn);
@@ -113,7 +113,7 @@ if(isset($_POST['save'])){
 		$password=$sql['password'];
 		
 	}
-	if($_d35a39212fd75e833aea38f90831b2cb=='delete'){
+	if($aksi=='delete'){
 		$id_paket=$_GET['id'];
 		mysqli_query($conns,"delete from siswa where id_siswa='".$id_paket."'");
 		exit("<script>location.href='".$pengumuman1."';</script>");
@@ -139,7 +139,7 @@ while($sql=mysqli_fetch_array($conn)){
 	$opsiKelas.='<option value="'.$sql['id_kelas'].'" '.$selectOpsi.'>'.$sql['nama'].'</option>';
 }
 
-if($_d35a39212fd75e833aea38f90831b2cb=='add'){$_06c518f70e97b19c7ec907f36542ce6e='INPUT DATA SISWA';}else{$_06c518f70e97b19c7ec907f36542ce6e='EDIT DATA SISWA';}
+if($aksi=='add'){$datasoal='INPUT DATA SISWA';}else{$datasoal='EDIT DATA SISWA';}
 
 
 ?>
@@ -177,7 +177,7 @@ $(document).ready(function(){
 
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header"><?php echo $_06c518f70e97b19c7ec907f36542ce6e;?></h1>
+		<h1 class="page-header"><?php echo $datasoal;?></h1>
 	</div>
 </div>
 <div class="row">
@@ -187,7 +187,7 @@ $(document).ready(function(){
 
 <form action="<?php echo $regis;?>" id="form_siswa" name="" method="post" enctype="multipart/form-data">
 <input name="id" type="hidden" value="<?php echo $id_paket;?>">
-<input name="action" type="hidden" value="<?php echo $_d35a39212fd75e833aea38f90831b2cb;?>">
+<input name="action" type="hidden" value="<?php echo $aksi;?>">
 <?php
 if(!empty($err)){
 	echo '

@@ -5,30 +5,30 @@ $regis='?hal=update_pelajaran';
 
 if(isset($_POST['save'])){
 	$id_paket=$_POST['id'];
-	$_d35a39212fd75e833aea38f90831b2cb=$_POST['action'];
+	$aksi=$_POST['action'];
 	$nama=$_POST['nama'];
-	$_f77c5a659797b862f0fc544aa9a0c023=$_POST['kode'];
+	$jawabaraymulai=$_POST['kode'];
 
-	if(empty($_f77c5a659797b862f0fc544aa9a0c023) or empty($nama)){
+	if(empty($jawabaraymulai) or empty($nama)){
 		$err='<strong>Error !</strong> Lengkapi form di bawah ini.';
 	}else{
-		if($_d35a39212fd75e833aea38f90831b2cb=='add'){
-			if(mysqli_num_rows(mysqli_query($conns,"select * from pelajaran where kode='".$_f77c5a659797b862f0fc544aa9a0c023."'"))>0){
+		if($aksi=='add'){
+			if(mysqli_num_rows(mysqli_query($conns,"select * from pelajaran where kode='".$jawabaraymulai."'"))>0){
 				$err='Kode sudah terdaftar. Silahkan daftarkan kode yang lain.';
 			}else{
-				$conn="insert into pelajaran(kode, nama) values('".$_f77c5a659797b862f0fc544aa9a0c023."', '".$nama."')";
+				$conn="insert into pelajaran(kode, nama) values('".$jawabaraymulai."', '".$nama."')";
 				mysqli_query($conns,$conn);
 				exit("<script>location.href='".$pengumuman1."';</script>");
 			}
 		}
-		if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
+		if($aksi=='edit'){
 			$conn=mysqli_query($conns,"select * from pelajaran where id_pelajaran='".$id_paket."'");
 			$sql=mysqli_fetch_array($conn);
 			$_08fdfd209a120f38f85507412165a4ef=$sql['kode'];
-			if(mysqli_num_rows(mysqli_query($conns,"select * from pelajaran where kode='".$_f77c5a659797b862f0fc544aa9a0c023."' and kode<>'".$_08fdfd209a120f38f85507412165a4ef."'"))>0){
+			if(mysqli_num_rows(mysqli_query($conns,"select * from pelajaran where kode='".$jawabaraymulai."' and kode<>'".$_08fdfd209a120f38f85507412165a4ef."'"))>0){
 				$err='Kode sudah terdaftar. Silahkan daftarkan kode yang lain.';
 			}else{
-				$conn="update pelajaran set kode='".$_f77c5a659797b862f0fc544aa9a0c023."',nama='".$nama."' where id_pelajaran='".$id_paket."'";
+				$conn="update pelajaran set kode='".$jawabaraymulai."',nama='".$nama."' where id_pelajaran='".$id_paket."'";
 				mysqli_query($conns,$conn);
 				exit("<script>location.href='".$pengumuman1."';</script>");
 			}
@@ -36,35 +36,35 @@ if(isset($_POST['save'])){
 		
 	}
 }else{
-$nama='';$_f77c5a659797b862f0fc544aa9a0c023='';
-	if(empty($_GET['action'])){$_d35a39212fd75e833aea38f90831b2cb='add';}else{$_d35a39212fd75e833aea38f90831b2cb=$_GET['action'];}
-	if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
+$nama='';$jawabaraymulai='';
+	if(empty($_GET['action'])){$aksi='add';}else{$aksi=$_GET['action'];}
+	if($aksi=='edit'){
 		$id_paket=$_GET['id'];
 		$conn=mysqli_query($conns,"select * from pelajaran where id_pelajaran='".$id_paket."'");
 		$sql=mysqli_fetch_array($conn);
 		$nama=$sql['nama'];
-		$_f77c5a659797b862f0fc544aa9a0c023=$sql['kode'];
+		$jawabaraymulai=$sql['kode'];
 	}
-	if($_d35a39212fd75e833aea38f90831b2cb=='delete'){
+	if($aksi=='delete'){
 		$id_paket=$_GET['id'];
 		mysqli_query($conns,"delete from pelajaran where id_pelajaran='".$id_paket."'");
 		exit("<script>location.href='".$pengumuman1."';</script>");
 	}
 }
 
-if($_d35a39212fd75e833aea38f90831b2cb=='add'){$_06c518f70e97b19c7ec907f36542ce6e='INPUT DATA PELAJARAN';}else{$_06c518f70e97b19c7ec907f36542ce6e='EDIT DATA PELAJARAN';}
+if($aksi=='add'){$datasoal='INPUT DATA PELAJARAN';}else{$datasoal='EDIT DATA PELAJARAN';}
 
 ?>
 
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header"><?php echo $_06c518f70e97b19c7ec907f36542ce6e;?></h1>
+		<h1 class="page-header"><?php echo $datasoal;?></h1>
 	</div>
 </div>
 
 <form action="<?php echo $regis;?>" name="" method="post" enctype="multipart/form-data">
 <input name="id" type="hidden" value="<?php echo $id_paket;?>">
-<input name="action" type="hidden" value="<?php echo $_d35a39212fd75e833aea38f90831b2cb;?>">
+<input name="action" type="hidden" value="<?php echo $aksi;?>">
 
 <div class="row">
 	<div class="col-lg-12">
@@ -80,7 +80,7 @@ if($_d35a39212fd75e833aea38f90831b2cb=='add'){$_06c518f70e97b19c7ec907f36542ce6e
 	<table width="100%" border="0" cellspacing="4" cellpadding="4" class="table">
 	  <tr>
 		<td width="200" style="vertical-align:middle;border-top-width:0;">Kode Mata Pelajaran<span class="required">*</span> </td>
-		<td style="border-top-width:0;"><input name="kode" type="text" class="form-control" value="<?php echo $_f77c5a659797b862f0fc544aa9a0c023;?>" style="width:100px;"></td>
+		<td style="border-top-width:0;"><input name="kode" type="text" class="form-control" value="<?php echo $jawabaraymulai;?>" style="width:100px;"></td>
 	  </tr>
 	  <tr>
 		<td width="200" style="vertical-align:middle;">Nama Mata Pelajaran untuk Kelas<span class="required">*</span> </td>

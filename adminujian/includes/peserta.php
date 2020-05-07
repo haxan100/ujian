@@ -13,8 +13,8 @@ if(isset($_POST['delete'])){
 if(isset($_GET['action'])){
 	if($_GET['action']=='add'){
 		$id=$_GET['paket'];
-		$_5cf085bf5081a50e78311063db83f771=$_GET['id'];
-		mysqli_query($conns,"insert into peserta(id_paket, id_soal) values('".$id."','".$_5cf085bf5081a50e78311063db83f771."')");
+		$mysqlcon=$_GET['id'];
+		mysqli_query($conns,"insert into peserta(id_paket, id_soal) values('".$id."','".$mysqlcon."')");
 		exit("<script>location.href='".$pengumuman1.'&paket='.$id."';</script>");
 	}
 	if($_GET['action']=='remove'){

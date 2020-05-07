@@ -5,19 +5,19 @@ $regis='?hal=update_paket';
 
 if(isset($_POST['save'])){
 	$id_paket=$_POST['id'];
-	$_d35a39212fd75e833aea38f90831b2cb=$_POST['action'];
+	$aksi=$_POST['action'];
 	$nama=$_POST['nama'];
 	$waktu=$_POST['waktu_pengerjaan'];
 
 	if(empty($nama) or empty($waktu)){
 		$err='<strong>Error !</strong> Lengkapi form di bawah ini.';
 	}else{
-		if($_d35a39212fd75e833aea38f90831b2cb=='add'){
+		if($aksi=='add'){
 			$conn="insert into paket(nama,waktu_pengerjaan) values('".$nama."','".$waktu."')";
 			mysqli_query($conns,$conn);
 			exit("<script>location.href='".$pengumuman1."';</script>");
 		}
-		if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
+		if($aksi=='edit'){
 			$conn="update paket set nama='".$nama."',waktu_pengerjaan='".$waktu."' where id_paket='".$id_paket."'";
 			mysqli_query($conns,$conn);
 			exit("<script>location.href='".$pengumuman1."';</script>");
@@ -26,20 +26,20 @@ if(isset($_POST['save'])){
 	}
 }else{
 	$nama='';$waktu='';
-	if(empty($_GET['action'])){$_d35a39212fd75e833aea38f90831b2cb='add';}else{$_d35a39212fd75e833aea38f90831b2cb=$_GET['action'];}
-	if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
+	if(empty($_GET['action'])){$aksi='add';}else{$aksi=$_GET['action'];}
+	if($aksi=='edit'){
 		$id_paket=$_GET['id'];
 		$conn=mysqli_query($conns,"select * from paket where id_paket='".$id_paket."'");
 		$sql=mysqli_fetch_array($conn);
 		$nama=$sql['nama'];
 		$waktu=$sql['waktu_pengerjaan'];
 	}
-	if($_d35a39212fd75e833aea38f90831b2cb=='delete'){
+	if($aksi=='delete'){
 		$id_paket=$_GET['id'];
 		mysqli_query($conns,"delete from paket where id_paket='".$id_paket."'");
 		exit("<script>location.href='".$pengumuman1."';</script>");
 	}
-	/*if($_d35a39212fd75e833aea38f90831b2cb=='aktif'){
+	/*if($aksi=='aktif'){
 		$id_paket=$_GET['id'];
 		mysqli_query($conns,"update paket set aktif='Y' where id_paket='".$id_paket."'");
 		mysqli_query($conns,"update paket set aktif='N' where id_paket<>'".$id_paket."'");
@@ -47,19 +47,19 @@ if(isset($_POST['save'])){
 	}*/
 }
 
-if($_d35a39212fd75e833aea38f90831b2cb=='add'){$_06c518f70e97b19c7ec907f36542ce6e='INPUT DATA PAKET SOAL';}else{$_06c518f70e97b19c7ec907f36542ce6e='EDIT DATA PAKET SOAL';}
+if($aksi=='add'){$datasoal='INPUT DATA PAKET SOAL';}else{$datasoal='EDIT DATA PAKET SOAL';}
 
 ?>
 
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header"><?php echo $_06c518f70e97b19c7ec907f36542ce6e;?></h1>
+		<h1 class="page-header"><?php echo $datasoal;?></h1>
 	</div>
 </div>
 
 <form action="<?php echo $regis;?>" name="" method="post" enctype="multipart/form-data">
 <input name="id" type="hidden" value="<?php echo $id_paket;?>">
-<input name="action" type="hidden" value="<?php echo $_d35a39212fd75e833aea38f90831b2cb;?>">
+<input name="action" type="hidden" value="<?php echo $aksi;?>">
 
 <div class="row">
 	<div class="col-lg-12">

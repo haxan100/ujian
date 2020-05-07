@@ -34,14 +34,14 @@ if(mysqli_num_rows($conn) > 0){
 	while($sql=mysqli_fetch_array($conn)){
 		$awal++;
 		$id_paket=$sql['id_soal'];
-		$_b65003120790c3e628f304c85a36a615=$sql['kunci'];
+		$kunci=$sql['kunci'];
 		$_25407a67a7a597297818c35a0d0ed51d=false;
 		//if(mysqli_num_rows(mysqli_query($conns,"select * from program where id_periode='".$id_paket."' limit 0,1"))>0){$_25407a67a7a597297818c35a0d0ed51d=true;}
 		if($_25407a67a7a597297818c35a0d0ed51d==true){$_849d693c62dfe15394a642123c1599c8='disabled';$_f22a1fc2263e04ec8ae7a008a249229e='return(false);';}else{$_849d693c62dfe15394a642123c1599c8='';$_f22a1fc2263e04ec8ae7a008a249229e='';}
 		$_f3f4775da2a6e3f93bd69f99d887efc2='<table class="table" style="background:none;">';
 		$juml=mysqli_query($conns,"select * from soal_jawaban where id_soal='".$id_paket."' order by id_soal_jawaban");
 		while($totAll=mysqli_fetch_array($juml)){
-			if($totAll['kode']==$_b65003120790c3e628f304c85a36a615){
+			if($totAll['kode']==$kunci){
 				$_c0d907c3e4a81c61f89d044e588eac19='<span class="label label-warning">'.$totAll['kode'].'.</span>';
 			}else{
 				$_c0d907c3e4a81c61f89d044e588eac19='<span class="label label-info">'.$totAll['kode'].'.</span>';
@@ -72,11 +72,11 @@ if(mysqli_num_rows($conn) > 0){
 		';
 	}
 }
-$_3718d16a4c63e6e0d669e38e63f8c5c0='<option value="">Pilih Pelajaran</option>';
+$option='<option value="">Pilih Pelajaran</option>';
 $conn=mysqli_query($conns,"select * from pelajaran order by nama");
 while($sql=mysqli_fetch_array($conn)){
 	if($mapel==$sql['id_pelajaran']){$selectOpsi='selected';}else{$selectOpsi='';}
-	$_3718d16a4c63e6e0d669e38e63f8c5c0.='<option value="'.$sql['id_pelajaran'].'" '.$selectOpsi.'>'.$sql['nama'].'</option>';
+	$option.='<option value="'.$sql['id_pelajaran'].'" '.$selectOpsi.'>'.$sql['nama'].'</option>';
 }
 
 ?>
@@ -99,7 +99,7 @@ function DeleteConfirm(url){
 
 <form action="" name="" method="get" style="float:left">
 <input name="hal" type="hidden" value="soal" />
-<select name="pelajaran" class="form-control" onchange="submit()" style="width:300px;float:left;margin-right:5px;"><?php echo $_3718d16a4c63e6e0d669e38e63f8c5c0;?></select>
+<select name="pelajaran" class="form-control" onchange="submit()" style="width:300px;float:left;margin-right:5px;"><?php echo $option;?></select>
 <input name="q" type="text" value="<?php echo $_36923cf62618d1b9981740738971e651;?>" class="form-control" placeholder="Pencarian" style="float:left;width:200px;" /> &nbsp;<button type="submit" name="" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Cari</button>
 </form>
 <div style="float:right">
