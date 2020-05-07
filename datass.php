@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<meta name="description" content="">
 	<meta name="keywords" content="">
-    <title>SMAGO CBT</title>
+    <title>Sistem Ujian Online</title>
 	<link rel="icon" href="../../smango.ico">
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">

@@ -6,16 +6,16 @@ function getDataURI($_90b42a0a84ed04cf1e133e7d0b4c87fd, $_e93cf66fc1806033550e37
 $pengumuman1='?hal=image_header';
 $regis='?hal=image_header';
 $_352323c15d1fa78cef3ff6277fa8502c=(500*1024);
-$_4c792b9297dbe7cb2afcfd2333932891=array('png');
+$fileext=array('png');
 
 if(isset($_POST['save'])){
 	if(!empty($_FILES['gambar']['name'])){
 		if($_FILES['gambar']['error']==0) {
 			$awalrayan=strtolower($_FILES['gambar']['name']);
 			$awalrayan=explode(".", $awalrayan);
-			$_c762a21cf01f9dfbea30dd29d5b7cbd9=end($awalrayan);
+			$extens=end($awalrayan);
 
-			if (in_array($_c762a21cf01f9dfbea30dd29d5b7cbd9, $_4c792b9297dbe7cb2afcfd2333932891)) {
+			if (in_array($extens, $fileext)) {
 				move_uploaded_file($_FILES['gambar']['tmp_name'],$_60b79b11408190713cbabbcf5f810477.'header.png');
 				exit("<script>location.href='".$pengumuman1."';</script>");
 			}else{

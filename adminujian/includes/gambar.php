@@ -3,7 +3,7 @@
 $pengumuman1='?hal=gambar';
 $regis='?hal=gambar';
 $_352323c15d1fa78cef3ff6277fa8502c=(4*1024*1024);
-$_4c792b9297dbe7cb2afcfd2333932891=array('jpg','jpeg','png');
+$fileext=array('jpg','jpeg','png');
 
 if(isset($_POST['save'])){
 	$awal=0;
@@ -15,10 +15,10 @@ if(isset($_POST['save'])){
 			$awal++;
 			$awalrayan=strtolower($_FILES['gambar']['name'][$_6b6e98cde8b33087a33e4d3a497bd86b]);
 			$awalrayan=explode(".", $awalrayan);
-			$_c762a21cf01f9dfbea30dd29d5b7cbd9=end($awalrayan);
-			$_3656889a448a7af799d2d7955bed2354=urlstring('thumb-'.basename($_FILES['gambar']['name'][$_6b6e98cde8b33087a33e4d3a497bd86b],'.'.$_c762a21cf01f9dfbea30dd29d5b7cbd9).' '.time()).'.'.$_c762a21cf01f9dfbea30dd29d5b7cbd9;
-			move_uploaded_file($_FILES['gambar']['tmp_name'][$_6b6e98cde8b33087a33e4d3a497bd86b],$fotos.'/uploads/'.$_3656889a448a7af799d2d7955bed2354);
-			mysqli_query($conns,"insert into gambar(nama) values('".$_3656889a448a7af799d2d7955bed2354."')");
+			$extens=end($awalrayan);
+			$namafoto=urlstring('thumb-'.basename($_FILES['gambar']['name'][$_6b6e98cde8b33087a33e4d3a497bd86b],'.'.$extens).' '.time()).'.'.$extens;
+			move_uploaded_file($_FILES['gambar']['tmp_name'][$_6b6e98cde8b33087a33e4d3a497bd86b],$fotos.'/uploads/'.$namafoto);
+			mysqli_query($conns,"insert into gambar(nama) values('".$namafoto."')");
 		}
 	}
 	$notif='Upload file berhasil. Jumlah file : <strong>'.$awal.'</strong>';
@@ -27,9 +27,9 @@ if(isset($_GET['action']) and $_GET['action']=='delete'){
 	$id_paket=$_GET['id'];
 	$conn=mysqli_query($conns,"select * from gambar where id_gambar='".$id_paket."'");
 	$sql=mysqli_fetch_array($conn);
-	$_3656889a448a7af799d2d7955bed2354=$sql['nama'];
+	$namafoto=$sql['nama'];
 	mysqli_query($conns,"delete from gambar where id_gambar='".$id_paket."'");
-	unlink($fotos.'/uploads/'.$_3656889a448a7af799d2d7955bed2354);
+	unlink($fotos.'/uploads/'.$namafoto);
 	exit("<script>location.href='".$pengumuman1."';</script>");
 }
 

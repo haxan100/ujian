@@ -12,9 +12,9 @@ if(isset($_POST["login"])){
 			$conn=mysqli_query($conns,"SELECT * FROM user WHERE username='".escape($username)."' AND password='".md5($password)."'");
 			if(mysqli_num_rows($conn)>0){
 				$sql=mysqli_fetch_array($conn);
-				$_78e1548d7ed1e38321b4ce5cddb2c8a7=$sql['id_user'];
+				$idUser=$sql['id_user'];
 				$siswa='admin';
-				$_SESSION['LOGIN_ID']=$_78e1548d7ed1e38321b4ce5cddb2c8a7;
+				$_SESSION['LOGIN_ID']=$idUser;
 				$_SESSION['LOGIN_TYPE']=$siswa;
 				exit("<script>window.location='".$admin."';</script>");
 			}else{

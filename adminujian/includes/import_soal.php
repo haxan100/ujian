@@ -19,34 +19,34 @@ if(isset($_POST['save'])){
 		}
 		$awalrayan=strtolower($_FILES['csv']['name']);
 		$awalrayan=explode(".", $awalrayan);
-		$_c762a21cf01f9dfbea30dd29d5b7cbd9=end($awalrayan);
+		$extens=end($awalrayan);
 		$_ff1baa3769658f5a92e0b3662b91ebb9=time();
-		$_3656889a448a7af799d2d7955bed2354=urlstring(basename($_FILES['csv']['name'],'.'.$_c762a21cf01f9dfbea30dd29d5b7cbd9).' '.$_ff1baa3769658f5a92e0b3662b91ebb9).'.'.$_c762a21cf01f9dfbea30dd29d5b7cbd9;
+		$namafoto=urlstring(basename($_FILES['csv']['name'],'.'.$extens).' '.$_ff1baa3769658f5a92e0b3662b91ebb9).'.'.$extens;
 		$_d5b0429b065568d4f03ae7e000debb5f='tmp-soal-'.$_ff1baa3769658f5a92e0b3662b91ebb9.'.csv';
 		
-		if($_c762a21cf01f9dfbea30dd29d5b7cbd9=='zip'){
-			move_uploaded_file($_FILES['csv']['tmp_name'],$fotos.'/uploads/'.$_3656889a448a7af799d2d7955bed2354);
+		if($extens=='zip'){
+			move_uploaded_file($_FILES['csv']['tmp_name'],$fotos.'/uploads/'.$namafoto);
 			$_5ae8874ca8599fc62fb261da1d13bf07 = new ZipArchive;
-			$_4002603e450f0db8d5a7ff540344175c = $_5ae8874ca8599fc62fb261da1d13bf07->open($fotos.'/uploads/'.$_3656889a448a7af799d2d7955bed2354);
+			$_4002603e450f0db8d5a7ff540344175c = $_5ae8874ca8599fc62fb261da1d13bf07->open($fotos.'/uploads/'.$namafoto);
 			if ($_4002603e450f0db8d5a7ff540344175c === TRUE) {
 			  $_5ae8874ca8599fc62fb261da1d13bf07->renameIndex(0,$_d5b0429b065568d4f03ae7e000debb5f);
 			  $_5ae8874ca8599fc62fb261da1d13bf07->close();
 			}	
-			$_4002603e450f0db8d5a7ff540344175c = $_5ae8874ca8599fc62fb261da1d13bf07->open($fotos.'/uploads/'.$_3656889a448a7af799d2d7955bed2354);
+			$_4002603e450f0db8d5a7ff540344175c = $_5ae8874ca8599fc62fb261da1d13bf07->open($fotos.'/uploads/'.$namafoto);
 			if ($_4002603e450f0db8d5a7ff540344175c === TRUE) {
 			  $_5ae8874ca8599fc62fb261da1d13bf07->extractTo($fotos.'/uploads/');
 			  $_5ae8874ca8599fc62fb261da1d13bf07->close();
 			}	
-			unlink($fotos.'/uploads/'.$_3656889a448a7af799d2d7955bed2354);
+			unlink($fotos.'/uploads/'.$namafoto);
 		}else{
 			move_uploaded_file($_FILES['csv']['tmp_name'],$fotos.'/uploads/'.$_d5b0429b065568d4f03ae7e000debb5f);
 		}
-		$_3656889a448a7af799d2d7955bed2354=$fotos.'/uploads/'.$_d5b0429b065568d4f03ae7e000debb5f;
+		$namafoto=$fotos.'/uploads/'.$_d5b0429b065568d4f03ae7e000debb5f;
 		mysqli_query($conns,"truncate table soal_tmp");
 		
 		$conn="
 		LOAD DATA LOCAL 
-		INFILE '".$_3656889a448a7af799d2d7955bed2354."' 
+		INFILE '".$namafoto."' 
 		INTO TABLE soal_tmp FIELDS TERMINATED BY '|' 
 		OPTIONALLY ENCLOSED BY '\"' 
 		LINES TERMINATED BY '\n' 
@@ -56,7 +56,7 @@ if(isset($_POST['save'])){
 		";
 		mysqli_query($conns,$conn);
 		
-		unlink($_3656889a448a7af799d2d7955bed2354);
+		unlink($namafoto);
 		
 		$conn=mysqli_query($conns,"select * from soal_tmp where nisn<>''");
 		while($sql=mysqli_fetch_array($conn)){
