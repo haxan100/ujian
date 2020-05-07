@@ -107,9 +107,9 @@ function DeleteSelectedConfirm(){
 <select name="paket" id="paket" class="form-control" style="width:300px;float:left;margin-right:5px;" onchange="submit()"><?php echo $opsi;?></select>
 </form>
 <div style="float:right">
-<!--<a href="_ca2af8a29582009a8583f110b425c5e6.php?paket=<?php echo $id;?>" class="btn btn-success <?php if($id==''){echo 'disabled';}?>">Tambah Soal</a>-->
+<!--<a href="simulasi.php?paket=<?php echo $id;?>" class="btn btn-success <?php if($id==''){echo 'disabled';}?>">Tambah Soal</a>-->
 <button type="button" class="btn btn-success <?php if($id==''){echo 'disabled';}?>" id="btn_add_soal" data-toggle="modal" href="#input_soal_modal">Tambah Soal</button>
-&nbsp;<a href="_ca2af8a29582009a8583f110b425c5e6.php?paket=<?php echo $id;?>" class="btn btn-primary <?php if($id==''){echo 'disabled';}?>" target="_blank">Simulasi Tes</a>
+&nbsp;<a href="simulasi.php?paket=<?php echo $id;?>" class="btn btn-primary <?php if($id==''){echo 'disabled';}?>" target="_blank">Simulasi Tes</a>
 
 </div>
 

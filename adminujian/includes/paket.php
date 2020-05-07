@@ -62,7 +62,7 @@ if(mysqli_num_rows($conn) > 0){
 		'.$opsiPaket.'
 		<li class="divider"></li>
 		<li><a href="?hal=soal_ujian&amp;paket='.$id_paket.'">Daftar Soal</a></li>
-		<li><a href="_ca2af8a29582009a8583f110b425c5e6.php?paket='.$id_paket.'" target="_blank">Simulasi Ujian</a></li>
+		<li><a href="simulasi.php?paket='.$id_paket.'" target="_blank">Simulasi Ujian</a></li>
 		<li class="divider"></li>
 		<li><a href="?hal=peserta&amp;paket='.$id_paket.'">Daftar Peserta</a></li>
 		<li><a href="?hal=hasil_tes&amp;paket='.$id_paket.'">Hasil Ujian</a></li>

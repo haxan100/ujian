@@ -22,7 +22,7 @@ if(isset($_GET['paket'])){
 	}
 	$_SESSION['SIMULASI_SOAL']=$_cc5c6e696c11a4fdf170ece8ba9fdc6f;
 	$_SESSION['SIMULASI_NILAI']=0;
-	exit("<script>location.href='".$admin."_ca2af8a29582009a8583f110b425c5e6.php';</script>");
+	exit("<script>location.href='".$admin."simulasi.php';</script>");
 }
 $id='';
 if(isset($_SESSION['SIMULASI_ID'])){
@@ -69,7 +69,7 @@ if(isset($_POST['jawab'])){
 	$nilai=round(($nilai*100)/$jumlah,0);
 	$_SESSION['SIMULASI_NILAI']=$nilai;
 	
-	exit("<script>location.href='_ca2af8a29582009a8583f110b425c5e6.php?no=".($_POST['no']+1)."';</script>");
+	exit("<script>location.href='simulasi.php?no=".($_POST['no']+1)."';</script>");
 }
 if(isset($_POST['selesai'])){
 	unset($_SESSION['SIMULASI_ID']);
@@ -193,14 +193,14 @@ mysqli_close($conns);
 <center>
 <div class="btn-group" role="group" aria-label="...">
   <?php
-  if($_b44cb2e694287fa912cc50de8b3a920b==1){$_849d693c62dfe15394a642123c1599c8='disabled';$_1261cd629575acc614af0867c1e29e37='#';}else{$_849d693c62dfe15394a642123c1599c8='';$_1261cd629575acc614af0867c1e29e37='_ca2af8a29582009a8583f110b425c5e6.php?no='.($_b44cb2e694287fa912cc50de8b3a920b-1);}
+  if($_b44cb2e694287fa912cc50de8b3a920b==1){$_849d693c62dfe15394a642123c1599c8='disabled';$_1261cd629575acc614af0867c1e29e37='#';}else{$_849d693c62dfe15394a642123c1599c8='';$_1261cd629575acc614af0867c1e29e37='simulasi.php?no='.($_b44cb2e694287fa912cc50de8b3a920b-1);}
   ?>
   <a href="<?php echo $_1261cd629575acc614af0867c1e29e37;?>" class="btn btn-primary <?php echo $_849d693c62dfe15394a642123c1599c8;?>"><i class="fa fa-arrow-left"></i> Soal Sebelumnya</a>
   
   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">MENGAKHIRI TES</button>
   
   <?php
-  if($_b44cb2e694287fa912cc50de8b3a920b==count($paket)){$_849d693c62dfe15394a642123c1599c8='disabled';$_1261cd629575acc614af0867c1e29e37='#';}else{$_849d693c62dfe15394a642123c1599c8='';$_1261cd629575acc614af0867c1e29e37='_ca2af8a29582009a8583f110b425c5e6.php?no='.($_b44cb2e694287fa912cc50de8b3a920b+1);}
+  if($_b44cb2e694287fa912cc50de8b3a920b==count($paket)){$_849d693c62dfe15394a642123c1599c8='disabled';$_1261cd629575acc614af0867c1e29e37='#';}else{$_849d693c62dfe15394a642123c1599c8='';$_1261cd629575acc614af0867c1e29e37='simulasi.php?no='.($_b44cb2e694287fa912cc50de8b3a920b+1);}
   ?>
   <a href="<?php echo $_1261cd629575acc614af0867c1e29e37;?>" class="btn btn-primary <?php echo $_849d693c62dfe15394a642123c1599c8;?>">Soal Selanjutnya <i class="fa fa-arrow-right"></i></a>
   
@@ -232,9 +232,9 @@ for($mulai=0;$mulai<count($paket);$mulai++){
 	$awal++;
 	if($_b44cb2e694287fa912cc50de8b3a920b==$awal){$_21d32120212be9984823e1b45de91ffc='active';}else{$_21d32120212be9984823e1b45de91ffc='';}
 	if($paket[$mulai][1]!=''){
-		echo '<a href="_ca2af8a29582009a8583f110b425c5e6.php?no='.$awal.'" class="btn btn-info btn-sm '.$_21d32120212be9984823e1b45de91ffc.'" style="margin-bottom:5px;">'.$awal.' <i class="fa fa-check"></i></a> ';
+		echo '<a href="simulasi.php?no='.$awal.'" class="btn btn-info btn-sm '.$_21d32120212be9984823e1b45de91ffc.'" style="margin-bottom:5px;">'.$awal.' <i class="fa fa-check"></i></a> ';
 	}else{
-		echo '<a href="_ca2af8a29582009a8583f110b425c5e6.php?no='.$awal.'" class="btn btn-default btn-sm '.$_21d32120212be9984823e1b45de91ffc.'" style="margin-bottom:5px;">'.$awal.'</a> ';
+		echo '<a href="simulasi.php?no='.$awal.'" class="btn btn-default btn-sm '.$_21d32120212be9984823e1b45de91ffc.'" style="margin-bottom:5px;">'.$awal.'</a> ';
 	}
 }
 ?>
