@@ -40,7 +40,7 @@ $linksoalujian='<ul class="pagination">'.$linksoalujian.'</ul>';$nilaiujiansoals
 
 $gender=array('L'=>'Laki-laki','P'=>'Perempuan');
 //$arraysoal=array(0=>'<span class="label label-default">Belum Tes</span>', 1=>'<span class="label label-danger">Tidak Diterima</span>', 2=>'<span class="label label-success">Diterima</span>');
-$_90536067f4eda2356714ffff3f1b38f2=array('N'=>'<span class="label label-success">Aktif</span>', 'Y'=>'<span class="label label-default">Alumni</span>');
+$classarayaktiv=array('N'=>'<span class="label label-success">Aktif</span>', 'Y'=>'<span class="label label-default">Alumni</span>');
 $tables='';
 $conn="select * from siswa where (nisn like '%".$sqlgetsoal."%' or nama like '%".$sqlgetsoal."%') ".$idkelasnya." order by nisn limit ".$nilaiujiansoals.",".$nilaiujiansoal;
 $conn=mysqli_query($conns,$conn);
@@ -130,7 +130,7 @@ function DeleteSelectedConfirm(){
 <a href="?hal=siswa&action=update_status" class="btn btn-primary" style="float:"><i class="fa fa-check-square-o"></i> Cek Status Data</a>-->
 <a href="<?php echo $regis;?>" class="btn btn-primary"><i class="fa fa-plus"></i> Input Siswa Baru</a>
 &nbsp;<a href="?hal=import_siswa" class="btn btn-primary"><i class="fa fa-arrow-circle-o-down"></i> Import</a>
-&nbsp;<a href="_714fe0583cb71e00d723bf5b77c46fc5.php?kelas=<?php echo $idkelas;?>" class="btn btn-primary"><i class="fa fa-save"></i> Download</a>
+&nbsp;<a href="kelas.php?kelas=<?php echo $idkelas;?>" class="btn btn-primary"><i class="fa fa-save"></i> Download</a>
 
 </div>
 <div style="height:10px;clear:both;"></div>
