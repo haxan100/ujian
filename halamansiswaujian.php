@@ -55,7 +55,7 @@ if(isset($_POST['jawab'])){
 	mysqli_query($conns,"update ujian set nilai='".$nilai."' where id_ujian='".$sqli."'");
 	mysqli_query($conns,"update siswa set nilai_tes='".$nilai."', status='Y' where id_siswa='".$_SESSION['LOGIN_ID']."'");
 	
-	exit("<script>location.href='_db4d5aa7bb4b2f60d2ddb3c173cdce48.php?no=".($_POST['no']+1)."';</script>");
+	exit("<script>location.href='halamansiswaujian.php?no=".($_POST['no']+1)."';</script>");
 }
 if(isset($_POST['selesai'])){
 	mysqli_query($conns,"update ujian set selesai='Y' where id_ujian='".$sqli."'");
@@ -174,14 +174,14 @@ mysqli_close($conns);
 <center>
 <div class="btn-group" role="group" aria-label="...">
   <?php
-  if($awalansims==1){$optidis='disabled';$propper='#';}else{$optidis='';$propper='_db4d5aa7bb4b2f60d2ddb3c173cdce48.php?no='.($awalansims-1);}
+  if($awalansims==1){$optidis='disabled';$propper='#';}else{$optidis='';$propper='halamansiswaujian.php?no='.($awalansims-1);}
   ?>
   <a href="<?php echo $propper;?>" class="btn btn-primary <?php echo $optidis;?>"><i class="fa fa-arrow-left"></i> Soal Sebelumnya</a>
   
   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">SELESAI</button>
   
   <?php
-  if($awalansims==count($paket)){$optidis='disabled';$propper='#';}else{$optidis='';$propper='_db4d5aa7bb4b2f60d2ddb3c173cdce48.php?no='.($awalansims+1);}
+  if($awalansims==count($paket)){$optidis='disabled';$propper='#';}else{$optidis='';$propper='halamansiswaujian.php?no='.($awalansims+1);}
   ?>
   <a href="<?php echo $propper;?>" class="btn btn-primary <?php echo $optidis;?>">Soal Selanjutnya <i class="fa fa-arrow-right"></i></a>
   
@@ -213,9 +213,9 @@ for($mulai=0;$mulai<count($paket);$mulai++){
 	$awal++;
 	if($awalansims==$awal){$botton='active';}else{$botton='';}
 	if($paket[$mulai][1]!=''){
-		echo '<a href="_db4d5aa7bb4b2f60d2ddb3c173cdce48.php?no='.$awal.'" class="btn btn-info btn-sm '.$botton.'" style="margin-bottom:5px;">'.$awal.' <i class="fa fa-check"></i></a> ';
+		echo '<a href="halamansiswaujian.php?no='.$awal.'" class="btn btn-info btn-sm '.$botton.'" style="margin-bottom:5px;">'.$awal.' <i class="fa fa-check"></i></a> ';
 	}else{
-		echo '<a href="_db4d5aa7bb4b2f60d2ddb3c173cdce48.php?no='.$awal.'" class="btn btn-default btn-sm '.$botton.'" style="margin-bottom:5px;">'.$awal.'</a> ';
+		echo '<a href="halamansiswaujian.php?no='.$awal.'" class="btn btn-default btn-sm '.$botton.'" style="margin-bottom:5px;">'.$awal.'</a> ';
 	}
 }
 ?>

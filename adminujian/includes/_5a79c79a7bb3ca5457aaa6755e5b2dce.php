@@ -1,7 +1,7 @@
 <?php if(!defined('myweb')){ exit(); }?>
 <?php
-function getDataURI($_90b42a0a84ed04cf1e133e7d0b4c87fd, $_e93cf66fc1806033550e3794ea9ea258 = '') {
-	return 'data: '.(function_exists('mime_content_type') ? mime_content_type($_90b42a0a84ed04cf1e133e7d0b4c87fd) : $_e93cf66fc1806033550e3794ea9ea258).';base64,'.base64_encode(file_get_contents($_90b42a0a84ed04cf1e133e7d0b4c87fd));
+function getDataURI($conn, $connfi = '') {
+	return 'data: '.(function_exists('mime_content_type') ? mime_content_type($conn) : $connfi).';base64,'.base64_encode(file_get_contents($conn));
 }
 $pengumuman1='?hal=image_header';
 $regis='?hal=image_header';
@@ -16,7 +16,7 @@ if(isset($_POST['save'])){
 			$extens=end($awalrayan);
 
 			if (in_array($extens, $fileext)) {
-				move_uploaded_file($_FILES['gambar']['tmp_name'],$_60b79b11408190713cbabbcf5f810477.'header.png');
+				move_uploaded_file($_FILES['gambar']['tmp_name'],$namaco.'header.png');
 				exit("<script>location.href='".$pengumuman1."';</script>");
 			}else{
 				$err='Format file PNG.';
@@ -26,7 +26,7 @@ if(isset($_POST['save'])){
 	
 }
 
-$_8518fd4bc0da31048bd649f3b066e6a4=getDataURI($_60b79b11408190713cbabbcf5f810477.'header.png');
+$head=getDataURI($namaco.'header.png');
 
 ?>
 
@@ -78,7 +78,7 @@ if(!empty($notif)){
   </tr>
 </table>
 </form>
-<img src="<?php echo $_8518fd4bc0da31048bd649f3b066e6a4;?>" alt="" class="img-thumbnail">
+<img src="<?php echo $head;?>" alt="" class="img-thumbnail">
 	
 	</div>
 </div>

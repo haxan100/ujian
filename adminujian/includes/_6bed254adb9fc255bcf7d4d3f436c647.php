@@ -19,19 +19,19 @@ if(isset($_GET['q'])){
 
 $conn=mysqli_query($conns,"select jumlah from periode_kuota where id_periode='".$id_periode."' and id_jurusan='".$jurusan."'");
 $sql=mysqli_fetch_array($conn);
-$_2d7b8d90d5719acfada164f228cfcaa8=$sql['jumlah'];
+$jumlah=$sql['jumlah'];
 
-$_8a49b0cdaecb8c5ca5df854c44d2e49d=array();
-$_5c1b09b57e5249b809a70edb3b54a1b7=array();
+$arayawal=array();
+$arayakhir=array();
 $awal=0;
 $conn=mysqli_query($conns,"select id_siswa from siswa where id_periode='".$id_periode."' and id_jurusan='".$jurusan."' and status='Y' order by nilai_tes desc,id_siswa");
 while($sql=mysqli_fetch_array($conn)){
 	$awal++;
-	$_8a49b0cdaecb8c5ca5df854c44d2e49d[$sql['id_siswa']]=$awal;
-	if($awal<=$_2d7b8d90d5719acfada164f228cfcaa8){
-		$_5c1b09b57e5249b809a70edb3b54a1b7[$sql['id_siswa']]='<span class="label label-success">Diterima</span>';
+	$arayawal[$sql['id_siswa']]=$awal;
+	if($awal<=$jumlah){
+		$arayakhir[$sql['id_siswa']]='<span class="label label-success">Diterima</span>';
 	}else{
-		$_5c1b09b57e5249b809a70edb3b54a1b7[$sql['id_siswa']]='<span class="label label-danger">Tidak Diterima</span>';
+		$arayakhir[$sql['id_siswa']]='<span class="label label-danger">Tidak Diterima</span>';
 	}
 }
 
@@ -75,8 +75,8 @@ if(mysqli_num_rows($conn) > 0){
 			<td>'.$gender[$sql['gender']].'</td>
 			<td>'.$hitung.'</td>
 			<td style="text-align:center;">'.$sql['nilai_tes'].'</td>
-			<td style="text-align:center;">'.$_8a49b0cdaecb8c5ca5df854c44d2e49d[$id_paket].'</td>
-			<td style="text-align:center;">'.$_5c1b09b57e5249b809a70edb3b54a1b7[$id_paket].'</td>
+			<td style="text-align:center;">'.$arayawal[$id_paket].'</td>
+			<td style="text-align:center;">'.$arayakhir[$id_paket].'</td>
 		  </tr>
 		';
 	}

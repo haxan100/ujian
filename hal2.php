@@ -29,7 +29,7 @@ if(isset($_SESSION['LOGIN_ID'])){
   </div>
   <div class="panel-body">
   <p>Masukkan Username &amp; password Anda.</p>
-<form role="form" method="post" action="<?php echo $look;?>_73dce75d92181ca956e737b3cb66db98.php">
+<form role="form" method="post" action="<?php echo $look;?>logincek.php">
   <div class="form-group">
     <input type="text" name="username" value="" class="form-control" id="" autocomplete="off" placeholder="Username">
   </div>
