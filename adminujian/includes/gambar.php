@@ -2,22 +2,22 @@
 <?php
 $pengumuman1='?hal=gambar';
 $regis='?hal=gambar';
-$_352323c15d1fa78cef3ff6277fa8502c=(4*1024*1024);
+$resolusi=(4*1024*1024);
 $fileext=array('jpg','jpeg','png');
 
 if(isset($_POST['save'])){
 	$awal=0;
-	foreach ($_FILES['gambar']['name'] as $_6b6e98cde8b33087a33e4d3a497bd86b => $_9b395079675c6a66ff23ea9c6c4a668e) {     
-		if ($_FILES['gambar']['error'][$_6b6e98cde8b33087a33e4d3a497bd86b] == 4) {
+	foreach ($_FILES['gambar']['name'] as $namagambar => $hasilgambar) {     
+		if ($_FILES['gambar']['error'][$namagambar] == 4) {
 			continue;
 		}	       
-		if ($_FILES['gambar']['error'][$_6b6e98cde8b33087a33e4d3a497bd86b] == 0) {	           
+		if ($_FILES['gambar']['error'][$namagambar] == 0) {	           
 			$awal++;
-			$awalrayan=strtolower($_FILES['gambar']['name'][$_6b6e98cde8b33087a33e4d3a497bd86b]);
+			$awalrayan=strtolower($_FILES['gambar']['name'][$namagambar]);
 			$awalrayan=explode(".", $awalrayan);
 			$extens=end($awalrayan);
-			$namafoto=urlstring('thumb-'.basename($_FILES['gambar']['name'][$_6b6e98cde8b33087a33e4d3a497bd86b],'.'.$extens).' '.time()).'.'.$extens;
-			move_uploaded_file($_FILES['gambar']['tmp_name'][$_6b6e98cde8b33087a33e4d3a497bd86b],$fotos.'/uploads/'.$namafoto);
+			$namafoto=urlstring('thumb-'.basename($_FILES['gambar']['name'][$namagambar],'.'.$extens).' '.time()).'.'.$extens;
+			move_uploaded_file($_FILES['gambar']['tmp_name'][$namagambar],$fotos.'/uploads/'.$namafoto);
 			mysqli_query($conns,"insert into gambar(nama) values('".$namafoto."')");
 		}
 	}
@@ -47,13 +47,13 @@ if(($nilaiujiansoals+1)<$listing){$linksoalujian.='<li><a href="'.$awalsoals.'&p
 $linksoalujian='<ul class="pagination">'.$linksoalujian.'</ul>';$nilaiujiansoals=$nilaiujiansoals*$nilaiujiansoal;$awal=$nilaiujiansoals;
 
 $tables='';
-$_8e529f7c1789a19f5ed8b2edb0af9fa7='';
+$gambarsemua='';
 $conn="select * from gambar order by id_gambar limit ".$nilaiujiansoals.",".$nilaiujiansoal;
 $conn=mysqli_query($conns,$conn);
 while($sql=mysqli_fetch_array($conn)){
 	$awal++;
 	$id_paket=$sql['id_gambar'];
-	$_8e529f7c1789a19f5ed8b2edb0af9fa7.='
+	$gambarsemua.='
 	<div class="col-lg-3 col-md-4 col-xs-6 thumb text-center" style="margin-bottom:10px;">
 		<a class="thumbnail gambar" href="#gambar_modal" data-toggle="modal" data-src="'.$sql['nama'].'">
 			<img class="img-responsive" src="'.$look.'uploads/'.$sql['nama'].'" alt="">
@@ -129,8 +129,8 @@ if(!empty($notif)){
 
 
 <?php 
-if($_8e529f7c1789a19f5ed8b2edb0af9fa7!=''){
-	echo $_8e529f7c1789a19f5ed8b2edb0af9fa7;
+if($gambarsemua!=''){
+	echo $gambarsemua;
 ?>
 <div class="modal fade" id="gambar_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -155,7 +155,7 @@ if($_8e529f7c1789a19f5ed8b2edb0af9fa7!=''){
 	</div>
 </div>
 <?php 
-if($_8e529f7c1789a19f5ed8b2edb0af9fa7!=''){
+if($gambarsemua!=''){
 ?>
 
 <div class="row">

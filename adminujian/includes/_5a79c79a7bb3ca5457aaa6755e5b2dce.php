@@ -5,7 +5,7 @@ function getDataURI($_90b42a0a84ed04cf1e133e7d0b4c87fd, $_e93cf66fc1806033550e37
 }
 $pengumuman1='?hal=image_header';
 $regis='?hal=image_header';
-$_352323c15d1fa78cef3ff6277fa8502c=(500*1024);
+$resolusi=(500*1024);
 $fileext=array('png');
 
 if(isset($_POST['save'])){

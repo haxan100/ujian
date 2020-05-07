@@ -49,10 +49,10 @@ if(mysqli_num_rows($conn) > 0){
 		$totAll=mysqli_fetch_array($juml);
 			$sqli=$totAll['id_ujian'];
 			$nilai=$totAll['nilai'];
-			$_98024b3b946c00745df4e12781e5901d='<a href="'.$pengumuman1.'&id='.$sqli.'&action=hapus_ujian" class="btn btn-danger btn-xs btn_hapus">Hapus Ujian</a>';
+			$hasilujian='<a href="'.$pengumuman1.'&id='.$sqli.'&action=hapus_ujian" class="btn btn-danger btn-xs btn_hapus">Hapus Ujian</a>';
 		}else{
 			$nilai='';
-			$_98024b3b946c00745df4e12781e5901d='';
+			$hasilujian='';
 		}
 		
 		$tables.='
@@ -62,7 +62,7 @@ if(mysqli_num_rows($conn) > 0){
 		<td>'.$sql['nama'].'</td>
 		<td>'.$nama.'</td>
 		<td style="text-align:center;">'.$nilai.'</td>
-		<td style="text-align:center;">'.$_98024b3b946c00745df4e12781e5901d.'</td>
+		<td style="text-align:center;">'.$hasilujian.'</td>
 		</tr>
 		';
 	}
@@ -91,8 +91,8 @@ while($sql=mysqli_fetch_array($conn)){
 <select name="paket" id="paket" class="form-control" style="width:300px;float:left;margin-right:5px;" onchange="submit()"><?php echo $opsi;?></select>
 </form>
 <div style="float:right">
-<a href="_d1526f8377152bf579a4cfba46518579.php?paket=<?php echo $id;?>" class="btn btn-primary <?php if($id==''){echo 'disabled';}?>" target="_blank"><i class="fa fa-print"></i> Cetak</a>
-&nbsp;<a href="_a8cc578098c3232f102f31aa952498b2.php?paket=<?php echo $id;?>" class="btn btn-primary <?php if($id==''){echo 'disabled';}?>"><i class="fa fa-save"></i> Download</a>
+<a href="hasiltryout.php?paket=<?php echo $id;?>" class="btn btn-primary <?php if($id==''){echo 'disabled';}?>" target="_blank"><i class="fa fa-print"></i> Cetak</a>
+<!-- &nbsp;<a href="_a8cc578098c3232f102f31aa952498b2.php?paket=<?php echo $id;?>" class="btn btn-primary <?php if($id==''){echo 'disabled';}?>"><i class="fa fa-save"></i> Download</a> -->
 
 </div>
 
