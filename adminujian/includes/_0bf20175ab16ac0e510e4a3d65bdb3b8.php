@@ -24,8 +24,8 @@ if(isset($_POST['save'])){
 		if($aksi=='edit'){
 			$conn=mysqli_query($conns,"select * from kompetensi where id_kompetensi='".$id_paket."'");
 			$sql=mysqli_fetch_array($conn);
-			$_08fdfd209a120f38f85507412165a4ef=$sql['kode'];
-			if(mysqli_num_rows(mysqli_query($conns,"select * from kompetensi where kode='".$jawabaraymulai."' and kode<>'".$_08fdfd209a120f38f85507412165a4ef."'"))>0){
+			$kodeUpdPel=$sql['kode'];
+			if(mysqli_num_rows(mysqli_query($conns,"select * from kompetensi where kode='".$jawabaraymulai."' and kode<>'".$kodeUpdPel."'"))>0){
 				$err='Kode sudah terdaftar. Silahkan daftarkan kode yang lain.';
 			}else{
 				$conn="update kompetensi set kode='".$jawabaraymulai."',nama='".$nama."' where id_kompetensi='".$id_paket."'";
