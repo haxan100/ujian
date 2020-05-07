@@ -11,9 +11,9 @@ $_4c792b9297dbe7cb2afcfd2333932891=array('png');
 if(isset($_POST['save'])){
 	if(!empty($_FILES['gambar']['name'])){
 		if($_FILES['gambar']['error']==0) {
-			$_cc5c6e696c11a4fdf170ece8ba9fdc6f=strtolower($_FILES['gambar']['name']);
-			$_cc5c6e696c11a4fdf170ece8ba9fdc6f=explode(".", $_cc5c6e696c11a4fdf170ece8ba9fdc6f);
-			$_c762a21cf01f9dfbea30dd29d5b7cbd9=end($_cc5c6e696c11a4fdf170ece8ba9fdc6f);
+			$awalrayan=strtolower($_FILES['gambar']['name']);
+			$awalrayan=explode(".", $awalrayan);
+			$_c762a21cf01f9dfbea30dd29d5b7cbd9=end($awalrayan);
 
 			if (in_array($_c762a21cf01f9dfbea30dd29d5b7cbd9, $_4c792b9297dbe7cb2afcfd2333932891)) {
 				move_uploaded_file($_FILES['gambar']['tmp_name'],$_60b79b11408190713cbabbcf5f810477.'header.png');

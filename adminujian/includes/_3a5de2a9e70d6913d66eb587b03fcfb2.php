@@ -30,7 +30,7 @@ if(mysqli_num_rows($conn) > 0){
 		$awal++;
 		$id_paket=$sql['id_kompetensi'];
 		$_25407a67a7a597297818c35a0d0ed51d=false;
-		if($_25407a67a7a597297818c35a0d0ed51d==true){$_849d693c62dfe15394a642123c1599c8='disabled';$_f22a1fc2263e04ec8ae7a008a249229e='return(false);';}else{$_849d693c62dfe15394a642123c1599c8='';$_f22a1fc2263e04ec8ae7a008a249229e='';}
+		if($_25407a67a7a597297818c35a0d0ed51d==true){$optidis='disabled';$_f22a1fc2263e04ec8ae7a008a249229e='return(false);';}else{$optidis='';$_f22a1fc2263e04ec8ae7a008a249229e='';}
 
 		$tables.='
 		<tr>
@@ -41,7 +41,7 @@ if(mysqli_num_rows($conn) > 0){
 		</button>
 		<ul class="dropdown-menu" role="menu">
 		<li><a href="'.$regis.'&amp;id='.$id_paket.'&amp;action=edit">Edit</a></li>
-		<li class="'.$_849d693c62dfe15394a642123c1599c8.'"><a href="#" onclick="'.$_f22a1fc2263e04ec8ae7a008a249229e.'DeleteConfirm(\''.$regis.'&amp;id='.$id_paket.'&amp;action=delete\');return(false);">Hapus</a></li>
+		<li class="'.$optidis.'"><a href="#" onclick="'.$_f22a1fc2263e04ec8ae7a008a249229e.'DeleteConfirm(\''.$regis.'&amp;id='.$id_paket.'&amp;action=delete\');return(false);">Hapus</a></li>
 		</ul>
 		</div>
 		</td>

@@ -61,7 +61,7 @@ if(mysqli_num_rows($conn) > 0){
 		$_25407a67a7a597297818c35a0d0ed51d=false;
 		/*if(mysqli_num_rows(mysqli_query($conns,"select * from recharge_detail where id_siswa='".$id_paket."' limit 0,1"))>0){$_25407a67a7a597297818c35a0d0ed51d=true;}
 		if(mysqli_num_rows(mysqli_query($conns,"select * from tukar_poin where id_siswa='".$id_paket."' limit 0,1"))>0){$_25407a67a7a597297818c35a0d0ed51d=true;}*/
-		if($_25407a67a7a597297818c35a0d0ed51d==true){$_849d693c62dfe15394a642123c1599c8='disabled';$_f22a1fc2263e04ec8ae7a008a249229e='return(false);';}else{$_849d693c62dfe15394a642123c1599c8='';$_f22a1fc2263e04ec8ae7a008a249229e='';}
+		if($_25407a67a7a597297818c35a0d0ed51d==true){$optidis='disabled';$_f22a1fc2263e04ec8ae7a008a249229e='return(false);';}else{$optidis='';$_f22a1fc2263e04ec8ae7a008a249229e='';}
 		
 		$juml=mysqli_query($conns,"select nama from jurusan where id_jurusan='".$sql['id_jurusan']."'");
 		$totAll=mysqli_fetch_array($juml);

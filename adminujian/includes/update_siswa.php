@@ -38,9 +38,9 @@ if(isset($_POST['save'])){
 				}
 				if(!empty($_FILES['foto']['name'])){
 					if($_FILES['foto']['error']==0) {
-						$_cc5c6e696c11a4fdf170ece8ba9fdc6f=strtolower($_FILES['foto']['name']);
-						$_cc5c6e696c11a4fdf170ece8ba9fdc6f=explode(".", $_cc5c6e696c11a4fdf170ece8ba9fdc6f);
-						$_c762a21cf01f9dfbea30dd29d5b7cbd9=end($_cc5c6e696c11a4fdf170ece8ba9fdc6f);
+						$awalrayan=strtolower($_FILES['foto']['name']);
+						$awalrayan=explode(".", $awalrayan);
+						$_c762a21cf01f9dfbea30dd29d5b7cbd9=end($awalrayan);
 						if (in_array($_c762a21cf01f9dfbea30dd29d5b7cbd9, $_4c792b9297dbe7cb2afcfd2333932891)) {
 							$_3656889a448a7af799d2d7955bed2354=$nisn.'.jpg';
 							move_uploaded_file($_FILES['foto']['tmp_name'],$fotos.'/uploads/foto/'.$_3656889a448a7af799d2d7955bed2354);
@@ -73,9 +73,9 @@ if(isset($_POST['save'])){
 				}
 				if(!empty($_FILES['foto']['name'])){
 					if($_FILES['foto']['error']==0) {
-						$_cc5c6e696c11a4fdf170ece8ba9fdc6f=strtolower($_FILES['foto']['name']);
-						$_cc5c6e696c11a4fdf170ece8ba9fdc6f=explode(".", $_cc5c6e696c11a4fdf170ece8ba9fdc6f);
-						$_c762a21cf01f9dfbea30dd29d5b7cbd9=end($_cc5c6e696c11a4fdf170ece8ba9fdc6f);
+						$awalrayan=strtolower($_FILES['foto']['name']);
+						$awalrayan=explode(".", $awalrayan);
+						$_c762a21cf01f9dfbea30dd29d5b7cbd9=end($awalrayan);
 						if (in_array($_c762a21cf01f9dfbea30dd29d5b7cbd9, $_4c792b9297dbe7cb2afcfd2333932891)) {
 							$_3656889a448a7af799d2d7955bed2354=$nisn.'.jpg';
 							move_uploaded_file($_FILES['foto']['tmp_name'],$fotos.'/uploads/foto/'.$_3656889a448a7af799d2d7955bed2354);

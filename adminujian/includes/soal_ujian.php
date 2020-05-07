@@ -52,7 +52,7 @@ if(mysqli_num_rows($conn) > 0){
 		$_2a5925db414467d5e4f9b8d08536173d[]=$sql['id_soal'];
 		$_25407a67a7a597297818c35a0d0ed51d=false;
 		//if(mysqli_num_rows(mysqli_query($conns,"select * from program where id_paket='".$id_paket."' limit 0,1"))>0){$_25407a67a7a597297818c35a0d0ed51d=true;}
-		if($_25407a67a7a597297818c35a0d0ed51d==true){$_849d693c62dfe15394a642123c1599c8='disabled';$_f22a1fc2263e04ec8ae7a008a249229e='return(false);';}else{$_849d693c62dfe15394a642123c1599c8='';$_f22a1fc2263e04ec8ae7a008a249229e='';}
+		if($_25407a67a7a597297818c35a0d0ed51d==true){$optidis='disabled';$_f22a1fc2263e04ec8ae7a008a249229e='return(false);';}else{$optidis='';$_f22a1fc2263e04ec8ae7a008a249229e='';}
 		$juml=mysqli_query($conns,"select pelajaran.nama from soal inner join pelajaran on soal.id_pelajaran=pelajaran.id_pelajaran where soal.id_soal='".$sql['id_soal']."'");
 		$totAll=mysqli_fetch_array($juml);
 		$_7587462c90f9624fb5baf236b890ad8a=$totAll['nama'];

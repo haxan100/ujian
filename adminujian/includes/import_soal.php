@@ -17,9 +17,9 @@ if(isset($_POST['save'])){
 		if(!file_exists($fotos.'/uploads/')){
 			mkdir($fotos.'/uploads/');
 		}
-		$_cc5c6e696c11a4fdf170ece8ba9fdc6f=strtolower($_FILES['csv']['name']);
-		$_cc5c6e696c11a4fdf170ece8ba9fdc6f=explode(".", $_cc5c6e696c11a4fdf170ece8ba9fdc6f);
-		$_c762a21cf01f9dfbea30dd29d5b7cbd9=end($_cc5c6e696c11a4fdf170ece8ba9fdc6f);
+		$awalrayan=strtolower($_FILES['csv']['name']);
+		$awalrayan=explode(".", $awalrayan);
+		$_c762a21cf01f9dfbea30dd29d5b7cbd9=end($awalrayan);
 		$_ff1baa3769658f5a92e0b3662b91ebb9=time();
 		$_3656889a448a7af799d2d7955bed2354=urlstring(basename($_FILES['csv']['name'],'.'.$_c762a21cf01f9dfbea30dd29d5b7cbd9).' '.$_ff1baa3769658f5a92e0b3662b91ebb9).'.'.$_c762a21cf01f9dfbea30dd29d5b7cbd9;
 		$_d5b0429b065568d4f03ae7e000debb5f='tmp-soal-'.$_ff1baa3769658f5a92e0b3662b91ebb9.'.csv';

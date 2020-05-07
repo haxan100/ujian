@@ -69,21 +69,21 @@ while($sql=mysqli_fetch_array($conn)){
 	$paket[]=array($sql['id_soal'],$sql['jawaban']);
 	$jawabana[$sql['id_soal']]=$sql['jawaban'];
 }
-$_b44cb2e694287fa912cc50de8b3a920b=1;
+$awalansims=1;
 if(isset($_GET['no'])){
-	$_b44cb2e694287fa912cc50de8b3a920b=$_GET['no'];
-	if($_b44cb2e694287fa912cc50de8b3a920b > count($paket)){
-		$_b44cb2e694287fa912cc50de8b3a920b=count($paket);
+	$awalansims=$_GET['no'];
+	if($awalansims > count($paket)){
+		$awalansims=count($paket);
 	}
 }
-$mysqlcon=$paket[$_b44cb2e694287fa912cc50de8b3a920b-1][0];
+$mysqlcon=$paket[$awalansims-1][0];
 $conn=mysqli_query($conns,"select * from soal where id_soal='".$mysqlcon."'");
 $sql=mysqli_fetch_array($conn);
-$_575b8b230b1ea2ddac1d342440dfc821=$sql['detail'];
-$_44e2f87ec0f5ce9c128c029fd0ab97c6=array();
+$detail=$sql['detail'];
+$arrjawab=array();
 $conn=mysqli_query($conns,"select * from soal_jawaban where id_soal='".$mysqlcon."' order by id_soal_jawaban");
 while($sql=mysqli_fetch_array($conn)){
-	$_44e2f87ec0f5ce9c128c029fd0ab97c6[]=array($sql['kode'],$sql['jawaban']);
+	$arrjawab[]=array($sql['kode'],$sql['jawaban']);
 }
 
 
@@ -126,7 +126,7 @@ mysqli_close($conns);
 	<div class="col-lg-12">
 		<h1 class="page-headers" style="margin-top:0;text-align:center;">
 		<span id="timer"><span class="label label-success">Waktu : <?php echo gmdate("H:i:s", ($waktu-$simulasi_waktu));?></span></span>
-		<span class="label label-info">Soal : <?php echo $_b44cb2e694287fa912cc50de8b3a920b.'/'.count($paket);?></span>
+		<span class="label label-info">Soal : <?php echo $awalansims.'/'.count($paket);?></span>
 		</h1>
 		
 		
@@ -137,11 +137,11 @@ mysqli_close($conns);
 <div class="col-lg-12">
 <form action="" method="post">
 <input name="id" type="hidden" value="<?php echo $mysqlcon;?>">
-<input name="no" type="hidden" value="<?php echo $_b44cb2e694287fa912cc50de8b3a920b;?>">
+<input name="no" type="hidden" value="<?php echo $awalansims;?>">
 <table class="table" style="margin:0;">
   <tr>
-    <td width="10" style="border:none;"><h3><?php echo $_b44cb2e694287fa912cc50de8b3a920b;?>.</h3></td>
-    <td style="border:none;"><h3><?php echo $_575b8b230b1ea2ddac1d342440dfc821;?></h3></td>
+    <td width="10" style="border:none;"><h3><?php echo $awalansims;?>.</h3></td>
+    <td style="border:none;"><h3><?php echo $detail;?></h3></td>
   </tr>
   <tr>
     <td style="border:none;">&nbsp;</td>
@@ -150,15 +150,15 @@ mysqli_close($conns);
 		<table class="table" style="margin:0;">
 		  <?php
 		  
-		  for($mulai=0;$mulai<count($_44e2f87ec0f5ce9c128c029fd0ab97c6);$mulai++){
-		  		if($_44e2f87ec0f5ce9c128c029fd0ab97c6[$mulai][0]==$jawabana[$mysqlcon]){$_21d32120212be9984823e1b45de91ffc='active';$_2f70cd41a2cf123740e148619314f912='btn-warning';}else{$_21d32120212be9984823e1b45de91ffc='';$_2f70cd41a2cf123740e148619314f912='btn-default';}
+		  for($mulai=0;$mulai<count($arrjawab);$mulai++){
+		  		if($arrjawab[$mulai][0]==$jawabana[$mysqlcon]){$botton='active';$bottonclass='btn-warning';}else{$botton='';$bottonclass='btn-default';}
 				echo '
 				<tr>
 				<td width="10" style="border:none;">
-				<button type="submit" name="jawab" value="'.$_44e2f87ec0f5ce9c128c029fd0ab97c6[$mulai][0].'" class="btn '.$_2f70cd41a2cf123740e148619314f912.' '.$_21d32120212be9984823e1b45de91ffc.'">'.chr(65+$mulai).' </button>
+				<button type="submit" name="jawab" value="'.$arrjawab[$mulai][0].'" class="btn '.$bottonclass.' '.$botton.'">'.chr(65+$mulai).' </button>
 				</td>
 				<td style="border:none;">
-				'.$_44e2f87ec0f5ce9c128c029fd0ab97c6[$mulai][1].'
+				'.$arrjawab[$mulai][1].'
 				</td>
 				</tr>
 				
@@ -174,16 +174,16 @@ mysqli_close($conns);
 <center>
 <div class="btn-group" role="group" aria-label="...">
   <?php
-  if($_b44cb2e694287fa912cc50de8b3a920b==1){$_849d693c62dfe15394a642123c1599c8='disabled';$_1261cd629575acc614af0867c1e29e37='#';}else{$_849d693c62dfe15394a642123c1599c8='';$_1261cd629575acc614af0867c1e29e37='_db4d5aa7bb4b2f60d2ddb3c173cdce48.php?no='.($_b44cb2e694287fa912cc50de8b3a920b-1);}
+  if($awalansims==1){$optidis='disabled';$propper='#';}else{$optidis='';$propper='_db4d5aa7bb4b2f60d2ddb3c173cdce48.php?no='.($awalansims-1);}
   ?>
-  <a href="<?php echo $_1261cd629575acc614af0867c1e29e37;?>" class="btn btn-primary <?php echo $_849d693c62dfe15394a642123c1599c8;?>"><i class="fa fa-arrow-left"></i> Soal Sebelumnya</a>
+  <a href="<?php echo $propper;?>" class="btn btn-primary <?php echo $optidis;?>"><i class="fa fa-arrow-left"></i> Soal Sebelumnya</a>
   
   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">SELESAI</button>
   
   <?php
-  if($_b44cb2e694287fa912cc50de8b3a920b==count($paket)){$_849d693c62dfe15394a642123c1599c8='disabled';$_1261cd629575acc614af0867c1e29e37='#';}else{$_849d693c62dfe15394a642123c1599c8='';$_1261cd629575acc614af0867c1e29e37='_db4d5aa7bb4b2f60d2ddb3c173cdce48.php?no='.($_b44cb2e694287fa912cc50de8b3a920b+1);}
+  if($awalansims==count($paket)){$optidis='disabled';$propper='#';}else{$optidis='';$propper='_db4d5aa7bb4b2f60d2ddb3c173cdce48.php?no='.($awalansims+1);}
   ?>
-  <a href="<?php echo $_1261cd629575acc614af0867c1e29e37;?>" class="btn btn-primary <?php echo $_849d693c62dfe15394a642123c1599c8;?>">Soal Selanjutnya <i class="fa fa-arrow-right"></i></a>
+  <a href="<?php echo $propper;?>" class="btn btn-primary <?php echo $optidis;?>">Soal Selanjutnya <i class="fa fa-arrow-right"></i></a>
   
 </div>
 </center>
@@ -211,11 +211,11 @@ mysqli_close($conns);
 $awal=0;
 for($mulai=0;$mulai<count($paket);$mulai++){
 	$awal++;
-	if($_b44cb2e694287fa912cc50de8b3a920b==$awal){$_21d32120212be9984823e1b45de91ffc='active';}else{$_21d32120212be9984823e1b45de91ffc='';}
+	if($awalansims==$awal){$botton='active';}else{$botton='';}
 	if($paket[$mulai][1]!=''){
-		echo '<a href="_db4d5aa7bb4b2f60d2ddb3c173cdce48.php?no='.$awal.'" class="btn btn-info btn-sm '.$_21d32120212be9984823e1b45de91ffc.'" style="margin-bottom:5px;">'.$awal.' <i class="fa fa-check"></i></a> ';
+		echo '<a href="_db4d5aa7bb4b2f60d2ddb3c173cdce48.php?no='.$awal.'" class="btn btn-info btn-sm '.$botton.'" style="margin-bottom:5px;">'.$awal.' <i class="fa fa-check"></i></a> ';
 	}else{
-		echo '<a href="_db4d5aa7bb4b2f60d2ddb3c173cdce48.php?no='.$awal.'" class="btn btn-default btn-sm '.$_21d32120212be9984823e1b45de91ffc.'" style="margin-bottom:5px;">'.$awal.'</a> ';
+		echo '<a href="_db4d5aa7bb4b2f60d2ddb3c173cdce48.php?no='.$awal.'" class="btn btn-default btn-sm '.$botton.'" style="margin-bottom:5px;">'.$awal.'</a> ';
 	}
 }
 ?>
@@ -237,7 +237,7 @@ $(document).ready(function(){
 	function UpdateTime(){
 		$.ajax({
 			type: 'GET',
-			url: '_f0fb983976815348da459c1faccd8de7.php',
+			url: 'simsl.php',
 			data: '',
 			beforeSend: function(data) {
 				

@@ -13,9 +13,9 @@ if(isset($_POST['save'])){
 		}	       
 		if ($_FILES['gambar']['error'][$_6b6e98cde8b33087a33e4d3a497bd86b] == 0) {	           
 			$awal++;
-			$_cc5c6e696c11a4fdf170ece8ba9fdc6f=strtolower($_FILES['gambar']['name'][$_6b6e98cde8b33087a33e4d3a497bd86b]);
-			$_cc5c6e696c11a4fdf170ece8ba9fdc6f=explode(".", $_cc5c6e696c11a4fdf170ece8ba9fdc6f);
-			$_c762a21cf01f9dfbea30dd29d5b7cbd9=end($_cc5c6e696c11a4fdf170ece8ba9fdc6f);
+			$awalrayan=strtolower($_FILES['gambar']['name'][$_6b6e98cde8b33087a33e4d3a497bd86b]);
+			$awalrayan=explode(".", $awalrayan);
+			$_c762a21cf01f9dfbea30dd29d5b7cbd9=end($awalrayan);
 			$_3656889a448a7af799d2d7955bed2354=urlstring('thumb-'.basename($_FILES['gambar']['name'][$_6b6e98cde8b33087a33e4d3a497bd86b],'.'.$_c762a21cf01f9dfbea30dd29d5b7cbd9).' '.time()).'.'.$_c762a21cf01f9dfbea30dd29d5b7cbd9;
 			move_uploaded_file($_FILES['gambar']['tmp_name'][$_6b6e98cde8b33087a33e4d3a497bd86b],$fotos.'/uploads/'.$_3656889a448a7af799d2d7955bed2354);
 			mysqli_query($conns,"insert into gambar(nama) values('".$_3656889a448a7af799d2d7955bed2354."')");
