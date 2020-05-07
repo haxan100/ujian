@@ -4,16 +4,16 @@
 $pengumuman1='?hal=soal';
 $regis='?hal=update_soal';
 
-$_5bbbff8933f7b8be381684bd463e6d16='';
+$mapel='';
 $_36923cf62618d1b9981740738971e651='';
 if(isset($_GET['pelajaran'])){
-	$_5bbbff8933f7b8be381684bd463e6d16=$_GET['pelajaran'];
+	$mapel=$_GET['pelajaran'];
 }
 if(isset($_GET['q'])){
 	$_36923cf62618d1b9981740738971e651=$_GET['q'];
 }
 
-$conn =mysqli_query($conns,"select count(*) as jml from soal where id_pelajaran='".$_5bbbff8933f7b8be381684bd463e6d16."' and detail like '%".$_36923cf62618d1b9981740738971e651."%'");
+$conn =mysqli_query($conns,"select count(*) as jml from soal where id_pelajaran='".$mapel."' and detail like '%".$_36923cf62618d1b9981740738971e651."%'");
 $sql=mysqli_fetch_array($conn);
 $_12ef5f8660c2350214ce228aad66392d=$sql['jml'];
 
@@ -28,7 +28,7 @@ $_addbb9f4792a53c78e32e91e1c94f075='<ul class="pagination">'.$_addbb9f4792a53c78
 
 $_971d98e0ad23e0905a3d3f4b08d46579=array('Y'=>'<span class="label label-success">AKTIF</span>','N'=>'<span class="label label-danger">Tidak Aktif</span>');
 $tables='';
-$conn="select * from soal where id_pelajaran='".$_5bbbff8933f7b8be381684bd463e6d16."' and detail like '%".$_36923cf62618d1b9981740738971e651."%' order by id_soal limit ".$_4e4149dcf4b3b60bf0aaf69dd2348c4d.",".$_111f1b5b84b5c819ea9ae35968fce466;
+$conn="select * from soal where id_pelajaran='".$mapel."' and detail like '%".$_36923cf62618d1b9981740738971e651."%' order by id_soal limit ".$_4e4149dcf4b3b60bf0aaf69dd2348c4d.",".$_111f1b5b84b5c819ea9ae35968fce466;
 $conn=mysqli_query($conns,$conn);
 if(mysqli_num_rows($conn) > 0){
 	while($sql=mysqli_fetch_array($conn)){
@@ -75,7 +75,7 @@ if(mysqli_num_rows($conn) > 0){
 $_3718d16a4c63e6e0d669e38e63f8c5c0='<option value="">Pilih Pelajaran</option>';
 $conn=mysqli_query($conns,"select * from pelajaran order by nama");
 while($sql=mysqli_fetch_array($conn)){
-	if($_5bbbff8933f7b8be381684bd463e6d16==$sql['id_pelajaran']){$selectOpsi='selected';}else{$selectOpsi='';}
+	if($mapel==$sql['id_pelajaran']){$selectOpsi='selected';}else{$selectOpsi='';}
 	$_3718d16a4c63e6e0d669e38e63f8c5c0.='<option value="'.$sql['id_pelajaran'].'" '.$selectOpsi.'>'.$sql['nama'].'</option>';
 }
 
@@ -105,7 +105,7 @@ function DeleteConfirm(url){
 <div style="float:right">
 <a href="<?php echo $regis;?>" class="btn btn-primary"><i class="fa fa-plus"></i> Input Soal Baru</a>
 &nbsp;<a href="?hal=import_soal" class="btn btn-primary"><i class="fa fa-arrow-circle-o-down"></i> Import</a>
-&nbsp;<a href="_b97ac0815f949eca6aa1a21065667e5d.php?pelajaran=<?php echo $_5bbbff8933f7b8be381684bd463e6d16;?>" class="btn btn-primary"><i class="fa fa-save"></i> Download</a>
+&nbsp;<a href="_b97ac0815f949eca6aa1a21065667e5d.php?pelajaran=<?php echo $mapel;?>" class="btn btn-primary"><i class="fa fa-save"></i> Download</a>
 </div>
 <div style="height:10px;clear:both;"></div>
 <?php 

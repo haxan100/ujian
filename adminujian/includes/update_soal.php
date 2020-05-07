@@ -6,7 +6,7 @@ $regis='?hal=update_soal';
 if(isset($_POST['save'])){
 	$id_paket=$_POST['id'];
 	$_d35a39212fd75e833aea38f90831b2cb=$_POST['action'];
-	$_5bbbff8933f7b8be381684bd463e6d16=$_POST['pelajaran'];
+	$mapel=$_POST['pelajaran'];
 	$paket=$_POST['soal'];
 	$_b65003120790c3e628f304c85a36a615=$_POST['kunci'];
 	$_a2162101cd2c071e2931c2254b25ca5e[0]=$_POST['jawaban'][0];
@@ -15,39 +15,39 @@ if(isset($_POST['save'])){
 	$_a2162101cd2c071e2931c2254b25ca5e[3]=$_POST['jawaban'][3];
 	$_a2162101cd2c071e2931c2254b25ca5e[4]=$_POST['jawaban'][4];
 
-	if(empty($_5bbbff8933f7b8be381684bd463e6d16) or empty($paket) or empty($_b65003120790c3e628f304c85a36a615) or empty($_a2162101cd2c071e2931c2254b25ca5e[0]) or empty($_a2162101cd2c071e2931c2254b25ca5e[1]) or empty($_a2162101cd2c071e2931c2254b25ca5e[2]) or empty($_a2162101cd2c071e2931c2254b25ca5e[3]) or empty($_a2162101cd2c071e2931c2254b25ca5e[4])){
+	if(empty($mapel) or empty($paket) or empty($_b65003120790c3e628f304c85a36a615) or empty($_a2162101cd2c071e2931c2254b25ca5e[0]) or empty($_a2162101cd2c071e2931c2254b25ca5e[1]) or empty($_a2162101cd2c071e2931c2254b25ca5e[2]) or empty($_a2162101cd2c071e2931c2254b25ca5e[3]) or empty($_a2162101cd2c071e2931c2254b25ca5e[4])){
 		$err='<strong>Error !</strong> Lengkapi form di bawah ini.';
 	}else{
 		if($_d35a39212fd75e833aea38f90831b2cb=='add'){
-			$conn="insert into soal(detail,kunci,id_pelajaran) values('".trim($paket)."','".$_b65003120790c3e628f304c85a36a615."','".$_5bbbff8933f7b8be381684bd463e6d16."')";
+			$conn="insert into soal(detail,kunci,id_pelajaran) values('".trim($paket)."','".$_b65003120790c3e628f304c85a36a615."','".$mapel."')";
 			mysqli_query($conns,$conn);
 			$_5cf085bf5081a50e78311063db83f771=mysqli_insert_id($conns);
 			$_f77c5a659797b862f0fc544aa9a0c023=array('A','B','C','D','E');
 			for($mulai=0;$mulai<count($_a2162101cd2c071e2931c2254b25ca5e);$mulai++){
 				mysqli_query($conns,"insert into soal_jawaban(id_soal,kode,jawaban) values('".$_5cf085bf5081a50e78311063db83f771."','".$_f77c5a659797b862f0fc544aa9a0c023[$mulai]."','".trim($_a2162101cd2c071e2931c2254b25ca5e[$mulai])."')");
 			}
-			exit("<script>location.href='".$pengumuman1."&pelajaran=".$_5bbbff8933f7b8be381684bd463e6d16."';</script>");
+			exit("<script>location.href='".$pengumuman1."&pelajaran=".$mapel."';</script>");
 		}
 		if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
-			$conn="update soal set detail='".trim($paket)."',kunci='".$_b65003120790c3e628f304c85a36a615."',id_pelajaran='".$_5bbbff8933f7b8be381684bd463e6d16."' where id_soal='".$id_paket."'";
+			$conn="update soal set detail='".trim($paket)."',kunci='".$_b65003120790c3e628f304c85a36a615."',id_pelajaran='".$mapel."' where id_soal='".$id_paket."'";
 			mysqli_query($conns,$conn);
 			mysqli_query($conns,"delete from soal_jawaban where id_soal='".$id_paket."'");
 			$_f77c5a659797b862f0fc544aa9a0c023=array('A','B','C','D','E');
 			for($mulai=0;$mulai<count($_a2162101cd2c071e2931c2254b25ca5e);$mulai++){
 				mysqli_query($conns,"insert into soal_jawaban(id_soal,kode,jawaban) values('".$id_paket."','".$_f77c5a659797b862f0fc544aa9a0c023[$mulai]."','".trim($_a2162101cd2c071e2931c2254b25ca5e[$mulai])."')");
 			}
-			exit("<script>location.href='".$pengumuman1."&pelajaran=".$_5bbbff8933f7b8be381684bd463e6d16."';</script>");
+			exit("<script>location.href='".$pengumuman1."&pelajaran=".$mapel."';</script>");
 		}
 		
 	}
 }else{
-	$_5bbbff8933f7b8be381684bd463e6d16='';$paket='';$_b65003120790c3e628f304c85a36a615='';$_a2162101cd2c071e2931c2254b25ca5e[0]='';$_a2162101cd2c071e2931c2254b25ca5e[1]='';$_a2162101cd2c071e2931c2254b25ca5e[2]='';$_a2162101cd2c071e2931c2254b25ca5e[3]='';$_a2162101cd2c071e2931c2254b25ca5e[4]='';
+	$mapel='';$paket='';$_b65003120790c3e628f304c85a36a615='';$_a2162101cd2c071e2931c2254b25ca5e[0]='';$_a2162101cd2c071e2931c2254b25ca5e[1]='';$_a2162101cd2c071e2931c2254b25ca5e[2]='';$_a2162101cd2c071e2931c2254b25ca5e[3]='';$_a2162101cd2c071e2931c2254b25ca5e[4]='';
 	if(empty($_GET['action'])){$_d35a39212fd75e833aea38f90831b2cb='add';}else{$_d35a39212fd75e833aea38f90831b2cb=$_GET['action'];}
 	if($_d35a39212fd75e833aea38f90831b2cb=='edit'){
 		$id_paket=$_GET['id'];
 		$conn=mysqli_query($conns,"select * from soal where id_soal='".$id_paket."'");
 		$sql=mysqli_fetch_array($conn);
-		$_5bbbff8933f7b8be381684bd463e6d16=$sql['id_pelajaran'];
+		$mapel=$sql['id_pelajaran'];
 		$paket=$sql['detail'];
 		$_b65003120790c3e628f304c85a36a615=$sql['kunci'];
 		$awal=0;
@@ -66,7 +66,7 @@ if(isset($_POST['save'])){
 $_3718d16a4c63e6e0d669e38e63f8c5c0='<option value=""></option>';
 $conn=mysqli_query($conns,"select * from pelajaran order by nama");
 while($sql=mysqli_fetch_array($conn)){
-	if($sql['id_pelajaran']==$_5bbbff8933f7b8be381684bd463e6d16){$selectOpsi='selected';}else{$selectOpsi='';}
+	if($sql['id_pelajaran']==$mapel){$selectOpsi='selected';}else{$selectOpsi='';}
 	$_3718d16a4c63e6e0d669e38e63f8c5c0.='<option value="'.$sql['id_pelajaran'].'" '.$selectOpsi.'>'.$sql['nama'].'</option>';
 }
 

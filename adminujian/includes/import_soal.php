@@ -7,7 +7,7 @@ $err='';
 $notif=false;
 
 if(isset($_POST['save'])){
-	$_5bbbff8933f7b8be381684bd463e6d16=$_POST['pelajaran'];
+	$mapel=$_POST['pelajaran'];
 	
 	if($_FILES['csv']['error']==0) {	
 		set_time_limit(100);
@@ -52,7 +52,7 @@ if(isset($_POST['save'])){
 		LINES TERMINATED BY '\n' 
 		IGNORE 1 LINES 
 		(@1,detail,a,b,c,d,e,kunci) 
-		SET id_pelajaran='".$_5bbbff8933f7b8be381684bd463e6d16."'
+		SET id_pelajaran='".$mapel."'
 		";
 		mysqli_query($conns,$conn);
 		
@@ -86,7 +86,7 @@ if(isset($_POST['save'])){
 $_3718d16a4c63e6e0d669e38e63f8c5c0='<option value=""></option>';
 $conn=mysqli_query($conns,"select * from pelajaran order by nama");
 while($sql=mysqli_fetch_array($conn)){
-	//if($sql['id_pelajaran']==$_5bbbff8933f7b8be381684bd463e6d16){$selectOpsi='selected';}else{$selectOpsi='';}
+	//if($sql['id_pelajaran']==$mapel){$selectOpsi='selected';}else{$selectOpsi='';}
 	$_3718d16a4c63e6e0d669e38e63f8c5c0.='<option value="'.$sql['id_pelajaran'].'">'.$sql['nama'].'</option>';
 }
 
